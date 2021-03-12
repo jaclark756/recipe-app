@@ -1,9 +1,10 @@
 export interface Recipe {
+    id?: number;
     userId?: string;
     ingredients?: string;
     instructions?: string;
     recipeName?: string;
-    imageUrl?: string;
+    imageUri?: string;
     cookTime?: number;
     prepTime?: number;
 }

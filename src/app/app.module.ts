@@ -6,6 +6,7 @@ import { InputRecipeComponent } from './components/input-recipe/input-recipe.com
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { RouterModule } from '@angular/router';
       {path: '', component: InputRecipeComponent},
       {path: 'inputrecipe', component: InputRecipeComponent},
       {path: 'viewrecpie', component: ViewRecipesComponent}
-    ])
+    ]),
+
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

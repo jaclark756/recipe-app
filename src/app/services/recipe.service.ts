@@ -6,14 +6,15 @@ import { map } from 'rxjs/operators';
 import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+}
+
 @Injectable({
   providedIn: 'root'
 })
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-}
-export class RecipeServiceService {
+export class RecipeService {
 
   constructor(private http: HttpClient) {
     this.http.get(`${this.url}`).subscribe( s => {
@@ -26,9 +27,8 @@ export class RecipeServiceService {
   readonly recipe$ = this.recipeSubject.asObservable();
 
 
-  /**
-   * GET AND SETTERS BELOW
-   */
+// GETTERS AND SETTERS
+
   getAllRecipes(): Observable<Recipe[]> {
     return this.http.get(this.url, httpOptions).pipe(map(response => {
       return response as Recipe[];
@@ -49,9 +49,7 @@ export class RecipeServiceService {
     this.recipeSubject.next(recipes);
   }
 
-  /**
-   * CRUD FUNCTIONS BELOW
-   */
+// CRUD FUNCTIONS BELOW
   addRecipe(recipe: Recipe): void {
     this.http.post(this.url, recipe, httpOptions).subscribe((response: Recipe) => {
       this.recipes = [

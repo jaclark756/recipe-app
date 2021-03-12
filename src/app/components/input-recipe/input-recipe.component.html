@@ -1,1 +1,44 @@
-<p>input-recipe works!</p>
+<form [formGroup]="newRecipe" (ngSubmit)="addRecipe()">
+    <p>
+        <label for="ingredients">Ingredients</label>
+        <input type="text" formControlName="ingredients" required>
+
+        <label for="instructions">Instructions</label>
+        <input type="text" formControlName="instructions" required>
+
+        <label for="recipeName">Name</label>
+        <input type="text" formControlName="recipeName" required>
+
+        <label for="imageUri">Picture of Dish</label>
+        <input type="text" formControlName="imageUri" required>
+
+        <label for="cookTime">Cook Time</label>
+        <input matInput type="number" placeholder="Ex. 30" formControlName="cookTime" min="0">
+
+        <label for="prepTime">Prep Time</label>
+        <input matInput type="number" placeholder="Ex. 30" formControlName="prepTime" min="0">
+
+        <!-- <mat-form-field appearance="fill" [color]="colorControl.value">
+            <label for="cookTime">Cook Time</label>
+            <input matInput type="number" placeholder="Ex. 30" formControlName="cookTime" min="0">
+            <span matSuffix>minutes</span>
+            <mat-error *ngIf="fontSizeControl.invalid">Min size: 10px</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" [color]="colorControl.value">
+            <label for="prepTime">Prep Time</label>
+            <input matInput type="number" placeholder="Ex. 30" formControlName="prepTime" min="0">
+            <span matSuffix>minutes</span>
+            <mat-error *ngIf="fontSizeControl.invalid">Min size: 10px</mat-error>
+        </mat-form-field> -->
+
+
+        <span style="color: red"
+            *ngIf="registerForm.controls.name.invalid || registerForm.controls.password.invalid || registerForm.controls.bio.invalid">
+            Please fill out all required fields</span>
+    </p>
+
+
+
+    <button mat-flat-button type="submit">Register</button>
+</form>

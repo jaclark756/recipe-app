@@ -36,7 +36,7 @@ const routes: Routes = [
     RouterModule.forRoot([
       {path: '', component: InputRecipeComponent},
       {path: 'inputrecipe', component: InputRecipeComponent},
-      {path: 'viewrecpie', component: ViewRecipesComponent}
+      {path: 'viewrecpie/:id', component: ViewRecipesComponent}
     ]),
 
   ],

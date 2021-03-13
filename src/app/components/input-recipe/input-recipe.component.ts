@@ -31,7 +31,6 @@ export class InputRecipeComponent implements OnInit {
       this.recipeService.addRecipe({
         id: null,
         // TODO hook in active user to this function
-        userId: null,
         ingredients: this.newRecipe.get("ingredients").value,
         instructions: this.newRecipe.get("instructions").value,
         recipeName: this.newRecipe.get("recipeName").value,

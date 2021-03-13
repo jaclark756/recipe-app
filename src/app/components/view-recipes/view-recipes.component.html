@@ -1,1 +1,23 @@
-<p>view-recipes works!</p>
+<app-header></app-header>
+<br>
+<!-- Recipe Image goes here -->
+<img>Recipe</img>
+<mat-card-title>Recipe Title
+    <mat-card-subtitle>Prep Time: xx Min</mat-card-subtitle>
+    <mat-card-subtitle>Cook Time: xx Min</mat-card-subtitle>
+</mat-card-title>
+<br>
+<mat-form-field>
+    <!-- Loop for Ingredient list-->
+    <div id="ingredients">Ingredient 1 thru N</div>
+    <button> Add Selected to Shopping List</button>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <!-- Loop for Step list-->
+    <mat-card-subtitle id="recipe steps">Step 1 thru N</mat-card-subtitle>
+    <!--Will need to change variable name-->
+    <img mat-card-avatar src="{{activeUser.profilePic}}" {{activeUser.name}}>
+</mat-form-field>
+<br>
+<app-footer></app-footer>

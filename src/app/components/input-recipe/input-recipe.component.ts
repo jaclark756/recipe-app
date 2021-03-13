@@ -14,12 +14,12 @@ export class InputRecipeComponent implements OnInit {
   constructor(public recipeService: RecipeService,
     private formbuilder: FormBuilder) {
     this.newRecipe = this.formbuilder.group({
-      ingredients: ['', Validators.required],
-      instructions: ['', Validators.required],
-      recipeName: ['', Validators.required],
-      imageUri: ['', Validators.required],
-      cookTime: ['', Validators.required, Validators.min(0)],
-      prepTime: ['', Validators.required, Validators.min(0)]
+      ingredients: new FormControl('', Validators.required),
+      instructions: new FormControl('', Validators.required),
+      recipeName: new FormControl('', Validators.required),
+      imageUri: new FormControl('', Validators.required),
+      cookTime: new FormControl('', [Validators.required, Validators.min(0)]),
+      prepTime: new FormControl('', [Validators.required, Validators.min(0)])
     })
   }
 
@@ -32,9 +32,9 @@ export class InputRecipeComponent implements OnInit {
         id: null,
         // TODO hook in active user to this function
         userId: null,
-        ingredients: this.newRecipe.get("recipe").value,
+        ingredients: this.newRecipe.get("ingredients").value,
         instructions: this.newRecipe.get("instructions").value,
-        recipeName: this.newRecipe.get("name").value,
+        recipeName: this.newRecipe.get("recipeName").value,
         imageUri: this.newRecipe.get("imageUri").value,
         cookTime: this.newRecipe.get("cookTime").value,
         prepTime: this.newRecipe.get("prepTime").value

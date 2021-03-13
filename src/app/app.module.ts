@@ -7,6 +7,9 @@ import { ViewRecipesComponent } from './components/view-recipes/view-recipes.com
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
 
     RouterModule.forRoot([
       {path: '', component: InputRecipeComponent},

@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './components/login/login.component';
 
 
@@ -23,10 +25,12 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     HttpClientModule,
-    BrowserModule,
-    HttpClientModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
     BrowserAnimationsModule,
+
 
     RouterModule.forRoot([
       {path: '', component: InputRecipeComponent},

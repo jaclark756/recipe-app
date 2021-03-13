@@ -1,0 +1,16 @@
+@import "styles/styles.scss";
+
+.mat-toolbar {
+    background-color: $watermelon;
+  }
+
+  .filter-powder {
+    filter: brightness(0) saturate(100%) invert(98%) sepia(1%) saturate(3027%) hue-rotate(174deg) brightness(102%) contrast(93%);
+  }
+  
+  img {
+    margin-top: 5px;
+  }
+  .spacer {
+    flex: 1 1 auto;
+  }

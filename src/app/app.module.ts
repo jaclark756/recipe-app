@@ -21,7 +21,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     InputRecipeComponent,
-    ViewRecipesComponent
+    ViewRecipesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,6 @@ const routes: Routes = [
       {path: 'viewrecpie', component: ViewRecipesComponent}
     ]),
 
-    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

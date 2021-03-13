@@ -3,13 +3,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
 import { LoginComponent } from './components/login/login.component';
 
 
@@ -22,7 +20,8 @@ const routes: Routes = [
     AppComponent,
     InputRecipeComponent,
     ViewRecipesComponent,
-    LoginComponent
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -37,9 +36,10 @@ const routes: Routes = [
       {path: '', component: InputRecipeComponent},
       {path: 'inputrecipe', component: InputRecipeComponent},
       {path: 'viewrecpie/:id', component: ViewRecipesComponent}
-    ]),
+    ])
 
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

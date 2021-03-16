@@ -1,26 +1,12 @@
-<div>
-    <a href="{{ githubURI }}"><button>Github</button></a>
-</div>
-<div class="container">
-<img src="/assets/images/717e72ace4e07fe3a888575c2e055e4e.jpg" height="300" width="200">
-<img src="/assets/images/5f73b451fbf7f9ba27d837594372a072.jpg" height="300" width="200">
-<img src="/assets/images/6e3aa0cb4551bd9e11da7fa3ee06e44b.jpg" height="300" width="200">
-<img src="/assets/images/7ca6646093c7a90b0996d2ac084384a1.jpg" height="300" width="200">
-<img src="/assets/images/35c7d5359ef3e7109b489ceecb9747e0.jpg" height="300" width="200">
-<img src="/assets/images/48cd866e2aaf4936f9e932ae4f8606a0.jpg" height="300" width="200">
-<img src="/assets/images/90a847d5b0442c58bbd1341525dfbcad.jpg" height="300" width="200">
-<img src="/assets/images/463d0f18bfe03571e6cb0c924a9faee7.jpg" height="300" width="200">
-<img src="/assets/images/641afad4c5330c871f7aae021ff82eb2.jpg" height="300" width="200">
-<img src="/assets/images/452078e959acefeb64f8fcfea2336e51.jpg" height="300" width="200">
-<img src="/assets/images/2274951aab0fc935dee499f3d6b8f78a.jpg" height="300" width="200">
-<img src="/assets/images/72637593ff4499076cb2e5d4081bdd15.jpg" height="300" width="200">
-<img src="/assets/images/b8fc3cdeb10fa38469fb40c8461b4312.jpg" height="300" width="200">
-<img src="/assets/images/b2fa4acd10ac2a554f91825d48d406a3.jpg" height="300" width="200">
-<img src="/assets/images/b63b2dcb84ff120716921cb1c3216441.jpg" height="300" width="200">
-<img src="/assets/images/b73e580aba2365ef0413ecb026bb924c.jpg" height="300" width="200">
-<img src="/assets/images/c27e404ca66c1507e23236b0f05124b4.jpg" height="300" width="200">
-<img src="/assets/images/c182e57eb7897f765c8cd5ce9dcf90e4.jpg" height="300" width="200">
-<img src="/assets/images/f2eaf656388a047b979a9c28667b4b96.jpg" height="300" width="200">
-<img src="/assets/images/b27f650ef51205dc2018ed12dbaf158f.jpg" height="300" width="200">
-<div class="login-container">Login</div>
-</div>
+<h2 mat-dialog-title>Login</h2>
+<mat-dialog-content class="mat-typography">
+    <img src="/assets/images/logo.svg" class="filter-jet">
+    <a href="{{ githubURI }}"><button color="primary" mat-raised-button isRoundButton="true">Continue with
+        Google</button></a><br>
+<a href="{{ githubURI }}"><button color="primary" mat-raised-button isRoundButton="true">Continue with
+        Github</button></a>
+  </mat-dialog-content>
+<mat-dialog-actions align="end">
+    <p>By continuing, you agree to ReciMe's Terms
+        of Service and Privacy Policy.</p>
+</mat-dialog-actions>

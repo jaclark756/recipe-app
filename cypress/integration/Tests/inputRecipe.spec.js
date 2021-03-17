@@ -4,6 +4,13 @@ describe("Testing Add Recipe", () => {
       });
 
     it("Adding New Recipe...", () => {
+        cy.intercept(
+            {
+                method: 'POST',      // Route all GET requests
+                url: '/recipe',    // that have a URL that matches '/users/*'
+              },
+              []
+        ).as('POSTrecipe');
         cy.get('[formcontrolname="ingredients"]').type("1 Cheese stick");
         cy.get('[formcontrolname="instructions"]').type("1.Unwrap\n2.rip off strips\n3.eat, repeat step 2 until finished");
         cy.get('[formcontrolname="recipeName"]').type("Cheese Snack");
@@ -11,8 +18,7 @@ describe("Testing Add Recipe", () => {
         cy.get('[formcontrolname="cookTime"]').type("0");
         cy.get('[formcontrolname="prepTime"]').type("1");
         cy.get('button').click();
-        cy.log("Need to finish view Recipe page to complete testing to confirm it was added")
-        expect(false).to.be.true;
+        cy.wait('@POSTrecipe').its('response.statusCode').should('eq', 200);
     });
     
 });

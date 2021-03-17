@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
 
 
 const routes: Routes = [
@@ -35,6 +37,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
+    MatListModule,
+    MatCardModule,
 
 
     RouterModule.forRoot([

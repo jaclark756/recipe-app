@@ -38,6 +38,7 @@ export class RecipeService {
 
   getRecipe(id: number): Observable<Recipe> {
     return this.http.get(this.url+`/${id}`, httpOptions).pipe(map(response => {
+      console.log("Recipe Response: ",response);
       return response as Recipe;
     }))
   }

@@ -12,7 +12,7 @@ describe("Testing Add Recipe", () => {
         cy.get('[formcontrolname="prepTime"]').type("1");
         cy.get('button').click();
         cy.log("Need to finish view Recipe page to complete testing to confirm it was added")
-        expect(false).to.be.true
+        expect(false).to.be.true;
     });
     
 });

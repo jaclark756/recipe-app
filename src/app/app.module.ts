@@ -22,7 +22,7 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
     InputRecipeComponent,
     ViewRecipesComponent,
     LoginComponent,

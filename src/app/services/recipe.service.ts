@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -16,7 +17,7 @@ const httpOptions = {
 
 export class RecipeService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private route:Router) {
     this.http.get(`${this.url}`).subscribe( s => {
       this.recipeSubject.next(s as Recipe[]);
     })
@@ -55,6 +56,7 @@ export class RecipeService {
       this.recipes = [
         ...this.recipes, response
       ]
+      // console.log("added recipe: ",response);
       // TODO Add route to freshly created recipe
     })
   }

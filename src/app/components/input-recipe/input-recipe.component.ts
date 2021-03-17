@@ -26,20 +26,59 @@ export class InputRecipeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addRecipe() {
-    if (this.newRecipe.valid) {
-      this.recipeService.addRecipe({
-        id: null,
-        // TODO hook in active user to this function
-        ingredients: this.newRecipe.get("ingredients").value,
-        instructions: this.newRecipe.get("instructions").value,
-        recipeName: this.newRecipe.get("recipeName").value,
-        imageUri: this.newRecipe.get("imageUri").value,
-        cookTime: this.newRecipe.get("cookTime").value,
-        prepTime: this.newRecipe.get("prepTime").value
-      })
+    // NEW ADDRECIPE 
+
+    addRecipe() {
+      console.log(this.newRecipe);
+      if (this.newRecipe.valid) {
+        let recipe = {
+          "ingredients": this.newRecipe.controls.ingredients.value,
+          "instructions": this.newRecipe.controls.instructions.value,
+          "recipeName": this.newRecipe.controls.recipeName.value,
+          "imageUri": this.newRecipe.controls.imageUri.value,
+          "cookTime": this.newRecipe.controls.cookTime.value,
+          "prepTime": this.newRecipe.controls.prepTime.value
+        }
+        this.recipeService.addRecipe(recipe);
+      }
     }
-  }
+  
+    // OLD ADDRECIPE
+    // addRecipe() {
+    //   if (this.newRecipe.valid) {
+    //     this.recipeService.addRecipe({
+    //       // TODO hook in active user to this function
+    //       ingredients: this.newRecipe.get("ingredients").value,
+    //       instructions: this.newRecipe.get("instructions").value,
+    //       recipeName: this.newRecipe.get("recipeName").value,
+    //       imageUri: this.newRecipe.get("imageUri").value,
+    //       cookTime: this.newRecipe.get("cookTime").value,
+    //       prepTime: this.newRecipe.get("prepTime").value
+    //     })
+    //   }
+    // }
+  
+    // if (this.settingsForm.valid) {
+    //   let settings = {
+    //     "photoURL": this.settingsForm.controls.photoURL.value ? this.settingsForm.controls.photoURL.value : '', 
+    //     "displayName": this.settingsForm.controls.displayName.value ? this.settingsForm.controls.displayName.value : '', 
+    //     "bio": this.settingsForm.controls.bio.value ? this.settingsForm.controls.bio.value : ''
+    //   }
+  
+    //   saveSettings(){
+    //     if (this.settingsForm.valid){
+    //       this.submitted = true;
+    //       this.uploadProgress$ = of(0);
+    
+    //       let settings = {
+    //         "photoURL": this.photoURL,
+    //         "displayName": this.settingsForm.controls.displayName.value ? this.settingsForm.controls.displayName.value : '', 
+    //         "bio": this.settingsForm.controls.bio.value ? this.settingsForm.controls.bio.value : ''
+    //       }
+  
+    //     }
+    
+    //   }
 
 
 }

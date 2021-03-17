@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 
 
@@ -32,6 +34,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatDialogModule,
     MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

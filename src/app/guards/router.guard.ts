@@ -12,7 +12,6 @@ export class RouterGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
     const user = this.userService.activeUser;
     // if (user) {
     //   return true;
@@ -20,6 +19,8 @@ export class RouterGuard implements CanActivate {
     //   this.router.navigate([''])
     //   return false;
     // }
+
+    return true;   //comment or delete this out if we put other logic in here
 
 
   }

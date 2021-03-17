@@ -6,8 +6,8 @@ describe("Testing Add Recipe", () => {
     it("Adding New Recipe...", () => {
         cy.intercept(
             {
-                method: 'POST',      // Route all GET requests
-                url: '/recipe',    // that have a URL that matches '/users/*'
+                method: 'POST',      // Capture POST request
+                url: '/recipe',    // that have a URL that matches '/recipe'
               },
               []
         ).as('POSTrecipe');

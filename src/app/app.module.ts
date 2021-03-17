@@ -9,6 +9,8 @@ import { ViewRecipesComponent } from './components/view-recipes/view-recipes.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './components/login/login.component';
+import { CollectionsComponent } from './components/collections/collections.component';
+
 
 
 const routes: Routes = [
@@ -21,6 +23,7 @@ const routes: Routes = [
     InputRecipeComponent,
     ViewRecipesComponent,
     LoginComponent,
+    CollectionsComponent,
 
   ],
   imports: [

@@ -1,20 +1,33 @@
 <!-- Recipe Image goes here -->
-<img></img>
+<img/>
 <mat-card-title>Recipe Title
     <mat-card-subtitle>Prep Time: xx Min</mat-card-subtitle>
     <mat-card-subtitle>Cook Time: xx Min</mat-card-subtitle>
 </mat-card-title>
 <br>
-<mat-list>
+<mat-list id="ingredients">
     <!-- Loop for Ingredient list-->
-    <mat-list-item id="ingredients">Ingredient 1 thru N</mat-list-item>
+    <mat-list-item>Ingredient 1 thru N</mat-list-item>
+    <mat-list-item>Ingredient 1 thru N</mat-list-item>
+    <mat-list-item>Ingredient 1 thru N</mat-list-item>
+    <mat-list-item>Ingredient 1 thru N</mat-list-item>
+    <mat-list-item>Ingredient 1 thru N</mat-list-item>
     <button> Add Selected to Shopping List</button>
 </mat-list>
 <br>
-<mat-list>
+<mat-list id="recipe steps">
     <!-- Loop for Step list-->
-    <mat-list-item id="recipe steps">Step 1 thru N</mat-list-item>
+    <mat-list-item>Step 1 thru N</mat-list-item>
+    <mat-list-item>Step 1 thru N</mat-list-item>
+    <mat-list-item>Step 1 thru N</mat-list-item>
+    <mat-list-item>Step 1 thru N</mat-list-item>
+    <mat-list-item>Step 1 thru N</mat-list-item>
+    <mat-list-item>Step 1 thru N</mat-list-item>
     <!--Will need to change variable name-->
-    <img mat-card-avatar src="{{activeUser.profilePic}}" {{activeUser.name}}>
+    <img mat-card-avatar src="{{User.profilePic}}" {{activeUser.name}}>
 </mat-list>
 
+
+
+
+<app-husq *ngFor="let husq of timelineStore.husqUser | async | timelineHusqs; trackBy: identity" [husq]="husq">

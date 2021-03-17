@@ -7,11 +7,11 @@ import { Recipe } from 'src/app/types/recipe';
 @Component({
   selector: 'app-view-recipes',
   templateUrl: './view-recipes.component.html',
-  styleUrls: ['./view-recipes.component.css']
+  styleUrls: ['./view-recipes.component.scss']
 })
 export class ViewRecipesComponent implements OnInit {
 
-  public recipe: Observable<Recipe>;
+  public recipe: Recipe;
 
   constructor(private route: ActivatedRoute,
     private recipeService: RecipeService) { }
@@ -22,7 +22,7 @@ export class ViewRecipesComponent implements OnInit {
 
   getRecipe(): void {
     this.route.paramMap.subscribe(param => {
-      this.recipe = this.recipeService.getRecipe(+param.get('id'));
+      this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => this.recipe= recipe);
     })
   }
 

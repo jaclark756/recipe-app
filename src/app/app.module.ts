@@ -14,6 +14,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 const routes: Routes = [
@@ -41,12 +42,13 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatListModule,
     MatCardModule,
+    MatGridListModule,
 
 
     RouterModule.forRoot([
       { path: '', component: InputRecipeComponent },
       { path: 'inputrecipe', component: InputRecipeComponent },
-      { path: 'viewrecpie/:id', component: ViewRecipesComponent }
+      { path: 'viewrecipe/:id', component: ViewRecipesComponent }
     ])
 
   ],

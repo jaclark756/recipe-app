@@ -19,48 +19,48 @@
       background-color: $purple-grey;
   }
 
-  ::ng-deep .mat-form-field {
-      .mat-input-element {
-          color: $black;
-          caret-color: #fff;
+//   ::ng-deep .mat-form-field {
+//       .mat-input-element {
+//           color: $black;
+//           caret-color: #fff;
       
-      }
-      .mat-form-field-label {
-          color: grey;
-      }
-      .mat-form-field-underline::before {
-          background-color: $metal !important;
-      }
-      .mat-form-field-underline {
-          background-color: $metal !important;
-      }
-      .mat-form-field-ripple {
-          background-color: $metal;
-      }
-      .mat-form-field-required-marker {
-          color: $metal;
-      }
-      .mat-form-field-flex {
-          background-color: $powder;
-      }
+//       }
+//       .mat-form-field-label {
+//           color: grey;
+//       }
+//       .mat-form-field-underline::before {
+//           background-color: $metal !important;
+//       }
+//       .mat-form-field-underline {
+//           background-color: $metal !important;
+//       }
+//       .mat-form-field-ripple {
+//           background-color: $metal;
+//       }
+//       .mat-form-field-required-marker {
+//           color: $metal;
+//       }
+//       .mat-form-field-flex {
+//           background-color: $powder;
+//       }
     
-  }
+//   }
 
-  ::ng-deep .mat-form-field.mat-focused {
+//   ::ng-deep .mat-form-field.mat-focused {
   
-      .mat-form-field-label {
-          color: grey;
-      }
-      .mat-form-field-ripple {
-          background-color: $metal;
-      }
-      .mat-input-element {
-          color: $black;
-          caret-color: $onyx;
-      }
+//       .mat-form-field-label {
+//           color: grey;
+//       }
+//       .mat-form-field-ripple {
+//           background-color: $metal;
+//       }
+//       .mat-input-element {
+//           color: $black;
+//           caret-color: $onyx;
+//       }
       
-  }
+//   }
 
-  textarea::placeholder {
-      color: $onyx !important;
-  }
+//   textarea::placeholder {
+//       color: $onyx !important;
+//   }

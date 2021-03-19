@@ -1,10 +1,27 @@
+@import "/src/styles/styles.scss";
+
+
+
+.flex-container {
+  display: none !important;
+}
+
 ::ng-deep.mat-dialog-container{
-  background-color: #056571 !important;
+  background-color: $teal !important;
   width: 100%;
+  border-radius: 0.5em;
 }
 
 ::ng-deep.mat-dialog-content {
-  text-align: center;
+  text-align: center !important;
+}
+
+.img {
+  margin: 30px;
+}
+
+.container {
+  margin: 50px 0 10px 0;
 }
 
 .filter-jet {
@@ -13,17 +30,9 @@
   }
 
 button {
-  margin: auto;
-  padding: 10px 10px 10px 10px;
-  display: block;
+  margin: 10px;
+  padding: 10px;
   text-align: center;
 }
-
-p {
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  text-align: center;
-}
-
 
 

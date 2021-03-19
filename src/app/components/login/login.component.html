@@ -1,15 +1,14 @@
 <mat-dialog-content class="mat-typography">
     <img src="/assets/images/logo.svg" class="filter-jet">
     <div class="container">
-    <a href="{{ githubURI }}"><button color="primary" mat-raised-button isRoundButton="true">Continue with
+    <a href="{{ githubURI }}"><button class="dark-button" mat-raised-button isRoundButton="true"><i class="fa fa-google fa-2x"></i>    Continue with
         Google</button></a>
-<a href="{{ githubURI }}"><button color="primary" mat-raised-button isRoundButton="true">Continue with
+<a href="{{ githubURI }}"><button class="dark-button" mat-raised-button isRoundButton="true"><i class="fa fa-github fa-2x"></i>   Continue with
         Github</button></a>
-        <button (click)="snackbar.openSnackBar('test snackbar')"></button>
-    </div>
+            </div>
   </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <p>By continuing, you agree to ReciMe's <a href="#">Terms<br>
+    <p>By continuing, you agree to this site's <a href="#">Terms
         of Service</a>and <a href="#">Privacy Policy</a>.</p>
 </mat-dialog-actions>
 

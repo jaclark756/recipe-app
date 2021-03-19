@@ -71,7 +71,14 @@ h5 {
 
 /*fitlers svg icons*/
 .filter-powder {
-    filter: brightness(0) saturate(100%) invert(98%) sepia(1%) saturate(3027%)
+  filter: brightness(0) saturate(100%) invert(98%) sepia(1%) saturate(3027%)
     hue-rotate(174deg) brightness(102%) contrast(93%);
 }
 
+.snackbar {
+  background-color: $onyx;
+  border: 1px solid $powder;
+  text-align: center;
+  justify-content: center !important;
+  width: 20px !important;
+}

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 
 
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   githubURI: string = this.API_BASE + "github" + this.REDIRECT;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public snackbar : SnackbarService) { }
 
   ngOnInit(): void {
   }

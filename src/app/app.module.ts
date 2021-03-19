@@ -17,11 +17,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 const routes: Routes = [
-  {path: 'login', component: WelcomeComponent}
-  
+  { path: 'login', component: WelcomeComponent }
+
 ]
 @NgModule({
   declarations: [
@@ -36,8 +38,8 @@ const routes: Routes = [
 
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    RouterModule.forRoot(routes),
     HttpClientModule,
     MatDialogModule,
     MatCardModule,
@@ -48,14 +50,7 @@ const routes: Routes = [
     MatListModule,
     MatCardModule,
     MatGridListModule,
-
-
-    RouterModule.forRoot([
-      { path: '', component: InputRecipeComponent },
-      { path: 'inputrecipe', component: InputRecipeComponent },
-      { path: 'viewrecipe/:id', component: ViewRecipesComponent }
-    ])
-
+    SharedModule,
   ],
 
   providers: [],

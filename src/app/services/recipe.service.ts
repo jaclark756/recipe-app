@@ -37,6 +37,7 @@ export class RecipeService {
 
   getRecipe(id: number): Observable<Recipe> {
     return this.http.get(this.url+`/${id}`, httpOptions).pipe(map(response => {
+      console.log("Recipe Response: ",response);
       return response as Recipe;
     }))
   }
@@ -55,6 +56,7 @@ export class RecipeService {
       this.recipes = [
         ...this.recipes, response
       ]
+      // console.log("added recipe: ",response);
       // TODO Add route to freshly created recipe
     })
   }

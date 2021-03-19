@@ -9,32 +9,37 @@ import { ViewRecipesComponent } from './components/view-recipes/view-recipes.com
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './components/login/login.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import {MatListModule} from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: WelcomeComponent}
+  
 ]
-
 @NgModule({
   declarations: [
     AppComponent,
+    WelcomeComponent,
     LoginComponent,
     ProfileComponent,
     EditProfileComponent,
     InputRecipeComponent,
     ViewRecipesComponent,
-    LoginComponent,
-
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    MatDialogModule,
+    MatCardModule,
+    MatGridListModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     FormsModule,
@@ -47,7 +52,7 @@ const routes: Routes = [
     RouterModule.forRoot([
       {path: '', component: InputRecipeComponent},
       {path: 'inputrecipe', component: InputRecipeComponent},
-      {path: 'viewrecpie/:id', component: ViewRecipesComponent}
+      {path: 'viewrecipe/:id', component: ViewRecipesComponent}
     ])
 
   ],

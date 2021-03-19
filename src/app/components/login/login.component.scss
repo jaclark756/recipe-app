@@ -1,0 +1,29 @@
+::ng-deep.mat-dialog-container{
+  background-color: #056571 !important;
+  width: 100%;
+}
+
+::ng-deep.mat-dialog-content {
+  text-align: center;
+}
+
+.filter-jet {
+    filter: brightness(0) saturate(100%) invert(16%) sepia(63%) saturate(18%)
+      hue-rotate(338deg) brightness(93%) contrast(88%);
+  }
+
+button {
+  margin: auto;
+  padding: 10px 10px 10px 10px;
+  display: block;
+  text-align: center;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+
+

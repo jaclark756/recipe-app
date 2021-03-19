@@ -9,13 +9,14 @@ import { ViewRecipesComponent } from './components/view-recipes/view-recipes.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './components/login/login.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatCardModule } from '@angular/material/card';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { CollectionsComponent } from './components/collections/collections.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,8 @@ const routes: Routes = [
     EditProfileComponent,
     InputRecipeComponent,
     ViewRecipesComponent,
+    CollectionsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -44,16 +47,17 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatListModule,
     MatCardModule,
+    MatGridListModule,
 
 
     RouterModule.forRoot([
-      {path: '', component: InputRecipeComponent},
-      {path: 'inputrecipe', component: InputRecipeComponent},
-      {path: 'viewrecipe/:id', component: ViewRecipesComponent}
+      { path: '', component: InputRecipeComponent },
+      { path: 'inputrecipe', component: InputRecipeComponent },
+      { path: 'viewrecipe/:id', component: ViewRecipesComponent }
     ])
 
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

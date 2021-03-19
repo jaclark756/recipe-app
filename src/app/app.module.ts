@@ -16,11 +16,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 
 const routes: Routes = [
-  {path: 'welcome', component: WelcomeComponent},
-  {path: 'login', component: LoginComponent}
+  // {path: 'welcome', component: WelcomeComponent},
+  {path: 'login', component: WelcomeComponent}
   
 ]
-
 @NgModule({
   declarations: [
     AppComponent,

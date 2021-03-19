@@ -1,0 +1,77 @@
+@import "./theme.scss";
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Montserrat&family=Playfair+Display&display=swap");
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: $onyx !important;
+}
+
+.mat-icon {
+  font-family: "Material Icons" !important;
+}
+
+body > * {
+  font-family: "Dosis", sans-serif !important;
+}
+
+p {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 18.7167px;
+}
+h5 {
+  font-size: 13.2833x;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-family: "Playfair Display", serif !important;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 18.7167px;
+  }
+  h5 {
+    font-size: 13.2833x;
+  }
+
+  body p {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 16px;
+  }
+}
+
+/* custom mat styles */
+.mat-tab-body {
+  max-width: 40em !important;
+}
+
+/*fitlers svg icons*/
+.filter-powder {
+    filter: brightness(0) saturate(100%) invert(98%) sepia(1%) saturate(3027%)
+    hue-rotate(174deg) brightness(102%) contrast(93%);
+}
+

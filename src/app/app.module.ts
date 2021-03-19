@@ -13,23 +13,25 @@ import { CollectionsComponent } from './components/collections/collections.compo
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent }
+  {path: 'login', component: WelcomeComponent}
+  
 ]
-
 @NgModule({
   declarations: [
     AppComponent,
+    WelcomeComponent,
     LoginComponent,
     ProfileComponent,
     EditProfileComponent,
     InputRecipeComponent,
     ViewRecipesComponent,
-    LoginComponent,
     CollectionsComponent,
 
   ],
@@ -37,6 +39,9 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    MatDialogModule,
+    MatCardModule,
+    MatGridListModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     BrowserAnimationsModule,

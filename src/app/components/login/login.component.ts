@@ -1,5 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -8,15 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  api: string = "http://localhost:8080/login"
-  response: any;
+  API_BASE: string = "http://localhost:8080/oauth2/authorization/"
+  REDIRECT: string = "?redirect_uri=http://localhost:4200/login";
+
+  githubURI: string = this.API_BASE + "github" + this.REDIRECT;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.get(this.api).subscribe((res) => {
-      console.log(res)
-    })
   }
 
   get(endPoint: string): any{

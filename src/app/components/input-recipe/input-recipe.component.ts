@@ -16,8 +16,8 @@ export class InputRecipeComponent implements OnInit {
     this.newRecipe = this.formbuilder.group({
       ingredients: new FormControl('', Validators.required),
       instructions: new FormControl('', Validators.required),
-      recipeName: new FormControl('', Validators.required),
-      imageUri: new FormControl('', Validators.required),
+      recipeName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      imageUri: new FormControl(''),
       cookTime: new FormControl('', [Validators.required, Validators.min(0)]),
       prepTime: new FormControl('', [Validators.required, Validators.min(0)])
     })
@@ -26,20 +26,21 @@ export class InputRecipeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addRecipe() {
-    if (this.newRecipe.valid) {
-      this.recipeService.addRecipe({
-        id: null,
-        // TODO hook in active user to this function
-        ingredients: this.newRecipe.get("ingredients").value,
-        instructions: this.newRecipe.get("instructions").value,
-        recipeName: this.newRecipe.get("recipeName").value,
-        imageUri: this.newRecipe.get("imageUri").value,
-        cookTime: this.newRecipe.get("cookTime").value,
-        prepTime: this.newRecipe.get("prepTime").value
-      })
+    // NEW ADDRECIPE 
+
+    addRecipe() {
+      console.log(this.newRecipe);
+      if (this.newRecipe.valid) {
+        let recipe = {
+          "ingredients": this.newRecipe.controls.ingredients.value,
+          "instructions": this.newRecipe.controls.instructions.value,
+          "recipeName": this.newRecipe.controls.recipeName.value,
+          "imageUri": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
+          "cookTime": this.newRecipe.controls.cookTime.value,
+          "prepTime": this.newRecipe.controls.prepTime.value
+        }
+        this.recipeService.addRecipe(recipe);
+      }
     }
-  }
-
-
+  
 }

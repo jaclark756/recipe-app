@@ -15,6 +15,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     InputRecipeComponent,
     ViewRecipesComponent,
     CollectionsComponent,
+    RegisterComponent,
 
   ],
   imports: [

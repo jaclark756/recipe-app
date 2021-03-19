@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import {MatDialog} from '@angular/material/dialog';
+import { RegisterComponent } from '../register/register.component';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class WelcomeComponent implements OnInit {
     const config = new MatDialogConfig();
     config.disableClose = true;
     config.panelClass = "panelStyle"
-    const dialogRef = this.dialog.open(LoginComponent, config);
+    const dialogRef = this.dialog.open(RegisterComponent, config);
 
 }
 

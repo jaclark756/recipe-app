@@ -12,6 +12,8 @@ import { Recipe } from 'src/app/types/recipe';
 export class ViewRecipesComponent implements OnInit {
 
   public recipe: Recipe;
+  public ingredients: string[];
+  public instructions: string[];
 
   constructor(private route: ActivatedRoute,
     private recipeService: RecipeService) { }
@@ -22,7 +24,10 @@ export class ViewRecipesComponent implements OnInit {
 
   getRecipe(): void {
     this.route.paramMap.subscribe(param => {
-      this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => this.recipe= recipe);
+      this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
+        this.recipe= recipe;
+        this.ingredients = recipe.ingredients.split("\n")
+        this.instructions = recipe.instructions.split("\n")});
     })
   }
 

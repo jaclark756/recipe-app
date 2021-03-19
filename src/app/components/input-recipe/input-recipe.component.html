@@ -1,80 +1,49 @@
-<div class="">
+<div class="form-container">
 <form [formGroup]="newRecipe">
 
-    <mat-form-field>
-        <label for="ingredients">Ingredients</label>
+    <mat-form-field class="form-input" appearance="fill">
+        <mat-label for="ingredients">Ingredients</mat-label>
         <textarea matInput  type="text" formControlName="ingredients" required></textarea>
+        <mat-error *ngIf="newRecipe.controls.ingredients.invalid">Ingredients are required</mat-error>
     </mat-form-field>
     <br>
 
-
-    <mat-form-field>
+    <mat-form-field class="form-input" appearance="fill">
         <label for="instructions">Instructions</label>
         <textarea matInput  type="text" formControlName="instructions" required></textarea>
+        <mat-error *ngIf="newRecipe.controls.instructions.invalid">Instructions are required</mat-error>
     </mat-form-field>
     <br>
 
-    <mat-form-field>
-        <label for="recipeName">Name</label>
+    <mat-form-field class="form-input" appearance="fill">
+        <mat-label for="recipeName">Name</mat-label>
         <input matInput type="text" formControlName="recipeName" required>
+        <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
     </mat-form-field>
     <br>
 
-    <mat-form-field>
-        <label for="imageUri">Picture of Dish</label>
-        <input matInput type="text" formControlName="imageUri" required>
+    <mat-form-field class="form-input" appearance="fill">
+        <mat-label for="imageUri" >Picture of Dish</mat-label>
+        <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
     </mat-form-field>
     <br>
 
-    <!-- NEW COOK AND PREP TIME -->
-
-    <mat-form-field>
-        <!-- <label for="cookTime">Cook Time</label>
-        <input  matInput type="number" placeholder="Ex. 30" formControlName="cookTime" min="0"> -->
+    <mat-form-field class="form-input" appearance="fill">
         <mat-label>Cook Time</mat-label>
         <input matInput type="number" placeholder="Ex. 30 min" formControlName="cookTime" min="0">
-        <span matSuffix>min</span>
-        <!-- <mat-error *ngIf="fontSizeControl.invalid">Min size: 10px</mat-error> -->
+        <span matSuffix>minutes</span>
+        <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
     </mat-form-field>
     <br>
-    <!-- OLD COOK AND PREPTIME -->
 
-    <mat-form-field>
+    <mat-form-field class="form-input" appearance="fill">
         <mat-label>Prep Time</mat-label>
         <input matInput type="number" placeholder="Ex. 15 min" formControlName="prepTime" min="0">
-        <span matSuffix>min</span>
-        <!-- <label for="prepTime">Prep Time</label>
-        <input matInput type="number" placeholder="Ex. 30" formControlName="prepTime" min="0"> -->
+        <span matSuffix>minutes</span>
+        <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
     </mat-form-field>
-
-
 
 </form>
 
 <button [disabled]="newRecipe.invalid" (click)="addRecipe()" type="submit">Add Recipe</button>
 </div>
-<!-- 
-
-<form [formGroup]="settingsForm">
-<div class="row">
-    <div class="col-12">
-        <mat-form-field class="w-75" appearance="fill">
-            <mat-label>Display Name</mat-label>
-            <input matInput class="w-100 mx-auto" type="text" placeholder="Display Name" formControlName="displayName">  
-        </mat-form-field>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12 mb-2">
-        <mat-form-field class="w-75" appearance="fill">
-            <mat-label>Bio</mat-label>
-            <textarea rows="4" matInput placeholder="What makes you special..." formControlName="bio" [(ngModel)]="bio"></textarea>
-            <div class="char-count">
-                <mat-hint [ngClass]="(bio?.length > 150) ? 'red-count' : 'white-count'">{{ 150 - bio.length }}</mat-hint>
-            </div>
-        </mat-form-field>
-    </div>
-</div>
-</form>
-
-<button mat-raised-button [disabled]="settingsForm.invalid" (click)="saveSettings()" color="warn">SAVE</button> -->

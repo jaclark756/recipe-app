@@ -9,7 +9,7 @@
     <br>
 
     <mat-form-field class="form-input" appearance="fill">
-        <label for="instructions">Instructions</label>
+        <mat-label for="instructions">Instructions</mat-label>
         <textarea matInput  type="text" formControlName="instructions" required></textarea>
         <mat-error *ngIf="newRecipe.controls.instructions.invalid">Instructions are required</mat-error>
     </mat-form-field>

@@ -3,8 +3,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
+import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
+import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './components/login/login.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
@@ -23,18 +26,30 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    InputRecipeComponent,
+    ViewRecipesComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    BrowserAnimationsModule,
     MatDialogModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+
+
+    RouterModule.forRoot([
+      {path: '', component: InputRecipeComponent},
+      {path: 'inputrecipe', component: InputRecipeComponent},
+      {path: 'viewrecpie/:id', component: ViewRecipesComponent}
+    ])
+
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

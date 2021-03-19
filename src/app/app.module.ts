@@ -18,6 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 
 const routes: Routes = [
@@ -61,7 +62,7 @@ const routes: Routes = [
 
   ],
 
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

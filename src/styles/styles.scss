@@ -92,3 +92,64 @@ h5 {
   justify-content: center !important;
   width: 20px !important;
 }
+
+/*Form Styling*/
+.form-container {
+  width: 35em;
+  border: 1px solid $powder;
+  border-radius: 5px;
+  padding: 15px;
+  margin: auto;
+  background-color: $teal;
+}
+
+.form-input {
+    width: 100%;
+}
+
+::ng-deep .mat-form-field {
+    .mat-input-element {
+        color: $black;
+        caret-color: #fff;
+  
+    }
+    .mat-form-field-label {
+        color: grey;
+    }
+    .mat-form-field-underline::before {
+        background-color: $metal !important;
+    }
+    .mat-form-field-underline {
+        background-color: $metal !important;
+    }
+    .mat-form-field-ripple {
+        background-color: $metal;
+    }
+    .mat-form-field-required-marker {
+        color: $metal;
+    }
+    .mat-form-field-flex {
+        background-color: $powder;
+    }
+
+}
+
+::ng-deep .mat-form-field.mat-focused {
+
+    .mat-form-field-label {
+        color: grey;
+    }
+    .mat-form-field-ripple {
+        background-color: $metal;
+    }
+    .mat-input-element {
+        color: $black;
+        caret-color: $onyx;
+    }
+  
+}
+
+textarea::placeholder {
+    color: $onyx !important;
+}
+/*End Form Styling*/

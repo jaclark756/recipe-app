@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { TokenService } from 'src/app/services/token.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-input-recipe',
@@ -10,9 +12,15 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class InputRecipeComponent implements OnInit {
 
   newRecipe: FormGroup;
+  currentUser: any;
 
-  constructor(public recipeService: RecipeService,
-    private formbuilder: FormBuilder) {
+  constructor(
+    public recipeService: RecipeService,
+    private formbuilder: FormBuilder, 
+    public userService: UserService,
+    public tokenService: TokenService
+  ) {
+    this.currentUser = this.tokenService.getUser();
     this.newRecipe = this.formbuilder.group({
       ingredients: new FormControl('', Validators.required),
       instructions: new FormControl('', Validators.required),

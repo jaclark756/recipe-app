@@ -12,7 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CollectionsComponent } from './components/collections/collections.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-
+import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './components/register/register.component';
@@ -38,6 +38,7 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserAnimationsModule,
     MatDialogModule,
     SharedModule,
+    MatInputModule
   ],
 
   providers: [],

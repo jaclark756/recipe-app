@@ -19,13 +19,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 
 
-
-
-
 @NgModule({
   declarations: [
-    HeaderComponent, 
-    FabComponent, 
+    HeaderComponent,
+    FabComponent,
     RecipeCardTileComponent
   ],
   imports: [
@@ -41,7 +38,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatButtonModule,
     MatDividerModule,
     MatChipsModule
-  ], 
+  ],
   exports: [
     HeaderComponent,
     FabComponent,

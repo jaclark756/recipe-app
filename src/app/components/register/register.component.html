@@ -1,15 +1,17 @@
-<h1 mat-dialog-title>You're almost finished!</h1>
-<div class="form-example">
-    <div mat-dialog-content>
-        <img src="/assets/images/logo.svg" class="filter-jet">
+<mat-dialog-content>
+    <img src="/assets/images/logo.svg" class="filter-jet">
+    <div class="container">
+        <h1>You're almost finished...</h1>
         <p>Enter a unquie username to
             finish creating your account.</p>
-        <mat-form-field class="input-example" appearance="fill">
-            <mat-label>username</mat-label>
-            <input matInput>
-        </mat-form-field>
     </div>
-    <div mat-dialog-actions>
-        <a routerLink="/login"><button class="dark-button" mat-raised-button isRoundButton="true">Continue</button></a>
-    </div>
-</div>
+    <mat-form-field class="input-example" appearance="fill">
+        <mat-label class="c-metal">username<img src="/assets/images/check-black-18dp.svg" class="filter-onyx"></mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-dialog-actions>
+        <a routerLink="/login"><button class="dark-button" mat-raised-button isRoundButton="true">Sign Up</button></a>
+    </mat-dialog-actions>
+    <p>By continuing, you agree to this site's <a href="#">Terms
+            of Service</a>and <a href="#">Privacy Policy</a>.</p>
+</mat-dialog-content>

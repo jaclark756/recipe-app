@@ -38,7 +38,7 @@ export class WelcomeComponent implements OnInit {
     const config = new MatDialogConfig();
     config.disableClose = true;
     config.panelClass = "panelStyle"
-    const dialogRef = this.dialog.open(LoginComponent, config);
+    // const dialogRef = this.dialog.open(LoginComponent, config);
 
 
     const token: string = this.route.snapshot.queryParamMap.get('token');
@@ -47,31 +47,41 @@ export class WelcomeComponent implements OnInit {
       console.log("got here, tokenservice found token");
       console.log(this.tokenService.getToken());
       this.isLoggedIn = true;
-      // this.currentUser = this.tokenService.getUser();
-      // console.log(this.currentUser);
-      this.userService.getCurrentUser().subscribe(
-        data => {
-          console.log(data);
+      this.userService.getCurrentUser().subscribe((data: any) => {
+        this.currentUser = data;
+        if (!data.enabled){
+          const dialogRef = this.dialog.open(RegisterComponent, config);
+
         }
-      )
+      })
+      // console.log(this.currentUser);
+      // this.userService.getCurrentUser().subscribe(
+      //   data => {
+      //     console.log(data);
+      //   }
+      // )
     }
     else if(token){
       console.log("NEW TOKEN: ", token);
       this.tokenService.saveToken(token);
-      this.userService.getCurrentUser().subscribe(
-        data => {
-      // this.login(data);
-          console.log(data);
-        },
-          err => {
-            this.errorMessage = err.error.message;
-            this.isLoginFailed = true;
-          }
-      );
+      // this.userService.getCurrentUser().subscribe(
+      //   data => {
+      // // this.login(data);
+      //     console.log(data);
+      //   },
+      //     err => {
+      //       this.errorMessage = err.error.message;
+      //       this.isLoginFailed = true;
+      //     }
+      // );
     }
     else if(error){
+
+        // Need to display errorMessage in the view
         this.errorMessage = error;
         this.isLoginFailed = true;
+    } else {
+      const dialogRef = this.dialog.open(LoginComponent, config);
     }
   }
 

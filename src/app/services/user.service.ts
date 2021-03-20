@@ -13,7 +13,7 @@ export class UserService {
   };
   USER_API: string = "http://localhost:8080/api/user"
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { this.getCurrentUser()}
 
   private readonly activeUserSubject = new BehaviorSubject<User>(null);
   readonly activeUser$ = this.activeUserSubject.asObservable();
@@ -22,15 +22,14 @@ export class UserService {
     return this.activeUserSubject.getValue();
   }
 
-  set currentUser(user: User) {
+  set activeUser(user: User) {
     console.log(user)
     this.activeUserSubject.next(user);
   }
 
 
-  getCurrentUser(): Observable<any> {
-    return this.http.get(this.USER_API)
-      // , this.httpOptions);
+  getCurrentUser(){
+    return this.http.get(this.USER_API);
   }
   
 }

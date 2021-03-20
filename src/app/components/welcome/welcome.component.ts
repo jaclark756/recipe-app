@@ -18,7 +18,7 @@ export class WelcomeComponent implements OnInit {
     const config = new MatDialogConfig();
     config.disableClose = true;
     config.panelClass = "panelStyle"
-    const dialogRef = this.dialog.open(RegisterComponent, config);
+    const dialogRef = this.dialog.open(LoginComponent, config);
 
 }
 

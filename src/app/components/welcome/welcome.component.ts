@@ -20,10 +20,6 @@ export class WelcomeComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   currentUser: any;
-  API_BASE: string = "http://localhost:8080/oauth2/authorization/"
-  REDIRECT: string = "?redirect_uri=http://localhost:4200/login";
-  githubURI: string = this.API_BASE + "github" + this.REDIRECT;
-  googleURI: string = this.API_BASE + "google" + this.REDIRECT;
 
   constructor(
     private http: HttpClient, 
@@ -38,51 +34,44 @@ export class WelcomeComponent implements OnInit {
     const config = new MatDialogConfig();
     config.disableClose = true;
     config.panelClass = "panelStyle"
-    // const dialogRef = this.dialog.open(LoginComponent, config);
-
 
     const token: string = this.route.snapshot.queryParamMap.get('token');
     const error: string = this.route.snapshot.queryParamMap.get('error');
     if (this.tokenService.getToken()) {
-      console.log("got here, tokenservice found token");
-      console.log(this.tokenService.getToken());
       this.isLoggedIn = true;
       this.userService.getCurrentUser().subscribe((data: any) => {
         this.currentUser = data;
         if (!data.enabled){
           const dialogRef = this.dialog.open(RegisterComponent, config);
-
+        } else {
+          // Redirect to home page
         }
       })
-      // console.log(this.currentUser);
-      // this.userService.getCurrentUser().subscribe(
-      //   data => {
-      //     console.log(data);
-      //   }
-      // )
     }
     else if(token){
-      console.log("NEW TOKEN: ", token);
       this.tokenService.saveToken(token);
-      // this.userService.getCurrentUser().subscribe(
-      //   data => {
-      // // this.login(data);
-      //     console.log(data);
-      //   },
-      //     err => {
-      //       this.errorMessage = err.error.message;
-      //       this.isLoginFailed = true;
-      //     }
-      // );
+      this.userService.getCurrentUser().subscribe((data: any) => {
+        this.currentUser = data;
+        if (!data.enabled){
+          const dialogRef = this.dialog.open(RegisterComponent, config);
+        } else {
+          // Redirect to home page
+        }
+      })
     }
     else if(error){
 
         // Need to display errorMessage in the view
         this.errorMessage = error;
         this.isLoginFailed = true;
-    } else {
+    } 
+    else {
       const dialogRef = this.dialog.open(LoginComponent, config);
     }
+  }
+
+  fetchUserData(){
+
   }
 
 };

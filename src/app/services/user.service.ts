@@ -27,7 +27,6 @@ export class UserService {
     this.activeUserSubject.next(user);
   }
 
-
   getCurrentUser(){
     return this.http.get(this.USER_API);
   }

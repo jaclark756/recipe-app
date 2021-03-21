@@ -9,6 +9,7 @@ export class ButtonComponent implements OnInit {
 
   @Input() label: string;
   @Input() childIsDisabled: boolean;
+  @Input() class: string;
 
   @Output() clickEvent = new EventEmitter<any>();
   onClickButton(event) {

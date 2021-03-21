@@ -35,44 +35,43 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    const config = new MatDialogConfig();
+    config.disableClose = true;
+    config.panelClass = "panelStyle"
 
-    // const config = new MatDialogConfig();
-    // config.disableClose = true;
-    // config.panelClass = "panelStyle"
+    const token: string = this.route.snapshot.queryParamMap.get('token');
+    const error: string = this.route.snapshot.queryParamMap.get('error');
+    if (this.tokenService.getToken()) {
+      this.isLoggedIn = true;
+      this.userService.getCurrentUser().subscribe((data: any) => {
+        this.currentUser = data;
+        if (!data.enabled){
+          const dialogRef = this.dialog.open(RegisterComponent, config);
+        } else {
+          // Redirect to home page
+        }
+      })
+    }
+    else if(token){
+      this.tokenService.saveToken(token);
+      this.userService.getCurrentUser().subscribe((data: any) => {
+        this.currentUser = data;
+        if (!data.enabled){
+          const dialogRef = this.dialog.open(RegisterComponent, config);
+        } else {
+          // Redirect to home page
+        }
+      })
+    }
+    else if(error){
 
-    // const token: string = this.route.snapshot.queryParamMap.get('token');
-    // const error: string = this.route.snapshot.queryParamMap.get('error');
-    // if (this.tokenService.getToken()) {
-    //   this.isLoggedIn = true;
-    //   this.userService.getCurrentUser().subscribe((data: any) => {
-    //     this.currentUser = data;
-    //     if (!data.enabled){
-    //       const dialogRef = this.dialog.open(RegisterComponent, config);
-    //     } else {
-    //       // Redirect to home page
-    //     }
-    //   })
-    // }
-    // else if(token){
-    //   this.tokenService.saveToken(token);
-    //   this.userService.getCurrentUser().subscribe((data: any) => {
-    //     this.currentUser = data;
-    //     if (!data.enabled){
-    //       const dialogRef = this.dialog.open(RegisterComponent, config);
-    //     } else {
-    //       // Redirect to home page
-    //     }
-    //   })
-    // }
-    // else if(error){
-
-    //     // Need to display errorMessage in the view
-    //     this.errorMessage = error;
-    //     this.isLoginFailed = true;
-    // } 
-    // else {
-    //   const dialogRef = this.dialog.open(LoginComponent, config);
-    // }
+        // Need to display errorMessage in the view
+        this.errorMessage = error;
+        this.isLoginFailed = true;
+    } 
+    else {
+      const dialogRef = this.dialog.open(LoginComponent, config);
+    }
   }
 
   fetchUserData(){

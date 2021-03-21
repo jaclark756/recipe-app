@@ -29,7 +29,12 @@ export class WelcomeComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
+  testFunction(event){
+    alert("TEST WORKED!");
+  }
+
   ngOnInit(): void {
+
 
     // const config = new MatDialogConfig();
     // config.disableClose = true;

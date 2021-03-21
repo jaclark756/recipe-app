@@ -17,13 +17,15 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
+import { ButtonComponent } from './components/button/button.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FabComponent,
-    RecipeCardTileComponent
+    RecipeCardTileComponent,
+    ButtonComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { MatChipsModule } from '@angular/material/chips';
     HeaderComponent,
     FabComponent,
     RecipeCardTileComponent,
+    ButtonComponent,
     CommonModule,
     MatSnackBarModule,
     MatFormFieldModule,

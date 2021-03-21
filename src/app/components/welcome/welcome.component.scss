@@ -1,8 +1,7 @@
 @import "/src/styles/styles.scss";
 
-body {
-  overflow-x: hidden;
-  overflow-y: hidden;
+::ng-deep .mat-fab {
+  display: none !important;
 }
 .row {
   min-width: 100%;
@@ -13,6 +12,7 @@ body {
   // display: grid;
   // grid-gap: 1rem;
   margin: auto;
+  overflow-x: hidden;
   // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   // flex-wrap: wrap;
   // justify-content: center;

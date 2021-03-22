@@ -1,17 +1,18 @@
-<mat-dialog-content>
+<mat-dialog-content [formGroup]="signUpForm">
     <img src="/assets/images/logo.svg" class="filter-jet">
     <div class="container">
         <h1>You're almost finished...</h1>
         <p>Enter a unique username to
             finish creating your account.</p>
     </div>
-    <mat-form-field class="input-example" appearance="fill">
-        <mat-label class="c-metal">username</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-dialog-actions>
-        <a routerLink="/login"><app-button [label]="'Sign Up'" (clickEvent)="($event)" [class]="'done-button'"></app-button></a>
-    </mat-dialog-actions>
+        <mat-form-field class="input-example" appearance="fill">
+            <mat-label class="c-metal">Username</mat-label>
+            <input matInput type="text" formControlName="username" required style="width:100%;">
+            <div class="mat-error" *ngIf="signUpForm.get('username').invalid && signUpForm.get('username').touched">{{getErrorMessage()}}</div>
+        </mat-form-field>
+        <app-button [childIsDisabled]="signUpForm.invalid" [label]="'Sign Up'" (clickEvent)="signUp($event)" [class]="'done-button'"></app-button>
+        <!-- <mat-dialog-actions> -->
+            <!-- </mat-dialog-actions> -->
     <p>By continuing, you agree to this site's <a href="#">Terms
             of Service</a>and <a href="#">Privacy Policy</a>.</p>
 </mat-dialog-content>

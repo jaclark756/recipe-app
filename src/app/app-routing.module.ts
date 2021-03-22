@@ -5,18 +5,22 @@ import { InputRecipeComponent } from './components/input-recipe/input-recipe.com
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { RouterGuard } from './guards/router.guard';
+import { TokenService } from './services/token.service';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [RouterGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [RouterGuard] },
   { path: 'login', component: WelcomeComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'inputrecipe', component: InputRecipeComponent },
-  { path: 'viewrecipe/:id', component: ViewRecipesComponent }
+  { path: 'profile', component: ProfileComponent, canActivate: [RouterGuard] },
+  { path: 'inputrecipe', component: InputRecipeComponent, canActivate: [RouterGuard] },
+  { path: 'viewrecipe/:id', component: ViewRecipesComponent, canActivate: [RouterGuard] },
+  { path: '**', component: ViewRecipesComponent, canActivate: [RouterGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [TokenService]
 })
 export class AppRoutingModule { }

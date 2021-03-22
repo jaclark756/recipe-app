@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
@@ -22,7 +21,7 @@ export class WelcomeComponent implements OnInit {
   currentUser: any;
 
   constructor(
-    private http: HttpClient, 
+    public router: Router,
     private route: ActivatedRoute, 
     private tokenService: TokenService, 
     private userService: UserService,
@@ -43,9 +42,9 @@ export class WelcomeComponent implements OnInit {
       this.userService.getCurrentUser().subscribe((data: any) => {
         this.currentUser = data;
         if (!data.enabled){
-          const dialogRef = this.dialog.open(RegisterComponent, config);
+          this.dialog.open(RegisterComponent, config);
         } else {
-          // Redirect to home page
+          this.router.navigateByUrl("/home");
         }
       })
     }
@@ -54,9 +53,9 @@ export class WelcomeComponent implements OnInit {
       this.userService.getCurrentUser().subscribe((data: any) => {
         this.currentUser = data;
         if (!data.enabled){
-          const dialogRef = this.dialog.open(RegisterComponent, config);
+          this.dialog.open(RegisterComponent, config);
         } else {
-          // Redirect to home page
+          this.router.navigateByUrl("/home");
         }
       })
     }
@@ -67,7 +66,7 @@ export class WelcomeComponent implements OnInit {
         this.isLoginFailed = true;
     } 
     else {
-      const dialogRef = this.dialog.open(LoginComponent, config);
+      this.dialog.open(LoginComponent, config);
     }
   }
 

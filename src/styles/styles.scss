@@ -107,34 +107,65 @@ h5 {
     width: 100%;
 }
 
-::ng-deep .mat-form-field {
-    .mat-input-element {
-        color: $black;
-        caret-color: #fff;
-  
-    }
-    .mat-form-field-label {
-        color: grey;
-    }
-    .mat-form-field-underline::before {
-        background-color: $metal !important;
-    }
-    .mat-form-field-underline {
-        background-color: $metal !important;
-    }
-    .mat-form-field-ripple {
-        background-color: $metal;
-    }
-    .mat-form-field-required-marker {
-        color: $metal;
-    }
-    .mat-form-field-flex {
-        background-color: $powder;
-    }
+
+
+// Do not need ::ng-deep when placing these overrides in global stylesheet. 
+//    -> global meaning that this stylesheet is defined in angular.json
+// Only need to use ::ng-deep in component-specific stylesheet to override a global style
+// ::ng-deep 
+.mat-form-field {
+  .mat-input-element {
+      color: $black;
+      caret-color: $metal !important;
+
+  }
+  .mat-form-field-label {
+      color: grey;
+  }
+  .mat-form-field-underline::before {
+      background-color: $metal !important;
+  }
+  .mat-form-field-underline {
+      background-color: $metal !important;
+  }
+  .mat-form-field-ripple {
+      background-color: $metal !important;
+  }
+  .mat-form-field-required-marker {
+      color: $metal !important;
+  }
+  .mat-form-field-flex {
+      background-color: $powder;
+  }
 
 }
 
-::ng-deep .mat-form-field.mat-focused {
+.mat-error{
+  color: $watermelon !important;
+}
+
+
+  
+.mat-form-field.mat-form-field-invalid{
+    // Invalid form styling here
+    .mat-input-element{
+      caret-color: $watermelon !important;
+    }
+    .mat-form-field-underline::before {
+      background-color: $watermelon !important;
+    }
+    .mat-form-field-underline {
+        background-color: $watermelon !important;
+    }
+    .mat-form-field-ripple {
+        background-color: $watermelon !important;
+    }
+    .mat-form-field-required-marker {
+        color: $watermelon !important;
+    }
+}
+
+.mat-form-field.mat-focused {
 
     .mat-form-field-label {
         color: grey;

@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { ButtonComponent } from './components/button/button.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ButtonComponent } from './components/button/button.component';
   ],
   imports: [
     CommonModule,
+    AppRoutingModule,
     MatSnackBarModule,
     MatFormFieldModule,
     MatListModule,

@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router'
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
-import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: WelcomeComponent },
   { path: 'inputrecipe', component: InputRecipeComponent },
   { path: 'viewrecipe/:id', component: ViewRecipesComponent }
 ];

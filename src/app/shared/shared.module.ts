@@ -19,6 +19,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { ButtonComponent } from './components/button/button.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { CategoryCardComponent } from './components/category-card/category-card.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 
 
 @NgModule({
@@ -26,7 +30,8 @@ import { AppRoutingModule } from '../app-routing.module';
     HeaderComponent,
     FabComponent,
     RecipeCardTileComponent,
-    ButtonComponent
+    ButtonComponent,
+    CategoryCardComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +46,8 @@ import { AppRoutingModule } from '../app-routing.module';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
-    MatChipsModule
+    MatChipsModule,
+    FlexLayoutModule
   ],
   exports: [
     HeaderComponent,
@@ -59,7 +65,8 @@ import { AppRoutingModule } from '../app-routing.module';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
-    MatChipsModule
+    MatChipsModule,
+    CategoryCardComponent
   ],
   providers: [
     SnackbarService

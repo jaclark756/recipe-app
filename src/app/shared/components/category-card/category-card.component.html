@@ -27,13 +27,22 @@
     <h1 class="c-teal"><mat-grid-tile class="category-3">Category Title 3</mat-grid-tile></h1>
     <h1 class="c-teal"><mat-grid-tile class="category-4">Category Title 4</mat-grid-tile></h1>
   </mat-grid-list> -->
+<mat-card class="mat-elevation-z4 category-1" [style.background]="'url('+photo+')'">
+    <mat-card-content>
+        <h2 class="c-teal">{{label}}</h2>
+    </mat-card-content>
+</mat-card>
 
-<div class="content">
+
+
+
+
+<!-- <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
             <mat-card class="mat-elevation-z4 category-1">
                 <mat-card-content>
-                    <h2 class="c-teal">Category Title 1</h2>
+                    <h2 class="c-teal">{{category.title}}</h2>
                 </mat-card-content>
             </mat-card>
         </div>
@@ -59,4 +68,4 @@
             </mat-card>
         </div>
     </div>
-</div>
+</div> -->

@@ -1,12 +1,10 @@
 @import "/src/styles/styles.scss";
 
-
-
 .img {
   margin: 10px;
 }
 
-::ng-deep.mat-dialog-container{
+::ng-deep.mat-dialog-container {
   background-color: $teal !important;
   width: 100%;
   border-radius: 0.5em;
@@ -33,4 +31,3 @@ button {
 .flex-container {
   display: none;
 }
-

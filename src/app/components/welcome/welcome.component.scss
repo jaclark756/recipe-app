@@ -1,8 +1,14 @@
 @import "/src/styles/styles.scss";
 
-::ng-deep .mat-fab {
-  display: none !important;
-}
+
+// ::ng-deep .mat-toolbar {
+//   display: none;
+// }
+
+// ::ng-deep .mat-fab {
+//   display: none !important;
+// }
+
 .row {
   min-width: 100%;
   // height: 100%;

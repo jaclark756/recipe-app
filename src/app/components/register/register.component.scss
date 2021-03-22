@@ -1,14 +1,14 @@
 @import "/src/styles/styles.scss";
 
-::ng-deep.mat-dialog-container {
-  background-color: $teal !important;
-  width: 100%;
-  border-radius: 0.5em;
-}
+// ::ng-deep.mat-dialog-container {
+//   background-color: $teal !important;
+//   width: 100%;
+//   border-radius: 0.5em;
+// }
 
-::ng-deep.mat-dialog-content {
-  text-align: center !important;
-}
+// ::ng-deep.mat-dialog-content {
+//   text-align: center !important;
+// }
 
 .img {
   margin: 10px;

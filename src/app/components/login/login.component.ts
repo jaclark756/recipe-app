@@ -15,6 +15,11 @@ export class LoginComponent implements OnInit {
   REDIRECT: string = "?redirect_uri=http://localhost:4200/login";
   githubURI: string = this.API_BASE + "github" + this.REDIRECT;
   googleURI: string = this.API_BASE + "google" + this.REDIRECT;
+  
+  testFunction(event){
+    alert("TEST WORKED!");
+  }
+
 
   constructor( ) { }
 

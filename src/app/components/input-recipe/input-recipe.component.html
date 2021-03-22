@@ -45,5 +45,5 @@
 
 </form>
 
-<button [disabled]="newRecipe.invalid" id="submitButton" (click)="addRecipe()" type="submit">Add Recipe</button>
+<app-button [label]="'Add Recipe'" (clickEvent)="($event)" [class]="'done-button'"></app-button>
 </div>

@@ -1,20 +1,83 @@
 @import "/src/styles/styles.scss";
 
-.flex-container {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
+
+// ::ng-deep .mat-toolbar {
+//   display: none;
+// }
+
+// ::ng-deep .mat-fab {
+//   display: none !important;
+// }
+
+.row {
+  min-width: 100%;
+  // height: 100%;
+  // background-size: cover;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow: clipped;
+  position: absolute;
+  // display: grid;
+  // grid-gap: 1rem;
+  margin: auto;
+  overflow-x: hidden;
+  // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  // flex-wrap: wrap;
+  // justify-content: center;
+  // overflow: clipped;
   }
 
 img {
-  margin: 2px;
+  // margin: 2px;
   border-radius: 0.5em;
   border: 1px solid $teal;
   opacity: 0.5;
-  height: 300px;
-  width: 200px;
+  object-fit: cover;
+  overflow: visible;
+  margin: auto;
+  // height: 300px;
+  // width: 200px;
+  // height:40vh;
+  // width:auto;
+  // width:100%;
+  // padding: 1rem;
+  // height: 4rem;
 }
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-custom {width:12.5%}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+// [class*="col-"] {
+  // object-fit: cover;
+  // overflow: visible;
+  // float: left;
+  // padding: 15px;
+  // border: 1px solid red;
+// }
+.imgs{
+  box-sizing: border-box;
+  // width:100%;
+  // object-fit: cover;
+  // margin:auto;
+  // overflow: visible;
+}
+.parent-row{
+  box-sizing: border-box;
+  position: relative;
+  // min-width:100%;
+  // height:100vh;
+}
+// .row::after {
+  // content: "";
+  // clear: both;
+  // display: table;
+// }

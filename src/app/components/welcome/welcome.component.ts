@@ -29,6 +29,7 @@ export class WelcomeComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
+  
   ngOnInit(): void {
 
     const config = new MatDialogConfig();

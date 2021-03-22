@@ -1,15 +1,5 @@
 @import "/src/styles/styles.scss";
 
-// ::ng-deep.mat-dialog-container {
-//   background-color: $teal !important;
-//   width: 100%;
-//   border-radius: 0.5em;
-// }
-
-// ::ng-deep.mat-dialog-content {
-//   text-align: center !important;
-// }
-
 .img {
   margin: 10px;
 }
@@ -17,8 +7,7 @@
 .input-example {
   width: 50%;
   margin-top: 20px;
-  }
-
+}
 
 ::ng-deep.mat-dialog-actions {
   margin: 10px;
@@ -73,4 +62,3 @@ button {
 textarea::placeholder {
   color: $onyx !important;
 }
-

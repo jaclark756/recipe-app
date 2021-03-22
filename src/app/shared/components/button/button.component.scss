@@ -2,12 +2,12 @@
 
 /*use this style of button for end of process actions*/
 ::ng-deep .done-button {
-    background-color: $teal !important;
-    color: $powder !important;
-  }
-  
-  /*use this button for secondary actions (edit, back, change, etc.)*/
-  ::ng-deep .edit-button {
-    background-color: $powder !important;
-    color: $jet !important;
-  }
+  background-color: $teal !important;
+  color: $powder !important;
+}
+
+/*use this button for secondary actions (edit, back, change, etc.)*/
+::ng-deep .edit-button {
+  background-color: $powder !important;
+  color: $jet !important;
+}

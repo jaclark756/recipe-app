@@ -18,6 +18,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
     ViewRecipesComponent,
     CollectionsComponent,
     RegisterComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    HomeComponent
   ],
   imports: [
     AppRoutingModule,

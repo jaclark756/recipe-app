@@ -10,7 +10,7 @@
         <input matInput>
     </mat-form-field>
     <mat-dialog-actions>
-        <a routerLink="/login"><button class="dark-button" mat-raised-button isRoundButton="true">Sign Up</button></a>
+        <a routerLink="/login"><app-button [label]="'Sign Up'" (clickEvent)="($event)" [class]="'done-button'"></app-button></a>
     </mat-dialog-actions>
     <p>By continuing, you agree to this site's <a href="#">Terms
             of Service</a>and <a href="#">Privacy Policy</a>.</p>

@@ -5,6 +5,7 @@ import { InputRecipeComponent } from './components/input-recipe/input-recipe.com
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CategoryCardComponent } from './shared/components/category-card/category-card.component';
 import { RouterGuard } from './guards/router.guard';
 import { TokenService } from './services/token.service';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [RouterGuard] },
   { path: 'inputrecipe', component: InputRecipeComponent, canActivate: [RouterGuard] },
   { path: 'viewrecipe/:id', component: ViewRecipesComponent, canActivate: [RouterGuard] },
+  { path: 'category', component: CategoryCardComponent },
   { path: '**', component: ViewRecipesComponent, canActivate: [RouterGuard] }
 ];
 

@@ -1,5 +1,62 @@
-<mat-card class="card-container">
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
+<mat-card class="category-1">
     <mat-card-content>
-       <h1>Category Title</h1>
-             </mat-card-content>
-   </mat-card>
+        <h2 class="c-teal">Category Title 1</h2>
+    </mat-card-content>
+</mat-card>
+<mat-card class="category-2">
+    <mat-card-content>
+        <h2 class="c-teal">Category Title 2</h2>
+    </mat-card-content>
+</mat-card>
+<mat-card colspan="2" class="category-3">
+    <mat-card-content>
+        <h2 class="c-teal">Category Title 3</h2>
+    </mat-card-content>
+</mat-card>
+<mat-card class="category-4">
+    <mat-card-content>
+        <h2 class="c-teal">Category Title 4</h2>
+    </mat-card-content>
+</mat-card>
+</mat-grid-list>
+
+<mat-grid-list cols="2">
+    <h1 class="c-teal"><mat-grid-tile class="category-1">Category Title 1</mat-grid-tile></h1>
+    <h1 class="c-teal"><mat-grid-tile class="category-2">Category Title 2</mat-grid-tile></h1>
+    <h1 class="c-teal"><mat-grid-tile class="category-3">Category Title 3</mat-grid-tile></h1>
+    <h1 class="c-teal"><mat-grid-tile class="category-4">Category Title 4</mat-grid-tile></h1>
+  </mat-grid-list> -->
+
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+            <mat-card class="mat-elevation-z4 category-1">
+                <mat-card-content>
+                    <h2 class="c-teal">Category Title 1</h2>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+            <mat-card class="mat-elevation-z4 category-2">
+                <mat-card-content>
+                    <h2 class="c-teal">Category Title 2</h2>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+            <mat-card class="mat-elevation-z4 category-3">
+                <mat-card-content>
+                    <h2 class="c-teal">Category Title 3</h2>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+            <mat-card class="mat-elevation-z4 category-4">
+                <mat-card-content>
+                    <h2 class="c-teal">Category Title 4</h2>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

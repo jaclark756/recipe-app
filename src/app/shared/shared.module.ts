@@ -5,6 +5,8 @@ import { RecipeCardTileComponent } from './components/recipe-card-tile/recipe-ca
 import { HeaderComponent } from './components/header/header.component';
 import { FabComponent } from './components/fab/fab.component';
 import { SnackbarService } from './services/snackbar.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,8 +23,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-
+import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FabComponent,
     RecipeCardTileComponent,
     ButtonComponent,
-    CategoryCardComponent
+    CategoryCardComponent,
+    SearchDialogComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     MatDividerModule,
     MatChipsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule,
+    MatInputModule
   ],
   exports: [
     HeaderComponent,
@@ -66,7 +70,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     MatDividerModule,
     MatChipsModule,
-    CategoryCardComponent
+    CategoryCardComponent,
+    SearchDialogComponent,
+    MatDialogModule,
+    MatInputModule
   ],
   providers: [
     SnackbarService

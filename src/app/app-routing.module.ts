@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [RouterGuard] },
   { path: 'inputrecipe', component: InputRecipeComponent, canActivate: [RouterGuard] },
   { path: 'viewrecipe/:id', component: ViewRecipesComponent, canActivate: [RouterGuard] },
-  { path: 'category', component: CategoryCardComponent },
   { path: '**', component: ViewRecipesComponent, canActivate: [RouterGuard] }
 ];
 

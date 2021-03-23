@@ -11,8 +11,6 @@
             <div class="mat-error" *ngIf="signUpForm.get('username').invalid && signUpForm.get('username').touched">{{getErrorMessage()}}</div>
         </mat-form-field>
         <app-button [childIsDisabled]="signUpForm.invalid" [label]="'Sign Up'" (clickEvent)="signUp($event)" [class]="'done-button'"></app-button>
-        <!-- <mat-dialog-actions> -->
-            <!-- </mat-dialog-actions> -->
-    <p>By continuing, you agree to this site's <a href="#">Terms
+      <p>By continuing, you agree to this site's <a href="#">Terms
             of Service</a>and <a href="#">Privacy Policy</a>.</p>
 </mat-dialog-content>

@@ -22,11 +22,11 @@ export class RouterGuard implements CanActivate {
     // Comment this block out during development to remove guard   
     // ** Start block ** //
 
-    // const user = this.tokenService.getUser();
-    // if (!user){
-    //   this.router.navigateByUrl("/login");
-    //   return false;
-    // }
+    const user = this.tokenService.getUser();
+    if (!user){
+      this.router.navigateByUrl("/login");
+      return false;
+    }
 
     // ** End bock ** //
     

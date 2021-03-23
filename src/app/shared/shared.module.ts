@@ -6,7 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FabComponent } from './components/fab/fab.component';
 import { SnackbarService } from './services/snackbar.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -73,7 +73,8 @@ import { SearchDialogComponent } from './components/search-dialog/search-dialog.
     CategoryCardComponent,
     SearchDialogComponent,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    FlexLayoutModule
   ],
   providers: [
     SnackbarService

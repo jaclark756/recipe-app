@@ -31,8 +31,7 @@ export class RegisterComponent implements OnInit {
   }
 
   signUp(event){
-    // alert("signed up!");
-    this.http.get(this.URL).subscribe();
+    alert("signed up!");
   }
 
   getErrorMessage(){

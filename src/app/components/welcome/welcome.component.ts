@@ -44,7 +44,7 @@ export class WelcomeComponent implements OnInit {
         if (!data.enabled){
           this.dialog.open(RegisterComponent, config);
         } else {
-          this.router.navigateByUrl("/home");
+          this.router.navigate(["/home"]);
         }
       })
     }
@@ -55,7 +55,7 @@ export class WelcomeComponent implements OnInit {
         if (!data.enabled){
           this.dialog.open(RegisterComponent, config);
         } else {
-          this.router.navigateByUrl("/home");
+          this.router.navigate(["/home"]);
         }
       })
     }

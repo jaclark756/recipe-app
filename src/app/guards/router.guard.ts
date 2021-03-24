@@ -18,17 +18,26 @@ export class RouterGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-    // Comment this block out during development to remove guard   
-    // ** Start block ** //
 
-    const user = this.tokenService.getUser();
-    if (!user){
+      
+    const token = this.tokenService.getToken();
+    if (!token){
       this.router.navigateByUrl("/login");
       return false;
-    }
+    } else {
 
-    // ** End bock ** //
+      // check if enabled
+      this.userService.getCurrentUser().subscribe((data: any) => {
+        if (!data.enabled){
+          this.router.navigateByUrl("/login");
+          return false;
+        } else {
+          return true;
+        }
+      })
+
+
+    }
     
     return true;
   }

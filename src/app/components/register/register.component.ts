@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
 
   signUp(event){
     alert("signed up!");
+    this.http.post(this.USERS_URL, this.signUpForm.get('username'));
   }
 
   getErrorMessage(){

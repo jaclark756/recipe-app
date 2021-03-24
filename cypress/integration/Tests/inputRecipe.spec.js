@@ -1,6 +1,9 @@
 describe("Testing Add Recipe", () => {
     before(() => {
-        cy.visit('http://localhost:4200/inputrecipe')
+        Cypress.Cookies.debug(true)
+        cy.getCookies();
+        cy.request('http://localhost:4200/login');
+        cy.get('#GitHub-Button').click();
       });
 
     it("Adding New Recipe...", () => {

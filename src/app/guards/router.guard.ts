@@ -10,9 +10,10 @@ export class RouterGuard implements CanActivate {
 
   constructor( private userService: UserService, public router: Router) {}
   canActivate(
-    route: ActivatedRouteSnapshot,
+       route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const user = this.userService.activeUser;
+    return true;
     if (user){
       return true;
     }

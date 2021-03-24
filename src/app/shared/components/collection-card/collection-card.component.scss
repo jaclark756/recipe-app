@@ -1,0 +1,24 @@
+@import "/src/styles/styles.scss";
+
+
+.card-container {
+    max-width: 100px;
+    text-align: center;
+    margin: 20px;
+}
+
+.mat-card-content {
+    width: 100%;
+ }
+
+img {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+}
+
+.mat-card-content p {
+    font-size: 12px;
+}

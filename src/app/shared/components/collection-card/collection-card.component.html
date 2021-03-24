@@ -1,14 +1,10 @@
-   <mat-card class="card-container">
-    <mat-card-header>
-        <img mat-card-image
-            src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700%2C636"
-            alt="Food in pot">
-        
-    </mat-card-header>
-    <mat-card-content>
-        <h2>Collection Title</h2>
-        <p>
-         #recipes
-        </p>
-      </mat-card-content>
-    </mat-card>
+<mat-card class="card-container bg-teal">
+  <mat-card-content>
+      <img mat-card-image
+          src="{{recipe.photoUrl}}"
+          alt="recipe image">
+      <p>{{recipe.category}}<br>
+          #recipes
+      </p>
+  </mat-card-content>
+</mat-card>

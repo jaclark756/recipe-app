@@ -3,7 +3,7 @@
 <!-- Avatar is center but sort of layered on top of header? -->
 <div class="avatar">
     <!-- <img src="{{activeUser.ProfilePic}}" alt="User Profile Image"> -->
-        <!-- <img src="whatever we pick for edit button"> placeholder for settings link button?-->
+    <!-- <img src="whatever we pick for edit button"> placeholder for settings link button?-->
     <!-- <h3>{{activeUser.name}}</h3> -->
 </div>
 <p>About Info?</p>
@@ -22,6 +22,8 @@
 
 </div>
 
-
+<div class="flex-container">
+<app-collection-card *ngFor="let recipe of sample_recipes" [recipe]="recipe"></app-collection-card>
+</div>
 
 <!-- App footer here -->

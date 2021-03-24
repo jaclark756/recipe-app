@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RECIPES } from 'src/app/helpers/sample-data';
+
+
 
 @Component({
   selector: 'app-profile',
@@ -6,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+  sample_recipes = RECIPES;
 
   constructor() { }
 

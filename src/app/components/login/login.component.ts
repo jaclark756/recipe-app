@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

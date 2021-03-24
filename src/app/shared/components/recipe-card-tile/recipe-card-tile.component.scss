@@ -1,18 +1,19 @@
 @import "/src/styles/styles.scss";
 
-.card-container {
-  background-color: $onyx;
-  min-width: 650px;
-  margin: auto;
+.card {
   border-radius: 0.5em;
   padding: 25px;
   justify-content: center;
+  background-color: $teal;
+  max-width: 300px;
+  margin: 20px;
+  // height: 230px;
+  // width: 230px;
 }
 
-.card {
-  background-color: $teal;
-  max-width: 400px;
-  margin: auto;
+.mat-card-avatar img {
+  width: 42px;
+  height: 42px;
 }
 
 .flex-container {
@@ -20,10 +21,18 @@
   justify-content: space-around;
 }
 
-.mat-card-actions img {
-  padding: 5px;
+.flex-container img {
+  width: 30px;
+  height: 30px;
 }
 
-.mat-card-title, .mat-card-subtitle {
-    color: $powder;
+.mat-card-actions img {
+  padding: 5px;
+  width: 200px;
+  height: 300px;
+}
+
+.mat-card-title,
+.mat-card-subtitle {
+  color: $powder;
 }

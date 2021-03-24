@@ -11,3 +11,7 @@
     background-color: $powder !important;
     color: $jet !important;
   }
+
+::ng-deep .mat-button-disabled{
+  opacity: 0.5;
+}

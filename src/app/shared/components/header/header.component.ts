@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { SearchDialogComponent } from '../search-dialog/search-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public dialog: MatDialog) { }
   ngOnInit(): void {
   }
-
+  
+  openSearchDialog() {
+    const dialogRef = this.dialog.open(SearchDialogComponent);
+  }
+ 
 }

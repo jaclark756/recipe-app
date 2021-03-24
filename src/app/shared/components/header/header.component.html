@@ -1,12 +1,11 @@
 <mat-toolbar>
-    <a routerLink="/home">
-        <img src="/assets/images/logo.svg" alt="app logo" class="filter-powder" style="width:42px;height:42px;">
-      </a>
-        <span class="spacer"></span>
-        <a routerLink="/search">
-        <img src="/assets/images/search-white-24dp.svg" alt="search" class="filter-powder" style="width:42px;height:42px;">
-    </a>
-    <a routerLink="/profile">
-        <img src="/assets/images/account_circle-white-24dp.svg" alt="account" class="filter-powder" style="width:42px;height:42px;">
-    </a>
-  </mat-toolbar>
+  <a [routerLink]="['/home']" routerLinkActive="active">
+    <img src="/assets/images/logo.svg" alt="app logo" class="filter-powder">
+  </a>
+  <span class="spacer"></span>
+  <button mat-button (click)="openSearchDialog()"><img src="/assets/images/search-white-24dp.svg" alt="search"
+      class="filter-powder"></button>
+  <a routerLink="profile">
+    <img src="/assets/images/account_circle-white-24dp.svg" alt="profile" class="filter-powder">
+  </a>
+</mat-toolbar>

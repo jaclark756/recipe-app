@@ -42,8 +42,8 @@ export class InputRecipeComponent implements OnInit {
         let recipe = {
           "ingredients": this.newRecipe.controls.ingredients.value,
           "instructions": this.newRecipe.controls.instructions.value,
-          "recipeName": this.newRecipe.controls.recipeName.value,
-          "imageUri": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
+          "title": this.newRecipe.controls.recipeName.value,
+          "photoUrl": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
           "cookTime": this.newRecipe.controls.cookTime.value,
           "prepTime": this.newRecipe.controls.prepTime.value,
           "userId": "1"

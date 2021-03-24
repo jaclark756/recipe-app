@@ -1,22 +1,45 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserServiceService } from '../services/user.service';
+import { TokenService } from '../services/token.service';
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RouterGuard implements CanActivate {
 
-  constructor( private userService: UserServiceService, public router: Router) {}
+  activeUser$: any;
+  constructor( 
+    private userService: UserService, 
+    private tokenService: TokenService, 
+    public router: Router) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const user = this.userService.activeUser;
-    if (user){
-      return true;
+
+      
+    const token = this.tokenService.getToken();
+    if (!token){
+      this.router.navigateByUrl("/login");
+      return false;
+    } else {
+
+      // check if enabled
+      this.userService.getCurrentUser().subscribe((data: any) => {
+        if (!data.enabled){
+          this.router.navigateByUrl("/login");
+          return false;
+        } else {
+          return true;
+        }
+      })
+
+
     }
-    return false;
+    
+    return true;
   }
   
 }

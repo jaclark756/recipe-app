@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { TokenService } from 'src/app/services/token.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-input-recipe',
@@ -10,9 +12,15 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class InputRecipeComponent implements OnInit {
 
   newRecipe: FormGroup;
+  currentUser: any;
 
-  constructor(public recipeService: RecipeService,
-    private formbuilder: FormBuilder) {
+  constructor(
+    public recipeService: RecipeService,
+    private formbuilder: FormBuilder, 
+    public userService: UserService,
+    public tokenService: TokenService
+  ) {
+    this.currentUser = this.tokenService.getUser();
     this.newRecipe = this.formbuilder.group({
       ingredients: new FormControl('', Validators.required),
       instructions: new FormControl('', Validators.required),
@@ -34,10 +42,11 @@ export class InputRecipeComponent implements OnInit {
         let recipe = {
           "ingredients": this.newRecipe.controls.ingredients.value,
           "instructions": this.newRecipe.controls.instructions.value,
-          "recipeName": this.newRecipe.controls.recipeName.value,
-          "imageUri": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
+          "title": this.newRecipe.controls.recipeName.value,
+          "photoUrl": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
           "cookTime": this.newRecipe.controls.cookTime.value,
-          "prepTime": this.newRecipe.controls.prepTime.value
+          "prepTime": this.newRecipe.controls.prepTime.value,
+          "userId": "1"
         }
         this.recipeService.addRecipe(recipe);
       }

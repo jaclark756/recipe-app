@@ -3,8 +3,9 @@ export interface Recipe {
     userId?: string;
     ingredients?: string;
     instructions?: string;
-    recipeName?: string;
-    imageUri?: string;
+    title?: string;
+    photoUrl?: string;
+    category?: string;
     cookTime?: number;
     prepTime?: number;
 }

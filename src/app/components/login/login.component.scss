@@ -1,29 +1,33 @@
-::ng-deep.mat-dialog-container{
-  background-color: #056571 !important;
+@import "/src/styles/styles.scss";
+
+.img {
+  margin: 10px;
+}
+
+::ng-deep.mat-dialog-container {
+  background-color: $teal !important;
   width: 100%;
+  border-radius: 0.5em;
 }
 
 ::ng-deep.mat-dialog-content {
-  text-align: center;
+  text-align: center !important;
 }
 
-.filter-jet {
-    filter: brightness(0) saturate(100%) invert(16%) sepia(63%) saturate(18%)
-      hue-rotate(338deg) brightness(93%) contrast(88%);
-  }
+.container {
+  margin: 50px 0 10px 0;
+}
 
 button {
-  margin: auto;
-  padding: 10px 10px 10px 10px;
-  display: block;
+  margin: 10px;
+  padding: 10px;
   text-align: center;
 }
 
-p {
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  text-align: center;
+.fa {
+  margin: 5px;
 }
 
-
-
+.flex-container {
+  display: none;
+}

@@ -27,8 +27,8 @@ export class AuthInterceptor implements HttpInterceptor {
 				if (err.status !== 401 || window.location.pathname === loginPath) {
 					return;
 				}
-				this.token.signOut();
-				window.location.href = loginPath;
+				// this.token.signOut();
+				// window.location.href = loginPath;
 			}
 		}
 		));

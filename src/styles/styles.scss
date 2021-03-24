@@ -71,10 +71,32 @@ h5 {
 
 /*fitlers svg icons*/
 .filter-powder {
-    filter: brightness(0) saturate(100%) invert(98%) sepia(1%) saturate(3027%)
+  filter: brightness(0) saturate(100%) invert(98%) sepia(1%) saturate(3027%)
     hue-rotate(174deg) brightness(102%) contrast(93%);
 }
 
+.filter-onyx {
+  filter: brightness(0) saturate(100%) invert(31%) sepia(0%) saturate(7473%)
+    hue-rotate(27deg) brightness(87%) contrast(107%);
+}
+
+.filter-jet {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(63%) saturate(18%)
+    hue-rotate(338deg) brightness(93%) contrast(88%);
+}
+
+.filter-watermelon {
+  filter: brightness(0) saturate(100%) invert(51%) sepia(12%) saturate(2643%)
+    hue-rotate(316deg) brightness(107%) contrast(111%);
+}
+
+.snackbar {
+  background-color: $onyx;
+  border: 1px solid $powder;
+  text-align: center;
+  justify-content: center !important;
+  width: 20px !important;
+}
 
 /*Form Styling*/
 .form-container {
@@ -87,52 +109,75 @@ h5 {
 }
 
 .form-input {
-    width: 100%;
+  width: 100%;
 }
 
-  ::ng-deep .mat-form-field {
-      .mat-input-element {
-          color: $black;
-          caret-color: #fff;
-    
-      }
-      .mat-form-field-label {
-          color: grey;
-      }
-      .mat-form-field-underline::before {
-          background-color: $metal !important;
-      }
-      .mat-form-field-underline {
-          background-color: $metal !important;
-      }
-      .mat-form-field-ripple {
-          background-color: $metal;
-      }
-      .mat-form-field-required-marker {
-          color: $metal;
-      }
-      .mat-form-field-flex {
-          background-color: $powder;
-      }
-  
+// Do not need ::ng-deep when placing these overrides in global stylesheet.
+//    -> global meaning that this stylesheet is defined in angular.json
+// Only need to use ::ng-deep in component-specific stylesheet to override a global style
+// ::ng-deep
+.mat-form-field {
+  .mat-input-element {
+    color: $black;
+    caret-color: $metal !important;
   }
-
-  ::ng-deep .mat-form-field.mat-focused {
-
-      .mat-form-field-label {
-          color: grey;
-      }
-      .mat-form-field-ripple {
-          background-color: $metal;
-      }
-      .mat-input-element {
-          color: $black;
-          caret-color: $onyx;
-      }
-    
+  .mat-form-field-label {
+    color: grey;
   }
-
-  textarea::placeholder {
-      color: $onyx !important;
+  .mat-form-field-underline::before {
+    background-color: $metal !important;
   }
-  /*End Form Styling*/
+  .mat-form-field-underline {
+    background-color: $metal !important;
+  }
+  .mat-form-field-ripple {
+    background-color: $metal !important;
+  }
+  .mat-form-field-required-marker {
+    color: $metal !important;
+  }
+  .mat-form-field-flex {
+    background-color: $powder;
+  }
+}
+
+.mat-error {
+  color: $watermelon !important;
+}
+
+.mat-form-field.mat-form-field-invalid {
+  // Invalid form styling here
+  .mat-input-element {
+    caret-color: $watermelon !important;
+  }
+  .mat-form-field-underline::before {
+    background-color: $watermelon !important;
+  }
+  .mat-form-field-underline {
+    background-color: $watermelon !important;
+  }
+  .mat-form-field-ripple {
+    background-color: $watermelon !important;
+  }
+  .mat-form-field-required-marker {
+    color: $watermelon !important;
+  }
+}
+
+.mat-form-field.mat-focused {
+  .mat-form-field-label {
+    color: grey;
+  }
+  .mat-form-field-ripple {
+    background-color: $metal;
+  }
+  .mat-input-element {
+    color: $black;
+    caret-color: $onyx;
+  }
+}
+
+textarea::placeholder {
+  color: $onyx !important;
+}
+/*End Form Styling*/

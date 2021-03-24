@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
-import {MatDialog} from '@angular/material/dialog';
+import { RegisterComponent } from '../register/register.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -11,16 +14,64 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
 
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  currentUser: any;
+
+  constructor(
+    public router: Router,
+    private route: ActivatedRoute, 
+    private tokenService: TokenService, 
+    private userService: UserService,
+    public dialog: MatDialog
+  ) { }
+
+  
   ngOnInit(): void {
+
     const config = new MatDialogConfig();
     config.disableClose = true;
     config.panelClass = "panelStyle"
-    const dialogRef = this.dialog.open(LoginComponent, config);
 
-}
+    const token: string = this.route.snapshot.queryParamMap.get('token');
+    const error: string = this.route.snapshot.queryParamMap.get('error');
+    if (this.tokenService.getToken()) {
+      this.isLoggedIn = true;
+      this.userService.getCurrentUser().subscribe((data: any) => {
+        this.currentUser = data;
+        if (!data.enabled){
+          this.dialog.open(RegisterComponent, config);
+        } else {
+          this.router.navigateByUrl("/home");
+        }
+      })
+    }
+    else if(token){
+      this.tokenService.saveToken(token);
+      this.userService.getCurrentUser().subscribe((data: any) => {
+        this.currentUser = data;
+        if (!data.enabled){
+          this.dialog.open(RegisterComponent, config);
+        } else {
+          this.router.navigateByUrl("/home");
+        }
+      })
+    }
+    else if(error){
 
+        // Need to display errorMessage in the view
+        this.errorMessage = error;
+        this.isLoginFailed = true;
+    } 
+    else {
+      this.dialog.open(LoginComponent, config);
+    }
+  }
 
+  fetchUserData(){
+
+  }
 
 };

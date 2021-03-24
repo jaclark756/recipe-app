@@ -61,7 +61,7 @@ export class RecipeService {
     })
   }
 
-  // TODO Add Update recipe function
+  // TODO Update recipe function
 
   deleteRecipe(recipeId: number): void {
     this.http.delete(this.url+`/${recipeId}`, httpOptions).subscribe(response => {

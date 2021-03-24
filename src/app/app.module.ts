@@ -56,7 +56,8 @@ const routes: Routes = [
     RouterModule.forRoot([
       { path: '', component: InputRecipeComponent },
       { path: 'inputrecipe', component: InputRecipeComponent },
-      { path: 'viewrecipe/:id', component: ViewRecipesComponent }
+      { path: 'viewrecipe/:id', component: ViewRecipesComponent },
+      { path: 'collections', component: CollectionsComponent}
     ])
 
   ],

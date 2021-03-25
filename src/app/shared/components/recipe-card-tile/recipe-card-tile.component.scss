@@ -5,7 +5,7 @@
   justify-content: center;
   margin: 5px;
   width: 200px;
- }
+}
 
 .mat-card-avatar img {
   width: 36px;
@@ -36,13 +36,11 @@
 .img-container img {
   width: auto;
   max-height: 200px;
-   position: relative;
-   text-align: center;
- }
+  position: relative;
+  text-align: center;
+}
 
- .flex-container {
+.flex-container {
   display: flex;
   justify-content: space-around;
 }
-
-

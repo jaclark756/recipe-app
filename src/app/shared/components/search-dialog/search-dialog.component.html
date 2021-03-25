@@ -8,9 +8,9 @@
        <mat-label>Recent Searches</mat-label>
     <mat-chip-list aria-label="">
         <mat-chip color="accent" selected>protein pancakes</mat-chip>
-        <mat-chip>margaritas</mat-chip>
-        <mat-chip>bread</mat-chip>
-        <mat-chip>tacos</mat-chip>
+        <mat-chip color="accent" selected>margaritas</mat-chip>
+        <mat-chip color="accent" selected>bread</mat-chip>
+        <mat-chip color="accent" selected>tacos</mat-chip>
       </mat-chip-list>
        <div class="flex-container">
         <app-category-card *ngFor="let cat of categories" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>

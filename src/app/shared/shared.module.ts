@@ -27,6 +27,7 @@ import { SearchDialogComponent } from './components/search-dialog/search-dialog.
 import { CollectionCardComponent } from './components/collection-card/collection-card.component';
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,

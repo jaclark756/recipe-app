@@ -1,9 +1,61 @@
 @import "/src/styles/styles.scss";
 
 .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    flex-flow: row wrap;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  margin-top: 10px;
+}
+
+.avatar-container, .username-container, .followers-container  {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px;
+  text-align: center;
+}
+
+.collection-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+img {
+width: 100px;
+}
+
+.mat-tab-group {
+  width: 60%;
+}
+
+.mat-tab {
+  width: 100%;
+}
+
+.mat-tab-body {
+  width: 100%;
+}
+
+button {
+  margin: 10px;
+}
+::ng-deep .mat-tab-label-content {
+  color: $powder !important;
+}
+
+// .recipes-container {
+//   display: flex;
+//   justify-content: center;
+//   flex-wrap: wrap;
+//   margin: 10px;
+//   text-align: center;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+// }
+

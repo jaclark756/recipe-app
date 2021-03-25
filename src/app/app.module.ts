@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
 import { LoginComponent } from './components/login/login.component';
-import { CollectionsComponent } from './components/collections/collections.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -32,7 +31,6 @@ import { RouterModule } from '@angular/router';
     EditProfileComponent,
     InputRecipeComponent,
     ViewRecipesComponent,
-    CollectionsComponent,
     RegisterComponent,
     WelcomeComponent,
     HomeComponent
@@ -56,7 +54,6 @@ import { RouterModule } from '@angular/router';
       { path: '', component: InputRecipeComponent },
       { path: 'inputrecipe', component: InputRecipeComponent },
       { path: 'viewrecipe/:id', component: ViewRecipesComponent },
-      { path: 'collections', component: CollectionsComponent}
     ])
 
   ],

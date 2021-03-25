@@ -22,8 +22,10 @@
                 <a href="#"><button id="new-recipe" class="edit-button" mat-raised-button isRoundButton="true">+ Add
                         New Recipe</button></a>
             </div>
-            <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
-            </app-recipe-card-tile>
+            <div class="collection-container">
+                <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
+                </app-recipe-card-tile>
+            </div>
         </mat-tab>
         <mat-tab label="Collections">
             <div class="collection-container">

@@ -48,6 +48,16 @@ button {
   color: $powder !important;
 }
 
+.mat-tab-label{
+  max-width:50%!important;
+  min-width:0!important;
+}
+
+.mat-tab-label-container{
+  width:100% !important;
+}
+
+
 // .recipes-container {
 //   display: flex;
 //   justify-content: center;

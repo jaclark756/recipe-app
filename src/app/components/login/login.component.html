@@ -1,12 +1,9 @@
 <mat-dialog-content>
     <img src="/assets/images/logo.svg" class="filter-jet">
     <div class="container">
-        <a href="{{ googleURI }}"><button id="Google-Button" class="dark-button" mat-raised-button isRoundButton="true"><i
-                    class="fa fa-google fa-2x"></i>Continue with
-                Google</button></a>
-        <a href="{{ githubURI }}"><button id="GitHub-Button" class="dark-button" mat-raised-button isRoundButton="true"><i
-                    class="fa fa-github fa-2x"></i>Continue with
-                Github</button></a>
+        <button [ngClass]="error ? 'button-error' : '' " id="Google-Button" (click)="googleLogin()" class="dark-button bg-teal" mat-raised-button isRoundButton="true"><i class="fa fa-google fa-2x"></i>Continue with Google</button>
+        <button id="GitHub-Button" (click)="githubLogin()" class="dark-button bg-teal" mat-raised-button isRoundButton="true"><i class="fa fa-github fa-2x"></i>Continue with Github</button>
+        <div *ngIf="error" class="auth-error c-watermelon">{{ error }}</div>
     </div>
 </mat-dialog-content>
 <mat-dialog-actions>

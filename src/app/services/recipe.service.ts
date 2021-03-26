@@ -7,7 +7,7 @@ import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
 @Injectable({

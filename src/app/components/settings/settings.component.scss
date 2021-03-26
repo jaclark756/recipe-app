@@ -1,7 +1,54 @@
 @import "/src/styles/styles.scss";
 
+mat-card {
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+}
 
-// .settings {
-//     color: $onyx;
-//     max-width: 50%;
+.mat-expansion-panel-header {
+    background-color: $powder;
+}
+
+mat-panel-title {
+    font-size: larger;
+}
+
+.profileInfo {
+    margin: auto;
+}
+
+.usernameInput {
+    width: 70%;
+}
+
+.displayNameInput {
+    width: 70%;
+}
+
+.editProfile {
+    text-align: center;
+}
+
+// #saveProfileInfo {
+
+// }
+
+#saveProfileInfo {
+    background-color: $teal !important;
+    color: $powder !important;
+    width: 20%
+  }
+
+#changeAvatar {
+    background-color: $powder !important;
+    color: $jet !important;
+  }
+
+h1 {
+    text-align: center;
+}
+
+// mat-panel-title {
+//     margin: 40%;
 // }

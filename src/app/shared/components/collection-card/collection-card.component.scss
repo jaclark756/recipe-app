@@ -1,19 +1,20 @@
 @import "/src/styles/styles.scss";
 
+
 .flex-container {
   width: 150px;
-  height: 200px;
+  height: 180px;
   margin: 5px;
   border: 1px solid $teal;
   border-radius: 0.5em;
   justify-content: center;
+  padding-top: 10px;
 }
 
 .flex-container p {
   width: 100%;
   text-align: center;
-  margin-top: -5px;
-  font-size: 12px;
+  margin: 0;
 }
 
 .img-container {
@@ -23,7 +24,6 @@
   flex-wrap: wrap;
   overflow: hidden;
   text-align: center;
-  margin: 10px;
 }
 
 img {

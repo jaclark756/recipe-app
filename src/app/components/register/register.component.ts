@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ValidationService } from 'src/app/services/validation.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -12,15 +14,18 @@ import { ValidationService } from 'src/app/services/validation.service';
 export class RegisterComponent implements OnInit {
 
   BASE_URL: string = "http://localhost:8080/"
-  USERS_URL: string = "api/usernames"
+  USERS_URL: string = "/api/usernames"
+  SIGNUP_URL: string = "/api/user/update"
   URL = this.BASE_URL + this.USERS_URL;
+  UPDATE_URL = environment.apiUrl + this.SIGNUP_URL;
 
   signUpForm: FormGroup;
 
   constructor(
     private http: HttpClient,
     public fb: FormBuilder,
-    public validationService: ValidationService
+    public validationService: ValidationService,
+    public router: Router
   ) {
     this.signUpForm = fb.group({
       username: new FormControl('', [Validators.required, Validators.minLength(4)], this.validationService.userNameValidator.bind(this.validationService))
@@ -32,6 +37,16 @@ export class RegisterComponent implements OnInit {
 
   signUp(event){
     alert("signed up!");
+    console.log(this.UPDATE_URL);
+    console.log(this.signUpForm.value);
+    this.http.post(this.UPDATE_URL, this.signUpForm.value).subscribe(
+      res => {
+        console.log(res)
+        this.router.navigate(['home']);        
+      }
+    );
+  
+
   }
 
   getErrorMessage(){

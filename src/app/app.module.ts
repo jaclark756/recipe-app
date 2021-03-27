@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
 import { LoginComponent } from './components/login/login.component';
-import { CollectionsComponent } from './components/collections/collections.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -19,6 +18,10 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { HomeComponent } from './components/home/home.component';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -29,7 +32,6 @@ import { HomeComponent } from './components/home/home.component';
     EditProfileComponent,
     InputRecipeComponent,
     ViewRecipesComponent,
-    CollectionsComponent,
     RegisterComponent,
     WelcomeComponent,
     HomeComponent
@@ -42,9 +44,23 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatCardModule,
+    MatInputModule,
+    MatGridListModule,
     MatDialogModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+
+
+    RouterModule.forRoot([
+      { path: '', component: InputRecipeComponent },
+      { path: 'inputrecipe', component: InputRecipeComponent },
+      { path: 'viewrecipe/:id', component: ViewRecipesComponent },
+    ])
+
+
   ],
 
   providers: [authInterceptorProviders],

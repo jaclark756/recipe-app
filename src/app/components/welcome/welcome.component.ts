@@ -61,10 +61,8 @@ export class WelcomeComponent implements OnInit {
       })
     }
     else if(error){
-
-        // Need to display errorMessage in the view
-        this.errorMessage = error;
-        this.isLoginFailed = true;
+        config.data = {error: error};
+        this.dialog.open(LoginComponent, config);
     } 
     else {
       this.dialog.open(LoginComponent, config);

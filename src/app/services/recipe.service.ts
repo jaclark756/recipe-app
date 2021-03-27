@@ -7,7 +7,7 @@ import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
 @Injectable({
@@ -61,7 +61,7 @@ export class RecipeService {
     })
   }
 
-  // TODO Add Update recipe function
+  // TODO Update recipe function
 
   deleteRecipe(recipeId: number): void {
     this.http.delete(this.url+`/${recipeId}`, httpOptions).subscribe(response => {

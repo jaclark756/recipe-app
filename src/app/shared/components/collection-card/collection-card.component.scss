@@ -10,6 +10,7 @@
   justify-content: center;
   border: 1px solid $teal;
   border-radius: 20px;
+  box-sizing: border-box;
 }
 
 .flex-container:hover {
@@ -32,9 +33,9 @@ a {
   text-decoration: none !important;
 }
 
-a:hover {
-  border: 10px solid $teal;
-}
+// a:hover {
+//   border: 10px solid $teal;
+// }
 
 .collection-title {
   margin: auto;

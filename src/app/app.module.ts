@@ -5,10 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-<<<<<<< HEAD
-=======
 import { MatTabsModule } from '@angular/material/tabs';
->>>>>>> fd160fea30c6c839fa4283ff85a714e7d0fb33fa
 import { AppComponent } from './app.component';
 import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
@@ -47,12 +44,14 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-<<<<<<< HEAD
     BrowserAnimationsModule,
     MatListModule,
     MatCardModule,
     MatInputModule,
     MatGridListModule,
+    MatDialogModule,
+    MatInputModule,
+    MatTabsModule,
 
 
     RouterModule.forRoot([
@@ -61,11 +60,7 @@ import { RouterModule } from '@angular/router';
       { path: 'viewrecipe/:id', component: ViewRecipesComponent },
     ])
 
-=======
-    MatDialogModule,
-    MatInputModule,
-    MatTabsModule
->>>>>>> fd160fea30c6c839fa4283ff85a714e7d0fb33fa
+
   ],
 
   providers: [authInterceptorProviders],

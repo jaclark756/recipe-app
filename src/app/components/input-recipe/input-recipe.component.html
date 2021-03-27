@@ -1,49 +1,54 @@
 <div class="form-container">
-<form [formGroup]="newRecipe">
+    <form [formGroup]="newRecipe">
 
-    <mat-form-field class="form-input" appearance="fill">
-        <mat-label for="ingredients">Ingredients</mat-label>
-        <textarea matInput  type="text" formControlName="ingredients" required></textarea>
-        <mat-error *ngIf="newRecipe.controls.ingredients.invalid">Ingredients are required</mat-error>
-    </mat-form-field>
-    <br>
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label for="ingredients">Ingredients</mat-label>
+            <textarea matInput type="text" formControlName="ingredients" required></textarea>
+            <mat-error *ngIf="newRecipe.controls.ingredients.invalid">Ingredients are required</mat-error>
+        </mat-form-field>
+        <br>
 
-    <mat-form-field class="form-input" appearance="fill">
-        <mat-label for="instructions">Instructions</mat-label>
-        <textarea matInput  type="text" formControlName="instructions" required></textarea>
-        <mat-error *ngIf="newRecipe.controls.instructions.invalid">Instructions are required</mat-error>
-    </mat-form-field>
-    <br>
+        <mat-label for="instruction">Instructions</mat-label>
+        <ng-container formArrayName="instructions">
+            <ng-container *ngFor="let instruction of newRecipe.get('instructions')?.controls; let i = index" [formGroupName]="i">
+                <mat-form-field class="form-input" appearance="fill">
+                    <textarea matInput type="text" formcontrolName="i" required></textarea>
+                    <!-- <mat-error *ngIf="instructions.controls[i].invalid">Instructions are required</mat-error> -->
+                </mat-form-field>
+            </ng-container>
+        </ng-container>
+        <app-button [label]="'Next Step'" (clickEvent)="addInstruction($event)" [class]="'done-button'"></app-button>
+        <br>
 
-    <mat-form-field class="form-input" appearance="fill">
-        <mat-label for="recipeName">Name</mat-label>
-        <input matInput type="text" formControlName="recipeName" required>
-        <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
-    </mat-form-field>
-    <br>
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label for="recipeName">Name</mat-label>
+            <input matInput type="text" formControlName="recipeName" required>
+            <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
+        </mat-form-field>
+        <br>
 
-    <mat-form-field class="form-input" appearance="fill">
-        <mat-label for="imageUri" >Picture of Dish</mat-label>
-        <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
-    </mat-form-field>
-    <br>
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label for="imageUri">Picture of Dish</mat-label>
+            <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
+        </mat-form-field>
+        <br>
 
-    <mat-form-field class="form-input" appearance="fill">
-        <mat-label>Cook Time</mat-label>
-        <input matInput type="number" placeholder="Ex. 30 min" formControlName="cookTime" min="0">
-        <span matSuffix>minutes</span>
-        <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
-    </mat-form-field>
-    <br>
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label>Cook Time</mat-label>
+            <input matInput type="number" placeholder="Ex. 30 min" formControlName="cookTime" min="0">
+            <span matSuffix>minutes</span>
+            <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
+        </mat-form-field>
+        <br>
 
-    <mat-form-field class="form-input" appearance="fill">
-        <mat-label>Prep Time</mat-label>
-        <input matInput type="number" placeholder="Ex. 15 min" formControlName="prepTime" min="0">
-        <span matSuffix>minutes</span>
-        <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
-    </mat-form-field>
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label>Prep Time</mat-label>
+            <input matInput type="number" placeholder="Ex. 15 min" formControlName="prepTime" min="0">
+            <span matSuffix>minutes</span>
+            <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
+        </mat-form-field>
 
-</form>
+    </form>
 
-<app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" [class]="'done-button'"></app-button>
+    <app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" [class]="'done-button'"></app-button>
 </div>

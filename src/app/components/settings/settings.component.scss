@@ -42,10 +42,9 @@ mat-form-field {
 //     flex-basis: 80%;
 // }
 
-mat-slide-toggle {
-    float: right !important;
+::ng-deep .mat-list-item-content {
+    justify-content: space-between;
 }
-
 // #saveProfileInfo {
 
 // }

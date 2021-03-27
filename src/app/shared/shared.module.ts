@@ -24,6 +24,8 @@ import { AppRoutingModule } from '../app-routing.module';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { SearchDialogComponent } from './components/search-dialog/search-dialog.
     MatChipsModule,
     FlexLayoutModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatSlideToggleModule
   ],
   exports: [
     HeaderComponent,
@@ -74,7 +77,9 @@ import { SearchDialogComponent } from './components/search-dialog/search-dialog.
     SearchDialogComponent,
     MatDialogModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSlideToggleModule
+
   ],
   providers: [
     SnackbarService

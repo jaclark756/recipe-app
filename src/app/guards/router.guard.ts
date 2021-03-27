@@ -20,7 +20,6 @@ export class RouterGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      console.log(environment)
     if (environment.production) {
       const token = this.tokenService.getToken();
       if (!token) {
@@ -28,7 +27,6 @@ export class RouterGuard implements CanActivate {
         return false;
       } else {
 
-        // check if enabled
         this.userService.getCurrentUser().subscribe((data: any) => {
           if (!data.enabled) {
             this.router.navigateByUrl("/login");
@@ -37,8 +35,6 @@ export class RouterGuard implements CanActivate {
             return true;
           }
         })
-
-
       }
     }
     return true;

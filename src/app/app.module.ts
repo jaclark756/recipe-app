@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatTabsModule } from '@angular/material/tabs';
 import { AppComponent } from './app.component';
 import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
@@ -43,7 +43,8 @@ import { HomeComponent } from './components/home/home.component';
     ReactiveFormsModule,
     FormsModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
   ],
 
   providers: [authInterceptorProviders],

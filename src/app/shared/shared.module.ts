@@ -7,7 +7,6 @@ import { FabComponent } from './components/fab/fab.component';
 import { SnackbarService } from './services/snackbar.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
@@ -24,6 +23,9 @@ import { AppRoutingModule } from '../app-routing.module';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
+import { CollectionCardComponent } from './components/collection-card/collection-card.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { SearchDialogComponent } from './components/search-dialog/search-dialog.
     RecipeCardTileComponent,
     ButtonComponent,
     CategoryCardComponent,
-    SearchDialogComponent
+    SearchDialogComponent,
+    CollectionCardComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +54,8 @@ import { SearchDialogComponent } from './components/search-dialog/search-dialog.
     MatChipsModule,
     FlexLayoutModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatTooltipModule
   ],
   exports: [
     HeaderComponent,
@@ -74,7 +78,9 @@ import { SearchDialogComponent } from './components/search-dialog/search-dialog.
     SearchDialogComponent,
     MatDialogModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CollectionCardComponent,
+    MatTooltipModule
   ],
   providers: [
     SnackbarService

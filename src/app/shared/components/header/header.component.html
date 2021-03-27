@@ -2,9 +2,17 @@
   <a [routerLink]="['/home']" routerLinkActive="active">
     <img src="/assets/images/logo.svg" alt="app logo" class="filter-powder">
   </a>
+  <mat-chip-list aria-label="navbar">
+    <mat-chip class="bg-powder">Following</mat-chip>
+    <mat-chip class="bg-powder">Explore</mat-chip>
+    </mat-chip-list>
   <span class="spacer"></span>
-  <button mat-button (click)="openSearchDialog()"><img src="/assets/images/search-white-24dp.svg" alt="search"
-      class="filter-powder"></button>
+      <a routerLink="profile" (click)="openSearchDialog()">
+        <img src="/assets/images/search-white-24dp.svg" alt="search" class="filter-powder">
+      </a>
+      <a routerLink="notifications">
+        <img src="/assets/images/notifications_active-white-24dp.svg" alt="profile" class="filter-powder">
+      </a>   
   <a routerLink="profile">
     <img src="/assets/images/account_circle-white-24dp.svg" alt="profile" class="filter-powder">
   </a>

@@ -1,10 +1,14 @@
-@import "/src/styles/styles.scss";
+  @import "/src/styles/styles.scss";
 
 .flex-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
     flex-flow: row wrap;
-    padding: 20px;
+    margin-top: 10px;
   }
+
+
+
+

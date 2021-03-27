@@ -1,22 +1,20 @@
-<div class="default-theme">
-    <mat-card class="card">
-        <img mat-card-image src="{{recipe.photoUrl}}" alt="Food in pot">
-        <mat-card-header>
-            <div mat-card-avatar>
-                <img src="/assets/images/account_circle-white-24dp.svg" alt="account" routerLink="/profile">
-            </div>
-            <mat-card-title>{{recipe.title}}</mat-card-title>
-            <mat-card-subtitle>{{recipe.category}}</mat-card-subtitle>
-        </mat-card-header>
-        <div class="flex-container">
-            <img src="/assets/images/thumb_up_alt-white-24dp.svg" alt="like" class="filter-powder"
-                onClick="likefunction()">
-
-            <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-powder"
-                onClick="savefunction()">
-
-            <img src="/assets/images/comment-white-24dp.svg" alt="save" class="filter-powder"
-                routerLink="/recipeinstructions">
+<mat-card class="card-container bg-teal">
+    <div class="img-container">
+        <img mat-card-image src="{{recipe.photoUrl}}" alt="recipe image">
+    </div>
+    <mat-card-header class="c-powder">
+        <div mat-card-avatar>
+            <img src="/assets/images/account_circle-white-24dp.svg" alt="account" routerLink="/profile">
         </div>
-    </mat-card>
-</div>
+        <mat-card-title>{{recipe.title}}</mat-card-title>
+        <mat-card-subtitle>{{recipe.category}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions class="flex-container">
+        <img src="/assets/images/thumb_up_alt-white-24dp.svg" alt="like" class="filter-powder" onClick="likefunction()">
+
+        <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-powder" onClick="savefunction()">
+
+        <img src="/assets/images/comment-white-24dp.svg" alt="save" class="filter-powder"
+            routerLink="/recipeinstructions">
+    </mat-card-actions>
+</mat-card>

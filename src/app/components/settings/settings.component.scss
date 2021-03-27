@@ -37,6 +37,15 @@ mat-form-field {
     width: 60%;
 }
 
+// mat-list-item {
+//     display: flex;
+//     flex-basis: 80%;
+// }
+
+mat-slide-toggle {
+    float: right !important;
+}
+
 // #saveProfileInfo {
 
 // }
@@ -55,10 +64,6 @@ mat-form-field {
   }
 
 .buttons {
-    display: inline;
-}
-
-.input {
     display: inline;
 }
 

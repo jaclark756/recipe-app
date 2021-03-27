@@ -34,6 +34,7 @@ export class WelcomeComponent implements OnInit {
     const config = new MatDialogConfig();
     config.disableClose = true;
     config.panelClass = "panelStyle"
+    config.closeOnNavigation = true;
 
     const token: string = this.route.snapshot.queryParamMap.get('token');
     const error: string = this.route.snapshot.queryParamMap.get('error');
@@ -60,10 +61,8 @@ export class WelcomeComponent implements OnInit {
       })
     }
     else if(error){
-
-        // Need to display errorMessage in the view
-        this.errorMessage = error;
-        this.isLoginFailed = true;
+        config.data = {error: error};
+        this.dialog.open(LoginComponent, config);
     } 
     else {
       this.dialog.open(LoginComponent, config);

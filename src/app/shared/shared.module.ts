@@ -7,7 +7,6 @@ import { FabComponent } from './components/fab/fab.component';
 import { SnackbarService } from './services/snackbar.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
@@ -24,7 +23,10 @@ import { AppRoutingModule } from '../app-routing.module';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+// import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { CollectionCardComponent } from './components/collection-card/collection-card.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 
 
@@ -35,7 +37,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     RecipeCardTileComponent,
     ButtonComponent,
     CategoryCardComponent,
-    SearchDialogComponent
+    SearchDialogComponent,
+    CollectionCardComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +57,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     FlexLayoutModule,
     MatDialogModule,
     MatInputModule,
-    MatSlideToggleModule
+    // MatSlideToggleModule,
+    MatTooltipModule
   ],
   exports: [
     HeaderComponent,
@@ -78,8 +82,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDialogModule,
     MatInputModule,
     FlexLayoutModule,
-    MatSlideToggleModule
-
+    // MatSlideToggleModule,
+    CollectionCardComponent,
+    MatTooltipModule
   ],
   providers: [
     SnackbarService

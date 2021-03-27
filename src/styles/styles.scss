@@ -64,9 +64,16 @@ h5 {
   }
 }
 
-/* custom mat styles */
-.mat-tab-body {
-  max-width: 40em !important;
+/*use this style of button for end of process actions*/
+.done-button {
+  background-color: $teal !important;
+  color: $powder !important;
+}
+
+/*use this button for secondary actions (edit, back, change, etc.)*/
+.edit-button {
+  background-color: $powder !important;
+  color: $jet !important;
 }
 
 /*fitlers svg icons*/

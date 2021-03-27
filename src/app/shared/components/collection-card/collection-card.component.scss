@@ -11,21 +11,28 @@
   border-radius: 20px;
 }
 
+.flex-container:hover {
+  border: 3px solid $teal;
+}
+
 img {
-  width: auto;
   max-height: 50px;
-  position: relative;
-  padding-left: 5px;
-  margin: auto;
+  margin-left: 5px;
   border-radius: 30%;
- }
+  object-fit: cover;
+  overflow: hidden;
+}
 
- .img-container {
-  flex-basis: 40%
- }
+.img-container {
+  flex-basis: 40%;
+}
 
-.content {
-  padding: 16px;
+a {
+  text-decoration: none !important;
+}
+
+a:hover {
+  border: 10px solid $teal;
 }
 
 .collection-title {
@@ -34,4 +41,3 @@ img {
   padding-right: 2px;
   text-align: left;
 }
-

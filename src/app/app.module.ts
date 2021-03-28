@@ -19,6 +19,8 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { HomeComponent } from './components/home/home.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { HomeComponent } from './components/home/home.component';
     CollectionsComponent,
     RegisterComponent,
     WelcomeComponent,
-    HomeComponent
+    HomeComponent,
+    SettingsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -44,7 +47,8 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     MatDialogModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSlideToggleModule
   ],
 
   providers: [authInterceptorProviders],

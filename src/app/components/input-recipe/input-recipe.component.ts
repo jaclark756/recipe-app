@@ -36,7 +36,7 @@ export class InputRecipeComponent implements OnInit {
 
     // NEW ADDRECIPE 
 
-    addRecipe() {
+    addRecipe(event) {
       console.log(this.newRecipe);
       if (this.newRecipe.valid) {
         let recipe = {

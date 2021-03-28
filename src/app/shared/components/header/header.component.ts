@@ -9,6 +9,8 @@ import { SearchDialogComponent } from '../search-dialog/search-dialog.component'
 })
 export class HeaderComponent implements OnInit {
 
+  opened=false;
+
   constructor(public dialog: MatDialog) { }
   ngOnInit(): void {
   }
@@ -16,5 +18,8 @@ export class HeaderComponent implements OnInit {
   openSearchDialog() {
     const dialogRef = this.dialog.open(SearchDialogComponent);
   }
+
+  menuOpened(){ this.opened = true}
+  menuClosed(){ this.opened = false}
  
 }

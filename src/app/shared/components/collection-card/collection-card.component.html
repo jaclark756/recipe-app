@@ -1,6 +1,10 @@
-<div class="flex-container bg-mint" cdkScrollable>
-    <div class="img-container">
-    <img src="{{recipe.photoUrl}}" alt="recipe image" mat-raised-button>
+<a routerLink="category/id"><div class="flex-container bg-mint">
+   <div class="img-container">
+    <img src="{{recipe.photoUrl}}" alt="recipe image">
   </div>
-  <p class="c-black">{{recipe.category}}</p>
+ <div class="collection-title">
+  <p class="c-jet">{{recipe.category}}<br>
+  </p>
+  </div>
 </div>
+</a>

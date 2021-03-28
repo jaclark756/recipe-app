@@ -5,15 +5,33 @@
   <mat-chip-list aria-label="navbar">
     <mat-chip class="bg-powder">Following</mat-chip>
     <mat-chip class="bg-powder">Explore</mat-chip>
-    </mat-chip-list>
+  </mat-chip-list>
   <span class="spacer"></span>
-      <a routerLink="profile" (click)="openSearchDialog()">
-        <img src="/assets/images/search-white-24dp.svg" alt="search" class="filter-powder">
-      </a>
-      <a routerLink="notifications">
-        <img src="/assets/images/notifications_active-white-24dp.svg" alt="profile" class="filter-powder">
-      </a>   
+  <a routerLink="search" (click)="openSearchDialog()">
+    <img src="/assets/images/search-white-24dp.svg" alt="profile" class="filter-powder">
+  </a> 
+  <a routerLink="notifications">
+    <img src="/assets/images/notifications_active-white-24dp.svg" alt="profile" class="filter-powder">
+  </a>
   <a routerLink="profile">
     <img src="/assets/images/account_circle-white-24dp.svg" alt="profile" class="filter-powder">
   </a>
+  <button mat-icon-button [matMenuTriggerFor]="menu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
+    <mat-icon [ngClass]="opened ? 'menu-opened' : ' ' " class="c-powder">keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" class="bg-watermelon">
+      <button mat-menu-item class="c-powder">
+        <img src="/assets/images/account_circle-white-24dp.svg"
+          class="filter-powder">
+        Profile</button>
+      <button mat-menu-item class="c-powder"><img src="/assets/images/settings-white-18dp.svg"
+          class="filter-powder">Account
+        Settings</button>
+      <button mat-menu-item class="c-powder"><img src="/assets/images/lock-white-18dp.svg" class="filter-powder">Terms &
+        Privacy</button>
+      <button mat-menu-item class="c-powder"><img src="/assets/images/help-white-18dp.svg" class="filter-powder">Help &
+        Support</button>
+      <button mat-menu-item class="c-powder"><img src="/assets/images/logout-white-18dp.svg"
+          class="filter-powder">Logout</button>
+    </mat-menu>
 </mat-toolbar>

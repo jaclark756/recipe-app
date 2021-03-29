@@ -30,6 +30,13 @@ img {
   min-width: auto !important;
   padding: 0 !important;
   width: 30px !important;
+  margin: 8px !important;
+}
+
+.notification, .search, .account {
+ font-size: 40px;
+ margin: 10px;
+ text-align: center;
 }
 
 ::ng-deep .mat-menu {

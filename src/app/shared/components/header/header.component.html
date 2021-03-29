@@ -7,25 +7,28 @@
     <mat-chip class="bg-powder">Explore</mat-chip>
   </mat-chip-list>
   <span class="spacer"></span>
-  <a routerLink="search" (click)="openSearchDialog()">
-    <img src="/assets/images/search-white-24dp.svg" alt="search" class="filter-powder">
-  </a>
-  <a routerLink="notifications">
-    <img src="/assets/images/notifications_active-white-24dp.svg" alt="notifications" class="filter-powder">
-  </a>
-  <a routerLink="profile">
-    <img src="/assets/images/account_circle-white-24dp.svg" alt="profile" class="filter-powder">
-  </a>
-  <button mat-icon-button [matMenuTriggerFor]="menu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
+  <button mat-icon-button routerLink="search" (click)="openSearchDialog()">
+     <mat-icon class="search c-powder">search</mat-icon>
+</button>
+  <button mat-icon-button [matMenuTriggerFor]="notifications" routerLink="notifications">
+    <mat-icon class="notification c-powder">notifications_active</mat-icon>
+  </button>
+  <mat-menu #notifications="matMenu" class="bg-watermelon">
+   <p>This is where account notifications will live.</p>
+  </mat-menu>  
+  <button mat-icon-button routerLink="profile">
+    <mat-icon class="account c-powder">account_circle</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="settingsMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
     <mat-icon [ngClass]="opened ? 'menu-opened' : ' ' " class="c-powder">keyboard_arrow_down</mat-icon>
   </button>
-  <mat-menu #menu="matMenu" class="bg-watermelon">
+  <mat-menu #settingsMenu="matMenu" class="bg-watermelon">
     <button mat-menu-item class="c-powder" routerLink="/profile">
       <img src="/assets/images/account_circle-white-24dp.svg" class="filter-powder">
       View Profile</button>
     <button mat-menu-item class="c-powder" routerLink="/settings"><img src="/assets/images/settings-white-18dp.svg"
         class="filter-powder">Account Settings</button>
-      <button mat-menu-item class="c-powder" routerLink="/settings#help"><img src="/assets/images/help-white-18dp.svg"
+      <button mat-menu-item class="c-powder" routerLink="/settings"><img src="/assets/images/help-white-18dp.svg"
         class="filter-powder">Help &
       Support</button>
     <button mat-menu-item class="c-powder" routerLink="/login"><img src="/assets/images/logout-white-18dp.svg"

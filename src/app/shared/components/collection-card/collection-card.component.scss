@@ -19,7 +19,7 @@
 
 img {
   max-height: 50px;
-  margin-left: 5px;
+  margin: 5px;
   border-radius: 30%;
   object-fit: cover;
   overflow: hidden;
@@ -32,10 +32,6 @@ img {
 a {
   text-decoration: none !important;
 }
-
-// a:hover {
-//   border: 10px solid $teal;
-// }
 
 .collection-title {
   margin: auto;

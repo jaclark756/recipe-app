@@ -1,7 +1,7 @@
 <h1>Settings</h1>
 
 <div class="container">
-    <mat-accordion class="settings" multi>
+    <mat-accordion class="settings">
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -43,7 +43,6 @@
             </mat-expansion-panel-header>
 
             <mat-label>What Notifications You Recieve:</mat-label>
-
             <mat-list>
                 <mat-list-item>Comments<mat-slide-toggle [(ngModel)]="commentsChecked" class="toggle">On</mat-slide-toggle>
                 </mat-list-item>
@@ -54,10 +53,11 @@
             <mat-list-item>My Recipe Saved<mat-slide-toggle [(ngModel)]="recipeChecked" class="toggle">On</mat-slide-toggle>
             </mat-list-item>
         </mat-list>
+        <div class="notifySave">
                 <mat-card-actions>
-                    <button mat-button id="resetProfileInfo">Reset</button>
                     <button mat-button id="saveProfileInfo" onclick="notifySave()">Save</button>
                 </mat-card-actions>
+            </div>
         </mat-expansion-panel>
 
 

@@ -37,6 +37,14 @@ mat-form-field {
     width: 60%;
 }
 
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: $teal;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: $powder;
+}
+
 // mat-list-item {
 //     display: flex;
 //     flex-basis: 80%;
@@ -66,7 +74,13 @@ mat-form-field {
     display: inline;
 }
 
+.notifySave {
+    text-align: center;
+}
 
+::ng-deep .mat-form-field-appearance-fill.mat-form-field-disabled .mat-form-field-flex {
+    background-color: rgba(0, 0, 0, 0.05);
+}
 ::ng-deep .mat-form-field {
     .mat-input-element {
         color: $black;

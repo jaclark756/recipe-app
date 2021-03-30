@@ -8,14 +8,16 @@
   </mat-chip-list>
   <span class="spacer"></span>
   <button mat-icon-button routerLink="search" (click)="openSearchDialog()">
-     <mat-icon class="search c-powder">search</mat-icon>
-</button>
-  <button mat-icon-button [matMenuTriggerFor]="notifications" routerLink="notifications">
-    <mat-icon class="notification c-powder">notifications_active</mat-icon>
+    <mat-icon class="search c-powder">search</mat-icon>
   </button>
+  <button mat-icon-button class="c-powder" matBadge="15" matBadgeColor="warn" [matMenuTriggerFor]="notifications">
+    <mat-icon class="notification">notifications_active</mat-icon>
+  </button>
+  <span class="cdk-visually-hidden">
+    notification icon with overlaid badge showing the number of notifications </span>
   <mat-menu #notifications="matMenu" class="bg-watermelon">
-   <p>This is where account notifications will live.</p>
-  </mat-menu>  
+    <p>This is where account notifications will live.</p>
+  </mat-menu>
   <button mat-icon-button routerLink="profile">
     <mat-icon class="account c-powder">account_circle</mat-icon>
   </button>
@@ -28,10 +30,10 @@
       View Profile</button>
     <button mat-menu-item class="c-powder" routerLink="/settings"><img src="/assets/images/settings-white-18dp.svg"
         class="filter-powder">Account Settings</button>
-      <button mat-menu-item class="c-powder" routerLink="/settings"><img src="/assets/images/help-white-18dp.svg"
+    <button mat-menu-item class="c-powder" routerLink="/settings"><img src="/assets/images/help-white-18dp.svg"
         class="filter-powder">Help &
       Support</button>
-    <button mat-menu-item class="c-powder" routerLink="/login"><img src="/assets/images/logout-white-18dp.svg"
+    <button mat-menu-item class="c-powder" (click)="logout()"><img src="/assets/images/logout-white-18dp.svg"
         class="filter-powder">Logout</button>
   </mat-menu>
 </mat-toolbar>

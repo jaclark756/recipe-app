@@ -26,6 +26,7 @@ import { SearchDialogComponent } from './components/search-dialog/search-dialog.
 import { CollectionCardComponent } from './components/collection-card/collection-card.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 
@@ -58,7 +59,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     MatInputModule,
     MatTooltipModule,
-    MatMenuModule
+    MatMenuModule,
+    MatBadgeModule
   ],
   exports: [
     HeaderComponent,
@@ -84,7 +86,8 @@ import { MatMenuModule } from '@angular/material/menu';
     FlexLayoutModule,
     CollectionCardComponent,
     MatTooltipModule,
-    MatMenuModule
+    MatMenuModule,
+    MatBadgeModule
   ],
   providers: [
     SnackbarService

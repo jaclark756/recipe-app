@@ -18,25 +18,22 @@ img {
   flex: 1 1 auto;
 }
 
+::ng-deep .mat-icon {
+  font-size: 40px;
+}
+
 .menu-opened {
-  transform: rotate(180deg);
+  transform: rotateX(180deg);
 }
 
 .menu-closed {
   transform: rotate(0deg);
 }
 
-::ng-deep .mat-icon-button {
-  min-width: auto !important;
-  padding: 0 !important;
-  width: 30px !important;
-  margin: 8px !important;
-}
-
-.notification, .search, .account {
- font-size: 40px;
- margin: 10px;
- text-align: center;
+::ng-deep .mat-badge-content {
+  margin-top: 5px;
+  background-color: $teal !important;
+  color: $powder !important;
 }
 
 ::ng-deep .mat-menu {

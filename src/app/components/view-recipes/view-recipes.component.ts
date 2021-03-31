@@ -26,8 +26,8 @@ export class ViewRecipesComponent implements OnInit {
     this.route.paramMap.subscribe(param => {
       this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
         this.recipe= recipe;
-        this.ingredients = recipe.ingredients.split("\n")
-        this.instructions = recipe.instructions.split("\n")});
+        this.ingredients = recipe.ingredients
+        this.instructions = recipe.instructions});
     })
   }
 

@@ -5,19 +5,21 @@
         <h1>{{recipe?.title}}</h1>
         <h2>Prep Time: {{recipe?.prepTime}}Min</h2>
         <h2>Cook Time: {{recipe?.cookTime}}Min</h2>
+        <h2>Serving Size: xx</h2>
     </div>
     <hr>
     <div class = "prepareRecipe">
     <h3>Ingredients</h3>
-    <mat-list *ngFor="let ingredient of ingredients" id="ingredients">
+    <mat-list class="ingredients" *ngFor="let ingredient of ingredients" id="ingredients">
         <input type="checkbox" id="ingredient" name="ingredient" value="Ingredient">
         <label for="ingredient">{{ingredient}}</label><br>
     </mat-list>
+    <app-button [label]="'Add Selected to Shopping List'" (clickEvent)="($event)" [class]="'edit-button'"></app-button>
     <hr>
     <h3>Instructions</h3>
-    <mat-list *ngFor="let instruction of instructions" id="recipe steps">
+    <mat-list *ngFor="let instruction of instructions" id="recipe-steps">
         <!-- Loop for Step list-->
-        <mat-list-item>{{instruction}}</mat-list-item>
+        <mat-list-item id="instructions">{{instruction}}</mat-list-item>
     </mat-list>
     </div>
 

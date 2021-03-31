@@ -7,8 +7,9 @@ img{
   height: 400px;
   width: 400px;
 }
-h2,h1,h3{
+h2,h1,h3, label{
   color: white;
+  font-family: "Montserrat", sans-serif;
 }
 
 .recipeInfo,.prepareRecipe{
@@ -17,8 +18,19 @@ h2,h1,h3{
   text-align: center;
 }
 
+.ingredients {
+  display: grid;
+  grid-template-columns: 40px 40px;
+  grid-template-rows: 50% 50%;
+}
+
+#instructions {
+  color: white;
+}
+
 hr{
   border: 1px solid $mint;
   width: 85%;
-  
 }
+
+

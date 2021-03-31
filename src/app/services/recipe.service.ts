@@ -22,7 +22,7 @@ export class RecipeService {
     })
    }
 
-  private url: string = environment.apiUrl+"/recipe"
+  private url: string = environment.apiUrl+"/v2/recipe"
   private readonly recipeSubject = new BehaviorSubject<Recipe[]>([]);
   readonly recipe$ = this.recipeSubject.asObservable();
 

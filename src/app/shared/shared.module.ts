@@ -23,9 +23,10 @@ import { AppRoutingModule } from '../app-routing.module';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
-// import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CollectionCardComponent } from './components/collection-card/collection-card.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 
@@ -57,8 +58,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FlexLayoutModule,
     MatDialogModule,
     MatInputModule,
-    // MatSlideToggleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule,
+    MatBadgeModule
   ],
   exports: [
     HeaderComponent,
@@ -82,9 +84,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDialogModule,
     MatInputModule,
     FlexLayoutModule,
-    // MatSlideToggleModule,
     CollectionCardComponent,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule,
+    MatBadgeModule
   ],
   providers: [
     SnackbarService

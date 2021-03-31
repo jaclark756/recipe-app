@@ -17,3 +17,38 @@ img {
 .spacer {
   flex: 1 1 auto;
 }
+
+::ng-deep .mat-icon {
+  font-size: 40px;
+}
+
+.menu-opened {
+  transform: rotateX(180deg);
+}
+
+.menu-closed {
+  transform: rotate(0deg);
+}
+
+::ng-deep .mat-badge-content {
+  margin-top: 5px;
+  background-color: $teal !important;
+  color: $powder !important;
+}
+
+::ng-deep .mat-menu {
+  flex-direction: column !important;
+}
+
+::ng-deep .mat-menu-panel {
+  border: 1px solid $powder;
+  max-width: 200px !important;
+}
+
+::ng-deep .mat-menu-item {
+  display: inline-flex !important;
+}
+
+::ng-deep .mat-menu-item img {
+  width: 30px;
+}

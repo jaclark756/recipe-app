@@ -10,5 +10,33 @@
       "prepTime": 5,
       "userId": 1
     }
+  ],
+  "recipe2": [
+    {
+      "id": 1,
+      "title": "Pie",
+      "cookTime": 45,
+      "prepTime": 30,
+      "photoUrl": "https://picsum.photos/400",
+      "userId": 1,
+      "category": ["baked goods", "not vegan"],
+      "ingredients": ["crust", "filling", "a good time"],
+      "instructions": [
+        "put the crust in a pan",
+        "put the filling in the crust",
+        "have a good time"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Popsicle",
+      "cookTime": 600,
+      "prepTime": 10,
+      "photoUrl": "https://picsum.photos/400",
+      "userId": 7,
+      "category": ["summer", "vegan"],
+      "ingredients": ["stick", "sugar water"],
+      "instructions": ["freeeeeze the sugar water on the stick", "enjoy!"]
+    }
   ]
 }

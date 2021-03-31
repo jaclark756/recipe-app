@@ -1,3 +1,4 @@
 {
-  "/api/recipe": "/recipe"
+  "/api/recipe": "/recipe",
+  "/api/v2/recipe": "/recipe2"
 }

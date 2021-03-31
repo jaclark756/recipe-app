@@ -146,6 +146,9 @@ h5 {
   .mat-form-field-flex {
     background-color: $powder;
   }
+  .mat-form-field-empty {
+    color: grey !important;
+  }
 }
 
 .mat-error {
@@ -186,5 +189,11 @@ h5 {
 
 textarea::placeholder {
   color: $onyx !important;
+}
+
+.mat-form-field-flex {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 5px 5px 0px;
 }
 /*End Form Styling*/

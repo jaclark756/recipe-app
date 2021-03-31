@@ -1,6 +1,33 @@
 <div class="form-container">
     <form [formGroup]="newRecipe">
 
+        <mat-form-field class="form-input category-input">
+            <mat-label>Add Categories</mat-label>
+            <mat-chip-list #chipList aria-label="Category selection">
+              <mat-chip
+                *ngFor="let category of categories"
+                [selectable]="selectable"
+                [removable]="removable"
+                (removed)="remove(category)">
+                {{category.name}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input
+                placeholder="New fruit..."
+                #fruitInput
+                [formControl]="categoryControl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
+                {{category.name}}
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="ingredients">Ingredients</mat-label>
             <textarea matInput type="text" formControlName="ingredients" required></textarea>

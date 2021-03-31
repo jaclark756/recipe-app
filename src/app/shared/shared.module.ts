@@ -25,6 +25,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
 import { CollectionCardComponent } from './components/collection-card/collection-card.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -55,7 +56,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FlexLayoutModule,
     MatDialogModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAutocompleteModule
   ],
   exports: [
     HeaderComponent,
@@ -80,7 +82,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     FlexLayoutModule,
     CollectionCardComponent,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAutocompleteModule
   ],
   providers: [
     SnackbarService

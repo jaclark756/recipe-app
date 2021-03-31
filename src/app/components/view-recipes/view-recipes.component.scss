@@ -1,4 +1,24 @@
+@import "/src/styles/styles.scss";
+
 img{
-    height: 400px;
-    width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+  width: 400px;
+}
+h2,h1,h3{
+  color: white;
+}
+
+.recipeInfo,.prepareRecipe{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+hr{
+  border: 1px solid $mint;
+  width: 85%;
+  
 }

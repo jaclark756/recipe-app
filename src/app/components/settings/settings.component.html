@@ -29,7 +29,7 @@
                     </button>
                 </mat-form-field>
                 <mat-card-actions>
-                    <button mat-button type="button" id="resetProfileInfo" onclick="revertChanges()">Cancel</button>
+                    <button mat-button type="button" id="resetProfileInfo" (click)="revertChanges()">Cancel</button>
                     <button mat-button id="saveProfileInfo" type="submit" [disabled]="!editProfile.valid">Save</button>
                 </mat-card-actions>
             </form>
@@ -45,13 +45,13 @@
 
             <mat-label>What Notifications You Recieve:</mat-label>
             <mat-list>
-                <mat-list-item>Comments<mat-slide-toggle [(ngModel)]="commentsChecked" class="toggle">On</mat-slide-toggle>
+                <mat-list-item>Comments<mat-slide-toggle [(ngModel)]="commentsChecked" class="toggle">{{this.commentsChecked ? 'On' : 'Off'}}</mat-slide-toggle>
                 </mat-list-item>
-                <mat-list-item>New Followers<mat-slide-toggle [(ngModel)]="followersChecked" class="toggle">On</mat-slide-toggle>
+                <mat-list-item>New Followers<mat-slide-toggle [(ngModel)]="followersChecked" class="toggle">{{this.followersChecked ? 'On' : 'Off'}}</mat-slide-toggle>
             </mat-list-item>
-            <mat-list-item>Likes<mat-slide-toggle [(ngModel)]="likesChecked" class="toggle">On</mat-slide-toggle>
+            <mat-list-item>Likes<mat-slide-toggle [(ngModel)]="likesChecked" class="toggle">{{this.likesChecked ? 'On' : 'Off'}}</mat-slide-toggle>
             </mat-list-item>
-            <mat-list-item>My Recipe Saved<mat-slide-toggle [(ngModel)]="recipeChecked" class="toggle">On</mat-slide-toggle>
+            <mat-list-item>My Recipe Saved<mat-slide-toggle [(ngModel)]="recipeChecked" class="toggle">{{this.recipeChecked ? 'On' : 'Off'}}</mat-slide-toggle>
             </mat-list-item>
         </mat-list>
         <div class="notifySave">

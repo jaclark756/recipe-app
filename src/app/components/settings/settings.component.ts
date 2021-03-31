@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { User } from 'src/app/types/user';
 
 @Component({
@@ -19,6 +20,7 @@ export class SettingsComponent implements OnInit {
   
   constructor(
     public fb: FormBuilder,
+    public snackbar: SnackbarService,
     public userService: UserService) {
       userService.getCurrentUser().subscribe((user: any) => this.activeUser = user);
       this.editProfile = this.fb.group({
@@ -31,18 +33,17 @@ export class SettingsComponent implements OnInit {
 
   updateProfile() {
     if (this.editProfile.valid && this.editProfile.dirty) {
-
+      this.snackbar.openSnackBar("Your changes have been saved!")
       // add functionality to update new display name
 
-      alert("Your changes have been saved!")
     }
     else {
-      alert("ERROR: There are no changes to be saved");
+      this.snackbar.openSnackBar("ERROR: There are no changes to be saved");
     }
   }
 
   revertChanges() {
-    this.editProfile.reset();  //not working.....
+    this.editProfile.get("displayname").setValue("Test Name")
   } 
 
   notifySave() {

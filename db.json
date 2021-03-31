@@ -1,0 +1,42 @@
+{
+  "recipe": [
+    {
+      "id": 1,
+      "ingredients": "2 Tortilla's\nHandfull of cheese\n4 Turkey/Ham slices",
+      "instructions": "1.Put Tortilla on plate\n2.Put Turkey/Ham slices on tortilla\n3.Put Cheese on meat\n4.Cover in second tortilla\n5.Put in Quesadilla Maker for 5 mins\n6.Take out and slice into slices",
+      "title": "Calvino's Fabulous Quesadilla",
+      "photoUrl": "https://lilluna.com/wp-content/uploads/2018/04/chicken-quesadillas-2.jpg",
+      "cookTime": 5,
+      "prepTime": 5,
+      "userId": 1
+    }
+  ],
+  "recipe2": [
+    {
+      "id": 1,
+      "title": "Pie",
+      "cookTime": 45,
+      "prepTime": 30,
+      "photoUrl": "https://picsum.photos/400",
+      "userId": 1,
+      "category": ["baked goods", "not vegan"],
+      "ingredients": ["crust", "filling", "a good time"],
+      "instructions": [
+        "put the crust in a pan",
+        "put the filling in the crust",
+        "have a good time"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Popsicle",
+      "cookTime": 600,
+      "prepTime": 10,
+      "photoUrl": "https://picsum.photos/400",
+      "userId": 7,
+      "category": ["summer", "vegan"],
+      "ingredients": ["stick", "sugar water"],
+      "instructions": ["freeeeeze the sugar water on the stick", "enjoy!"]
+    }
+  ]
+}

@@ -18,6 +18,8 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { HomeComponent } from './components/home/home.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -34,7 +36,8 @@ import { RouterModule } from '@angular/router';
     ViewRecipesComponent,
     RegisterComponent,
     WelcomeComponent,
-    HomeComponent
+    HomeComponent,
+    SettingsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -52,7 +55,7 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     MatInputModule,
     MatTabsModule,
-
+    MatSlideToggleModule,
 
     RouterModule.forRoot([
       { path: '', component: InputRecipeComponent },

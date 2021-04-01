@@ -66,4 +66,9 @@ img {
   ::ng-deep .mat-icon {
     font-size: 30px;
   }
+
+  ::ng-deep .mat-badge-content {
+    margin-top: 6px;
+    right: -6px !important;
+    }
 }

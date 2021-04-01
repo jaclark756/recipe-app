@@ -1,5 +1,5 @@
 export interface Instruction {
-    id: number;
+    id?: number;
     content: string;
-    order: number;
+    order?: number;
 }

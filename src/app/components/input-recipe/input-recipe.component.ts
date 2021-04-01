@@ -31,6 +31,8 @@ export class InputRecipeComponent implements OnInit {
   currentUser: any;
   Ingredients: Ingredient[];
   Instructions: Instruction[];
+  instructions2: Instruction[] = [{content: 'first instruction'}];
+  finalInstructions: Instruction[];
   categories: Category[] = [{'name': 'Breakfast'}, {'name': 'Gluten Free'}];
   allCategories: Category[] = [{'name': 'Lunch'}, {'name': 'Dinner'}, {'name': 'Dessert'}];
   filteredCategories: Observable<Category[]>;
@@ -66,6 +68,15 @@ export class InputRecipeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.instructions2.forEach(function(item, index) {
+      console.log("item before: ", item);
+      let orderOfItem = index;
+      console.log("order: ", orderOfItem);
+      item = {content: item.content, order: orderOfItem};
+      console.log("item after: ", item);
+      this.finalInstructions.push(item);
+      console.log("finalInstructions: ", this.finalInstructions);
+    })
   }
 
     // NEW ADDRECIPE 

@@ -47,6 +47,8 @@ export class SettingsComponent implements OnInit {
   } 
 
   notifySave() {
+    // TODO: add logic to backend to store user's notifications settings
+    // TODO: post settings to the backend
     let object = {
       "commentsChecked": this.commentsChecked,
       "followersChecked": this.followersChecked,

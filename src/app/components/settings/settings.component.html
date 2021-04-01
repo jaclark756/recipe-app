@@ -19,7 +19,7 @@
                     <input formControlName="displayname" matInput #message maxlength="50">
                     <mat-hint align="end">{{message.value.length}} / 50</mat-hint>
                 </mat-form-field>
-                <span style="color:red" *ngIf="editProfile.controls.displayname.touched && editProfile.controls.displayname.invalid">Must contain at least 3 characters</span>
+                <span id="displayNameError" *ngIf="editProfile.controls.displayname.touched && editProfile.controls.displayname.invalid">Must contain at least 3 characters</span>
                 <mat-form-field appearance="fill" class="usernameInput">
                     <mat-label>Username</mat-label>
                     <input matInput type="username" value="{{activeUser?.username}}" disabled>

@@ -48,6 +48,9 @@ mat-form-field {
 ::ng-deep .mat-list-item-content {
     justify-content: space-between;
 }
+#displayNameError{
+    color:red!important; 
+}
 
 #saveProfileInfo {
     background-color: $teal !important;

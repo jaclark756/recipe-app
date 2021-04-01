@@ -19,7 +19,7 @@ export class RouterGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-
+      return true;
     const token = this.tokenService.getToken();
     if (!token) {
       this.router.navigateByUrl("/login");

@@ -4,10 +4,6 @@
   background-color: $watermelon;
 }
 
-.mat-chip-list {
-  margin-left: 10px;
-}
-
 img {
   margin: 5px;
   width: 42px;
@@ -51,4 +47,28 @@ img {
 
 ::ng-deep .mat-menu-item img {
   width: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  ::ng-deep .mat-chip {
+    max-width: 65px !important;
+    font-size: 12px !important;
+    text-align: left;
+    padding: 4px !important;
+  }
+
+  img {
+    margin: 5px 10px 5px 5px;
+    width: 30px;
+    height: 30px;
+  }
+
+  ::ng-deep .mat-icon {
+    font-size: 30px;
+  }
+
+  ::ng-deep .mat-badge-content {
+    margin-top: 6px;
+    right: -6px !important;
+    }
 }

@@ -6,3 +6,12 @@
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
     width: 90%;
   }
+.ordered-chips-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.instruction-number {
+    width: 15px;
+    padding: 0 0 2px 5px;
+}

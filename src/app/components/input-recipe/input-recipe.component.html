@@ -27,16 +27,24 @@
               </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-
+        <mat-form-field class="form-input" appearance="fill">
+                <mat-label for="instruction2Control">Add Instruction</mat-label>
+                <input matInput type="text" formControlName="instruction2Control" placeholder="">
+                <button (click)="addInstruction2($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'">
+                    <mat-icon class="c-black">add</mat-icon>
+                </button>
+                <!-- <mat-icon (click)="addInstruction2($event)" class="c-black">add</mat-icon> -->
+        </mat-form-field>
+        <!-- <mat-icon (click)="addInstruction2($event)" class="c-black">add</mat-icon> -->
         <mat-chip-list
             class="example-chip mat-chip-list-stacked"
             cdkDropList 
             (cdkDropListDropped)="drop($event)">
-            <div cdkDrag style="width: 100%;" *ngFor="let instruction of instructions2">
-                <mat-icon>menu</mat-icon>
-                <span>{{instruction.order + 1}}</span>
+            <div cdkDrag class="ordered-chips-container" *ngFor="let instruction of instructions2">
+                <mat-icon class="c-white">menu</mat-icon>
+                <span class="c-white instruction-number">{{instruction.order + 1}}</span>
                 <mat-chip class="ordered-chips example-box">
-                    &nbsp;&nbsp;{{instruction.content}}
+                    {{instruction.content}}
                 </mat-chip>
             </div>
         </mat-chip-list>

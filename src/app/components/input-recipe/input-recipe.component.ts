@@ -27,6 +27,7 @@ export class InputRecipeComponent implements OnInit {
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   categoryControl = new FormControl();
+  // instruction2Control = new FormControl();
   newRecipe: FormGroup;
   // instructions: FormArray;
   currentUser: any;
@@ -63,6 +64,7 @@ export class InputRecipeComponent implements OnInit {
       instructions: new FormArray([
         new FormControl('', Validators.required)
       ]),
+      instruction2Control: new FormControl(''),
       recipeName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       imageUri: new FormControl(''),
       cookTime: new FormControl('', [Validators.required, Validators.min(0)]),
@@ -119,6 +121,12 @@ export class InputRecipeComponent implements OnInit {
         }
         this.recipeService.addRecipe(recipe);
       }
+    }
+
+    addInstruction2(event) {
+      console.log(this.newRecipe.controls.instruction2Control.value);
+      this.instructions2.push({content: this.newRecipe.controls.instruction2Control.value, order: this.instructions2.length});
+      this.newRecipe.controls.instruction2Control.reset();
     }
 
     drop(event: CdkDragDrop<Instruction[]>) {

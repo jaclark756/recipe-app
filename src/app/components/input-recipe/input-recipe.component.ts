@@ -32,7 +32,7 @@ export class InputRecipeComponent implements OnInit {
   Ingredients: Ingredient[];
   Instructions: Instruction[];
   instructions2: Instruction[] = [{content: 'first instruction'}];
-  finalInstructions: Instruction[];
+  finalInstructions: Instruction[] = [{content: 'instruction'}];
   categories: Category[] = [{'name': 'Breakfast'}, {'name': 'Gluten Free'}];
   allCategories: Category[] = [{'name': 'Lunch'}, {'name': 'Dinner'}, {'name': 'Dessert'}];
   filteredCategories: Observable<Category[]>;
@@ -65,10 +65,23 @@ export class InputRecipeComponent implements OnInit {
     this.filteredCategories = this.categoryControl.valueChanges.pipe(
       startWith(null),
       map((category: string | null) => category ? this._filter(category) : this.allCategories.slice()));
+    
+    // this.instructions2.forEach(function(item, index) {
+    //   console.log("item before: ", item);
+    //   let orderOfItem = index;
+    //   console.log("order: ", orderOfItem);
+    //   item = {content: item.content, order: orderOfItem};
+    //   console.log("item after: ", item);
+    //   this.finalInstructions.push(item);
+    //   console.log("finalInstructions: ", this.finalInstructions);
+    // });
+      
   }
 
   ngOnInit(): void {
-    this.instructions2.forEach(function(item, index) {
+    console.log("final Instructions: ", this.finalInstructions)
+    this.instructions2.forEach((item, index) => {
+      console.log("finalInstructions before: ", this.finalInstructions);
       console.log("item before: ", item);
       let orderOfItem = index;
       console.log("order: ", orderOfItem);
@@ -76,6 +89,10 @@ export class InputRecipeComponent implements OnInit {
       console.log("item after: ", item);
       this.finalInstructions.push(item);
       console.log("finalInstructions: ", this.finalInstructions);
+    })
+    this.instructions2.map((item, index) => {
+      item = {content: item.content, order: index};
+      console.log("map item: ", item);
     })
   }
 

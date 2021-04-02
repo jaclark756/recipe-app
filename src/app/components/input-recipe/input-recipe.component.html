@@ -28,6 +28,21 @@
             </mat-autocomplete>
         </mat-form-field>
 
+        <mat-chip-list
+            class="example-chip mat-chip-list-stacked"
+            cdkDropList 
+            
+            (cdkDropListDropped)="drop($event)">
+            <mat-chip
+                class="ordered-chips example-box"
+                cdkDrag
+                *ngFor="let instruction of instructions2">
+                {{instruction.content}}
+            </mat-chip>
+        </mat-chip-list>
+
+        <app-button [label]="'Instructions2'" (clickEvent)="getInstructions($event)" [class]="'done-button'"></app-button>
+
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="ingredients">Ingredients</mat-label>
             <textarea matInput type="text" formControlName="ingredients" required></textarea>

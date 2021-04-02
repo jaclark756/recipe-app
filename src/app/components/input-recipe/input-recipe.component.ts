@@ -11,7 +11,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { startWith, map } from 'rxjs/operators';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import { isObject } from 'util';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -31,7 +31,12 @@ export class InputRecipeComponent implements OnInit {
   currentUser: any;
   Ingredients: Ingredient[];
   Instructions: Instruction[];
-  instructions2: Instruction[] = [{content: 'first instruction'}];
+  instructions2: Instruction[] = [
+    {content: 'first instruction'}, 
+    {content: 'second instruction'},
+    {content: 'third instruction'},
+    {content: 'djfldajfldajslfkjdlkfjdslkjfldksjflkdsjalfkjdslkfdskhfkdshfkjhdskjafhkjdshfkjsdhaihichjsbjbiweubiuebwiubcidubciubewiubdskjfhkdjshafkjadhsfkjdhsafkfjdskfsdjfdksjfl'}
+  ];
   finalInstructions: Instruction[] = [{content: 'instruction'}];
   categories: Category[] = [{'name': 'Breakfast'}, {'name': 'Gluten Free'}];
   allCategories: Category[] = [{'name': 'Lunch'}, {'name': 'Dinner'}, {'name': 'Dessert'}];
@@ -79,21 +84,22 @@ export class InputRecipeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("final Instructions: ", this.finalInstructions)
-    this.instructions2.forEach((item, index) => {
-      console.log("finalInstructions before: ", this.finalInstructions);
-      console.log("item before: ", item);
-      let orderOfItem = index;
-      console.log("order: ", orderOfItem);
-      item = {content: item.content, order: orderOfItem};
-      console.log("item after: ", item);
-      this.finalInstructions.push(item);
-      console.log("finalInstructions: ", this.finalInstructions);
-    })
-    this.instructions2.map((item, index) => {
-      item = {content: item.content, order: index};
-      console.log("map item: ", item);
-    })
+    // console.log("final Instructions: ", this.finalInstructions)
+    // this.instructions2.forEach((item, index) => {
+    //   console.log("finalInstructions before: ", this.finalInstructions);
+    //   console.log("item before: ", item);
+    //   let orderOfItem = index;
+    //   console.log("order: ", orderOfItem);
+    //   item = {content: item.content, order: orderOfItem};
+    //   console.log("item after: ", item);
+    //   this.finalInstructions.push(item);
+    //   console.log("finalInstructions: ", this.finalInstructions);
+    // })
+    let newArray = this.instructions2.map((item, index) => {
+      return item = {content: item.content, order: index};
+      // console.log("map item: ", item);
+    });
+    console.log("newArray: ", newArray);
   }
 
     // NEW ADDRECIPE 
@@ -112,6 +118,14 @@ export class InputRecipeComponent implements OnInit {
         }
         this.recipeService.addRecipe(recipe);
       }
+    }
+
+    drop(event: CdkDragDrop<Instruction[]>) {
+      moveItemInArray(this.instructions2, event.previousIndex, event.currentIndex);
+    }
+
+    getInstructions(event) {
+      console.log("instructions2: ", this.instructions2);
     }
 
     addInstruction(event) { 

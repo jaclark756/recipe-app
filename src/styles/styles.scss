@@ -197,3 +197,11 @@ textarea::placeholder {
   padding: 5px 5px 0px;
 }
 /*End Form Styling*/
+
+.ordered-chips {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: 90%;
+  height: auto !important;
+  overflow-wrap: break-word !important;
+}

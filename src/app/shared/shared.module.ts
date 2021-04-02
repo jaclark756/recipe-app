@@ -26,6 +26,7 @@ import { SearchDialogComponent } from './components/search-dialog/search-dialog.
 import { CollectionCardComponent } from './components/collection-card/collection-card.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -57,7 +58,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatDialogModule,
     MatInputModule,
     MatTooltipModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    DragDropModule
   ],
   exports: [
     HeaderComponent,
@@ -83,7 +85,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     FlexLayoutModule,
     CollectionCardComponent,
     MatTooltipModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    DragDropModule
   ],
   providers: [
     SnackbarService

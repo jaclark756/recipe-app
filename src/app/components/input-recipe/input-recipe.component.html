@@ -31,14 +31,14 @@
         <mat-chip-list
             class="example-chip mat-chip-list-stacked"
             cdkDropList 
-            
             (cdkDropListDropped)="drop($event)">
-            <mat-chip
-                class="ordered-chips example-box"
-                cdkDrag
-                *ngFor="let instruction of instructions2">
-                {{instruction.content}}
-            </mat-chip>
+            <div cdkDrag style="width: 100%;" *ngFor="let instruction of instructions2">
+                <mat-icon>menu</mat-icon>
+                <span>{{instruction.order + 1}}</span>
+                <mat-chip class="ordered-chips example-box">
+                    &nbsp;&nbsp;{{instruction.content}}
+                </mat-chip>
+            </div>
         </mat-chip-list>
 
         <app-button [label]="'Instructions2'" (clickEvent)="getInstructions($event)" [class]="'done-button'"></app-button>

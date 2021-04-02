@@ -12,6 +12,7 @@ import { startWith, map } from 'rxjs/operators';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { newArray } from '@angular/compiler/src/util';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class InputRecipeComponent implements OnInit {
     {content: 'third instruction'},
     {content: 'djfldajfldajslfkjdlkfjdslkjfldksjflkdsjalfkjdslkfdskhfkdshfkjhdskjafhkjdshfkjsdhaihichjsbjbiweubiuebwiubcidubciubewiubdskjfhkdjshafkjadhsfkjdhsafkfjdskfsdjfdksjfl'}
   ];
-  finalInstructions: Instruction[] = [{content: 'instruction'}];
+  finalInstructions: Instruction[];
   categories: Category[] = [{'name': 'Breakfast'}, {'name': 'Gluten Free'}];
   allCategories: Category[] = [{'name': 'Lunch'}, {'name': 'Dinner'}, {'name': 'Dessert'}];
   filteredCategories: Observable<Category[]>;
@@ -95,11 +96,11 @@ export class InputRecipeComponent implements OnInit {
     //   this.finalInstructions.push(item);
     //   console.log("finalInstructions: ", this.finalInstructions);
     // })
-    let newArray = this.instructions2.map((item, index) => {
+    this.instructions2 = this.instructions2.map((item, index) => {
       return item = {content: item.content, order: index};
       // console.log("map item: ", item);
     });
-    console.log("newArray: ", newArray);
+    console.log("instructions2 before: ", this.instructions2);
   }
 
     // NEW ADDRECIPE 
@@ -122,10 +123,14 @@ export class InputRecipeComponent implements OnInit {
 
     drop(event: CdkDragDrop<Instruction[]>) {
       moveItemInArray(this.instructions2, event.previousIndex, event.currentIndex);
+      this.instructions2 = this.instructions2.map((item, index) => {
+        return item = {content: item.content, order: index};
+        // console.log("map item: ", item);
+      });
     }
 
     getInstructions(event) {
-      console.log("instructions2: ", this.instructions2);
+      console.log("instructions2 now: ", this.instructions2);
     }
 
     addInstruction(event) { 

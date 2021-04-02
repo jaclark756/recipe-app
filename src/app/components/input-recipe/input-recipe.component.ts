@@ -129,6 +129,14 @@ export class InputRecipeComponent implements OnInit {
       this.newRecipe.controls.instruction2Control.reset();
     }
 
+    removeInstruction2(selectedInstruction: Instruction) {
+      this.instructions2 = this.instructions2.filter(instruction => selectedInstruction !== instruction);
+      this.instructions2 = this.instructions2.map((item, index) => {
+        return item = {content: item.content, order: index};
+        // console.log("map item: ", item);
+      });
+    }
+
     drop(event: CdkDragDrop<Instruction[]>) {
       moveItemInArray(this.instructions2, event.previousIndex, event.currentIndex);
       this.instructions2 = this.instructions2.map((item, index) => {

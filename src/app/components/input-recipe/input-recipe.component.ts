@@ -1,4 +1,4 @@
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
@@ -32,12 +32,17 @@ export class InputRecipeComponent implements OnInit {
   // instructions: FormArray;
   currentUser: any;
   Ingredients: Ingredient[];
+  ingredientsFromGroup: FormGroup;
+  ingredients2: Ingredient[] = [];
+  ingredientContent: string;
+  ingredientQuantity: number;
+  ingredientMeasure: string;
   Instructions: Instruction[];
   instructions2: Instruction[] = [
     {content: 'first instruction'}, 
     {content: 'second instruction'},
     {content: 'third instruction'},
-    {content: 'djfldajfldajslfkjdlkfjdslkjfldksjflkdsjalfkjdslkfdskhfkdshfkjhdskjafhkjdshfkjsdhaihichjsbjbiweubiuebwiubcidubciubewiubdskjfhkdjshafkjadhsfkjdhsafkfjdskfsdjfdksjfl'}
+    {content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}
   ];
   finalInstructions: Instruction[];
   categories: Category[] = [{'name': 'Breakfast'}, {'name': 'Gluten Free'}];
@@ -46,6 +51,7 @@ export class InputRecipeComponent implements OnInit {
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  @ViewChild('ingredientsFromGroup') private formDirective: NgForm;
 
   constructor(
     public recipeService: RecipeService,
@@ -58,6 +64,11 @@ export class InputRecipeComponent implements OnInit {
     // this.instructions = this.formbuilder.array([
     //   new FormControl('', Validators.required)
     // ])
+    this.ingredientsFromGroup = this.formbuilder.group ({
+      ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),
+      ingredient2MeasureControl: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+    })
 
     this.newRecipe = this.formbuilder.group({
       ingredients: new FormControl('', Validators.required),
@@ -135,6 +146,38 @@ export class InputRecipeComponent implements OnInit {
         return item = {content: item.content, order: index};
         // console.log("map item: ", item);
       });
+    }
+
+    addIngredients(event, formDirective: FormGroupDirective) {
+      if (this.ingredientsFromGroup.valid){
+        console.log(this.ingredientsFromGroup.controls.ingredient2ContentControl.value);
+        console.log(this.ingredientsFromGroup.controls.ingredient2QuantityControl.value);
+        console.log(this.ingredientsFromGroup.controls.ingredient2MeasureControl.value);
+        this.ingredients2.push({
+          content: this.ingredientsFromGroup.controls.ingredient2ContentControl.value,
+          quantity: this.ingredientsFromGroup.controls.ingredient2QuantityControl.value, 
+          measure: this.ingredientsFromGroup.controls.ingredient2MeasureControl.value
+        });
+        console.log(this.ingredients2);
+        // formDirective.resetForm();
+        this.ingredientsFromGroup.reset();
+        this.formDirective.resetForm('');
+        this.ingredientsFromGroup.markAsPristine();
+        this.ingredientsFromGroup.markAsUntouched();
+        // this.ingredientsFromGroup.reset();
+        this.ingredientsFromGroup.updateValueAndValidity();
+        // Object.keys(this.ingredientsFromGroup.controls).forEach(key => {
+        //   this.ingredientsFromGroup.get(key).setErrors(null);
+        // })        
+        // this.ingredientsFromGroup.controls.ingredient2ContentControl.reset();
+        // this.ingredientsFromGroup.controls.ingredient2QuantityControl.reset();
+        // this.ingredientsFromGroup.controls.ingredient2MeasureControl.reset();
+      }
+      
+    }
+
+    removeIngredients(selectedIngredient: Ingredient) {
+      this.ingredients2 = this.ingredients2.filter(ingredient => selectedIngredient !== ingredient);
     }
 
     drop(event: CdkDragDrop<Instruction[]>) {

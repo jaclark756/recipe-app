@@ -19,3 +19,22 @@
     width: 15px;
     padding: 0 0 2px 5px;
 }
+.ingredients-container {
+  display: flex;
+  justify-content: space-between;
+}
+.ingredient-name {
+  width: 50%;
+}
+.ingredient-quantity {
+  width: 15%;
+}
+.ingredient-measure {
+  width: 22%;
+}
+.ingredient-add {
+  top: 10px;
+}
+.ingredients-entered {
+  width: 100%;
+}

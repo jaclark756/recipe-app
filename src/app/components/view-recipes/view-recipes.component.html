@@ -1,18 +1,24 @@
-<!-- Recipe Image goes here -->
-<img src="{{recipe?.photoUrl}}">
-<h1>{{recipe?.title}}</h1>
-<h2>Prep Time: {{recipe?.prepTime}}min</h2>
-<h2>Cook Time: {{recipe?.cookTime}}Min</h2>
+<div class="flex-container">
+    <img src="{{recipe?.photoUrl}}">
 
-<h3>Ingredients</h3>
-<mat-list *ngFor="let ingredient of ingredients" id="ingredients">
-    <!-- Loop for Ingredient list-->
-    <mat-list-item >{{ingredient}}</mat-list-item>
+    <div class="recipeInfo">
+        <h1>{{recipe?.title}}</h1>
+        <h2>Prep Time: {{recipe?.prepTime}}Min</h2>
+        <h2>Cook Time: {{recipe?.cookTime}}Min</h2>
+    </div>
+    <hr>
+    <div class = "prepareRecipe">
+    <h3>Ingredients</h3>
+    <mat-list *ngFor="let ingredient of ingredients" id="ingredients">
+        <input type="checkbox" id="ingredient" name="ingredient" value="Ingredient">
+        <label for="ingredient">{{ingredient}}</label><br>
+    </mat-list>
+    <hr>
+    <h3>Instructions</h3>
+    <mat-list *ngFor="let instruction of instructions" id="recipe steps">
+        <!-- Loop for Step list-->
+        <mat-list-item>{{instruction}}</mat-list-item>
+    </mat-list>
+    </div>
 
-</mat-list>
-<h3>Instructions</h3>
-<mat-list *ngFor="let instruction of instructions" id="recipe steps">
-    <!-- Loop for Step list-->
-    <mat-list-item>{{instruction}}</mat-list-item>
-
-</mat-list>
+</div>

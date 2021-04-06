@@ -233,6 +233,8 @@ input::placeholder {
 .mat-chip.mat-standard-chip {
   background-color: $teal !important;
   color: $white !important;
+  border: $mint 1px solid;
+  margin: 2px;
 }
 
 .mat-chip {
@@ -246,6 +248,5 @@ input::placeholder {
 
 .dialog-container .mat-dialog-container {
   background-color: $black;
-  box-shadow: 0px 0px 12px #f5f5f5;
-  border: $mint 1px solid;
+  box-shadow: 0px 0px 30px #f5f5f5;
 }

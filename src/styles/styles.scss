@@ -66,8 +66,9 @@ h5 {
 
 /*use this style of button for end of process actions*/
 .done-button {
-  background-color: $teal !important;
-  color: $powder !important;
+  background-color: $mint !important;
+  color: $black !important;
+  float: right;
 }
 
 /*use this button for secondary actions (edit, back, change, etc.)*/
@@ -108,11 +109,10 @@ h5 {
 /*Form Styling*/
 .form-container {
   width: 35em;
-  border: 1px solid $powder;
   border-radius: 5px;
   padding: 15px;
   margin: auto;
-  background-color: $teal;
+  background-color: $black;
 }
 
 .form-input {
@@ -125,26 +125,26 @@ h5 {
 // ::ng-deep
 .mat-form-field {
   .mat-input-element {
-    color: $black;
-    caret-color: $metal !important;
+    color: $powder;
+    caret-color: $white !important;
   }
   .mat-form-field-label {
     color: grey;
   }
   .mat-form-field-underline::before {
-    background-color: $metal !important;
+    background-color: $teal !important;
   }
   .mat-form-field-underline {
-    background-color: $metal !important;
+    background-color: $teal !important;
   }
   .mat-form-field-ripple {
-    background-color: $metal !important;
+    background-color: $mint !important;
   }
   .mat-form-field-required-marker {
-    color: $metal !important;
+    color: $watermelon !important;
   }
   .mat-form-field-flex {
-    background-color: $powder;
+    background-color: $onyx;
   }
   .mat-form-field-empty {
     color: grey !important;
@@ -182,19 +182,43 @@ h5 {
     background-color: $metal;
   }
   .mat-input-element {
-    color: $black;
-    caret-color: $onyx;
+    color: $powder;
+    caret-color: $white;
   }
 }
 
+.mat-autocomplete-trigger::placeholder {
+  color: grey !important;
+}
+
 textarea::placeholder {
-  color: $onyx !important;
+  color: grey !important;
+}
+
+input::placeholder {
+  color: grey !important;
 }
 
 .mat-form-field-flex {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   padding: 5px 5px 0px;
+}
+
+.mat-option {
+  background-color: $onyx;
+}
+
+.mat-option:hover {
+  background-color: $jet !important;
+}
+
+.mat-option:active {
+  background-color: $jet !important;
+}
+
+.mat-option > * {
+  color: $powder;
 }
 /*End Form Styling*/
 
@@ -204,4 +228,24 @@ textarea::placeholder {
   max-width: 80%;
   height: auto !important;
   overflow-wrap: break-word !important;
+}
+
+.mat-chip.mat-standard-chip {
+  background-color: $teal !important;
+  color: $white !important;
+}
+
+.mat-chip {
+  font-size: 16px !important;
+}
+
+/* Mat Dialog for Input Recipe */
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.87);
+}
+
+.dialog-container .mat-dialog-container {
+  background-color: $black;
+  box-shadow: 0px 0px 12px #f5f5f5;
+  border: $mint 1px solid;
 }

@@ -1,3 +1,4 @@
+@import "../../../styles/theme.scss";
 .example-box.cdk-drag-animating {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
     width: 80%;
@@ -37,4 +38,17 @@
 }
 .ingredients-entered {
   width: 100%;
+}
+.cook-prep-container {
+  display: flex;
+  justify-content: space-between;
+}
+.cook-input {
+  width: 48%;
+}
+.prep-input {
+  width: 48%;
+}
+.recipe-form-button {
+  float: right;
 }

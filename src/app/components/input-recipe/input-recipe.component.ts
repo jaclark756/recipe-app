@@ -150,30 +150,17 @@ export class InputRecipeComponent implements OnInit {
 
     addIngredients(event, formDirective: FormGroupDirective) {
       if (this.ingredientsFromGroup.valid){
-        console.log(this.ingredientsFromGroup.controls.ingredient2ContentControl.value);
-        console.log(this.ingredientsFromGroup.controls.ingredient2QuantityControl.value);
-        console.log(this.ingredientsFromGroup.controls.ingredient2MeasureControl.value);
         this.ingredients2.push({
           content: this.ingredientsFromGroup.controls.ingredient2ContentControl.value,
           quantity: this.ingredientsFromGroup.controls.ingredient2QuantityControl.value, 
           measure: this.ingredientsFromGroup.controls.ingredient2MeasureControl.value
         });
-        console.log(this.ingredients2);
-        // formDirective.resetForm();
         this.ingredientsFromGroup.reset();
-        this.formDirective.resetForm('');
-        this.ingredientsFromGroup.markAsPristine();
-        this.ingredientsFromGroup.markAsUntouched();
-        // this.ingredientsFromGroup.reset();
-        this.ingredientsFromGroup.updateValueAndValidity();
-        // Object.keys(this.ingredientsFromGroup.controls).forEach(key => {
-        //   this.ingredientsFromGroup.get(key).setErrors(null);
-        // })        
-        // this.ingredientsFromGroup.controls.ingredient2ContentControl.reset();
-        // this.ingredientsFromGroup.controls.ingredient2QuantityControl.reset();
-        // this.ingredientsFromGroup.controls.ingredient2MeasureControl.reset();
       }
-      
+      this.formDirective.resetForm('');
+      this.ingredientsFromGroup.markAsPristine();
+      this.ingredientsFromGroup.markAsUntouched();
+      this.ingredientsFromGroup.updateValueAndValidity();    
     }
 
     removeIngredients(selectedIngredient: Ingredient) {

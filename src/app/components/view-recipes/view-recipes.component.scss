@@ -33,4 +33,21 @@ hr{
   width: 85%;
 }
 
+.edit {
+  display:flex !important;
+  justify-content: center !important;
+}
+
+::ng-deep .mat-fab {
+  margin: 10px !important;
+  text-align: center !important;
+}
+
+::ng-deep .mat-icon {
+  font-size: 30px;
+  margin: -2px 5.5px 10px 0;
+}
+
+
+
 

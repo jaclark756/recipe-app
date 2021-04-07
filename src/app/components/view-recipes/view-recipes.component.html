@@ -1,5 +1,19 @@
 <div class="flex-container">
     <img src="{{recipe?.photoUrl}}">
+    <div class="edit"> 
+        <button mat-fab>
+            <mat-icon class="c-onyx">thumb_up_alt</mat-icon>
+          </button>
+          <button mat-fab>
+            <mat-icon class="c-onyx">restaurant_menu</mat-icon>
+          </button>
+          <button mat-fab>
+            <mat-icon class="c-onyx">bookmark</mat-icon>
+          </button>
+          <button mat-fab>
+            <mat-icon class="c-onyx">edit</mat-icon>
+          </button>
+    </div>
 
     <div class="recipeInfo">
         <h1>{{recipe?.title}}</h1>
@@ -14,7 +28,7 @@
         <input type="checkbox" id="ingredient" name="ingredient" value="Ingredient">
         <label for="ingredient">{{ingredient}}</label><br>
     </mat-list>
-    <app-button [label]="'Add Selected to Shopping List'" (clickEvent)="($event)" [class]="'edit-button'"></app-button>
+    <app-button [label]="'Add Selected to Shopping List'" (clickEvent)="($event)" [class]="'shopping-button'"></app-button>
     <hr>
     <h3>Instructions</h3>
     <mat-list *ngFor="let instruction of instructions" id="recipe-steps">

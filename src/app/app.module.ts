@@ -24,6 +24,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
+import { CollectionsComponent } from './components/collections/collections.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { RouterModule } from '@angular/router';
     RegisterComponent,
     WelcomeComponent,
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
+    CollectionsComponent
   ],
   imports: [
     AppRoutingModule,

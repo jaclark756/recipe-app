@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RECIPES } from 'src/app/helpers/sample-data';
+import { MatDialog } from '@angular/material/dialog';
+import { CollectionsComponent } from 'src/app/components/collections/collections.component';
 
 
 
@@ -10,10 +12,14 @@ import { RECIPES } from 'src/app/helpers/sample-data';
 })
 export class ProfileComponent implements OnInit {
 
+  collections = CollectionsComponent;
   sample_recipes = RECIPES;
 
-  constructor() { }
+  constructor(public dialog:MatDialog) { }
 
+  openDialog(comp){
+    this.dialog.open(comp);
+  }
   ngOnInit(): void {
   }
 

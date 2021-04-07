@@ -53,6 +53,7 @@ export class WelcomeComponent implements OnInit {
       this.tokenService.saveToken(token);
       this.userService.getCurrentUser().subscribe((data: any) => {
         this.currentUser = data;
+        this.tokenService.saveUser(data);
         if (!data.enabled){
           this.dialog.open(RegisterComponent, config);
         } else {

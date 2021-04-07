@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { User } from 'src/app/types/user';
@@ -16,19 +17,22 @@ export class SettingsComponent implements OnInit {
   followersChecked = true;
   likesChecked = true;
   recipeChecked = true;
+  user: any;
   editProfile: FormGroup;
   
   constructor(
     public fb: FormBuilder,
     public snackbar: SnackbarService,
+    public tokenService: TokenService,
     public userService: UserService) {
       userService.getCurrentUser().subscribe((user: any) => this.activeUser = user);
       this.editProfile = this.fb.group({
-        displayname: new FormControl('Test Name', [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
+        displayname: new FormControl("{{user.username?}}", [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
       })
      }
 
   ngOnInit(): void {
+    this.user = this.tokenService.getUser();
   }
 
   updateProfile() {

@@ -134,6 +134,7 @@ export class InputRecipeComponent implements OnInit {
       }
     }
 
+    //// START Instruction Logic ////
     addInstruction2(event) {
       console.log(this.newRecipe.controls.instruction2Control.value);
       this.instructions2.push({content: this.newRecipe.controls.instruction2Control.value, order: this.instructions2.length});
@@ -148,6 +149,18 @@ export class InputRecipeComponent implements OnInit {
       });
     }
 
+    drop(event: CdkDragDrop<Instruction[]>) {
+      moveItemInArray(this.instructions2, event.previousIndex, event.currentIndex);
+      this.instructions2 = this.instructions2.map((item, index) => {
+        return item = {content: item.content, order: index};
+        // console.log("map item: ", item);
+      });
+    }
+
+  //// END Instruction Logic ////
+
+
+  //// START Ingredient Logic ////
     addIngredients(event, formDirective: FormGroupDirective) {
       if (this.ingredientsFromGroup.valid){
         this.ingredients2.push({
@@ -166,15 +179,9 @@ export class InputRecipeComponent implements OnInit {
     removeIngredients(selectedIngredient: Ingredient) {
       this.ingredients2 = this.ingredients2.filter(ingredient => selectedIngredient !== ingredient);
     }
-
-    drop(event: CdkDragDrop<Instruction[]>) {
-      moveItemInArray(this.instructions2, event.previousIndex, event.currentIndex);
-      this.instructions2 = this.instructions2.map((item, index) => {
-        return item = {content: item.content, order: index};
-        // console.log("map item: ", item);
-      });
-    }
-
+    //// END Ingredient Logic ////
+    
+    
     getInstructions(event) {
       console.log("instructions2 now: ", this.instructions2);
     }
@@ -188,6 +195,8 @@ export class InputRecipeComponent implements OnInit {
       // form array loop has index, need to have button next to form field that passes in the index from loop and uses it to remove form control from the form array
     }
 
+
+    //// START Category Input Logic ////
     add(event: MatChipInputEvent): void {
       const input = event.input;
       const value = event.value;
@@ -220,5 +229,6 @@ export class InputRecipeComponent implements OnInit {
         return this.allCategories.filter(category => category.name.toLowerCase().indexOf(filterValue) === 0);
       }
     }
+    //// END Category Input Logic ////
   
 }

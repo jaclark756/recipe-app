@@ -43,10 +43,10 @@
             <div cdkDrag class="ordered-chips-container" *ngFor="let instruction of instructions2">
                 <mat-icon class="c-white">menu</mat-icon>
                 <span class="c-white instruction-number">{{instruction.order + 1}}</span>
-                <mat-chip class="ordered-chips example-box">
+                <mat-chip class="ordered-chips instruction-chip">
                     {{instruction.content}}
                 </mat-chip>
-                <mat-icon (click)="removeInstruction2(instruction)" class="c-white">close</mat-icon>
+                <mat-icon (click)="removeInstruction2(instruction)" class="c-white instruction-close">close</mat-icon>
             </div>
         </mat-chip-list>
         <!-- <app-button [label]="'Instructions2'" (clickEvent)="getInstructions($event)" [class]="'done-button'"></app-button> -->

@@ -224,17 +224,24 @@ input::placeholder {
 
 .ordered-chips {
   display: inline-block !important;
-  width: auto !important;
-  max-width: 80%;
+  margin: 0px 6px 5px;
   height: auto !important;
   overflow-wrap: break-word !important;
+}
+
+.mat-chip-list-stacked.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  // width: 83.5% !important;
+}
+.mat-chip-list-stacked.cdk-drop-list-dragging {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  // width: 83.5% !important;
 }
 
 .mat-chip.mat-standard-chip {
   background-color: $teal !important;
   color: $white !important;
   border: $mint 1px solid;
-  margin: 2px;
 }
 
 .mat-chip {

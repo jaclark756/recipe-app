@@ -2,8 +2,3 @@
     <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
     </app-recipe-card-tile>
 </div>
-<div class="add-recipe-container">
-    <button (click)="addRecipe()" mat-icon-button matSuffix [attr.aria-label]="'Add Recipe'">
-        <mat-icon class="c-white">add_circle</mat-icon>
-    </button>
-</div>

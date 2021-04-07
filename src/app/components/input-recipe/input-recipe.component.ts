@@ -2,7 +2,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormGroupDi
 import { RecipeService } from 'src/app/services/recipe.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Ingredient } from 'src/app/types/ingredient';
 import { Instruction } from 'src/app/types/instruction';
 import { Category } from 'src/app/types/category';

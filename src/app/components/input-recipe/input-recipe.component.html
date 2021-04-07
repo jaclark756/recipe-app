@@ -13,15 +13,15 @@
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
               </mat-chip>
               <input
-                placeholder="New fruit..."
-                #fruitInput
+                placeholder="Add Category..."
+                #categoryInput
                 [formControl]="categoryControl"
                 [matAutocomplete]="auto"
                 [matChipInputFor]="chipList"
                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                 (matChipInputTokenEnd)="add($event)">
             </mat-chip-list>
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" [displayWith]="displayFn">
               <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
                 {{category.name}}
               </mat-option>
@@ -126,5 +126,5 @@
         </div>
     </form>
 
-    <app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" class="done-button"></app-button>
+    <app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" class="done-button input-recipe-button"></app-button>
 </div>

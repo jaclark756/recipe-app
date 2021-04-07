@@ -47,6 +47,7 @@ export class InputRecipeComponent implements OnInit {
   finalInstructions: Instruction[];
   categories: Category[] = [{'name': 'Breakfast'}, {'name': 'Gluten Free'}];
   allCategories: Category[] = [{'name': 'Lunch'}, {'name': 'Dinner'}, {'name': 'Dessert'}];
+  allCategoriesString: string[] = ['Lunch', 'Dinner', 'Dessert']
   filteredCategories: Observable<Category[]>;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>;
@@ -60,16 +61,11 @@ export class InputRecipeComponent implements OnInit {
     public tokenService: TokenService
   ) {
     this.currentUser = this.tokenService.getUser();
-
-    // this.instructions = this.formbuilder.array([
-    //   new FormControl('', Validators.required)
-    // ])
     this.ingredientsFromGroup = this.formbuilder.group ({
       ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),
       ingredient2MeasureControl: new FormControl('', [Validators.required, Validators.maxLength(15)]),
     })
-
     this.newRecipe = this.formbuilder.group({
       ingredients: new FormControl('', Validators.required),
       instructions: new FormArray([
@@ -81,39 +77,18 @@ export class InputRecipeComponent implements OnInit {
       cookTime: new FormControl('', [Validators.required, Validators.min(0)]),
       prepTime: new FormControl('', [Validators.required, Validators.min(0)])
     })
-    this.filteredCategories = this.categoryControl.valueChanges.pipe(
-      startWith(null),
-      map((category: string | null) => category ? this._filter(category) : this.allCategories.slice()));
-    
-    // this.instructions2.forEach(function(item, index) {
-    //   console.log("item before: ", item);
-    //   let orderOfItem = index;
-    //   console.log("order: ", orderOfItem);
-    //   item = {content: item.content, order: orderOfItem};
-    //   console.log("item after: ", item);
-    //   this.finalInstructions.push(item);
-    //   console.log("finalInstructions: ", this.finalInstructions);
-    // });
-      
   }
 
   ngOnInit(): void {
-    // console.log("final Instructions: ", this.finalInstructions)
-    // this.instructions2.forEach((item, index) => {
-    //   console.log("finalInstructions before: ", this.finalInstructions);
-    //   console.log("item before: ", item);
-    //   let orderOfItem = index;
-    //   console.log("order: ", orderOfItem);
-    //   item = {content: item.content, order: orderOfItem};
-    //   console.log("item after: ", item);
-    //   this.finalInstructions.push(item);
-    //   console.log("finalInstructions: ", this.finalInstructions);
-    // })
     this.instructions2 = this.instructions2.map((item, index) => {
       return item = {content: item.content, order: index};
-      // console.log("map item: ", item);
     });
-    console.log("instructions2 before: ", this.instructions2);
+    this.filteredCategories = this.categoryControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => typeof value === 'string' ? value : value.name),
+        map(name => name ? this._filter(name) : this.allCategories.slice())
+      );
   }
 
     // NEW ADDRECIPE 
@@ -198,19 +173,6 @@ export class InputRecipeComponent implements OnInit {
 
     //// START Category Input Logic ////
     add(event: MatChipInputEvent): void {
-      const input = event.input;
-      const value = event.value;
-  
-      // Add our fruit
-      if ((value || '').trim()) {
-        this.categories.push({name: value.trim()});
-      }
-        // Reset the input value
-      if (input) {
-        input.value = '';
-      }
-
-      this.categoryControl.setValue(null);
     }
 
     remove(categoryName: Category): void {
@@ -219,15 +181,17 @@ export class InputRecipeComponent implements OnInit {
 
     selected(event: MatAutocompleteSelectedEvent): void {
       this.categories.push({name: event.option.viewValue});
-
+      this.categoryInput.nativeElement.value = '';
       this.categoryControl.setValue(null);
     }
 
-    private _filter(value: string | Object): Category[] {
-      if (value && value instanceof String) {
-        const filterValue = (<string>value).toLowerCase();
-        return this.allCategories.filter(category => category.name.toLowerCase().indexOf(filterValue) === 0);
-      }
+    displayFn(category: Category): string {
+      return category && category.name ? category.name : '';
+    }
+
+    private _filter(value: string): Category[] {
+      const filterValue = value.toLowerCase();
+      return this.allCategories.filter(category => category.name.toLowerCase().indexOf(filterValue) === 0);
     }
     //// END Category Input Logic ////
   

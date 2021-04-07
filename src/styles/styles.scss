@@ -107,17 +107,6 @@ h5 {
 }
 
 /*Form Styling*/
-.form-container {
-  width: 35em;
-  border-radius: 5px;
-  padding: 15px;
-  margin: auto;
-  background-color: $black;
-}
-
-.form-input {
-  width: 100%;
-}
 
 // Do not need ::ng-deep when placing these overrides in global stylesheet.
 //    -> global meaning that this stylesheet is defined in angular.json
@@ -217,11 +206,44 @@ input::placeholder {
   background-color: $jet !important;
 }
 
+.mat-option.mat-selected[_ngcontent-cqo-c120]:not(.mat-option-multiple):not(.mat-option-disabled) {
+  background: $jet !important;
+}
+.mat-option.mat-selected[_ngcontent-ile-c120]:not(.mat-option-multiple):not(.mat-option-disabled) {
+  background: $jet !important;
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: $jet !important;
+}
+.mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover) {
+  background: $jet !important;
+}
 .mat-option > * {
   color: $powder;
 }
-/*End Form Styling*/
 
+/*End Form Styling*/
+.mat-chip-list-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -4px;
+  margin-top: -4px;
+  margin-right: -4px;
+  margin-bottom: -4px;
+  margin-left: -4px;
+}
+.mat-chip-list-wrapper {
+  margin: 0px !important;
+}
 .ordered-chips {
   display: inline-block !important;
   margin: 0px 6px 5px;
@@ -241,11 +263,12 @@ input::placeholder {
 .mat-chip.mat-standard-chip {
   background-color: $teal !important;
   color: $white !important;
-  border: $mint 1px solid;
+  border: $mint 2px solid;
 }
 
 .mat-chip {
   font-size: 16px !important;
+  padding: 8px !important;
 }
 
 /* Mat Dialog for Input Recipe */
@@ -255,5 +278,30 @@ input::placeholder {
 
 .dialog-container .mat-dialog-container {
   background-color: $black;
-  box-shadow: 0px 0px 30px #f5f5f5;
+  box-shadow: 0px 0px 40px grey;
+  max-height: 90vh;
+  overflow: auto;
+  padding-bottom: 20px;
+  width: 80vh;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .dialog-container .mat-dialog-container {
+    width: 100vh;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .dialog-container .mat-dialog-container {
+    width: 100vh;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .dialog-container .mat-dialog-container {
+    width: 80vh;
+  }
 }

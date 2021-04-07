@@ -1,7 +1,16 @@
 @import "../../../styles/theme.scss";
+.form-container {
+  border-radius: 5px;
+  padding: 15px 5px 50px 5px;
+  margin: auto;
+  background-color: $black;
+}
+.form-input {
+  width: 100%;
+}
 .instruction-chip {
     margin: 7px !important;
-    width: 83.5% !important;
+    width: 83% !important;
 }
 .ordered-chips-container {
     width: 100%;
@@ -50,6 +59,10 @@
 .prep-input {
   width: 48%;
 }
-.recipe-form-button {
-  float: right;
-}
+
+
+// /* Medium devices (landscape tablets, 768px and up) */
+// @media only screen and (min-width: 768px) {...}
+
+// /* Large devices (laptops/desktops, 992px and up) */
+// @media only screen and (min-width: 992px) {...}

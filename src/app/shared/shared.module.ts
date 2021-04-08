@@ -27,6 +27,9 @@ import { CollectionCardComponent } from './components/collection-card/collection
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatBadgeModule} from '@angular/material/badge';
+
 
 
 
@@ -59,7 +62,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatInputModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    DragDropModule
+    DragDropModule,
+    MatMenuModule,
+    MatBadgeModule
   ],
   exports: [
     HeaderComponent,
@@ -86,7 +91,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     CollectionCardComponent,
     MatTooltipModule,
     MatAutocompleteModule,
-    DragDropModule
+    DragDropModule,
+    MatMenuModule,
+    MatBadgeModule
   ],
   providers: [
     SnackbarService

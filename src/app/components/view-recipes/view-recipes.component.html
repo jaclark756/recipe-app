@@ -32,7 +32,7 @@
     <div class="ingContainer">
       <mat-list>
         <mat-list-item>
-          <mat-checkbox>Freshly cut grass</mat-checkbox>
+          <mat-checkbox color='mint'>Freshly cut grass</mat-checkbox>
         </mat-list-item>
         <mat-list-item>
           <mat-checkbox>Beetles</mat-checkbox>
@@ -69,16 +69,20 @@
     <hr>
     <h3>Instructions</h3>
     <!-- *ngFor="let instruction of instructions"  -- commented out for later-->
-    <mat-list id="recipe-steps">
+    <div class="instructions-container">
+    <mat-list>
       <!-- Loop for Step list-->
-      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
-      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
-      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
-      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
-      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
-      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
-      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
+      <mat-list-item id="instructions">1. Preheat oven to 700 degrees Kelvin</mat-list-item>
+      <mat-list-item id="instructions">2. Turn on centrifuge at 400rpm</mat-list-item>
+      <mat-list-item id="instructions">3. Slam 3 Redbulls</mat-list-item>
+      <mat-list-item id="instructions">4. Celebrate with a Commit</mat-list-item>
+      <mat-list-item id="instructions">5. Mix all ingredients in a kiddie pool with 17 gallons of water</mat-list-item>
+      <mat-list-item id="instructions">6. Use paverbase tamper to mash everything into small chunks</mat-list-item>
+      <mat-list-item id="instructions">7. Simmer on stove for 20 min</mat-list-item>
+      <mat-list-item id="instructions">8. Let cool for 5 min off stove</mat-list-item>
+      <mat-list-item id="instructions">9. Serve with Parsely garnish</mat-list-item>
     </mat-list>
+  </div>
   </div>
 
 </div>

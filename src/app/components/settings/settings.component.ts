@@ -27,7 +27,7 @@ export class SettingsComponent implements OnInit {
     public userService: UserService) {
       userService.getCurrentUser().subscribe((user: any) => this.activeUser = user);
       this.editProfile = this.fb.group({
-        displayname: new FormControl("{{user.username?}}", [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
+        displayname: new FormControl([Validators.required, Validators.minLength(3), Validators.maxLength(50)])
       })
      }
 
@@ -39,7 +39,6 @@ export class SettingsComponent implements OnInit {
     if (this.editProfile.valid && this.editProfile.dirty) {
       this.snackbar.openSnackBar("Your changes have been saved!")
       // add functionality to update new display name
-
     }
     else {
       this.snackbar.openSnackBar("ERROR: There are no changes to be saved");

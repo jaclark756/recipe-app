@@ -1,40 +1,50 @@
 <div class="flex-container">
-    <img src="{{recipe?.photoUrl}}">
-    <div class="edit"> 
-        <button mat-fab>
-            <mat-icon class="c-onyx">thumb_up_alt</mat-icon>
-          </button>
-          <button mat-fab>
-            <mat-icon class="c-onyx">restaurant_menu</mat-icon>
-          </button>
-          <button mat-fab>
-            <mat-icon class="c-onyx">bookmark</mat-icon>
-          </button>
-          <button mat-fab>
-            <mat-icon class="c-onyx">edit</mat-icon>
-          </button>
-    </div>
+  <img src="{{recipe?.photoUrl}}">
+  <div class="edit">
+    <button mat-fab>
+      <mat-icon class="c-onyx">thumb_up_alt</mat-icon>
+    </button>
+    <button mat-fab>
+      <mat-icon class="c-onyx">restaurant_menu</mat-icon>
+    </button>
+    <button mat-fab>
+      <mat-icon class="c-onyx">bookmark</mat-icon>
+    </button>
+    <button mat-fab>
+      <mat-icon class="c-onyx">edit</mat-icon>
+    </button>
+  </div>
 
-    <div class="recipeInfo">
-        <h1>{{recipe?.title}}</h1>
-        <h2>Prep Time: {{recipe?.prepTime}}Min</h2>
-        <h2>Cook Time: {{recipe?.cookTime}}Min</h2>
-        <h2>Serving Size: xx</h2>
-    </div>
-    <hr>
-    <div class = "prepareRecipe">
+  <div class="recipeInfo">
+    <h1>{{recipe?.title}}</h1>
+    <h2>Prep Time: {{recipe?.prepTime}}Min</h2>
+    <h2>Cook Time: {{recipe?.cookTime}}Min</h2>
+    <h2>Serving Size: xx</h2>
+  </div>
+  <hr>
+  <div class="prepareRecipe">
     <h3>Ingredients</h3>
-    <mat-list class="ingredients" *ngFor="let ingredient of ingredients" id="ingredients">
-        <input type="checkbox" id="ingredient" name="ingredient" value="Ingredient">
-        <label for="ingredient">{{ingredient}}</label><br>
-    </mat-list>
-    <app-button [label]="'Add Selected to Shopping List'" (clickEvent)="($event)" [class]="'shopping-button'"></app-button>
+
+    <!-- *ngFor="let ingredient of ingredients --- this is saved for when we have a real server -->
+    <!-- <input type="checkbox" id="ingredient" name="ingredient" value="Ingredient">
+        <label for="ingredient">{{ingredient}}</label><br> 
+      This is also for later-->
+    <div class="ingContainer">
+      <mat-list class="ingredients" id="ingredients">
+        <mat-list-item>
+          <div>
+            <label for="ingredient"><input type="checkbox" id="ingredient" name="ingredient" value="Ingredient">Asparagus</label>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <app-button [label]="'Add Selected to Shopping List'" (clickEvent)="($event)" [class]="'edit-button'"></app-button>
     <hr>
     <h3>Instructions</h3>
     <mat-list *ngFor="let instruction of instructions" id="recipe-steps">
-        <!-- Loop for Step list-->
-        <mat-list-item id="instructions">{{instruction}}</mat-list-item>
+      <!-- Loop for Step list-->
+      <mat-list-item id="instructions">{{instruction}}</mat-list-item>
     </mat-list>
-    </div>
+  </div>
 
 </div>

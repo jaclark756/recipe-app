@@ -52,6 +52,10 @@ hr{
   color: $powder !important;
 }
 
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: $mint;
+}
+
 .ingContainer {
   display: flex;
   max-height: 250px;

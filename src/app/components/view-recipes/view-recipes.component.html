@@ -30,23 +30,54 @@
         <label for="ingredient">{{ingredient}}</label><br> 
       This is also for later-->
     <div class="ingContainer">
-      <mat-list class="ingredients" id="ingredients">
+      <mat-list>
         <mat-list-item>
-          <div>
-            <label for="ingredient">
-              <input type="checkbox" id="ingredient" name="ingredient" value="Ingredient">
-              Asparagus
-            </label>
-          </div>
+          <mat-checkbox>Freshly cut grass</mat-checkbox>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-checkbox>Beetles</mat-checkbox>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-checkbox>1/2 Tbsp Parsley</mat-checkbox>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-checkbox>Jean Luc Picard's head hair</mat-checkbox>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-checkbox>Weeds</mat-checkbox>
         </mat-list-item>
       </mat-list>
+      <mat-list>
+        <mat-list-item>
+          <mat-checkbox>1 molecule of Uranium</mat-checkbox>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-checkbox>1 Cup Sugar</mat-checkbox>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-checkbox>2 Tspns Crushed Pig hoof</mat-checkbox>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-checkbox>Jordan's latest eyeroll</mat-checkbox>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-checkbox>Cold baked beans</mat-checkbox>
+        </mat-list-item>
+    </mat-list>
     </div>
-    <app-button [label]="'Add Selected to Shopping List'" (clickEvent)="($event)" [class]="'edit-button'"></app-button>
+    <app-button id="shop-button" [label]="'Add Selected to Shopping List'" (clickEvent)="($event)" [class]="'shop-button'"></app-button>
     <hr>
     <h3>Instructions</h3>
-    <mat-list *ngFor="let instruction of instructions" id="recipe-steps">
+    <!-- *ngFor="let instruction of instructions"  -- commented out for later-->
+    <mat-list id="recipe-steps">
       <!-- Loop for Step list-->
-      <mat-list-item id="instructions">{{instruction}}</mat-list-item>
+      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
+      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
+      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
+      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
+      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
+      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
+      <mat-list-item id="instructions">#. Do the Thing</mat-list-item>
     </mat-list>
   </div>
 

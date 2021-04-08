@@ -31,6 +31,10 @@ export class WelcomeComponent implements OnInit {
   
   ngOnInit(): void {
 
+    this.router.events.subscribe(() => {
+      this.dialog.closeAll();
+    })
+
     const config = new MatDialogConfig();
     config.disableClose = true;
     config.panelClass = "panelStyle"

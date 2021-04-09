@@ -27,6 +27,14 @@
               </mat-option>
             </mat-autocomplete>
         </mat-form-field>
+        
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label for="recipeName">Recipe Name</mat-label>
+            <input matInput type="text" formControlName="recipeName" required>
+            <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
+        </mat-form-field>
+        <br>
+
         <mat-form-field class="form-input" appearance="fill">
                 <mat-label for="instruction2Control">Add Instruction</mat-label>
                 <input matInput type="text" formControlName="instruction2Control" placeholder="">
@@ -74,12 +82,33 @@
             </mat-chip-list>
         </form>
         <br>
-        <mat-form-field class="form-input" appearance="fill">
-            <mat-label for="recipeName">Recipe Name</mat-label>
-            <input matInput type="text" formControlName="recipeName" required>
-            <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
+
+        <mat-form-field class="form-input category-input">
+            <mat-label>Add Categories</mat-label>
+            <mat-chip-list #chipList aria-label="Category selection">
+              <mat-chip
+                *ngFor="let category of categories"
+                [selectable]="selectable"
+                [removable]="removable"
+                (removed)="remove(category)">
+                {{category.name}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input
+                placeholder="Add Category..."
+                #categoryInput
+                [formControl]="categoryControl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" [displayWith]="displayFn">
+              <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
+                {{category.name}}
+              </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
-        <br>
 
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="imageUri">Picture of Dish</mat-label>

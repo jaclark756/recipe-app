@@ -22,67 +22,24 @@
     <h2>Serving Size: xx</h2>
   </div>
   <hr>
+  <div class="shop-button">
+    <app-button [label]="'Add Selected to Shopping List'" (clickEvent)="($event)"
+      [class]="'edit-button'"></app-button>
+  </div>
   <div class="prepareRecipe">
-    <h3>Ingredients</h3>
-
-    <!-- *ngFor="let ingredient of ingredients --- this is saved for when we have a real server -->
-    <!-- <input type="checkbox" id="ingredient" name="ingredient" value="Ingredient">
-        <label for="ingredient">{{ingredient}}</label><br> 
-      This is also for later-->
-    <div class="ingContainer">
-      <mat-list>
-        <mat-list-item>
-          <mat-checkbox color='mint'>Freshly cut grass</mat-checkbox>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-checkbox>Beetles</mat-checkbox>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-checkbox>1/2 Tbsp Parsley</mat-checkbox>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-checkbox>Jean Luc Picard's head hair</mat-checkbox>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-checkbox>Weeds</mat-checkbox>
+    <section class="ingContainer">
+      <h3>Ingredients</h3>
+      <mat-list *ngFor="let ingredient of ingredientList">
+        <mat-list-item id="ingredient" name="ingredient" value="Ingredient">
+          <mat-checkbox color='mint'>{{ingredient}}</mat-checkbox>
         </mat-list-item>
       </mat-list>
-      <mat-list>
-        <mat-list-item>
-          <mat-checkbox>1 molecule of Uranium</mat-checkbox>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-checkbox>1 Cup Sugar</mat-checkbox>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-checkbox>2 Tspns Crushed Pig hoof</mat-checkbox>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-checkbox>Jordan's latest eyeroll</mat-checkbox>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-checkbox>Cold baked beans</mat-checkbox>
-        </mat-list-item>
-    </mat-list>
-    </div>
-    <app-button id="shop-button" [label]="'Add Selected to Shopping List'" (clickEvent)="($event)" [class]="'shop-button'"></app-button>
-    <hr>
-    <h3>Instructions</h3>
-    <!-- *ngFor="let instruction of instructions"  -- commented out for later-->
-    <div class="instructions-container">
-    <mat-list>
-      <!-- Loop for Step list-->
-      <mat-list-item id="instructions">1. Preheat oven to 700 degrees Kelvin</mat-list-item>
-      <mat-list-item id="instructions">2. Turn on centrifuge at 400rpm</mat-list-item>
-      <mat-list-item id="instructions">3. Slam 3 Redbulls</mat-list-item>
-      <mat-list-item id="instructions">4. Celebrate with a Commit</mat-list-item>
-      <mat-list-item id="instructions">5. Mix all ingredients in a kiddie pool with 17 gallons of water</mat-list-item>
-      <mat-list-item id="instructions">6. Use paverbase tamper to mash everything into small chunks</mat-list-item>
-      <mat-list-item id="instructions">7. Simmer on stove for 20 min</mat-list-item>
-      <mat-list-item id="instructions">8. Let cool for 5 min off stove</mat-list-item>
-      <mat-list-item id="instructions">9. Serve with Parsely garnish</mat-list-item>
-    </mat-list>
+    </section>
+    <section class="instructions-container">
+      <h3>Instructions</h3>
+      <mat-list *ngFor="let instruction of instructionList">
+        <mat-list-item class="c-powder">{{instruction}}</mat-list-item>
+      </mat-list>
+    </section>
   </div>
-  </div>
-
 </div>

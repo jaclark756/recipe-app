@@ -12,20 +12,15 @@ h2,h1,h3, label{
   font-family: "Montserrat", sans-serif;
 }
 
-.recipeInfo,.prepareRecipe{
+.recipeInfo{
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.ingredients {
+.prepareRecipe {
   display: grid;
-  grid-template-columns: 40px 40px;
-  grid-template-rows: 50% 50%;
-}
-
-#instructions {
-  color: white;
+  grid-template-columns: 1fr 1fr;
 }
 
 hr{
@@ -58,22 +53,27 @@ hr{
 
 .ingContainer {
   display: flex;
-  max-height: 250px;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20% 0 20%;
+  justify-items: left;
+  margin-left: 100px;
 }
 
-#shop-button {
+
+
+.shop-button {
+  display: flex;
+  justify-content: center;
   margin-top: 15px;
+
 }
 
 .instructions-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
+
+
 
 @media only screen and (max-width: 600px) {
   .ingContainer {

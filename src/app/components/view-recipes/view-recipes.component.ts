@@ -32,4 +32,33 @@ export class ViewRecipesComponent implements OnInit {
     })
   }
 
+  ingredientList = [
+    "Asparagus",
+    "Jordan's Latest eyeroll",
+    "Jackie's Coolness",
+    "Ryan's Tears",
+    "1 Cup Sugar",
+    "Cheezits",
+    "Cale's 'u w0nt' quote",
+    "Ravioli",
+    "Crabgrass",
+    "Beetles",
+    "1/2 cup dumpster juice",
+    "A human hand",
+    "Fetta Cheese",
+    "The J&J Covid Vaccine"
+]
+
+  instructionList = [
+    "1. Preheat oven to 700 degrees Kelvin",
+    "2. Turn on centrifuge at 400rpm",
+    "3. Slam 3 Redbulls",
+    "4. Celebrate with a Commit",
+    "5. Mix all ingredients in a kiddie pool with 17 gallons of water",
+    "6. Use paverbase tamper to mash everything into small chunks",
+    "7. Simmer on stove for 20 min",
+    "8. Let cool for 5 min off stove",
+    "9. Serve with Parsely garnish",
+  ]
+
 }

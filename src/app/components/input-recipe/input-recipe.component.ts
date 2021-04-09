@@ -55,7 +55,7 @@ export class InputRecipeComponent implements OnInit {
   @ViewChild('ingredientsFromGroup') private formDirective: NgForm;
 
   constructor(
-    public recipeService: RecipeService,
+    private recipeService: RecipeService,
     private formbuilder: FormBuilder, 
     public userService: UserService,
     public tokenService: TokenService
@@ -81,7 +81,7 @@ export class InputRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.instructions2 = this.instructions2.map((item, index) => {
-      return item = {content: item.content, order: index};
+      return {content: item.content, order: index};
     });
     this.filteredCategories = this.categoryControl.valueChanges
       .pipe(

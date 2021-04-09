@@ -33,9 +33,7 @@
                 <button (click)="addInstruction2($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'">
                     <mat-icon class="c-white">add</mat-icon>
                 </button>
-                <!-- <mat-icon (click)="addInstruction2($event)" class="c-black">add</mat-icon> -->
         </mat-form-field>
-        <!-- <mat-icon (click)="addInstruction2($event)" class="c-black">add</mat-icon> -->
         <mat-chip-list
             class="example-chip mat-chip-list-stacked"
             cdkDropList 
@@ -49,7 +47,6 @@
                 <mat-icon (click)="removeInstruction2(instruction)" class="c-white instruction-close">close</mat-icon>
             </div>
         </mat-chip-list>
-        <!-- <app-button [label]="'Instructions2'" (clickEvent)="getInstructions($event)" [class]="'done-button'"></app-button> -->
         <br>
         <form [formGroup]="ingredientsFromGroup" #formDirective="ngForm">
             <div class="ingredients-container">
@@ -77,25 +74,6 @@
             </mat-chip-list>
         </form>
         <br>
-        <!-- <mat-form-field class="form-input" appearance="fill">
-            <mat-label for="ingredients">Ingredients</mat-label>
-            <textarea matInput type="text" formControlName="ingredients" required></textarea>
-            <mat-error *ngIf="newRecipe.controls.ingredients.invalid">Ingredients are required</mat-error>
-        </mat-form-field>
-        <br> -->
-
-        <!-- <mat-label for="instruction">Instructions</mat-label>
-        <ng-container formArrayName="instructions">
-            <ng-container *ngFor="let instruction of newRecipe.get('instructions')?.controls; let i = index" [formGroupName]="i">
-                <mat-form-field class="form-input" appearance="fill">
-                    <textarea matInput type="text" formcontrolName="i" required></textarea>
-                    <mat-error *ngIf="instructions.controls[i].invalid">Instructions are required</mat-error>
-                </mat-form-field>
-            </ng-container>
-        </ng-container>
-        <app-button [label]="'Next Step'" (clickEvent)="addInstruction($event)" [class]="'done-button'"></app-button>
-        <br> -->
-
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="recipeName">Recipe Name</mat-label>
             <input matInput type="text" formControlName="recipeName" required>

@@ -9,7 +9,7 @@ export interface Recipe {
     instructions?: Instruction[];
     title?: string;
     photoUrl?: string;
-    category?: Category[];
+    categories?: Category[];
     cookTime?: number;
     prepTime?: number;
 }

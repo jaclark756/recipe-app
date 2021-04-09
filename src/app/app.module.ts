@@ -24,7 +24,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
-import { CollectionsComponent } from './components/collections/collections.component';
+import { CollectionsComponent } from './components/create-collections/create-collections.component';
 
 
 @NgModule({

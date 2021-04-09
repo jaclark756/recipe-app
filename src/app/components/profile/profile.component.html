@@ -31,8 +31,8 @@
             <div class="collection-container">
                 <div class="new-collection">
                     <!-- unsure on openDialog -->
-                    <a href="#"><button id="new-collection" class="done-button" mat-raised-button isRoundButton="true" (click)="openDialog(collections)">+
-                            Add New Collection</button></a>
+                    <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true" (click)="openDialog(collections)">+
+                            Add New Collection</button>
                 </div>
                 <div class="collection-container">
                     <app-collection-card *ngFor="let recipe of sample_recipes" [recipe]="recipe"></app-collection-card>

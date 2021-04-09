@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RECIPES } from 'src/app/helpers/sample-data';
 import { MatDialog } from '@angular/material/dialog';
-import { CollectionsComponent } from 'src/app/components/collections/collections.component';
+import { CollectionsComponent } from 'src/app/components/create-collections/create-collections.component';
 
 
 

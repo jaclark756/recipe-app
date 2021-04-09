@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from 'src/app/types/recipe';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CollectionService } from 'src/app/services/collections.service';
+import { CollectionService } from 'src/app/services/collections.service'
+//import { CreateCollectionComponent } from 'src/app/components/create-collections/create-collections.component'
 
 
 @Component({

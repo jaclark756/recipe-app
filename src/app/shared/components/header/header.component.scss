@@ -14,6 +14,10 @@ img {
   flex: 1 1 auto;
 }
 
+.header-chip {
+  border: none !important;
+}
+
 ::ng-deep .mat-icon {
   font-size: 40px;
 }
@@ -71,4 +75,5 @@ img {
     margin-top: 6px;
     right: -6px !important;
     }
+>>>>>>> src/app/shared/components/header/header.component.scss
 }

@@ -37,7 +37,6 @@ export class SettingsComponent implements OnInit {
       this.followersChecked = this.activeUser.newFollowerNotifications;
       this.recipeChecked = this.activeUser.recipeSavedNotifications;
       this.editProfile = this.fb.group({
-        // TODO: set default value to the activeUser's displayname
         displayname: new FormControl(this.activeUser.displayName ,[Validators.required, Validators.minLength(3), Validators.maxLength(50)])
       })
      }
@@ -47,13 +46,10 @@ export class SettingsComponent implements OnInit {
 
   updateProfile() {
     if (this.editProfile.valid && this.editProfile.dirty) {
-
-      // TODO: for jackie. Get user object from token storage. Change the displayName to new value. Send to API.
       let user = this.tokenService.getUser();
       user.displayName = this.editProfile.get("displayname").value;
       this.http.put(this.UPDATE_URL, user).subscribe(
         (res: any) => {
-          // TODO: move snackbar inside the callback of the post request
           this.snackbar.openSnackBar("Your changes have been saved!")
           this.tokenService.saveUser(res);
         }
@@ -69,7 +65,6 @@ export class SettingsComponent implements OnInit {
   } 
 
   notifySave() {
-    //TODO: same as the update profile. get user. change these settings for user object. send to api.
     let user = this.tokenService.getUser();
     user.commentNotifications = this.commentsChecked;
     user.likeNotifications = this.likesChecked;

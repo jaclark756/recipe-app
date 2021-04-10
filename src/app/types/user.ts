@@ -1,5 +1,4 @@
 export interface User {
-
     id?: string;
     username?: string;
     displayName?: string;
@@ -11,5 +10,4 @@ export interface User {
     userRecipes: any[];
     //TODO: change this to collections
     bookmarks: any[];
-
 }

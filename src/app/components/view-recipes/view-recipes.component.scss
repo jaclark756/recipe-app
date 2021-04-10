@@ -88,7 +88,7 @@ label {
   flex-wrap: wrap;
   justify-items: left;
   margin-left: 8%;
- }
+}
 
 .prepareRecipe {
   display: grid;
@@ -106,12 +106,22 @@ label {
   margin: -2px 5.5px 10px 0;
 }
 
+::ng-deep .mat-list-base {
+  padding-top: 0 !important;
+}
+
 ::ng-deep .mat-list-base .mat-list-item {
-  height: 24px !important;
+  min-height: 24px !important;
+  height: auto !important;
 }
 
 ::ng-deep .mat-list-item {
   color: $powder !important;
+  align-items: flex-start;
+}
+
+.instructions-text {
+  margin: 0 0 8px 0;
 }
 
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
@@ -129,13 +139,32 @@ label {
 .shop-button {
   display: flex;
   justify-content: left;
-  margin: 15px 0 15px 0;
+  margin: 20px 0 15px 0;
+}
+
+.mobile-divider {
+  display: none;
 }
 
 .instructions-container {
   display: flex;
   flex-direction: column;
   margin-left: 23%;
+}
+
+.instructions-arrow {
+  visibility: hidden;
+  align-self: start;
+  font-size: 35px;
+  margin: 0 10px 15px 0;
+}
+
+.ingredients-Strikethrough {
+  text-decoration: line-through;
+}
+.instructions-list:hover .instructions-arrow,
+.instructions-list:focus .instructions-arrow {
+  visibility: visible;
 }
 
 .flex-container {
@@ -148,13 +177,12 @@ label {
 }
 
 @media only screen and (max-width: 720px) {
-  
   ::ng-deep .mat-list-base .mat-list-item {
     font-size: 12px !important;
     line-height: 20% !important;
   }
 
-   .container {
+  .container {
     display: grid;
     grid-template-columns: 1fr;
     column-gap: 20px;
@@ -205,15 +233,14 @@ label {
     width: 100%;
   }
 
+  h2 {
+    text-align: center;
+  }
+
   .ingContainer {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     justify-content: center;
-    flex-shrink: 2;
     margin-left: 10%;
-    padding: 0;
-    font-size: 12px !important;
   }
 
   .shop-button {
@@ -221,11 +248,16 @@ label {
     justify-content: center;
   }
 
+  .mobile-divider {
+    display: flex;
+    border-top-color: $mint !important;
+    width: 90%;
+    margin: 10px auto 10px auto !important;
+  }
+
   .instructions-container {
     display: flex;
     justify-content: center;
     margin-left: 10%;
   }
-
-
 }

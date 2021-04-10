@@ -29,9 +29,10 @@ export class ViewRecipesComponent implements OnInit {
   getRecipe(): void {
     this.route.paramMap.subscribe(param => {
       this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
-        this.recipe= recipe;
+        this.recipe = recipe;
         this.ingredients = recipe.ingredients
-        this.instructions = recipe.instructions});
+        this.instructions = recipe.instructions
+      });
     })
   }
 
@@ -50,7 +51,7 @@ export class ViewRecipesComponent implements OnInit {
     "A human hand",
     "Fetta Cheese",
     "The J&J Covid Vaccine"
-]
+  ]
 
   instructionList = [
     "1. Preheat oven to 700 degrees Kelvin",
@@ -64,4 +65,7 @@ export class ViewRecipesComponent implements OnInit {
     "9. Serve with Parsely garnish",
   ]
 
+  strikethroughText(event) {
+    event.target.classList.toggle("ingredients-Strikethrough")
+  }
 }

@@ -15,7 +15,7 @@
               <input
                 placeholder="Add Category..."
                 #categoryInput
-                [formControl]="categoryControl"
+                formControlName="categoryControl"
                 [matAutocomplete]="auto"
                 [matChipInputFor]="chipList"
                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -40,7 +40,7 @@
             (cdkDropListDropped)="drop($event)">
             <div cdkDrag class="ordered-chips-container" *ngFor="let instruction of instructions2">
                 <mat-icon class="c-white">menu</mat-icon>
-                <span class="c-white instruction-number">{{instruction.order + 1}}</span>
+                <span class="c-white instruction-number">{{instruction.instructionOrder + 1}}</span>
                 <mat-chip class="ordered-chips instruction-chip">
                     {{instruction.content}}
                 </mat-chip>

@@ -26,7 +26,6 @@ export class InputRecipeComponent implements OnInit {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  categoryControl = new FormControl();
   // instruction2Control = new FormControl();
   newRecipe: FormGroup;
   // instructions: FormArray;
@@ -38,16 +37,10 @@ export class InputRecipeComponent implements OnInit {
   ingredientQuantity: number;
   ingredientMeasure: string;
   Instructions: Instruction[];
-  instructions2: Instruction[] = [
-    {content: 'first instruction'}, 
-    {content: 'second instruction'},
-    {content: 'third instruction'},
-    {content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}
-  ];
+  instructions2: Instruction[] = [];
   finalInstructions: Instruction[];
-  categories: Category[] = [{'name': 'Breakfast'}, {'name': 'Gluten Free'}];
+  categories: Category[] = [];
   allCategories: Category[] = [{'name': 'Lunch'}, {'name': 'Dinner'}, {'name': 'Dessert'}];
-  allCategoriesString: string[] = ['Lunch', 'Dinner', 'Dessert']
   filteredCategories: Observable<Category[]>;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>;
@@ -67,11 +60,8 @@ export class InputRecipeComponent implements OnInit {
       ingredient2MeasureControl: new FormControl('', [Validators.required, Validators.maxLength(15)]),
     })
     this.newRecipe = this.formbuilder.group({
-      ingredients: new FormControl('', Validators.required),
-      instructions: new FormArray([
-        new FormControl('', Validators.required)
-      ]),
       instruction2Control: new FormControl(''),
+      categoryControl: new FormControl(''),
       recipeName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       imageUri: new FormControl(''),
       cookTime: new FormControl('', [Validators.required, Validators.min(0)]),
@@ -83,7 +73,7 @@ export class InputRecipeComponent implements OnInit {
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};
     });
-    this.filteredCategories = this.categoryControl.valueChanges
+    this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
       .pipe(
         startWith(''),
         map(value => typeof value === 'string' ? value : value.name),
@@ -95,16 +85,18 @@ export class InputRecipeComponent implements OnInit {
 
     addRecipe(event) {
       console.log(this.newRecipe);
+      console.log(this.newRecipe.valid);
       if (this.newRecipe.valid) {
         let recipe = {
-          "ingredients": this.newRecipe.controls.ingredients.value,
-          "instructions": this.newRecipe.controls.instructions.value,
           "title": this.newRecipe.controls.recipeName.value,
+          "categories": this.categories,
+          "ingredients": this.ingredients2,
+          "instructions": this.instructions2,
           "photoUrl": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
           "cookTime": this.newRecipe.controls.cookTime.value,
-          "prepTime": this.newRecipe.controls.prepTime.value,
-          "userId": "1"
+          "prepTime": this.newRecipe.controls.prepTime.value
         }
+        console.log(recipe);
         this.recipeService.addRecipe(recipe);
       }
     }
@@ -112,23 +104,21 @@ export class InputRecipeComponent implements OnInit {
     //// START Instruction Logic ////
     addInstruction2(event) {
       console.log(this.newRecipe.controls.instruction2Control.value);
-      this.instructions2.push({content: this.newRecipe.controls.instruction2Control.value, order: this.instructions2.length});
+      this.instructions2.push({content: this.newRecipe.controls.instruction2Control.value, instructionOrder: this.instructions2.length});
       this.newRecipe.controls.instruction2Control.reset();
     }
 
     removeInstruction2(selectedInstruction: Instruction) {
       this.instructions2 = this.instructions2.filter(instruction => selectedInstruction !== instruction);
       this.instructions2 = this.instructions2.map((item, index) => {
-        return item = {content: item.content, order: index};
-        // console.log("map item: ", item);
+        return {...item, instructionOrder: index};
       });
     }
 
     drop(event: CdkDragDrop<Instruction[]>) {
       moveItemInArray(this.instructions2, event.previousIndex, event.currentIndex);
       this.instructions2 = this.instructions2.map((item, index) => {
-        return item = {content: item.content, order: index};
-        // console.log("map item: ", item);
+        return {...item, instructionOrder: index};
       });
     }
 
@@ -182,7 +172,7 @@ export class InputRecipeComponent implements OnInit {
     selected(event: MatAutocompleteSelectedEvent): void {
       this.categories.push({name: event.option.viewValue});
       this.categoryInput.nativeElement.value = '';
-      this.categoryControl.setValue(null);
+      this.newRecipe.controls.categoryControl.setValue(null);
     }
 
     displayFn(category: Category): string {

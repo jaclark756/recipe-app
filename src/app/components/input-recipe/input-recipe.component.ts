@@ -1,4 +1,4 @@
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, NgForm, FormsModule } from '@angular/forms';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
@@ -7,12 +7,13 @@ import { Ingredient } from 'src/app/types/ingredient';
 import { Instruction } from 'src/app/types/instruction';
 import { Category } from 'src/app/types/category';
 import { Observable } from 'rxjs';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { startWith, map } from 'rxjs/operators';
 import { MatChipInputEvent } from '@angular/material/chips';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { newArray } from '@angular/compiler/src/util';
+import { MeasurementGroup } from 'src/app/types/measurement-group';
 
 
 @Component({
@@ -36,14 +37,47 @@ export class InputRecipeComponent implements OnInit {
   ingredientContent: string;
   ingredientQuantity: number;
   ingredientMeasure: string;
+  
+  ingredientMeasureOptions: MeasurementGroup[] = [
+    {
+      type: 'Volume',
+      measurement: [
+        {value: 'teaspoon (tsp)'},
+        {value: 'tablespoon (tbsp)'},
+        {value: 'cup (cup)'},
+        {value: 'fluid ounce (fl oz)'},
+        {value: 'pint (pt)'},
+        {value:'quart (qt)'},
+        {value: 'gallon (gal)'},
+        {value: 'milliliters (ml)'},
+        {value: 'liters (l)'}
+      ]
+    },
+    {
+      type: 'Weight',
+      measurement : [
+        {value: 'milligram (mg)'},
+        {value: 'kilogram (kg)'},
+        {value: 'gram (g)'},
+        {value: 'ounce (oz)'},
+        {value: 'pound (lb)'}
+      ]
+    }
+  ];
   Instructions: Instruction[];
-  instructions2: Instruction[] = [];
+  instructions2: Instruction[] = [
+    { content: 'first instruction' },
+    { content: 'second instruction' },
+    { content: 'third instruction' },
+    { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' }
+  ];
   finalInstructions: Instruction[];
-  categories: Category[] = [];
-  allCategories: Category[] = [{'name': 'Lunch'}, {'name': 'Dinner'}, {'name': 'Dessert'}];
+  categories: Category[] = [{ 'name': 'Breakfast' }, { 'name': 'Gluten Free' }];
+  allCategories: Category[] = [{ 'name': 'Lunch' }, { 'name': 'Dinner' }, { 'name': 'Dessert' }];
+  allCategoriesString: string[] = ['Lunch', 'Dinner', 'Dessert']
   filteredCategories: Observable<Category[]>;
 
-  @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>;
+  @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
   @ViewChild('ingredientsFromGroup') private formDirective: NgForm;
 
@@ -54,12 +88,19 @@ export class InputRecipeComponent implements OnInit {
     public tokenService: TokenService
   ) {
     this.currentUser = this.tokenService.getUser();
-    this.ingredientsFromGroup = this.formbuilder.group ({
+    this.ingredientsFromGroup = this.formbuilder.group({
       ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),
-      ingredient2MeasureControl: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+      ingredient2MeasureControl: new FormControl('', Validators.required),
     })
     this.newRecipe = this.formbuilder.group({
+      ingredients: new FormArray([
+        this.formbuilder.group({
+          ...this.ingredientsFromGroup,
+        })]),
+      instructions: new FormArray([
+        new FormControl('', Validators.required)
+      ]),
       instruction2Control: new FormControl(''),
       categoryControl: new FormControl(''),
       recipeName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -126,63 +167,72 @@ export class InputRecipeComponent implements OnInit {
 
 
   //// START Ingredient Logic ////
-    addIngredients(event, formDirective: FormGroupDirective) {
-      if (this.ingredientsFromGroup.valid){
-        this.ingredients2.push({
+  addIngredients(event, formDirective: FormGroupDirective) {
+    if (this.ingredientsFromGroup.valid) {
+      (<FormArray>this.newRecipe.controls.ingredients).push(
+        this.formbuilder.group({
           content: this.ingredientsFromGroup.controls.ingredient2ContentControl.value,
-          quantity: this.ingredientsFromGroup.controls.ingredient2QuantityControl.value, 
+          quantity: this.ingredientsFromGroup.controls.ingredient2QuantityControl.value,
           measure: this.ingredientsFromGroup.controls.ingredient2MeasureControl.value
-        });
-        this.ingredientsFromGroup.reset();
-      }
-      this.formDirective.resetForm('');
-      this.ingredientsFromGroup.markAsPristine();
-      this.ingredientsFromGroup.markAsUntouched();
-      this.ingredientsFromGroup.updateValueAndValidity();    
+        })
+      );
+      this.ingredients2.push({
+        content: this.ingredientsFromGroup.controls.ingredient2ContentControl.value,
+        quantity: this.ingredientsFromGroup.controls.ingredient2QuantityControl.value,
+        measure: this.ingredientsFromGroup.controls.ingredient2MeasureControl.value
+      });
+      this.ingredientsFromGroup.reset();
     }
+    this.formDirective.resetForm('');
+    this.ingredientsFromGroup.markAsPristine();
+    this.ingredientsFromGroup.markAsUntouched();
+    this.ingredientsFromGroup.updateValueAndValidity();
+  }
 
-    removeIngredients(selectedIngredient: Ingredient) {
-      this.ingredients2 = this.ingredients2.filter(ingredient => selectedIngredient !== ingredient);
-    }
-    //// END Ingredient Logic ////
-    
-    
-    getInstructions(event) {
-      console.log("instructions2 now: ", this.instructions2);
-    }
-
-    addInstruction(event) { 
-      console.log("pressed button");
-      console.log((<FormArray>this.newRecipe.get("instructions")).controls);
-      (<FormArray>this.newRecipe.get("instructions")).push(new FormControl('', Validators.required));
-    }
-    removeInstruction(event) {
-      // form array loop has index, need to have button next to form field that passes in the index from loop and uses it to remove form control from the form array
-    }
+  removeIngredients(selectedIngredient: Ingredient) {
+    this.ingredients2 = this.ingredients2.filter(ingredient => selectedIngredient !== ingredient);
+  }
 
 
-    //// START Category Input Logic ////
-    add(event: MatChipInputEvent): void {
-    }
+  //// END Ingredient Logic ////
 
-    remove(categoryName: Category): void {
-      this.categories = this.categories.filter(category => categoryName.name !== category.name);
-    }
 
-    selected(event: MatAutocompleteSelectedEvent): void {
-      this.categories.push({name: event.option.viewValue});
-      this.categoryInput.nativeElement.value = '';
-      this.newRecipe.controls.categoryControl.setValue('');
-    }
+  getInstructions(event) {
+    console.log("instructions2 now: ", this.instructions2);
+  }
 
-    displayFn(category: Category): string {
-      return category && category.name ? category.name : '';
-    }
+  addInstruction(event) {
+    console.log("pressed button");
+    console.log((<FormArray>this.newRecipe.get("instructions")).controls);
+    (<FormArray>this.newRecipe.get("instructions")).push(new FormControl('', Validators.required));
+  }
+  removeInstruction(event) {
+    // form array loop has index, need to have button next to form field that passes in the index from loop and uses it to remove form control from the form array
+  }
 
-    private _filter(value: string): Category[] {
-      const filterValue = value.toLowerCase();
-      return this.allCategories.filter(category => category.name.toLowerCase().indexOf(filterValue) === 0);
-    }
-    //// END Category Input Logic ////
-  
+
+  //// START Category Input Logic ////
+  add(event: MatChipInputEvent): void {
+  }
+
+  remove(categoryName: Category): void {
+    this.categories = this.categories.filter(category => categoryName.name !== category.name);
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.categories.push({ name: event.option.viewValue });
+    this.categoryInput.nativeElement.value = '';
+    this.categoryControl.setValue(null);
+  }
+
+  displayFn(category: Category): string {
+    return category && category.name ? category.name : '';
+  }
+
+  private _filter(value: string): Category[] {
+    const filterValue = value.toLowerCase();
+    return this.allCategories.filter(category => category.name.toLowerCase().indexOf(filterValue) === 0);
+  }
+  //// END Category Input Logic ////
+
 }

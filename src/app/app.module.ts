@@ -23,6 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -54,6 +55,8 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     MatTabsModule,
     MatSlideToggleModule,
+    MatSelectModule,
+
 
     RouterModule.forRoot([
       { path: '', component: InputRecipeComponent },

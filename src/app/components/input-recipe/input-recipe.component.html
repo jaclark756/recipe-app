@@ -66,16 +66,34 @@
                     <mat-label for="ingredient2QuantityControl">Quantity</mat-label>
                     <input matInput type="number" formControlName="ingredient2QuantityControl" placeholder="">
                 </mat-form-field>
-                <mat-form-field class="form-input ingredient-measure" appearance="fill">
+                <!-- OLD measurement selection -->
+                <!-- <mat-form-field class="form-input ingredient-measure" appearance="fill">
                     <mat-label for="ingredient2MeasureControl">Measure Type</mat-label>
                     <input matInput type="text" formControlName="ingredient2MeasureControl" placeholder="i.e. cups">
+                </mat-form-field> -->
+                <!-- NEW measurement selection -->
+                <mat-form-field class="form-input ingredient-measure" appearance="fill">
+                    <mat-label for="ingredient2MeasureControl">Measurement</mat-label>
+                    <mat-select formControlName="ingredient2MeasureControl">
+                        <mat-option>-- None --</mat-option>
+                        <mat-optgroup *ngFor="let option of ingredientMeasureOptions" [label]="option.type">
+                            <mat-option *ngFor="let measurement of option.measurement" [value]="measurement.value">
+                                {{measurement.value}}
+                            </mat-option>
+                        </mat-optgroup>
+                    </mat-select>
                 </mat-form-field>
-                <button class="ingredient-add" (click)="addIngredients($event, formDirective)" mat-icon-button matSuffix [attr.aria-label]="'Add Ingredients'">
+
+
+                <!-- Add ingredient -->
+                <button class="ingredient-add" (click)="addIngredients($event, formDirective)" mat-icon-button matSuffix
+                    [attr.aria-label]="'Add Ingredients'">
                     <mat-icon class="c-white">add</mat-icon>
                 </button>
             </div>
             <mat-chip-list class="example-chip">
-                <mat-chip *ngFor="let ingredient of ingredients2" class="example-box" [removable]="removable" (removed)="removeIngredients(ingredient)">
+                <mat-chip *ngFor="let ingredient of ingredients2" class="example-box" [removable]="removable"
+                    (removed)="removeIngredients(ingredient)">
                     <span>{{ingredient.content}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.quantity}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.measure}}</span>
                     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                 </mat-chip>
@@ -86,27 +104,19 @@
         <mat-form-field class="form-input category-input">
             <mat-label>Add Categories</mat-label>
             <mat-chip-list #chipList aria-label="Category selection">
-              <mat-chip
-                *ngFor="let category of categories"
-                [selectable]="selectable"
-                [removable]="removable"
-                (removed)="remove(category)">
-                {{category.name}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input
-                placeholder="Add Category..."
-                #categoryInput
-                [formControl]="categoryControl"
-                [matAutocomplete]="auto"
-                [matChipInputFor]="chipList"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                (matChipInputTokenEnd)="add($event)">
+                <mat-chip *ngFor="let category of categories" [selectable]="selectable" [removable]="removable"
+                    (removed)="remove(category)">
+                    {{category.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Add Category..." #categoryInput [formControl]="categoryControl"
+                    [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
             </mat-chip-list>
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" [displayWith]="displayFn">
-              <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
-                {{category.name}}
-              </mat-option>
+                <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
+                    {{category.name}}
+                </mat-option>
             </mat-autocomplete>
         </mat-form-field>
 
@@ -133,5 +143,6 @@
         </div>
     </form>
 
-    <app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" class="done-button input-recipe-button"></app-button>
+    <app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" class="done-button input-recipe-button">
+    </app-button>
 </div>

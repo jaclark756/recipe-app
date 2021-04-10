@@ -84,8 +84,6 @@ export class ViewRecipesComponent implements OnInit {
     console.log(this.tokenService.getUser())
     if (this.tokenService.getUser().id === this.recipe.userId) {
       return true;
-    } else {
-      return false;
-    }
+    } 
   }
 }

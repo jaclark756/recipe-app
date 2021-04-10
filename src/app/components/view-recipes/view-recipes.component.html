@@ -10,11 +10,10 @@
     <button mat-fab>
       <mat-icon class="c-onyx">bookmark</mat-icon>
     </button>
-    <button mat-fab *ngIf="editButtonShow()" (click)="editRecipeDialog()">
+    <button mat-fab (click)="editRecipeDialog()">
       <mat-icon class="c-onyx" (click)="editRecipeDialog()">edit</mat-icon>
     </button>
   </div>
-
   <div class="recipeInfo">
     <h1>{{recipe?.title}}</h1>
     <h2>Prep Time: {{recipe?.prepTime}}Min</h2>

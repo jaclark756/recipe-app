@@ -6,7 +6,7 @@ services:
     hostname: reverse
     image: nginx
     ports:
-      - 4200:80
+      - 80:80
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./dist/recipe-app:/usr/share/nginx/html

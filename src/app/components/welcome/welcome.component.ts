@@ -26,7 +26,10 @@ export class WelcomeComponent implements OnInit {
     private tokenService: TokenService, 
     private userService: UserService,
     public dialog: MatDialog
-  ) { }
+  ) {
+    console.log(this.tokenService.getUser());
+    console.log(this.tokenService.getToken());
+   }
 
   
   ngOnInit(): void {
@@ -43,15 +46,11 @@ export class WelcomeComponent implements OnInit {
     const token: string = this.route.snapshot.queryParamMap.get('token');
     const error: string = this.route.snapshot.queryParamMap.get('error');
     if (this.tokenService.getToken()) {
-      this.isLoggedIn = true;
-      this.userService.getCurrentUser().subscribe((data: any) => {
-        this.currentUser = data;
-        if (!data.enabled){
-          this.dialog.open(RegisterComponent, config);
-        } else {
-          this.router.navigate(["/home"]);
-        }
-      })
+      if (this.tokenService.getUser().username != null){
+        this.router.navigate(["/home"]);
+      } else {
+        this.dialog.open(RegisterComponent, config);
+      }
     }
     else if(token){
       this.tokenService.saveToken(token);
@@ -72,10 +71,6 @@ export class WelcomeComponent implements OnInit {
     else {
       this.dialog.open(LoginComponent, config);
     }
-  }
-
-  fetchUserData(){
-
   }
 
 };

@@ -2,16 +2,14 @@
     <div>
         <div class="avatar-container">
             <img src="/assets/images/account_circle-white-24dp.svg" alt="user image" class="filter-powder">
+            <img src="{{activeUser?.photoUrl ? activeUser?.photoUrl : '/assets/images/account_circle-white-24dp.svg'" alt="user image" class="filter-powder">
         </div>
-        <!-- <img src="{{activeUser.ProfilePic}}" alt="User Profile Image"> -->
         <div class="username-container">
-            <!-- <h3>{{activeUser.name}}</h3> -->
-            <h3 class="c-powder">username</h3>
+            <h3 class="c-powder">{{activeUser?.username}}</h3>
         </div>
         <div class="followers-container">
             <p class="c-white"><a class="c-white" href="#">xx Followers</a>&nbsp;&nbsp;<a class="c-white" href="#">xx
                     Following</a></p>
-            <!-- <p>{{activeUser.followers}} - {{activeUser.following}}</p> -->
         </div>
     </div>
 </div>

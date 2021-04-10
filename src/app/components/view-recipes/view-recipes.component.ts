@@ -1,9 +1,11 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Recipe } from 'src/app/types/recipe';
+import { InputRecipeComponent } from '../input-recipe/input-recipe.component';
 
 @Component({
   selector: 'app-view-recipes',
@@ -17,7 +19,8 @@ export class ViewRecipesComponent implements OnInit {
   public instructions: string[];
 
   constructor(private route: ActivatedRoute,
-    private recipeService: RecipeService) { }
+    private recipeService: RecipeService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getRecipe();
@@ -60,5 +63,16 @@ export class ViewRecipesComponent implements OnInit {
     "8. Let cool for 5 min off stove",
     "9. Serve with Parsely garnish",
   ]
+
+
+
+  editRecipeDialog() {
+    const config = new MatDialogConfig();
+    config.autoFocus = true;
+    config.disableClose = false;
+    config.panelClass = 'dialog-container';
+    config.data = { recipe: this.recipe }
+    const dr = this.dialog.open(InputRecipeComponent, config)
+  }
 
 }

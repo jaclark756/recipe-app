@@ -40,6 +40,27 @@ export class InputRecipeComponent implements OnInit {
   
   ingredientMeasureOptions: MeasurementGroup[] = [
     {
+      type: 'Popular',
+      measurement : [
+        {value: 'gram (g)'},
+        {value: 'ounce (oz)'},
+        {value: 'pound (lb)'},
+        {value: 'teaspoon (tsp)'},
+        {value: 'tablespoon (tbsp)'},
+        {value: 'cup (cup)'}
+      ]
+    },
+    {
+      type: 'Weight',
+      measurement : [
+        {value: 'milligram (mg)'},
+        {value: 'kilogram (kg)'},
+        {value: 'gram (g)'},
+        {value: 'ounce (oz)'},
+        {value: 'pound (lb)'}
+      ]
+    },
+    {
       type: 'Volume',
       measurement: [
         {value: 'teaspoon (tsp)'},
@@ -52,18 +73,9 @@ export class InputRecipeComponent implements OnInit {
         {value: 'milliliters (ml)'},
         {value: 'liters (l)'}
       ]
-    },
-    {
-      type: 'Weight',
-      measurement : [
-        {value: 'milligram (mg)'},
-        {value: 'kilogram (kg)'},
-        {value: 'gram (g)'},
-        {value: 'ounce (oz)'},
-        {value: 'pound (lb)'}
-      ]
     }
   ];
+  
   Instructions: Instruction[];
   instructions2: Instruction[] = [
     { content: 'first instruction' },

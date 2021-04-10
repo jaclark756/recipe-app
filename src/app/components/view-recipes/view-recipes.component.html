@@ -1,26 +1,26 @@
 <div class="page">
   <div class="container">
     <!-- <h1>{{recipe?.title}}</h1> -->
-    <section class="recipeInfo">
-      <h1 class="title">Recipe Title</h1>
-      <div class="time">
-        <h3>Prep Time: {{recipe?.prepTime}}Min</h3>
-        <h3>Cook Time: {{recipe?.cookTime}}Min</h3>
-        <h3>Serving Size: xx</h3>
-        <div class="nutrition">
-          <img src="/assets/images/nutrition.jpg" alt="nutritional information" class="nutrition-img">
-        </div>
-      </div>
-          </section>
-    <section class="column">
+    <section class="recipeImg">
       <div class="image">
         <img src="/assets/images/452078e959acefeb64f8fcfea2336e51.jpg" alt="recipe image">
       </div>
+    </section>
+    <section class="information">
+      <h1 class="title">Recipe Title</h1>
       <div class="owner-container">
         <mat-icon class="c-powder">account_circle</mat-icon>
         <h3 class="owner">Recipe Owner Display Name</h3>
       </div>
-      <div class="edit">
+      <div class="time">
+        <h3>Prep Time: {{recipe?.prepTime}}Min</h3>
+        <h3>Cook Time: {{recipe?.cookTime}}Min</h3>
+        <h3>Serving Size: xx</h3>
+      </div>
+              <div class="nutrition-mobile">
+          <img src="/assets/images/nutrition.jpg" alt="nutritional information" class="nutrition-img">
+      </div>
+          <div class="actions">
         <button mat-fab>
           <mat-icon class="c-onyx">thumb_up_alt</mat-icon>
         </button>
@@ -35,13 +35,18 @@
         </button>
       </div>
     </section>
-     </div>
+    <section class="nutrition-column">
+      <div class="nutrition-web">
+        <img src="/assets/images/nutrition.jpg" alt="nutritional information" class="nutrition-img">
+      </div>
+    </section>
+      </div>
   <mat-divider></mat-divider>
   <div class="prepareRecipe">
     <section class="ingContainer">
       <h2>INGREDIENTS</h2>
-      <mat-list *ngFor="let ingredient of ingredientList">
-        <mat-list-item id="ingredient" name="ingredient" value="Ingredient">
+      <mat-list>
+        <mat-list-item *ngFor="let ingredient of ingredientList" id="ingredient" name="ingredient" value="Ingredient">
           <mat-checkbox color='mint'>{{ingredient}}</mat-checkbox>
         </mat-list-item>
       </mat-list>

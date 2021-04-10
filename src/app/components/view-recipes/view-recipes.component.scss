@@ -8,14 +8,29 @@
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   column-gap: 20px;
   padding-top: 5%;
- }
+  margin-bottom: 30px;
+}
 
- h1 {
-   font-size: 48px !important;
- }
+.actions {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+}
+
+.time {
+  text-align: center;
+  line-height: 5px;
+  margin-bottom: 60px;
+}
+
+h1 {
+  font-size: 48px !important;
+  text-align: center;
+  margin: 0;
+}
 
 .column {
   display: flex;
@@ -24,38 +39,42 @@
   justify-content: center;
 }
 
-.nutrition {
+.nutrition-web {
   margin-left: 10%;
- }
+}
 
- .nutrition-img {
-   width: 200px;
- }
+.nutrition-mobile {
+  display: none;
+}
+
+.nutrition-img {
+  height: 350px;
+  width: auto;
+}
 
 .image {
-display: flex;
-justify-content: center;
-width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .owner-container {
   margin-top: 10px;
   justify-content: center;
   display: flex;
-  width: 100%;
-}
-
-.time {
-  margin-left: 5%;
+  margin: 5px 0 50px 0;
 }
 
 ::ng-deep .mat-divider {
   border-top-color: $mint !important;
-  width: 80%;
+  width: 90%;
   margin: 10px auto 10px auto !important;
 }
 
-h2,h1,h3, label{
+h2,
+h1,
+h3,
+label {
   color: $powder;
 }
 
@@ -63,25 +82,19 @@ h2,h1,h3, label{
   margin: 5px 0 6px 20px;
 }
 
-.recipeInfo{
+.recipeImg {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-items: left;
   margin-left: 8%;
-  line-height: 40%;
-}
+ }
 
 .prepareRecipe {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   width: 100%;
 }
-
-// hr{
-//   border: 1px solid $mint;
-//   width: 85%;
-// }
 
 ::ng-deep .mat-fab {
   margin: 8px !important;
@@ -93,8 +106,8 @@ h2,h1,h3, label{
   margin: -2px 5.5px 10px 0;
 }
 
-::ng-deep .mat-list-base {
-  margin: -5px 0 -5px 0;
+::ng-deep .mat-list-base .mat-list-item {
+  height: 24px !important;
 }
 
 ::ng-deep .mat-list-item {
@@ -110,7 +123,7 @@ h2,h1,h3, label{
   flex-direction: column;
   flex-wrap: wrap;
   justify-items: left;
-  margin-left: 10%;
+  margin-left: 30%;
 }
 
 .shop-button {
@@ -122,8 +135,7 @@ h2,h1,h3, label{
 .instructions-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
+  margin-left: 23%;
 }
 
 .flex-container {
@@ -135,34 +147,85 @@ h2,h1,h3, label{
   margin-top: 10px;
 }
 
-
-@media only screen and (max-width: 600px) {
-  .ingContainer {
-    display: flex;
-    max-height: 250px;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 2;
-    padding: 0;
-    font-size: 12px !important;
-  }
- 
+@media only screen and (max-width: 720px) {
+  
   ::ng-deep .mat-list-base .mat-list-item {
     font-size: 12px !important;
     line-height: 20% !important;
   }
- 
+
+   .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 20px;
+    padding-top: 5%;
+    margin-bottom: 30px;
+  }
+
+  .recipeImg {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-items: left;
+    margin-left: 0;
+  }
+
+  .owner-container {
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+    margin: 5px 0 30px 0;
+  }
+
+  .time {
+    text-align: center;
+    line-height: 5px;
+    margin-bottom: 30px;
+  }
+
+  .nutrition-column {
+    display: none;
+  }
+
+  .nutrition-mobile {
+    margin-bottom: 10px;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .prepareRecipe {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .ingContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-shrink: 2;
+    margin-left: 10%;
+    padding: 0;
+    font-size: 12px !important;
+  }
+
+  .shop-button {
+    display: flex;
+    justify-content: center;
+  }
+
   .instructions-container {
     display: flex;
     justify-content: center;
-    margin: 0 10px 0 10px;
+    margin-left: 10%;
   }
+
+
 }
-
-
-
-
-
-

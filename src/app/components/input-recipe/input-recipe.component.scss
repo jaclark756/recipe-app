@@ -1,0 +1,61 @@
+@import "../../../styles/theme.scss";
+.form-container {
+  border-radius: 5px;
+  padding: 15px 5px 50px 5px;
+  margin: auto;
+  background-color: $black;
+}
+.form-input {
+  width: 100%;
+}
+.instruction-chip {
+    margin: 7px !important;
+    width: 83% !important;
+}
+.ordered-chips-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 3px;
+}
+.ordered-chips-container:hover {
+    cursor: pointer;
+}
+.instruction-number {
+    width: 15px;
+    padding: 0 0 2px 5px;
+}
+.instruction-close {
+  margin-left: 3px;
+}
+.ingredients-container {
+  display: flex;
+  justify-content: space-between;
+}
+.ingredient-name {
+  width: 50%;
+}
+.ingredient-quantity {
+  width: 15%;
+}
+.ingredient-measure {
+  width: 22%;
+}
+.ingredient-add {
+  top: 10px;
+  left: 0px;
+}
+.ingredients-entered {
+  width: 100%;
+}
+.cook-prep-container {
+  display: flex;
+  justify-content: space-between;
+}
+.cook-input {
+  width: 48%;
+}
+.prep-input {
+  width: 48%;
+}

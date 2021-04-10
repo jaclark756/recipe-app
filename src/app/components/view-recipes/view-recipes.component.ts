@@ -74,6 +74,6 @@ export class ViewRecipesComponent implements OnInit {
     config.panelClass = 'dialog-container';
     config.data = { recipe: this.recipe }
     const dr = this.dialog.open(InputRecipeComponent, config)
-  }
 
+  }
 }

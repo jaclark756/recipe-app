@@ -104,5 +104,5 @@
         </div>
     </form>
 
-    <app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" class="done-button input-recipe-button"></app-button>
+    <app-button [label]="existingRecipe ? 'Update Recipe' : 'Add Recipe'" (clickEvent)="addRecipe($event)" class="done-button input-recipe-button"></app-button>
 </div>

@@ -25,8 +25,10 @@ export class CollectionsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-addCollection(collectionService: CollectionService){
-  this.collectionService.addCollection({})
+addCollection(){
+  this.collectionService.addCollection({
+    collectionName: this.newCollectionForm.get("title").value
+  })
 }
 
 }

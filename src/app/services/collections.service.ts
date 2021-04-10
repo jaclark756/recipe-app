@@ -55,8 +55,7 @@ export class CollectionService {
       this.collections = [
         ...this.collections, response
       ]
-      // console.log("added collection: ",response);
-      // TODO Add route to freshly created collection
+      console.log("added collection: ",response);
     })
   }
 

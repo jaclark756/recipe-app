@@ -2,6 +2,7 @@ import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { RECIPES } from 'src/app/helpers/sample-data';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Recipe } from 'src/app/types/recipe';
 
@@ -15,6 +16,8 @@ export class ViewRecipesComponent implements OnInit {
   public recipe: Recipe;
   public ingredients: string[];
   public instructions: string[];
+  sample_recipes = RECIPES;
+
 
   constructor(private route: ActivatedRoute,
     private recipeService: RecipeService) { }

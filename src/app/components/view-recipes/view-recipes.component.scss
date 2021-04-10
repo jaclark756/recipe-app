@@ -1,46 +1,100 @@
 @import "/src/styles/styles.scss";
 
-img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 400px;
-  width: 400px;
+.page {
+  background-color: $metal;
+  width: 80%;
+  margin: 3% 10% 3% 10%;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  padding-top: 5%;
+ }
+
+ h1 {
+   font-size: 48px !important;
+ }
+
+.column {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nutrition {
+  margin-left: 10%;
+ }
+
+ .nutrition-img {
+   width: 200px;
+ }
+
+.image {
+display: flex;
+justify-content: center;
+width: 100%;
+}
+
+.owner-container {
+  margin-top: 10px;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+
+.time {
+  margin-left: 5%;
+}
+
+::ng-deep .mat-divider {
+  border-top-color: $mint !important;
+  width: 80%;
+  margin: 10px auto 10px auto !important;
+}
+
 h2,h1,h3, label{
-  color: white;
-  font-family: "Montserrat", sans-serif;
+  color: $powder;
+}
+
+.owner {
+  margin: 5px 0 6px 20px;
 }
 
 .recipeInfo{
   display: flex;
   flex-direction: column;
-  text-align: center;
+  flex-wrap: wrap;
+  justify-items: left;
+  margin-left: 8%;
+  line-height: 40%;
 }
 
 .prepareRecipe {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 100%;
 }
 
-hr{
-  border: 1px solid $mint;
-  width: 85%;
-}
-
-.edit {
-  display:flex !important;
-  justify-content: center !important;
-}
+// hr{
+//   border: 1px solid $mint;
+//   width: 85%;
+// }
 
 ::ng-deep .mat-fab {
-  margin: 10px !important;
+  margin: 8px !important;
   text-align: center !important;
 }
 
-::ng-deep .mat-icon {
+.c-onyx {
   font-size: 30px;
   margin: -2px 5.5px 10px 0;
+}
+
+::ng-deep .mat-list-base {
+  margin: -5px 0 -5px 0;
 }
 
 ::ng-deep .mat-list-item {
@@ -56,23 +110,30 @@ hr{
   flex-direction: column;
   flex-wrap: wrap;
   justify-items: left;
-  margin-left: 100px;
+  margin-left: 10%;
 }
-
-
 
 .shop-button {
   display: flex;
-  justify-content: center;
-  margin-top: 15px;
-
+  justify-content: left;
+  margin: 15px 0 15px 0;
 }
 
 .instructions-container {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  margin-top: 10px;
+}
 
 
 @media only screen and (max-width: 600px) {
@@ -90,6 +151,7 @@ hr{
  
   ::ng-deep .mat-list-base .mat-list-item {
     font-size: 12px !important;
+    line-height: 20% !important;
   }
  
   .instructions-container {

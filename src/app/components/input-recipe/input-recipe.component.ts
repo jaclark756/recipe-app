@@ -58,19 +58,6 @@ export class InputRecipeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.currentUser = this.tokenService.getUser();
-    // this.ingredientsFromGroup = this.formbuilder.group ({
-    //   ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-    //   ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),
-    //   ingredient2MeasureControl: new FormControl('', [Validators.required, Validators.maxLength(15)]),
-    // })
-    // this.newRecipe = this.formbuilder.group({
-    //   instruction2Control: new FormControl(''),
-    //   categoryControl: new FormControl(''),
-    //   recipeName: new FormControl(this.existingRecipe ? this.existingRecipe.title : '', [Validators.required, Validators.maxLength(100)]),
-    //   imageUri: new FormControl(''),
-    //   cookTime: new FormControl('', [Validators.required, Validators.min(0)]),
-    //   prepTime: new FormControl('', [Validators.required, Validators.min(0)])
-    // })
   }
 
   ngOnInit(): void {

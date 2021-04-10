@@ -10,7 +10,7 @@
     <button mat-fab>
       <mat-icon class="c-onyx">bookmark</mat-icon>
     </button>
-    <button mat-fab (click)="editRecipeDialog()">
+    <button mat-fab *ngIf="editButtonShow()" (click)="editRecipeDialog()">
       <mat-icon class="c-onyx" (click)="editRecipeDialog()">edit</mat-icon>
     </button>
   </div>

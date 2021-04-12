@@ -1,13 +1,12 @@
 <div class="page">
   <div class="container">
-    <!-- <h1>{{recipe?.title}}</h1> -->
     <section class="recipeImg">
       <div class="image">
         <img src="/assets/images/452078e959acefeb64f8fcfea2336e51.jpg" alt="recipe image">
       </div>
     </section>
     <section class="information">
-      <h1 class="title">Recipe Title</h1>
+      <h1 class="title">{{recipe?.title}}</h1>
       <div class="owner-container">
         <mat-icon class="c-powder">account_circle</mat-icon>
         <h3 class="owner">Recipe Owner Display Name</h3>
@@ -59,8 +58,10 @@
     <section class="instructions-container">
       <h2>INSTRUCTIONS</h2>
       <mat-list>
-        <mat-list-item class="instructions-list" *ngFor="let instruction of instructionList" (click)="strikethroughText($event)">
-          <mat-icon class="c-mint instructions-arrow">arrow_right_alt</mat-icon><span class="instructions-text">{{instruction}}</span>
+        <mat-list-item class="instructions-list" *ngFor="let instruction of instructionList"
+          (click)="strikethroughText($event)">
+          <mat-icon class="c-mint instructions-arrow">arrow_right_alt</mat-icon><span
+            class="instructions-text">{{instruction}}</span>
         </mat-list-item>
       </mat-list>
     </section>

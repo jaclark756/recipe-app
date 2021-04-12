@@ -179,7 +179,6 @@ label {
 @media only screen and (max-width: 720px) {
   ::ng-deep .mat-list-base .mat-list-item {
     font-size: 12px !important;
-    line-height: 20% !important;
   }
 
   .container {
@@ -246,6 +245,12 @@ label {
   .shop-button {
     display: flex;
     justify-content: center;
+  }
+
+  .instructions-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 23%;
   }
 
   .mobile-divider {

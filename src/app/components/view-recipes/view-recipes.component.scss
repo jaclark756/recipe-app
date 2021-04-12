@@ -11,19 +11,19 @@
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 20px;
   padding-top: 5%;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
 }
 
 .actions {
   display: flex;
   justify-content: center;
-  align-self: flex-end;
+  vertical-align: bottom;
 }
 
 .time {
   text-align: center;
   line-height: 5px;
-  margin-bottom: 60px;
+  margin-bottom: 30%;
 }
 
 h1 {
@@ -239,7 +239,7 @@ label {
   .ingContainer {
     display: flex;
     justify-content: center;
-    margin-left: 10%;
+    margin-left: 8%;
   }
 
   .shop-button {
@@ -247,10 +247,11 @@ label {
     justify-content: center;
   }
 
-  .instructions-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: 23%;
+  .instructions-arrow {
+    visibility: hidden;
+    align-self: start;
+    font-size: 35px;
+    margin: 0 10px 20px 0;
   }
 
   .mobile-divider {
@@ -263,6 +264,6 @@ label {
   .instructions-container {
     display: flex;
     justify-content: center;
-    margin-left: 10%;
+    margin-left: 0;
   }
 }

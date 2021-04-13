@@ -6,7 +6,7 @@
       </div>
     </section>
     <section class="information">
-      <h1 class="title">{{recipe?.title}}</h1>
+      <h1 class="title">{{recipe?.title}}Recipe Title</h1>
       <div class="owner-container">
         <mat-icon class="c-powder">account_circle</mat-icon>
         <h3 class="owner">Recipe Owner Display Name</h3>
@@ -14,23 +14,22 @@
       <div class="time">
         <h3>Prep Time: {{recipe?.prepTime}}Min</h3>
         <h3>Cook Time: {{recipe?.cookTime}}Min</h3>
-        <h3>Serving Size: xx</h3>
       </div>
       <div class="nutrition-mobile">
         <img src="/assets/images/nutrition.jpg" alt="nutritional information" class="nutrition-img">
       </div>
       <div class="actions">
-        <button mat-fab>
-          <mat-icon class="c-onyx">thumb_up_alt</mat-icon>
+        <button mat-fab class="fab-buttons">
+          <mat-icon class="fab">thumb_up_alt</mat-icon>
         </button>
-        <button mat-fab>
-          <mat-icon class="c-onyx">restaurant_menu</mat-icon>
+        <button mat-fab class="fab-buttons">
+          <mat-icon class="fab">restaurant_menu</mat-icon>
         </button>
-        <button mat-fab>
-          <mat-icon class="c-onyx">bookmark</mat-icon>
+        <button mat-fab class="fab-buttons">
+          <mat-icon class="fab">bookmark</mat-icon>
         </button>
-        <button mat-fab>
-          <mat-icon class="c-onyx">edit</mat-icon>
+        <button mat-fab class="fab-buttons">
+          <mat-icon class="fab">edit</mat-icon>
         </button>
       </div>
     </section>
@@ -45,7 +44,7 @@
     <section class="ingContainer">
       <h2>INGREDIENTS</h2>
       <mat-list>
-        <mat-list-item *ngFor="let ingredient of ingredientList" id="ingredient" name="ingredient" value="Ingredient">
+        <mat-list-item *ngFor="let ingredient of ingredientList" name="ingredient" value="Ingredient">
           <mat-checkbox color='mint'>{{ingredient}}</mat-checkbox>
         </mat-list-item>
       </mat-list>

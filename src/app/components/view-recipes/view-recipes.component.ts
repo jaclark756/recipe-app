@@ -66,6 +66,6 @@ export class ViewRecipesComponent implements OnInit {
   ]
 
   strikethroughText(event) {
-    event.target.classList.toggle("ingredients-Strikethrough")
+    event.target.classList.toggle("instructions-Strikethrough")
   }
 }

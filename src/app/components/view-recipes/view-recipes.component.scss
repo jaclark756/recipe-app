@@ -13,29 +13,69 @@
   padding-top: 5%;
 }
 
+h2,
+h1,
+h3,
+label {
+  color: $powder;
+}
+
+.title {
+  font-size: 48px !important;
+  text-align: center;
+  margin: 0;
+}
+
+.recipeImg {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-items: left;
+  margin-left: 8%;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.owner-container {
+  margin-top: 10px;
+  justify-content: center;
+  display: flex;
+  margin: 5px 0 50px 0;
+}
+
+.owner {
+  margin: 5px 0 6px 20px;
+}
+
+.time {
+  text-align: center;
+  line-height: 5px;
+  margin-bottom: 20%;
+}
+
+.nutrition-mobile {
+  display: none;
+}
+
 .actions {
   display: flex;
   justify-content: center;
   vertical-align: bottom;
 }
 
-.time {
-  text-align: center;
-  line-height: 5px;
-  margin-bottom: 30%;
+.fab-buttons {
+  margin: 8px !important;
+  text-align: center !important;
 }
 
-h1 {
-  font-size: 48px !important;
-  text-align: center;
-  margin: 0;
-}
-
-.column {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+.fab {
+  font-size: 30px;
+  margin: -2px 5.5px 10px 0;
+  color: $onyx;
 }
 
 .nutrition-column {
@@ -52,46 +92,10 @@ h1 {
   width: 100%;
 }
 
-.nutrition-mobile {
-  display: none;
-}
-
-.image {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.owner-container {
-  margin-top: 10px;
-  justify-content: center;
-  display: flex;
-  margin: 5px 0 50px 0;
-}
-
 ::ng-deep .mat-divider {
   border-top-color: $mint !important;
   width: 90%;
   margin: 10px auto 10px auto !important;
-}
-
-h2,
-h1,
-h3,
-label {
-  color: $powder;
-}
-
-.owner {
-  margin: 5px 0 6px 20px;
-}
-
-.recipeImg {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-items: left;
-  margin-left: 8%;
 }
 
 .prepareRecipe {
@@ -100,14 +104,12 @@ label {
   width: 100%;
 }
 
-::ng-deep .mat-fab {
-  margin: 8px !important;
-  text-align: center !important;
-}
-
-.c-onyx {
-  font-size: 30px;
-  margin: -2px 5.5px 10px 0;
+.ingContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-items: left;
+  margin-left: 30%;
 }
 
 ::ng-deep .mat-list-base {
@@ -124,20 +126,8 @@ label {
   align-items: flex-start;
 }
 
-.instructions-text {
-  margin: 0 0 8px 0;
-}
-
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
   border-color: $mint;
-}
-
-.ingContainer {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-items: left;
-  margin-left: 30%;
 }
 
 .shop-button {
@@ -156,6 +146,15 @@ label {
   margin-left: 23%;
 }
 
+.instructions-list:hover .instructions-arrow,
+.instructions-list:focus .instructions-arrow {
+  visibility: visible;
+}
+
+.instructions-text {
+  margin: 0 0 8px 0;
+}
+
 .instructions-arrow {
   visibility: hidden;
   align-self: start;
@@ -163,12 +162,8 @@ label {
   margin: 0 10px 15px 0;
 }
 
-.ingredients-Strikethrough {
+.instructions-Strikethrough {
   text-decoration: line-through;
-}
-.instructions-list:hover .instructions-arrow,
-.instructions-list:focus .instructions-arrow {
-  visibility: visible;
 }
 
 .flex-container {
@@ -201,6 +196,11 @@ label {
     margin-left: 0;
   }
 
+  .image {
+    display: flex;
+    justify-content: center;
+  }
+
   .owner-container {
     margin-top: 10px;
     justify-content: center;
@@ -214,10 +214,6 @@ label {
     margin-bottom: 30px;
   }
 
-  .nutrition-column {
-    display: none;
-  }
-
   .nutrition-mobile {
     margin-bottom: 10px;
     margin-left: 0;
@@ -225,12 +221,11 @@ label {
     justify-content: center;
   }
 
-  .image {
-    display: flex;
-    justify-content: center;
+  .nutrition-column {
+    display: none;
   }
 
-  .prepareRecipe {
+   .prepareRecipe {
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;

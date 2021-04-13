@@ -27,8 +27,6 @@ export class WelcomeComponent implements OnInit {
     private userService: UserService,
     public dialog: MatDialog
   ) {
-    console.log(this.tokenService.getUser());
-    console.log(this.tokenService.getToken());
    }
 
   

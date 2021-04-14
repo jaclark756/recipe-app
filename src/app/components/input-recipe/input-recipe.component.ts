@@ -77,12 +77,7 @@ export class InputRecipeComponent implements OnInit {
   ];
   
   Instructions: Instruction[];
-  instructions2: Instruction[] = [
-    { content: 'first instruction' },
-    { content: 'second instruction' },
-    { content: 'third instruction' },
-    { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' }
-  ];
+  instructions2: Instruction[] = [];
   finalInstructions: Instruction[];
   categories: Category[] = [{ 'name': 'Breakfast' }, { 'name': 'Gluten Free' }];
   allCategories: Category[] = [{ 'name': 'Lunch' }, { 'name': 'Dinner' }, { 'name': 'Dessert' }];

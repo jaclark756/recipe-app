@@ -1,10 +1,13 @@
 export interface User {
-
     id?: string;
     username?: string;
-    bio?: string;
+    displayName?: string;
     photoUrl?: string;
-    enabled: boolean;
-    email: string;
-
+    commentNotifications: boolean;
+    likeNotifications: boolean;
+    recipeSavedNotifications: boolean;
+    newFollowerNotifications: boolean;
+    userRecipes: any[];
+    //TODO: change this to collections
+    bookmarks: any[];
 }

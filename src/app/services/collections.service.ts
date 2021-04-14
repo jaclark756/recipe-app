@@ -50,7 +50,7 @@ export class CollectionService {
   }
 
 // CRUD FUNCTIONS BELOW
-  addCollection(collection: Collection): void {
+  addCollection(collection: Collection): void {console.log(collection)
     this.http.post(this.url, collection, httpOptions).subscribe((response: Collection) => {
       this.collections = [
         ...this.collections, response

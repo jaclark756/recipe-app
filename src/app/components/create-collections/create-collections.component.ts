@@ -18,7 +18,7 @@ export class CollectionsComponent implements OnInit {
     public collectionService: CollectionService,
   ) { 
     this.newCollectionForm = fb.group({
-      title: new FormControl('', [Validators.required], this.validationService.userNameValidator.bind(this.validationService))
+      collectionName: new FormControl('', [Validators.required], this.validationService.userNameValidator.bind(this.validationService))
     })
   }
 
@@ -27,7 +27,7 @@ export class CollectionsComponent implements OnInit {
 
 addCollection(){
   this.collectionService.addCollection({
-    collectionName: this.newCollectionForm.get("title").value
+    collectionName: this.newCollectionForm.get("collectionName").value
   })
 }
 

@@ -46,6 +46,7 @@ export class InputRecipeComponent implements OnInit {
   allCategories: Category[] = [{'name': 'Lunch'}, {'name': 'Dinner'}, {'name': 'Dessert'}];
   filteredCategories: Observable<Category[]>;
   existingRecipe: Recipe;
+  recipeId: number;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -108,6 +109,11 @@ export class InputRecipeComponent implements OnInit {
         console.log(recipe);
         this.recipeService.addRecipe(recipe);
       }
+    }
+
+    updateRecipe(recipe) {
+      this.recipeId = this.existingRecipe.id;
+      this.recipeService.updateRecipe(recipe, this.recipeId)
     }
 
     //// START Instruction Logic ////

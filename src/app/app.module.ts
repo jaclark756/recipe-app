@@ -24,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -56,6 +57,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTabsModule,
     MatSlideToggleModule,
     MatCheckboxModule,
+    MatSelectModule,
+
 
     RouterModule.forRoot([
       { path: '', component: InputRecipeComponent },

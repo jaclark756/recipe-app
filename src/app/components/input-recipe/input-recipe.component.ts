@@ -113,7 +113,7 @@ export class InputRecipeComponent implements OnInit {
 
     updateRecipe(recipe) {
       this.recipeId = this.existingRecipe.id;
-      this.recipeService.updateRecipe(recipe, this.recipeId)
+      this.recipeService.updateRecipe(recipe);
     }
 
     //// START Instruction Logic ////

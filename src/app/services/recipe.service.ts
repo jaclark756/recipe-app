@@ -65,8 +65,13 @@ export class RecipeService {
   }
 
   // TODO flesh out update function to include response
-  updateRecipe(recipe: Recipe, recipeId: number): void {
-    this.http.put(this.updateUrl+`/${recipeId}`, recipe, httpOptions)
+  updateRecipe(recipe: Recipe): void {
+    this.http.put(this.updateUrl, recipe, httpOptions).subscribe((response: Recipe) => {
+      this.recipes = [
+        ...this.recipes, response
+      ]
+      console.log("updated recipe: ",response);
+    })
   }
 
   deleteRecipe(recipeId: number): void {

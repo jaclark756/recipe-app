@@ -151,8 +151,9 @@ export class InputRecipeComponent implements OnInit {
         }
         console.log(recipe);
         this.recipeService.addRecipe(recipe);
-      }
+      
     }
+  }
 
     //// START Instruction Logic ////
     addInstruction2(event) {

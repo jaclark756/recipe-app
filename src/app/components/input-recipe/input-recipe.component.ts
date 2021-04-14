@@ -234,7 +234,7 @@ export class InputRecipeComponent implements OnInit {
   selected(event: MatAutocompleteSelectedEvent): void {
     this.categories.push({ name: event.option.viewValue });
     this.categoryInput.nativeElement.value = '';
-    this.categoryControl.setValue(null);
+    this.newRecipe.controls.categoryControl.setValue('');
   }
 
   displayFn(category: Category): string {

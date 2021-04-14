@@ -25,8 +25,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
 import { CollectionCardComponent } from './components/collection-card/collection-card.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {DragDropModule} from '@angular/cdk/drag-drop';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 
@@ -61,8 +59,6 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatDialogModule,
     MatInputModule,
     MatTooltipModule,
-    MatAutocompleteModule,
-    DragDropModule,
     MatMenuModule,
     MatBadgeModule
   ],
@@ -90,8 +86,6 @@ import {MatBadgeModule} from '@angular/material/badge';
     FlexLayoutModule,
     CollectionCardComponent,
     MatTooltipModule,
-    MatAutocompleteModule,
-    DragDropModule,
     MatMenuModule,
     MatBadgeModule
   ],

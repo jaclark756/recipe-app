@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
-import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +9,6 @@ import { InputRecipeComponent } from './components/input-recipe/input-recipe.com
 
 export class AppComponent {
   title = 'recipe-app';
-  constructor(public router: Router, public dialog: MatDialog) { }
-
-  addRecipe() {
-    const config = new MatDialogConfig();
-    config.autoFocus = true;
-    config.disableClose = false;
-    config.panelClass = 'dialog-container';
-    // config.backdropClass = 'backdropBackground';
-    const dr = this.dialog.open(InputRecipeComponent, config);
-  }
+  constructor(public router: Router) { }
 
 }

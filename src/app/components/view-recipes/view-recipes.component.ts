@@ -17,25 +17,6 @@ export class ViewRecipesComponent implements OnInit {
   public ingredients: string[];
   public instructions: string[];
   sample_recipes = RECIPES;
-
-
-  constructor(private route: ActivatedRoute,
-    private recipeService: RecipeService) { }
-
-  ngOnInit(): void {
-    this.getRecipe();
-  }
-
-  getRecipe(): void {
-    this.route.paramMap.subscribe(param => {
-      this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
-        this.recipe = recipe;
-        this.ingredients = recipe.ingredients
-        this.instructions = recipe.instructions
-      });
-    })
-  }
-
   ingredientList = [
     "Asparagus",
     "Jordan's Latest eyeroll",
@@ -64,6 +45,23 @@ export class ViewRecipesComponent implements OnInit {
     "8. Let cool for 5 min off stove",
     "9. Serve with Parsely garnish",
   ]
+
+  constructor(private route: ActivatedRoute,
+    private recipeService: RecipeService) { }
+
+  ngOnInit(): void {
+    this.getRecipe();
+  }
+
+  getRecipe(): void {
+    this.route.paramMap.subscribe(param => {
+      this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
+        this.recipe = recipe;
+        this.ingredients = recipe.ingredients
+        this.instructions = recipe.instructions
+      });
+    })
+  }
 
   strikethroughText(event) {
     event.target.classList.toggle("instructions-Strikethrough")

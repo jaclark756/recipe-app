@@ -23,9 +23,11 @@ export class RecipeService {
    }
 
   private url: string = environment.apiUrl+"/recipe"
+  private updateUrl: string = environment.apiUrl+"/v2/recipe/update"
   private newRecipeUrl: string = this.url + "/new"
   private readonly recipeSubject = new BehaviorSubject<Recipe[]>([]);
   readonly recipe$ = this.recipeSubject.asObservable();
+
 
 
 // GETTERS AND SETTERS
@@ -62,12 +64,18 @@ export class RecipeService {
     })
   }
 
-  // TODO Update recipe function
+  // TODO flesh out update function to include response
+  updateRecipe(recipe: Recipe): void {
+    this.http.put(this.updateUrl, recipe, httpOptions)
+  }
 
   deleteRecipe(recipeId: number): void {
     this.http.delete(this.url+`/${recipeId}`, httpOptions).subscribe(response => {
       this.recipeSubject.next(this.recipes.filter(recipe => recipe.id !== recipeId));
     });
   }
+
+
+
 
 }

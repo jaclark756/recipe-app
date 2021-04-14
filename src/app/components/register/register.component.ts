@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 import { ValidationService } from 'src/app/services/validation.service';
 import { environment } from 'src/environments/environment';
 
@@ -14,8 +15,8 @@ import { environment } from 'src/environments/environment';
 export class RegisterComponent implements OnInit {
 
   BASE_URL: string = "http://localhost:8080/"
-  USERS_URL: string = "/usernames"
-  SIGNUP_URL: string = "/user/update"
+  USERS_URL: string = "/v2/usernames"
+  SIGNUP_URL: string = "/v2/user/update"
   URL = this.BASE_URL + this.USERS_URL;
   UPDATE_URL = environment.apiUrl + this.SIGNUP_URL;
 
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
     private http: HttpClient,
     public fb: FormBuilder,
     public validationService: ValidationService,
+    private tokenService: TokenService,
     public router: Router
   ) {
     this.signUpForm = fb.group({
@@ -36,13 +38,14 @@ export class RegisterComponent implements OnInit {
   }
 
   signUp(event){
-    alert("signed up!");
-    console.log(this.UPDATE_URL);
-    console.log(this.signUpForm.value);
-    this.http.post(this.UPDATE_URL, this.signUpForm.value).subscribe(
-      res => {
-        console.log(res)
-        this.router.navigate(['home']);        
+    let user = this.tokenService.getUser();
+    user.username = this.signUpForm.get("username").value;
+    this.http.put(this.UPDATE_URL, user).subscribe(
+      (res: any) => {
+        this.tokenService.saveUser(res);
+        if (res.username != null){
+          this.router.navigate(['home']); 
+        }
       }
     );
   

@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { RECIPES } from 'src/app/helpers/sample-data';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { Ingredient } from 'src/app/types/ingredient';
+import { Instruction } from 'src/app/types/instruction';
 import { Recipe } from 'src/app/types/recipe';
 
 @Component({
@@ -13,8 +15,8 @@ import { Recipe } from 'src/app/types/recipe';
 })
 export class ViewRecipesComponent implements OnInit {
   public recipe: Recipe;
-  public ingredients: string[];
-  public instructions: string[];
+  public ingredients: Ingredient[];
+  public instructions: Instruction[];
   sample_recipes = RECIPES;
   ingredientList = [
     'Asparagus',

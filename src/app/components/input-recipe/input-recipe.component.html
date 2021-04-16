@@ -1,6 +1,5 @@
 <div class="form-container">
     <form [formGroup]="newRecipe">
-
         <mat-form-field class="form-input category-input">
             <mat-label>Add Categories</mat-label>
             <mat-chip-list #chipList aria-label="Category selection">
@@ -80,7 +79,6 @@
             <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
         </mat-form-field>
         <br>
-
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="imageUri">Picture of Dish</mat-label>
             <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
@@ -94,7 +92,6 @@
                 <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
             </mat-form-field>
             <br>
-
             <mat-form-field class="form-input prep-input" appearance="fill">
                 <mat-label>Prep Time</mat-label>
                 <input matInput type="number" placeholder="Ex. 15 min" formControlName="prepTime" min="0">
@@ -103,6 +100,5 @@
             </mat-form-field>
         </div>
     </form>
-
     <app-button [label]="existingRecipe ? 'Update Recipe' : 'Add Recipe'" (clickEvent)="existingRecipe ? updateRecipe($event) : addRecipe($event)" class="done-button input-recipe-button"></app-button>
 </div>

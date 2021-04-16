@@ -270,8 +270,10 @@ input::placeholder {
 }
 
 .mat-chip {
-  font-size: 16px !important;
+  font-size: 15px !important;
   padding: 8px !important;
+  font-weight: 300 !important;
+  font-family: "Dosis", sans-serif !important
 }
 
 /* Mat Dialog for Input Recipe */

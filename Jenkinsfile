@@ -1,7 +1,4 @@
 pipeline {
-    environment {
-        DOCKER_EXEC = 
-    }
     agent { docker { image 'node:10.24.0'
                      args '-u root:sudo -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker' 
                     }

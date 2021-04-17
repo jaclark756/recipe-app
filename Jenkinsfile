@@ -1,11 +1,12 @@
 pipeline {
     agent { docker { image 'node:10.24.0'
-                     args '-u root:sudo'} }
+                     args '-u root:sudo -v /var/run/docker.sock:/var/run/docker.sock'} }
     stages {
         stage('Prebuild') {
             steps {
-                sh "apt-get install docker"
+                sh "apt-get install"
                 sh "npm install"
+                sh "docker ps"
             }
         }
         stage('Build') {

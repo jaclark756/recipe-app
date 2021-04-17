@@ -9,6 +9,7 @@ pipeline {
         stage('Prebuild') {
             steps {
                 sh "npm install"
+                sh "chmod -v a+s /usr/bin/docker"
                 sh "docker ps"
             }
         }

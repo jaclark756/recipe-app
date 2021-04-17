@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Prebuild') {
             steps {
-                sh "apt-get install"
                 sh "npm install"
                 sh "docker ps"
             }

@@ -23,6 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CollectionsComponent } from './components/create-collections/create-collections.component';
 import {MatSelectModule} from '@angular/material/select';
 
@@ -58,6 +59,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatTabsModule,
     MatSlideToggleModule,
+    MatCheckboxModule,
     MatSelectModule,
 
 

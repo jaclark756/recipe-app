@@ -37,6 +37,18 @@
       "category": ["summer", "vegan"],
       "ingredients": ["stick", "sugar water"],
       "instructions": ["freeeeeze the sugar water on the stick", "enjoy!"]
+    },
+    {
+      "id": 3,
+      "title": "Lots of Ingredients",
+      "cookTime": 600,
+      "prepTime": 10,
+      "photoUrl": "https://picsum.photos/400",
+      "userId": 7,
+      "category": ["summer", "vegan"],
+      "ingredients": ["stick", "sugar water", "Ryan's tears", "The Spanish Inquisition", "Thanks Obama", "Beer", "jimmy johns", "cheese", "The Ministry of Funny Walks"],
+      "instructions": ["freeeeeze the sugar water on the stick", "enjoy!"]
     }
+
   ]
 }

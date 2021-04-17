@@ -11,15 +11,11 @@ pipeline {
             steps {
                 sh "npm install"
                 sh "npm run build"
-                stash includes: '**/dist/recipe-app', name: 'recipe-app'
             }
         }
         stage('Build and Publish Docker Container') {
             agent any
             steps {
-                sh "ls -latr"
-                echo "unstashing"
-                unstash "recipe-app"
                 sh "ls -latr"
                 script {
                     docker.withRegistry('253520709108.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:jenkins-ecr') {

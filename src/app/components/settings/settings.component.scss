@@ -94,3 +94,16 @@ img {
   ::ng-deep .mat-form-field .mat-input-element {
       color: $onyx !important;
   }
+
+
+@media only screen and (max-width: 800px) {
+    .container {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    mat-form-field {
+        width: 100%;
+    }
+}

@@ -24,7 +24,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { CollectionsComponent } from './components/create-collections/create-collections.component';
 import {MatSelectModule} from '@angular/material/select';
+
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import {MatSelectModule} from '@angular/material/select';
     RegisterComponent,
     WelcomeComponent,
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
+    CollectionsComponent
   ],
   imports: [
     AppRoutingModule,

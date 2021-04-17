@@ -1,27 +1,22 @@
 pipeline {
     agent { 
         docker { 
-            image 'node:10.24.0'
-            args '-u root:sudo -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker' 
+            image 'node:10.24.1-stretch'
+            args '-u root:sudo --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker' 
         }
     }
     stages {
         stage('Prebuild') {
             steps {
                 sh "npm install"
-                sh "chmod -v a+s /usr/bin/docker"
-                sh "docker ps"
             }
         }
         stage('Build') {
-            environment {
-                BITBUCKET_COMMON_CREDS = credentials('RecipeAppJenkins')
-            }
-            steps {
+            node {
                 sh "npm run build"
-                sh "docker login gitlab.mccinfo.net:5050 -u ${BITBUCKET_COMMON_CREDS_USR} -p ${BITBUCKET_COMMON_CREDS_PSW}"
-                sh "docker build -t gitlab.mccinfo.net:5050/code-school/students/recipe-app ."
-                sh "docker push gitlab.mccinfo.net:5050/code-school/students/recipe-app"
+                docker.withRegistry('gitlab.mccinfo.net:5050', 'RecipeAppJenkins')
+                def image = docker.build("gitlab.mccinfo.net:5050/code-school/students/recipe-app:${env.BUILD_ID}")
+                image.push()
             }
         }
         stage('Deploy') {

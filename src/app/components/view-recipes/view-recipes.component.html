@@ -28,7 +28,7 @@
   <div class="prepareRecipe">
     <section class="ingContainer">
       <h3>Ingredients</h3>
-      <mat-list *ngFor="let ingredient of ingredientList">
+      <mat-list *ngFor="let ingredient of ingredients">
         <mat-list-item id="ingredient" name="ingredient" value="Ingredient">
           <mat-checkbox color='mint'>{{ingredient}}</mat-checkbox>
         </mat-list-item>
@@ -36,7 +36,7 @@
     </section>
     <section class="instructions-container">
       <h3>Instructions</h3>
-      <mat-list *ngFor="let instruction of instructionList">
+      <mat-list *ngFor="let instruction of instructions">
         <mat-list-item class="c-powder">{{instruction}}</mat-list-item>
       </mat-list>
     </section>

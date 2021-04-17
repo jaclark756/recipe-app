@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh "ls -latr"
                 script {
-                    docker.withRegistry('253520709108.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:jenkins-ecr') {
+                    docker.withRegistry('https://253520709108.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:jenkins-ecr') {
                         def image = docker.build("mcc-code-school-recipe-app:${env.BUILD_ID}")
                         image.push()
                     }

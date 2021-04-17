@@ -1,6 +1,6 @@
 pipeline {
     agent { docker { image 'node:10.24.0'
-                     args '-u root:sudo -v /var/run/docker.sock:/var/run/docker.sock'} }
+                     args '-u root:sudo -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):$(which docker)'} }
     stages {
         stage('Prebuild') {
             steps {

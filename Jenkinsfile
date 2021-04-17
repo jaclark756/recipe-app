@@ -17,8 +17,8 @@ pipeline {
             agent any
             steps {
                 script {
-                    docker.withRegistry('https://gitlab.mccinfo.net:5050', 'RecipeAppJenkins') {
-                        def image = docker.build("gitlab.mccinfo.net:5050/code-school/students/recipe-app:${env.BUILD_ID}")
+                    docker.withRegistry('https://gitlab.mccinfo.net', 'RecipeAppJenkins') {
+                        def image = docker.build("gitlab.mccinfo.net/code-school/students/recipe-app:${env.BUILD_ID}")
                         image.push()
                     }
                 }

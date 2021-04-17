@@ -22,8 +22,7 @@ export class RecipeService {
     })
    }
 
-  private url: string = environment.apiUrl+"/recipe"
-  private updateUrl: string = environment.apiUrl+"/v2/recipe/update"
+  private url: string = environment.apiUrl+"/v2/recipe"
   private newRecipeUrl: string = this.url + "/new"
   private readonly recipeSubject = new BehaviorSubject<Recipe[]>([]);
   readonly recipe$ = this.recipeSubject.asObservable();
@@ -66,7 +65,7 @@ export class RecipeService {
 
   // TODO flesh out update function to include response
   updateRecipe(recipe: Recipe): void {
-    this.http.put(this.updateUrl, recipe, httpOptions).subscribe((response: Recipe) => {
+    this.http.put(this.url, recipe, httpOptions).subscribe((response: Recipe) => {
       this.recipes = [
         ...this.recipes, response
       ]

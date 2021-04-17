@@ -1,42 +1,21 @@
 <div class="form-container">
     <form [formGroup]="newRecipe">
-        <mat-form-field class="form-input category-input">
-            <mat-label>Add Categories</mat-label>
-            <mat-chip-list #chipList aria-label="Category selection">
-              <mat-chip
-                *ngFor="let category of categories"
-                [selectable]="selectable"
-                [removable]="removable"
-                (removed)="remove(category)">
-                {{category.name}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input
-                placeholder="Add Category..."
-                #categoryInput
-                formControlName="categoryControl"
-                [matAutocomplete]="auto"
-                [matChipInputFor]="chipList"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                (matChipInputTokenEnd)="add($event)">
-            </mat-chip-list>
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" [displayWith]="displayFn">
-              <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
-                {{category.name}}
-              </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
+
         <mat-form-field class="form-input" appearance="fill">
-                <mat-label for="instruction2Control">Add Instruction</mat-label>
-                <input matInput type="text" formControlName="instruction2Control" placeholder="">
-                <button (click)="addInstruction2($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'">
-                    <mat-icon class="c-white">add</mat-icon>
-                </button>
+            <mat-label for="recipeName">Recipe Name</mat-label>
+            <input matInput type="text" formControlName="recipeName" required>
+            <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
         </mat-form-field>
-        <mat-chip-list
-            class="example-chip mat-chip-list-stacked"
-            cdkDropList 
-            (cdkDropListDropped)="drop($event)">
+        <br>
+
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label for="instruction2Control">Add Instruction</mat-label>
+            <input matInput type="text" formControlName="instruction2Control" placeholder="">
+            <button (click)="addInstruction2($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'">
+                <mat-icon class="c-white">add</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-chip-list class="example-chip mat-chip-list-stacked" cdkDropList (cdkDropListDropped)="drop($event)">
             <div cdkDrag class="ordered-chips-container" *ngFor="let instruction of instructions2">
                 <mat-icon class="c-white">menu</mat-icon>
                 <span class="c-white instruction-number">{{instruction.instructionOrder + 1}}</span>
@@ -58,27 +37,61 @@
                     <input matInput type="number" formControlName="ingredient2QuantityControl" placeholder="">
                 </mat-form-field>
                 <mat-form-field class="form-input ingredient-measure" appearance="fill">
-                    <mat-label for="ingredient2MeasureControl">Measure Type</mat-label>
-                    <input matInput type="text" formControlName="ingredient2MeasureControl" placeholder="i.e. cups">
+                    <mat-label for="ingredient2MeasureControl">Measurement</mat-label>
+                    <mat-select formControlName="ingredient2MeasureControl">
+                        <mat-option>-- None --</mat-option>
+                        <mat-optgroup *ngFor="let option of ingredientMeasureOptions" [label]="option.type">
+                            <mat-option *ngFor="let measurement of option.measurement" [value]="measurement.value">
+                                {{measurement.value}}
+                            </mat-option>
+                        </mat-optgroup>
+                    </mat-select>
                 </mat-form-field>
-                <button class="ingredient-add" (click)="addIngredients($event, formDirective)" mat-icon-button matSuffix [attr.aria-label]="'Add Ingredients'">
+
+                <button class="ingredient-add" (click)="addIngredients($event, formDirective)" mat-icon-button matSuffix
+                    [attr.aria-label]="'Add Ingredients'">
                     <mat-icon class="c-white">add</mat-icon>
                 </button>
             </div>
             <mat-chip-list class="example-chip">
-                <mat-chip *ngFor="let ingredient of ingredients2" class="example-box" [removable]="removable" (removed)="removeIngredients(ingredient)">
+                <mat-chip *ngFor="let ingredient of ingredients2" class="example-box" [removable]="removable"
+                    (removed)="removeIngredients(ingredient)">
                     <span>{{ingredient.content}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.quantity}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.measure}}</span>
                     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                 </mat-chip>
             </mat-chip-list>
         </form>
         <br>
-        <mat-form-field class="form-input" appearance="fill">
-            <mat-label for="recipeName">Recipe Name</mat-label>
-            <input matInput type="text" formControlName="recipeName" required>
-            <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
+
+        <mat-form-field class="form-input category-input">
+            <mat-label>Add Categories</mat-label>
+            <mat-chip-list #chipList aria-label="Category selection">
+                <mat-chip *ngFor="let category of categories" 
+                          [selectable]="selectable" 
+                          [removable]="removable"
+                          (removed)="remove(category)">
+                    {{category.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Add Category..." 
+                       #categoryInput 
+                       formControlName="categoryControl"
+                       [matAutocomplete]="auto" 
+                       [matChipInputFor]="chipList"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes" 
+                       (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" [displayWith]="displayFn">
+                <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
+                    {{category.name}}
+                </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
+<<<<<<< HEAD
         <br>
+=======
+
+>>>>>>> develop
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="imageUri">Picture of Dish</mat-label>
             <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
@@ -100,5 +113,11 @@
             </mat-form-field>
         </div>
     </form>
+<<<<<<< HEAD
     <app-button [label]="existingRecipe ? 'Update Recipe' : 'Add Recipe'" (clickEvent)="existingRecipe ? updateRecipe($event) : addRecipe($event)" class="done-button input-recipe-button"></app-button>
+=======
+
+    <app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" class="done-button input-recipe-button">
+    </app-button>
+>>>>>>> develop
 </div>

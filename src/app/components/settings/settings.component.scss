@@ -86,3 +86,11 @@ img {
     margin-bottom: 5px;
     height:110px;
   }
+
+  ::ng-deep .mat-form-field .mat-form-field-flex {
+      background-color: $powder;
+  }
+
+  ::ng-deep .mat-form-field .mat-input-element {
+      color: $onyx !important;
+  }

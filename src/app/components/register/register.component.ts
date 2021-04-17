@@ -27,8 +27,8 @@ export class RegisterComponent implements OnInit {
     private http: HttpClient,
     public fb: FormBuilder,
     public validationService: ValidationService,
-    public router: Router,
-    public tokenService: TokenService,
+    private tokenService: TokenService,
+    public router: Router
   ) {
     this.signUpForm = fb.group({
       username: new FormControl('', [Validators.required, Validators.minLength(4)], this.validationService.userNameValidator.bind(this.validationService))
@@ -40,11 +40,13 @@ export class RegisterComponent implements OnInit {
 
   signUp(event){
     let user = this.tokenService.getUser();
-    console.log(user);
-    this.http.put(this.UPDATE_URL, this.signUpForm.value).subscribe(
-      res => {
-        console.log(res)
-        this.router.navigate(['home']);        
+    user.username = this.signUpForm.get("username").value;
+    this.http.put(this.UPDATE_URL, user).subscribe(
+      (res: any) => {
+        this.tokenService.saveUser(res);
+        if (res.username != null){
+          this.router.navigate(['home']); 
+        }
       }
     );
   

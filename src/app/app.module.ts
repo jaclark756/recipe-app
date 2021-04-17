@@ -11,7 +11,6 @@ import { InputRecipeComponent } from './components/input-recipe/input-recipe.com
 import { ViewRecipesComponent } from './components/view-recipes/view-recipes.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { SharedModule } from './shared/shared.module';
@@ -25,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -32,7 +32,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    EditProfileComponent,
     InputRecipeComponent,
     ViewRecipesComponent,
     RegisterComponent,
@@ -58,6 +57,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTabsModule,
     MatSlideToggleModule,
     MatCheckboxModule,
+    MatSelectModule,
+
 
     RouterModule.forRoot([
       { path: '', component: InputRecipeComponent },

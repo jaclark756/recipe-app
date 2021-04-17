@@ -79,7 +79,7 @@ export class InputRecipeComponent implements OnInit {
   Instructions: Instruction[];
   instructions2: Instruction[] = [];
   finalInstructions: Instruction[];
-  categories: Category[] = [{ 'name': 'Breakfast' }, { 'name': 'Gluten Free' }];
+  categories: Category[] = [];
   allCategories: Category[] = [{ 'name': 'Lunch' }, { 'name': 'Dinner' }, { 'name': 'Dessert' }];
   allCategoriesString: string[] = ['Lunch', 'Dinner', 'Dessert']
   filteredCategories: Observable<Category[]>;
@@ -101,13 +101,6 @@ export class InputRecipeComponent implements OnInit {
       ingredient2MeasureControl: new FormControl('', Validators.required),
     })
     this.newRecipe = this.formbuilder.group({
-      ingredients: new FormArray([
-        this.formbuilder.group({
-          ...this.ingredientsFromGroup,
-        })]),
-      instructions: new FormArray([
-        new FormControl('', Validators.required)
-      ]),
       instruction2Control: new FormControl(''),
       categoryControl: new FormControl(''),
       recipeName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -132,27 +125,31 @@ export class InputRecipeComponent implements OnInit {
     // NEW ADDRECIPE 
 
     addRecipe(event) {
-      console.log(this.newRecipe);
+
       console.log(this.newRecipe.valid);
-      if (this.newRecipe.valid) {
-        let recipe = {
-          "title": this.newRecipe.controls.recipeName.value,
-          "categories": this.categories,
-          "ingredients": this.ingredients2,
-          "instructions": this.instructions2,
-          "photoUrl": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
-          "cookTime": this.newRecipe.controls.cookTime.value,
-          "prepTime": this.newRecipe.controls.prepTime.value
+      console.log(this.ingredients2.length);
+      console.log(this.instructions2.length);
+
+      if (this.instructions2.length && this.ingredients2.length){
+        if (this.newRecipe.valid) {
+          let recipe = {
+            "title": this.newRecipe.controls.recipeName.value,
+            "categories": this.categories,
+            "ingredients": this.ingredients2,
+            "instructions": this.instructions2,
+            "photoUrl": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
+            "cookTime": this.newRecipe.controls.cookTime.value,
+            "prepTime": this.newRecipe.controls.prepTime.value
+          }
+          console.log(recipe);
+          console.log("touching add recipe");
+          this.recipeService.addRecipe(recipe);
         }
-        console.log(recipe);
-        this.recipeService.addRecipe(recipe);
-      
-    }
+      } console.log("Missing Instructions or ingredients");
   }
 
     //// START Instruction Logic ////
     addInstruction2(event) {
-      console.log(this.newRecipe.controls.instruction2Control.value);
       this.instructions2.push({content: this.newRecipe.controls.instruction2Control.value, instructionOrder: this.instructions2.length});
       this.newRecipe.controls.instruction2Control.reset();
     }
@@ -177,13 +174,6 @@ export class InputRecipeComponent implements OnInit {
   //// START Ingredient Logic ////
   addIngredients(event, formDirective: FormGroupDirective) {
     if (this.ingredientsFromGroup.valid) {
-      (<FormArray>this.newRecipe.controls.ingredients).push(
-        this.formbuilder.group({
-          content: this.ingredientsFromGroup.controls.ingredient2ContentControl.value,
-          quantity: this.ingredientsFromGroup.controls.ingredient2QuantityControl.value,
-          measure: this.ingredientsFromGroup.controls.ingredient2MeasureControl.value
-        })
-      );
       this.ingredients2.push({
         content: this.ingredientsFromGroup.controls.ingredient2ContentControl.value,
         quantity: this.ingredientsFromGroup.controls.ingredient2QuantityControl.value,
@@ -191,7 +181,7 @@ export class InputRecipeComponent implements OnInit {
       });
       this.ingredientsFromGroup.reset();
     }
-    this.formDirective.resetForm('');
+    // this.formDirective.resetForm('');
     this.ingredientsFromGroup.markAsPristine();
     this.ingredientsFromGroup.markAsUntouched();
     this.ingredientsFromGroup.updateValueAndValidity();

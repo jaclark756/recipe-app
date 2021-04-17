@@ -53,6 +53,8 @@ export class RecipeService {
 
 // CRUD FUNCTIONS BELOW
   addRecipe(recipe: Recipe): void {
+    console.log("within post function");
+    console.log(recipe);
     this.http.post(this.newRecipeUrl, recipe, httpOptions).subscribe((response: Recipe) => {
       this.recipes = [
         ...this.recipes, response

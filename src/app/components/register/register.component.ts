@@ -14,8 +14,8 @@ import { environment } from 'src/environments/environment';
 export class RegisterComponent implements OnInit {
 
   BASE_URL: string = "http://localhost:8080/"
-  USERS_URL: string = "/usernames"
-  SIGNUP_URL: string = "/user/update"
+  USERS_URL: string = "/v2/usernames"
+  SIGNUP_URL: string = "/v2/user/update"
   URL = this.BASE_URL + this.USERS_URL;
   UPDATE_URL = environment.apiUrl + this.SIGNUP_URL;
 
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
     alert("signed up!");
     console.log(this.UPDATE_URL);
     console.log(this.signUpForm.value);
-    this.http.post(this.UPDATE_URL, this.signUpForm.value).subscribe(
+    this.http.put(this.UPDATE_URL, this.signUpForm.value).subscribe(
       res => {
         console.log(res)
         this.router.navigate(['home']);        

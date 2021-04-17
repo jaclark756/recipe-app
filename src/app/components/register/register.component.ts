@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   USERS_URL: string = "/v2/usernames"
   SIGNUP_URL: string = "/v2/user"
   URL = this.BASE_URL + this.USERS_URL;
-  UPDATE_URL = environment.apiUrl + this.SIGNUP_URL + "/update";
+  UPDATE_URL = environment.apiUrl + this.SIGNUP_URL;
 
   signUpForm: FormGroup;
 

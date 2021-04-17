@@ -31,11 +31,15 @@ export class ViewRecipesComponent implements OnInit {
 
   getRecipe(): void {
     this.route.paramMap.subscribe(param => {
-      this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
+      console.log(param.get('id'));
+      if (!!param.get('id'))
+      {
+        this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
         this.recipe = recipe;
         this.ingredients = recipe.ingredients.map(ingredient => ingredient.content);
         this.instructions = recipe.instructions.map(instruction => instruction.content)
-      });
+       }) }
+       ;
     })
   }
 

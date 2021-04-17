@@ -107,8 +107,10 @@ export class InputRecipeComponent implements OnInit {
     this.existingRecipe = this.data ? this.data.recipe : null;
     console.log(this.existingRecipe);
     console.log(this.data);
+    this.ingredients2 = this.existingRecipe.ingredients;
+    this.instructions2 = this.existingRecipe.instructions;
     this.ingredientsFromGroup = this.formbuilder.group ({
-      ingredient2ContentControl: new FormControl(this.existingRecipe ? this.existingRecipe.ingredients : '', [Validators.required, Validators.maxLength(100)]),
+      ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),
       ingredient2MeasureControl: new FormControl('', Validators.required),
     })
@@ -122,7 +124,7 @@ export class InputRecipeComponent implements OnInit {
       ]),
       instruction2Control: new FormControl(''),
       categoryControl: new FormControl(''),
-      recipeName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      recipeName: new FormControl(this.existingRecipe ? this.existingRecipe.title : '', [Validators.required, Validators.maxLength(100)]),
       imageUri: new FormControl(''),
       cookTime: new FormControl('', [Validators.required, Validators.min(0)]),
       prepTime: new FormControl('', [Validators.required, Validators.min(0)])

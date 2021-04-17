@@ -12,11 +12,13 @@ pipeline {
             }
         }
         stage('Build') {
-            node {
-                sh "npm run build"
-                docker.withRegistry('gitlab.mccinfo.net:5050', 'RecipeAppJenkins')
-                def image = docker.build("gitlab.mccinfo.net:5050/code-school/students/recipe-app:${env.BUILD_ID}")
-                image.push()
+            steps {
+                node {
+                    sh "npm run build"
+                    docker.withRegistry('gitlab.mccinfo.net:5050', 'RecipeAppJenkins')
+                    def image = docker.build("gitlab.mccinfo.net:5050/code-school/students/recipe-app:${env.BUILD_ID}")
+                    image.push()
+                }
             }
         }
         stage('Deploy') {

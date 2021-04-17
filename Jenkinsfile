@@ -14,9 +14,7 @@ pipeline {
             }
         }
         stage('Build and Publish Docker Container') {
-            agent { 
-                any
-            }
+            agent any
             steps {
                 script {
                     docker.withRegistry('https://gitlab.mccinfo.net:5050', 'RecipeAppJenkins') {
@@ -27,9 +25,7 @@ pipeline {
             }
         }
         stage('Deploy') {
-            agent {
-                any
-            }
+            agent any
             steps {
                 sshagent(credentials: ['AppServer']) {
                     sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'touch jenkins_was.here'"""

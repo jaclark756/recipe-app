@@ -32,6 +32,7 @@ label {
   flex-wrap: wrap;
   justify-items: left;
   margin-left: 8%;
+  object-fit: contain;
 }
 
 .image {
@@ -178,6 +179,12 @@ label {
 @media only screen and (max-width: 720px) {
   ::ng-deep .mat-list-base .mat-list-item {
     font-size: 12px !important;
+  }
+
+  .page {
+    background-color: $metal;
+    width: 90%;
+    margin: auto;
   }
 
   .container {

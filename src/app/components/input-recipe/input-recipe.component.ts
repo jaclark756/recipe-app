@@ -17,6 +17,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Recipe } from 'src/app/types/recipe';
 import { HttpClient } from '@angular/common/http';
 import { MeasurementGroup } from 'src/app/types/measurement-group';
+import { ThisReceiver } from '@angular/compiler';
 
 
 @Component({
@@ -108,7 +109,7 @@ export class InputRecipeComponent implements OnInit {
     console.log(this.existingRecipe);
     console.log(this.data);
     this.ingredients2 = this.existingRecipe.ingredients;
-    this.instructions2 = this.existingRecipe.instructions;
+    console.log(this.existingRecipe.instructions)
     this.ingredientsFromGroup = this.formbuilder.group ({
       ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),
@@ -132,6 +133,7 @@ export class InputRecipeComponent implements OnInit {
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};
     });
+    this.instructions2 = this.existingRecipe.instructions;
     this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
       .pipe(
         startWith(''),
@@ -170,7 +172,7 @@ export class InputRecipeComponent implements OnInit {
     //// START Instruction Logic ////
     addInstruction2(event) {
       console.log(this.newRecipe.controls.instruction2Control.value);
-      this.instructions2.push({content: this.newRecipe.controls.instruction2Control.value, instructionOrder: this.instructions2.length});
+      this.instructions2.push({content: this.newRecipe.controls.instruction2Control.value, instructionOrder: this.existingRecipe ? this.instructions2.length + 1 : this.instructions2.length});
       this.newRecipe.controls.instruction2Control.reset();
     }
 

@@ -18,7 +18,7 @@
         <mat-chip-list class="example-chip mat-chip-list-stacked" cdkDropList (cdkDropListDropped)="drop($event)">
             <div cdkDrag class="ordered-chips-container" *ngFor="let instruction of instructions2">
                 <mat-icon class="c-white">menu</mat-icon>
-                <span class="c-white instruction-number">{{instruction.instructionOrder + 1}}</span>
+                <span class="c-white instruction-number">{{instruction.instructionOrder}}</span>
                 <mat-chip class="ordered-chips instruction-chip">
                     {{instruction.content}}
                 </mat-chip>
@@ -87,11 +87,6 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-<<<<<<< HEAD
-        <br>
-=======
-
->>>>>>> develop
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="imageUri">Picture of Dish</mat-label>
             <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
@@ -113,11 +108,5 @@
             </mat-form-field>
         </div>
     </form>
-<<<<<<< HEAD
     <app-button [label]="existingRecipe ? 'Update Recipe' : 'Add Recipe'" (clickEvent)="existingRecipe ? updateRecipe($event) : addRecipe($event)" class="done-button input-recipe-button"></app-button>
-=======
-
-    <app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" class="done-button input-recipe-button">
-    </app-button>
->>>>>>> develop
 </div>

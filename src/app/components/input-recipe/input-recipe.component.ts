@@ -126,9 +126,9 @@ export class InputRecipeComponent implements OnInit {
       instruction2Control: new FormControl(''),
       categoryControl: new FormControl(''),
       recipeName: new FormControl(this.existingRecipe ? this.existingRecipe.title : '', [Validators.required, Validators.maxLength(100)]),
-      imageUri: new FormControl(''),
-      cookTime: new FormControl('', [Validators.required, Validators.min(0)]),
-      prepTime: new FormControl('', [Validators.required, Validators.min(0)])
+      imageUri: new FormControl(this.existingRecipe ? this.existingRecipe.photoUrl : ''),
+      cookTime: new FormControl(this.existingRecipe ? this.existingRecipe.cookTime : '', [Validators.required, Validators.min(0)]),
+      prepTime: new FormControl(this.existingRecipe ? this.existingRecipe.prepTime : '', [Validators.required, Validators.min(0)])
     })
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};

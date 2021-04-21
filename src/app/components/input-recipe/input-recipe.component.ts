@@ -106,10 +106,7 @@ export class InputRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.existingRecipe = this.data ? this.data.recipe : null;
-    console.log(this.existingRecipe);
-    console.log(this.data);
     this.ingredients2 = this.existingRecipe.ingredients;
-    console.log(this.existingRecipe.instructions)
     this.ingredientsFromGroup = this.formbuilder.group ({
       ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),

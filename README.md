@@ -37,3 +37,15 @@ Navigate to [json-server](http://localhost:3000) and check it out!
 If you have your json-server running, you can point your angular app to hit these routes. Try `GET /api/recipe/1` to see the first recipe!
 
 The new route is `/api/v2/recipe`. You can see these routes in the `routes.json` file
+
+## Associated Information
+
+Java environmental variable: GITHUB_ID=71b8a542c2c71135c6f8;GITHUB_SECRET=8505bf7996c20dff365d6e236539aa563d360000;JWT_KEY=926D96C90030DD58429D2751AC1BDBBC;GOOGLE_ID=171493606087-7o5fofjndsrk4v4smktveabmcf4p7148.apps.googleusercontent.com;GOOGLE_SECRET=BU7jljcSlhQoy_WrPv3sVPPa;SPOONACULAR_API_Key=98e32f1d554d49cbafdcf43a4289a289
+
+Style Guide: https://styleguide-1a7ea.web.app/components/wireframes
+
+Wireframes: https://whimsical.com/recipe-V7stC2wFKGkkDAKTYjP4QB
+
+Entity Relationship Diagram
+
+https://jiracaet.mccinfo.net:8443/secure/attachment/10301/updatedERD-04-20-21.jpg

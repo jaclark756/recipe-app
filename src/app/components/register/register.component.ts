@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   BASE_URL: string = "http://localhost:8080/"
   USERS_URL: string = "/v2/usernames"
-  SIGNUP_URL: string = "/v2/user/update"
+  SIGNUP_URL: string = "/v2/user"
   URL = this.BASE_URL + this.USERS_URL;
   UPDATE_URL = environment.apiUrl + this.SIGNUP_URL;
 

@@ -83,6 +83,8 @@ export class InputRecipeComponent implements OnInit {
   allCategories: Category[] = [{ 'name': 'Lunch' }, { 'name': 'Dinner' }, { 'name': 'Dessert' }];
   allCategoriesString: string[] = ['Lunch', 'Dinner', 'Dessert']
   filteredCategories: Observable<Category[]>;
+  instructionsNotEmpty = false;
+  ingredientsNotEmpty = false;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -122,10 +124,9 @@ export class InputRecipeComponent implements OnInit {
       );
   }
 
-    // NEW ADDRECIPE 
+    // ADDRECIPE LOGIC /// 
 
     addRecipe(event) {
-
       console.log(this.newRecipe.valid);
       console.log(this.ingredients2.length);
       console.log(this.instructions2.length);
@@ -167,7 +168,6 @@ export class InputRecipeComponent implements OnInit {
         return {...item, instructionOrder: index};
       });
     }
-
   //// END Instruction Logic ////
 
 
@@ -190,8 +190,6 @@ export class InputRecipeComponent implements OnInit {
   removeIngredients(selectedIngredient: Ingredient) {
     this.ingredients2 = this.ingredients2.filter(ingredient => selectedIngredient !== ingredient);
   }
-
-
   //// END Ingredient Logic ////
 
 

@@ -83,6 +83,7 @@ export class InputRecipeComponent implements OnInit {
   allCategories: Category[] = [{ 'name': 'Lunch' }, { 'name': 'Dinner' }, { 'name': 'Dessert' }];
   allCategoriesString: string[] = ['Lunch', 'Dinner', 'Dessert']
   filteredCategories: Observable<Category[]>;
+  // TODO add Boolean logic for form validation
   instructionsNotEmpty = false;
   ingredientsNotEmpty = false;
 

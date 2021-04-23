@@ -18,6 +18,7 @@ import { Recipe } from 'src/app/types/recipe';
 import { HttpClient } from '@angular/common/http';
 import { MeasurementGroup } from 'src/app/types/measurement-group';
 import { ThisReceiver } from '@angular/compiler';
+import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
 
 
 @Component({

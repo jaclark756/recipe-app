@@ -40,7 +40,7 @@
                     <mat-label for="ingredient2MeasureControl">Measurement</mat-label>
                     <mat-select formControlName="ingredient2MeasureControl">
                         <mat-option>-- None --</mat-option>
-                        <mat-optgroup *ngFor="let option of ingredientMeasureOptions" [label]="option.type">
+                        <mat-optgroup *ngFor="let option of Options" [label]="option.type">
                             <mat-option *ngFor="let measurement of option.measurement" [value]="measurement.value">
                                 {{measurement.value}}
                             </mat-option>

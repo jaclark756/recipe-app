@@ -14,6 +14,7 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { newArray } from '@angular/compiler/src/util';
 import { MeasurementGroup } from 'src/app/types/measurement-group';
+import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
 
 
 @Component({
@@ -27,9 +28,7 @@ export class InputRecipeComponent implements OnInit {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  // instruction2Control = new FormControl();
   newRecipe: FormGroup;
-  // instructions: FormArray;
   currentUser: any;
   Ingredients: Ingredient[];
   ingredientsFromGroup: FormGroup;
@@ -37,44 +36,7 @@ export class InputRecipeComponent implements OnInit {
   ingredientContent: string;
   ingredientQuantity: number;
   ingredientMeasure: string;
-  
-  ingredientMeasureOptions: MeasurementGroup[] = [
-    {
-      type: 'Popular',
-      measurement : [
-        {value: 'gram (g)'},
-        {value: 'ounce (oz)'},
-        {value: 'pound (lb)'},
-        {value: 'teaspoon (tsp)'},
-        {value: 'tablespoon (tbsp)'},
-        {value: 'cup (cup)'}
-      ]
-    },
-    {
-      type: 'Weight',
-      measurement : [
-        {value: 'milligram (mg)'},
-        {value: 'kilogram (kg)'},
-        {value: 'gram (g)'},
-        {value: 'ounce (oz)'},
-        {value: 'pound (lb)'}
-      ]
-    },
-    {
-      type: 'Volume',
-      measurement: [
-        {value: 'teaspoon (tsp)'},
-        {value: 'tablespoon (tbsp)'},
-        {value: 'cup (cup)'},
-        {value: 'fluid ounce (fl oz)'},
-        {value: 'pint (pt)'},
-        {value:'quart (qt)'},
-        {value: 'gallon (gal)'},
-        {value: 'milliliters (ml)'},
-        {value: 'liters (l)'}
-      ]
-    }
-  ];
+  ingredientMeasureOptions = ingredientMeasureOptions;
   
   Instructions: Instruction[];
   instructions2: Instruction[] = [];
@@ -86,6 +48,7 @@ export class InputRecipeComponent implements OnInit {
   // TODO add Boolean logic for form validation
   instructionsNotEmpty = false;
   ingredientsNotEmpty = false;
+  // END TODO
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -128,10 +91,6 @@ export class InputRecipeComponent implements OnInit {
     // ADDRECIPE LOGIC /// 
 
     addRecipe(event) {
-      console.log(this.newRecipe.valid);
-      console.log(this.ingredients2.length);
-      console.log(this.instructions2.length);
-
       if (this.instructions2.length && this.ingredients2.length){
         if (this.newRecipe.valid) {
           let recipe = {

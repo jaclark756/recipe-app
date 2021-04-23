@@ -102,8 +102,6 @@ export class InputRecipeComponent implements OnInit {
             "cookTime": this.newRecipe.controls.cookTime.value,
             "prepTime": this.newRecipe.controls.prepTime.value
           }
-          console.log(recipe);
-          console.log("touching add recipe");
           this.recipeService.addRecipe(recipe);
         }
       } console.log("Missing Instructions or ingredients");

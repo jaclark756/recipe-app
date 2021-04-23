@@ -1,3 +1,4 @@
+import { parseI18nMeta } from '@angular/compiler/src/render3/view/i18n/meta';
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
@@ -56,7 +57,9 @@ export class ViewRecipesComponent implements OnInit {
     private recipeService: RecipeService,
     private dialog: MatDialog,
     private tokenService: TokenService
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit(): void {
     this.getRecipe();
@@ -65,7 +68,7 @@ export class ViewRecipesComponent implements OnInit {
   getRecipe(): void {
     this.route.paramMap.subscribe(param => {
       console.log(param.get('id'));
-      if (!!param.get('id'))
+      if (param.get('id'))
       {
         this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
         this.recipe = recipe;

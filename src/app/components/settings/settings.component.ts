@@ -21,7 +21,7 @@ export class SettingsComponent implements OnInit {
   recipeChecked: boolean;
   editProfile: FormGroup;
 
-  SIGNUP_URL: string = "/v2/user/update"
+  SIGNUP_URL: string = "/v2/user"
   UPDATE_URL = environment.apiUrl + this.SIGNUP_URL;
   
   constructor(

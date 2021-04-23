@@ -3,6 +3,7 @@ export interface User {
     username?: string;
     displayName?: string;
     photoUrl?: string;
+    enabled: boolean;
     commentNotifications: boolean;
     likeNotifications: boolean;
     recipeSavedNotifications: boolean;

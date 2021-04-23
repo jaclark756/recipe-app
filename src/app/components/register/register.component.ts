@@ -40,6 +40,7 @@ export class RegisterComponent implements OnInit {
   signUp(event){
     let user = this.tokenService.getUser();
     user.username = this.signUpForm.get("username").value;
+    user.enabled = true;
     this.http.put(this.UPDATE_URL, user).subscribe(
       (res: any) => {
         this.tokenService.saveUser(res);

@@ -37,3 +37,7 @@ Navigate to [json-server](http://localhost:3000) and check it out!
 If you have your json-server running, you can point your angular app to hit these routes. Try `GET /api/recipe/1` to see the first recipe!
 
 The new route is `/api/v2/recipe`. You can see these routes in the `routes.json` file
+
+## Additional Information
+
+https://gitlab.mccinfo.net/code-school/students/recipe-services/-/blob/develop/README.md

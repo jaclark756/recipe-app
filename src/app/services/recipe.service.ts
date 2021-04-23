@@ -23,7 +23,6 @@ export class RecipeService {
    }
 
   private url: string = environment.apiUrl+"/v2/recipe"
-  private newRecipeUrl: string = this.url + "/new"
   private readonly recipeSubject = new BehaviorSubject<Recipe[]>([]);
   readonly recipe$ = this.recipeSubject.asObservable();
 
@@ -54,7 +53,7 @@ export class RecipeService {
 
 // CRUD FUNCTIONS BELOW
   addRecipe(recipe: Recipe): void {
-    this.http.post(this.newRecipeUrl, recipe, httpOptions).subscribe((response: Recipe) => {
+    this.http.post(this.url, recipe, httpOptions).subscribe((response: Recipe) => {
       this.recipes = [
         ...this.recipes, response
       ]

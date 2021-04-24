@@ -177,6 +177,7 @@ export class InputRecipeComponent implements OnInit {
     console.log((<FormArray>this.newRecipe.get("instructions")).controls);
     (<FormArray>this.newRecipe.get("instructions")).push(new FormControl('', Validators.required));
   }
+  
   removeInstruction(event) {
     // form array loop has index, need to have button next to form field that passes in the index from loop and uses it to remove form control from the form array
   }

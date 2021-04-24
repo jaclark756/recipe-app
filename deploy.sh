@@ -2,11 +2,6 @@ ENVIRONMENT=$1
 CONTAINER_REGISTRY=$2
 CONTAINER_IMAGE=$3
 
-if [[ $ENVIRONMENT == "feature/jenkins" ]];
-then
-    ENVIRONMENT="develop"
-fi
-
 CONTAINER_NAME="recipe-app-${ENVIRONMENT}"
 ENV_FILE="${ENVIRONMENT}.env"
 

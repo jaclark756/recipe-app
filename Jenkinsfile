@@ -1,11 +1,14 @@
 pipeline {
-    agent none      
+    agent none
+    parameters {
+        string(name: 'CONTAINER_IMAGE', "mcc-code-school-recipe-app:${env.BUILD_ID}")
+    }      
     stages {
         stage('Build App') {
             agent { 
                 docker { 
                     image 'node:10.24.1-stretch'
-                    args '-u root:sudo --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker' 
+                    args '-u root:sudo' 
                 }
             }
             steps {
@@ -16,10 +19,9 @@ pipeline {
         stage('Build and Publish Docker Container') {
             agent any
             steps {
-                sh "ls -latr"
                 script {
                     docker.withRegistry('https://253520709108.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:jenkins-ecr') {
-                        def image = docker.build("mcc-code-school-recipe-app:${env.BUILD_ID}")
+                        def image = docker.build("${env.CONTAINER_IMAGE}")
                         image.push()
                     }
                 }
@@ -29,8 +31,8 @@ pipeline {
             agent any
             steps {
                 sshagent(credentials: ['AppServer']) {
-                    sh """scp README.md ubuntu@172.31.49.124:README.md"""
-                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'touch jenkins_was.here'"""
+                    sh """scp deploy.sh develop.env ubuntu@172.31.49.124:recipe"""
+                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && ./deploy.sh ${env.BRANCH_NAME} ${env.CONTAINER_IMAGE}'"""
                 }
             }
         }

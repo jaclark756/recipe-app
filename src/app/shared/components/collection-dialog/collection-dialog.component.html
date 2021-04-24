@@ -1,0 +1,16 @@
+<mat-dialog-content class="planning bg-jet">
+    <h1>Add Recipe to:</h1>
+    <div class="flex-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Collection</mat-label>
+            <mat-select>
+                <mat-option>Create Collection</mat-option>
+                <mat-option *ngFor="let collection of collection">{{collection?.collectionName}}</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+    </div>
+          <div class="button-container">
+        <button mat-raised-button class="done-button" (click)="saveRecipe()">Add Recipe</button>
+    </div>
+</mat-dialog-content>

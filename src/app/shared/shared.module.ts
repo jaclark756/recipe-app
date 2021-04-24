@@ -30,7 +30,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CollectionDialogComponent } from './components/collection-dialog/collection-dialog.component';
-
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -66,7 +66,8 @@ import { CollectionDialogComponent } from './components/collection-dialog/collec
     MatAutocompleteModule,
     DragDropModule,
     MatMenuModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSelectModule,
   ],
   exports: [
     HeaderComponent,

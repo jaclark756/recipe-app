@@ -7,6 +7,8 @@ import { RecipeService } from 'src/app/services/recipe.service';
 import { Ingredient } from 'src/app/types/ingredient';
 import { Instruction } from 'src/app/types/instruction';
 import { Recipe } from 'src/app/types/recipe';
+import { CollectionDialogComponent } from 'src/app/shared/components/collection-dialog/collection-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-view-recipes',
@@ -49,7 +51,8 @@ export class ViewRecipesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -69,4 +72,9 @@ export class ViewRecipesComponent implements OnInit {
   strikethroughText(event) {
     event.target.classList.toggle('instructions-Strikethrough');
   }
+
+  openCollectionDialog() {
+    const dialogRef = this.dialog.open(CollectionDialogComponent);
+}
+
 }

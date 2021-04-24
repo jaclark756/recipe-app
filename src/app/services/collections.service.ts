@@ -5,6 +5,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Collection } from '../types/collection';
 import { User } from '../types/user';
+import { TokenService } from 'src/app/services/token.service';
+
+
 
 
 const httpOptions = {
@@ -17,11 +20,12 @@ const httpOptions = {
 
 export class CollectionService {
 
-  private url: string = environment.apiUrl + "/profile/collections"
+  private url: string;
   private readonly collectionsSubject = new BehaviorSubject<Collection[]>([]);
   readonly collection$ = this.collectionsSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public tokenService:TokenService) {
+    this.url = environment.apiUrl +"/profile/collections/user/"+this.tokenService.getUser().id;
     this.http.get(`${this.url}`).subscribe(s => {
       this.collectionsSubject.next(s as Collection[]);
     })

@@ -66,8 +66,9 @@ h5 {
 
 /*use this style of button for end of process actions*/
 .done-button {
-  background-color: $teal !important;
-  color: $powder !important;
+  background-color: $mint !important;
+  color: $black !important;
+  float: right;
 }
 
 /*use this button for secondary actions (edit, back, change, etc.)*/
@@ -106,18 +107,6 @@ h5 {
 }
 
 /*Form Styling*/
-.form-container {
-  width: 35em;
-  border: 1px solid $powder;
-  border-radius: 5px;
-  padding: 15px;
-  margin: auto;
-  background-color: $teal;
-}
-
-.form-input {
-  width: 100%;
-}
 
 // Do not need ::ng-deep when placing these overrides in global stylesheet.
 //    -> global meaning that this stylesheet is defined in angular.json
@@ -125,26 +114,29 @@ h5 {
 // ::ng-deep
 .mat-form-field {
   .mat-input-element {
-    color: $black;
-    caret-color: $metal !important;
+    color: $powder;
+    caret-color: $white !important;
   }
   .mat-form-field-label {
     color: grey;
   }
   .mat-form-field-underline::before {
-    background-color: $metal !important;
+    background-color: $teal !important;
   }
   .mat-form-field-underline {
-    background-color: $metal !important;
+    background-color: $teal !important;
   }
   .mat-form-field-ripple {
-    background-color: $metal !important;
+    background-color: $mint !important;
   }
   .mat-form-field-required-marker {
-    color: $metal !important;
+    color: $watermelon !important;
   }
   .mat-form-field-flex {
-    background-color: $powder;
+    background-color: $onyx;
+  }
+  .mat-form-field-empty {
+    color: grey !important;
   }
 }
 
@@ -182,12 +174,133 @@ h5 {
     background-color: $metal;
   }
   .mat-input-element {
-    color: $black;
-    caret-color: $onyx;
+    color: $powder;
+    caret-color: $white;
   }
 }
 
-textarea::placeholder {
-  color: $onyx !important;
+.mat-autocomplete-trigger::placeholder {
+  color: grey !important;
 }
+
+textarea::placeholder {
+  color: grey !important;
+}
+
+input::placeholder {
+  color: grey !important;
+}
+
+.mat-form-field-flex {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 5px 5px 0px;
+}
+
+.mat-option {
+  background-color: $onyx;
+}
+
+.mat-option:hover {
+  background-color: $jet !important;
+}
+
+.mat-option:active {
+  background-color: $jet !important;
+}
+
+.mat-option.mat-selected[_ngcontent-cqo-c120]:not(.mat-option-multiple):not(.mat-option-disabled) {
+  background: $jet !important;
+}
+.mat-option.mat-selected[_ngcontent-ile-c120]:not(.mat-option-multiple):not(.mat-option-disabled) {
+  background: $jet !important;
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: $jet !important;
+}
+.mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover) {
+  background: $jet !important;
+}
+.mat-option > * {
+  color: $powder;
+}
+
 /*End Form Styling*/
+.mat-chip-list-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -4px;
+  margin-top: -4px;
+  margin-right: -4px;
+  margin-bottom: -4px;
+  margin-left: -4px;
+}
+.mat-chip-list-wrapper {
+  margin: 0px !important;
+}
+.ordered-chips {
+  display: inline-block !important;
+  margin: 0px 6px 5px;
+  height: auto !important;
+  overflow-wrap: break-word !important;
+}
+
+.mat-chip-list-stacked.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  // width: 83.5% !important;
+}
+.mat-chip-list-stacked.cdk-drop-list-dragging {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  // width: 83.5% !important;
+}
+
+.mat-chip.mat-standard-chip {
+  background-color: $teal !important;
+  color: $white !important;
+  border: $mint 2px solid;
+}
+
+
+/* Mat Dialog for Input Recipe */
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.87);
+}
+
+.dialog-container .mat-dialog-container {
+  background-color: $black;
+  box-shadow: 0px 0px 40px grey;
+  max-height: 90vh;
+  overflow: auto;
+  padding-bottom: 20px;
+  width: 80vh;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .dialog-container .mat-dialog-container {
+    width: 100vh;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .dialog-container .mat-dialog-container {
+    width: 100vh;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .dialog-container .mat-dialog-container {
+    width: 80vh;
+  }
+}

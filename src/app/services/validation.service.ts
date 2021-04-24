@@ -8,7 +8,7 @@ import { AbstractControl } from '@angular/forms';
 export class ValidationService {
 
   BASE_URL: string = "http://localhost:8080/"
-  USERS_URL: string = "api/usernames"
+  USERS_URL: string = "api/v2/usernames"
   URL = this.BASE_URL + this.USERS_URL;
 
   constructor(public http: HttpClient) { }

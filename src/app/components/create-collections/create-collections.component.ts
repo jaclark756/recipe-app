@@ -7,6 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/types/user';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment';
+import { TokenService } from 'src/app/services/token.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,7 +31,8 @@ export class CreateCollectionsComponent implements OnInit {
     public fb: FormBuilder,
     public validationService: ValidationService,
     public collectionService: CollectionService,
-    public userService: UserService
+    public userService: UserService,
+    public tokenService: TokenService
   ) {
     this.newCollectionForm = fb.group({
       collectionName: new FormControl('', [Validators.required], this.validationService.userNameValidator.bind(this.validationService))
@@ -37,11 +40,12 @@ export class CreateCollectionsComponent implements OnInit {
     this.userService.getCurrentUser().subscribe((user:User) => this.activeUser = user)
   }
 
-  //   help here
-  //   private baseUrl: string = this.environment.getValue('apiUrl');
-  //   private url: string = this.baseUrl +"/profile/collections"
+   
+    private baseUrl: string = environment.apiUrl;
+    private url: string; 
 
   ngOnInit(): void {
+    this.url = this.baseUrl +"/profile/collections/user/"+this.tokenService.getUser().id;
   }
 
 

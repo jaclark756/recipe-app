@@ -22,7 +22,7 @@ export class RecipeService {
     })
    }
 
-  private url: string = environment.apiUrl+"/recipe"
+  private url: string = environment.apiUrl+"/v2/recipe"
   private readonly recipeSubject = new BehaviorSubject<Recipe[]>([]);
   readonly recipe$ = this.recipeSubject.asObservable();
 
@@ -56,7 +56,7 @@ export class RecipeService {
       this.recipes = [
         ...this.recipes, response
       ]
-      // console.log("added recipe: ",response);
+      console.log("added recipe: ",response);
       // TODO Add route to freshly created recipe
     })
   }

@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  reverse:
+    container_name: reverse
+    hostname: reverse
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./dist/recipe-app:/usr/share/nginx/html
+
+  spring:
+    image: springio/gs-spring-boot-docker
+    ports:
+      - 8080:8080
+      
+

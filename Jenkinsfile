@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://253520709108.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:jenkins-ecr') {
-                        def image = docker.build("${env.CONTAINER_IMAGE}:${env.BUILD_ID}")
+                        def image = docker.build("${env.CONTAINER_REPO}:${env.BUILD_ID}")
                         image.push()
                     }
                 }
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['AppServer']) {
                     sh """scp deploy.sh develop.env ubuntu@172.31.49.124:recipe"""
-                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && ./deploy.sh ${env.BRANCH_NAME} ${env.CONTAINER_IMAGE}:${env.BUILD_ID}'"""
+                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && ./deploy.sh ${BRANCH_NAME} ${CONTAINER_REPO}:${BUILD_ID}'"""
                 }
             }
         }

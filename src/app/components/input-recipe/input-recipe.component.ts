@@ -40,6 +40,7 @@ export class InputRecipeComponent implements OnInit {
   ingredientContent: string;
   ingredientQuantity: number;
   ingredientMeasure: string;
+  ingredientMeasureOptions = ingredientMeasureOptions;
 
   
   Instructions: Instruction[];

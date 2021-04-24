@@ -12,10 +12,8 @@ import { startWith, map } from 'rxjs/operators';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { newArray } from '@angular/compiler/src/util';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Recipe } from 'src/app/types/recipe';
-import { MeasurementGroup } from 'src/app/types/measurement-group';
 import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
 
 

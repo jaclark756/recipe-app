@@ -1,12 +1,9 @@
-import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { RECIPES } from 'src/app/helpers/sample-data';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { TokenService } from 'src/app/services/token.service';
-import { UserService } from 'src/app/services/user.service';
 import { Ingredient } from 'src/app/types/ingredient';
 import { Instruction } from 'src/app/types/instruction';
 import { Recipe } from 'src/app/types/recipe';

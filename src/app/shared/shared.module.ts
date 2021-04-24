@@ -29,6 +29,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
+import { CollectionDialogComponent } from './components/collection-dialog/collection-dialog.component';
 
 
 
@@ -41,7 +42,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     ButtonComponent,
     CategoryCardComponent,
     SearchDialogComponent,
-    CollectionCardComponent
+    CollectionCardComponent,
+    CollectionDialogComponent
   ],
   imports: [
     CommonModule,

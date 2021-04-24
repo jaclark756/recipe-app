@@ -1,4 +1,3 @@
-import { parseI18nMeta } from '@angular/compiler/src/render3/view/i18n/meta';
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';

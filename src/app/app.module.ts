@@ -26,6 +26,7 @@ import { RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CreateCollectionsComponent } from './components/create-collections/create-collections.component';
 import {MatSelectModule} from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -61,6 +62,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatSlideToggleModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatSnackBarModule,
 
 
     RouterModule.forRoot([

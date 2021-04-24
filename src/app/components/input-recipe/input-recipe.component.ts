@@ -15,9 +15,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { newArray } from '@angular/compiler/src/util';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Recipe } from 'src/app/types/recipe';
-import { HttpClient } from '@angular/common/http';
 import { MeasurementGroup } from 'src/app/types/measurement-group';
-import { ThisReceiver } from '@angular/compiler';
 import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
 
 
@@ -73,7 +71,7 @@ export class InputRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.existingRecipe = this.data ? this.data.recipe : null;
-    this.ingredients2 = this.existingRecipe.ingredients;
+    this.ingredients2 = this.existingRecipe ? this.existingRecipe.ingredients : [];
     this.ingredientsFromGroup = this.formbuilder.group ({
       ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),
@@ -119,10 +117,22 @@ export class InputRecipeComponent implements OnInit {
       } console.log("Missing Instructions or ingredients");
   }
 
-    updateRecipe(recipe) {
+    updateRecipe(event) {
       this.recipeId = this.existingRecipe.id;
+      if (this.newRecipe.valid) {
+        let recipe = {
+          "id": this.recipeId,
+          "title": this.newRecipe.controls.recipeName.value,
+          "categories": this.categories,
+          "ingredients": this.ingredients2,
+          "instructions": this.instructions2,
+          "photoUrl": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
+          "cookTime": this.newRecipe.controls.cookTime.value,
+          "prepTime": this.newRecipe.controls.prepTime.value
+        }
       this.recipeService.updateRecipe(recipe);
     }
+  }
 
     //// START Instruction Logic ////
     addInstruction2(event) {

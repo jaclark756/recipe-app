@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
+import { NutrientEntity } from '../types/NutrientEntity';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,17 +18,17 @@ const httpOptions = {
 export class RecipeService {
 
   constructor(private http: HttpClient) {
-    this.http.get(`${this.url}`).subscribe( s => {
+    this.http.get(`${this.url}`).subscribe(s => {
       this.recipeSubject.next(s as Recipe[]);
     })
-   }
+  }
 
-  private url: string = environment.apiUrl+"/v2/recipe"
+  private url: string = environment.apiUrl + "/v2/recipe"
   private readonly recipeSubject = new BehaviorSubject<Recipe[]>([]);
   readonly recipe$ = this.recipeSubject.asObservable();
 
 
-// GETTERS AND SETTERS
+  // GETTERS AND SETTERS
 
   getAllRecipes(): Observable<Recipe[]> {
     return this.http.get(this.url, httpOptions).pipe(map(response => {
@@ -36,8 +37,8 @@ export class RecipeService {
   }
 
   getRecipe(id: number): Observable<Recipe> {
-    return this.http.get(this.url+`/${id}`, httpOptions).pipe(map(response => {
-      console.log("Recipe Response: ",response);
+    return this.http.get(this.url + `/${id}`, httpOptions).pipe(map(response => {
+      console.log("Recipe Response: ", response);
       return response as Recipe;
     }))
   }
@@ -50,13 +51,13 @@ export class RecipeService {
     this.recipeSubject.next(recipes);
   }
 
-// CRUD FUNCTIONS BELOW
+  // CRUD FUNCTIONS BELOW
   addRecipe(recipe: Recipe): void {
     this.http.post(this.url, recipe, httpOptions).subscribe((response: Recipe) => {
       this.recipes = [
         ...this.recipes, response
       ]
-      console.log("added recipe: ",response);
+      console.log("added recipe: ", response);
       // TODO Add route to freshly created recipe
     })
   }
@@ -64,9 +65,20 @@ export class RecipeService {
   // TODO Update recipe function
 
   deleteRecipe(recipeId: number): void {
-    this.http.delete(this.url+`/${recipeId}`, httpOptions).subscribe(response => {
+    this.http.delete(this.url + `/${recipeId}`, httpOptions).subscribe(response => {
       this.recipeSubject.next(this.recipes.filter(recipe => recipe.id !== recipeId));
     });
+  }
+
+  getNutritionalInfo(recipeId: number):Observable<NutrientEntity[]> { 
+    // TODO : This whill likely be the finished url
+    // for now, i'm hardcoding a recipe ID in to get mocked data
+    // return this.http.get(`${this.url}/nutrients/${recipeId}`,httpOptions);
+
+    //should be returning an array of NutrientEntities, NutrientEntity[]
+    return this.http.get(`${this.url}/nutrients/1`,httpOptions).pipe(map(res=>{
+      return res as NutrientEntity[];
+    }));
   }
 
 }

@@ -2,6 +2,10 @@ pipeline {
     agent none
     environment {
         CONTAINER_REPO = 'mcc-code-school-recipe-app'
+        BRANCH = """${sh(
+                returnStdout: true,
+                script: 'echo $env.GIT_BRANCH | "sed 's/origin\///"
+            )}""" 
     }      
     stages {
         stage('Build App') {
@@ -12,6 +16,7 @@ pipeline {
                 }
             }
             steps {
+                echo "Building on branch: ${env.BRANCH}"
                 sh "npm install"
                 sh "npm run build"
             }
@@ -32,7 +37,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['AppServer']) {
                     sh """scp deploy.sh develop.env ubuntu@172.31.49.124:recipe"""
-                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && chmod 755 deploy.sh && ./deploy.sh ${env.GIT_BRANCH} ${env.CONTAINER_REPO}:${env.BUILD_ID}'"""
+                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && chmod 755 deploy.sh && ./deploy.sh ${env.BRANCH} ${env.CONTAINER_REPO}:${env.BUILD_ID}'"""
                 }
             }
         }

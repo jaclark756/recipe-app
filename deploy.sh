@@ -1,13 +1,13 @@
-ENVIRONMENT = $1
-CONTAINER_IMAGE = $2
+ENVIRONMENT=$1
+CONTAINER_IMAGE=$2
 
 if [[ $ENVIRONMENT == "feature/jenkins" ]];
 then
-    ENVIRONMENT = "develop"
+    ENVIRONMENT="develop"
 fi
 
-CONTAINER_NAME = "recipe-app-${ENVIRONMENT}"
-ENV_FILE = "${ENVIRONMENT}.env"
+CONTAINER_NAME="recipe-app-${ENVIRONMENT}"
+ENV_FILE="${ENVIRONMENT}.env"
 
 if [[ $(docker container ls -q --filter name=${CONTAINER_NAME}) ]];
 then

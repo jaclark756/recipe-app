@@ -1,6 +1,7 @@
 pipeline {
     agent none
     environment {
+        CONTAINER_REGISTRY = '253520709108.dkr.ecr.us-west-2.amazonaws.com'
         CONTAINER_REPO = 'mcc-code-school-recipe-app'
     }      
     stages {
@@ -12,7 +13,7 @@ pipeline {
                 }
             }
             steps {
-                sh "git rev-parse --abbrev-ref HEAD"
+                echo "${params.BRANCH}"
                 sh "npm install"
                 sh "npm run build"
             }

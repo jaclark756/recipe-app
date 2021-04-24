@@ -12,7 +12,7 @@ pipeline {
                 }
             }
             steps {
-                sh "git branch --show-current"
+                sh "git rev-parse --abbrev-ref HEAD"
                 sh "npm install"
                 sh "npm run build"
             }
@@ -33,7 +33,7 @@ pipeline {
             environment {
                 BRANCH = """${sh(
                 returnStdout: true,
-                script: 'git branch --show-current'
+                script: 'git rev-parse --abbrev-ref HEAD'
             )}""" 
             }
             steps {

@@ -69,17 +69,15 @@ export class CollectionService {
 
   // TODO Update collection function
 
-  deleteCollection(collectionId: number): void {
-    this.http.delete(this.url + `/${collectionId}`, httpOptions).subscribe(response => {
-      this.collectionsSubject.next(this.collections.filter(collection => collection.id !== collectionId));
-    });
-  }
+  // deleteCollection(collectionId: number): void {
+  //   this.http.delete(this.url + `/${collectionId}`, httpOptions).subscribe(response => {
+  //     this.collectionsSubject.next(this.collections.filter(collection => collection.id !== collectionId));
+  //   });
+  // }
 
   getCollectionsByUser(userId: number) {
-    return this.http.get(this.url + `/user/${userId}`, httpOptions).pipe(map(response => {
-      console.log("Test", response)
+    return this.http.get(`${this.url}`, httpOptions).pipe(map(response => {
       return response as Collection[];
-
     }))
   }
 
@@ -94,21 +92,21 @@ export class CollectionService {
     });
   }
 
-  editCollection(collection: Collection): void {
-    this.http.put(`${this.url}`, collection, httpOptions).subscribe((response) => {
-      this.refreshCollection();
-    });
-  }
+  // editCollection(collection: Collection): void {
+  //   this.http.put(`${this.url}`, collection, httpOptions).subscribe((response) => {
+  //     this.refreshCollection();
+  //   });
+  // }
 
-  removeCollection(collection: Collection): void {
-    this.http.put(`${this.url}`, collection, httpOptions).subscribe((response) => {
-      this.refreshCollection();
-    });
-  }
+  // removeCollection(collection: Collection): void {
+  //   this.http.put(`${this.url}`, collection, httpOptions).subscribe((response) => {
+  //     this.refreshCollection();
+  //   });
+  // }
 
-  refreshCollection(): void {
-    this.http.get(`${this.url}`).subscribe(s => {
-      this.collectionsSubject.next(s as Collection[]);
-    });
-  }
+  // refreshCollection(): void {
+  //   this.http.get(`${this.url}`).subscribe(s => {
+  //     this.collectionsSubject.next(s as Collection[]);
+  //   });
+  // }
 }

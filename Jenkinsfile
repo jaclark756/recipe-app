@@ -32,7 +32,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['AppServer']) {
                     sh """scp deploy.sh develop.env ubuntu@172.31.49.124:recipe"""
-                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && ./deploy.sh ${BRANCH_NAME} ${CONTAINER_REPO}:${BUILD_ID}'"""
+                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && ./deploy.sh ${env.BRANCH_NAME} ${env.CONTAINER_REPO}:${env.BUILD_ID}'"""
                 }
             }
         }

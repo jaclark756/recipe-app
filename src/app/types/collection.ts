@@ -3,4 +3,5 @@ export interface Collection{
     collectionName?: string;
     recipeList?: number[];
     imageUrl?:  string;
+    userId?: number;
 }

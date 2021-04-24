@@ -8,7 +8,7 @@ import { CollectionService } from 'src/app/services/collections.service';
   templateUrl: './create-collections.component.html',
   styleUrls: ['./create-collections.component.scss']
 })
-export class CollectionsComponent implements OnInit {
+export class CreateCollectionsComponent implements OnInit {
 
   newCollectionForm: FormGroup;
 

@@ -4,7 +4,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Collection</mat-label>
             <mat-select>
-                <mat-option>Create Collection</mat-option>
+                <mat-option (click)="openCreateCollectionDialog()">Create Collection</mat-option>
                 <mat-option *ngFor="let collection of collection">{{collection?.collectionName}}</mat-option>
             </mat-select>
 

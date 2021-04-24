@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { CreateCollectionsComponent } from 'src/app/components/create-collections/create-collections.component';
 import { Collection } from 'src/app/types/collection';
 import { SnackbarService } from '../../services/snackbar.service';
 
@@ -23,7 +24,7 @@ export class CollectionDialogComponent implements OnInit {
     this.snackbar.openSnackBar(`Recipe has been saved to ${this.collection.collectionName}`)
     }
 
-    openDialog(comp){
-      this.dialog.open(comp);
+    openCreateCollectionDialog(){
+      const dialogRef = this.dialog.open(CreateCollectionsComponent);
     }
 }

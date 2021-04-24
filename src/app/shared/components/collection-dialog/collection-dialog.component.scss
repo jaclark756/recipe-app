@@ -23,3 +23,7 @@ h1 {
     justify-content: center !important;
     text-align: center;
 }
+
+::ng-deep .mat-option.mat-active {
+    background: $onyx !important;
+}

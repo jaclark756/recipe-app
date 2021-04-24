@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
 import { NutrientEntity } from '../types/NutrientEntity';
+import { Nutrient } from '../types/nutrient';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -79,6 +80,39 @@ export class RecipeService {
     return this.http.get(`${this.url}/nutrients/1`,httpOptions).pipe(map(res=>{
       return res as NutrientEntity[];
     }));
+  }
+
+  filterNutrition(ingredients:NutrientEntity[]):Nutrient[]{
+    let nutrientFocus=['calories', 'fat', 'Carbohydrates', 'sodium', 'sugar', 'protein', 'fiber']
+    let combinedNutrients:Nutrient[]=[];
+    let testNut:Nutrient[]=[];
+
+    ingredients.forEach(ing=>{
+      let temp = ing.nutrients.filter(nutrient=>nutrientFocus.includes(nutrient.name.toLowerCase()));
+      combinedNutrients.push(...temp)
+    })
+
+    combinedNutrients = combinedNutrients.reduce((acc,item)=>{
+      if(!acc.find(search=>search.name===item.name))
+      {
+        //if NOT found, pushes
+        acc.push(item);
+      }
+      else{
+        //if it IS found
+        const nut = acc.find(search=>search.name===item.name)
+        nut.amount=nut.amount+item.amount;
+        acc = [
+          ...acc.filter(i=>i.name!==item.name),nut
+        ]
+      }
+      return acc;
+    },[])
+
+
+    console.log("Final",combinedNutrients)
+    return combinedNutrients;
+
   }
 
 }

@@ -73,9 +73,9 @@
   <section class="nutrition-container">
     <h2>Nutrition</h2>
     <mat-list>
-      <mat-list-item class="nutrition-list" *ngFor="let nutrient of nutrition">
+      <mat-list-item class="nutrition-list" *ngFor="let nutrient of combinedNutrients">
         <mat-icon class="c-mint instructions-arrow">arrow_right_alt</mat-icon><span
-          class="instructions-text">{{nutrient.name}} : {{nutrient.consistency}}</span>
+          class="instructions-text">{{nutrient?.name}} : {{nutrient?.amount}} : {{nutrient?.unit}} : {{nutrient?.percentOfDailyNeeds}}</span>
       </mat-list-item>
     </mat-list>
   </section>

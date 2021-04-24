@@ -7,6 +7,7 @@ import { NUTRIENTS } from 'src/app/helpers/sample-data';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Ingredient } from 'src/app/types/ingredient';
 import { Instruction } from 'src/app/types/instruction';
+import { Nutrient } from 'src/app/types/nutrient';
 import { NutrientEntity } from 'src/app/types/NutrientEntity';
 import { Recipe } from 'src/app/types/recipe';
 
@@ -19,7 +20,8 @@ export class ViewRecipesComponent implements OnInit {
   public recipe: Recipe;
   public ingredients: Ingredient[];
   public instructions: Instruction[];
-  public nutrition = NUTRIENTS;
+  public nutrition = NUTRIENTS as NutrientEntity[];
+  public combinedNutrients:Nutrient[];
   sample_recipes = RECIPES;
   ingredientList = [
     'Asparagus',
@@ -68,9 +70,10 @@ export class ViewRecipesComponent implements OnInit {
       });
 
       this.recipeService.getNutritionalInfo(+param.get('id')).subscribe(nutrition=>{
-        this.nutrition = nutrition;
-        console.log(this.nutrition)
+        this.nutrition = nutrition as NutrientEntity[];
       });
+
+      this.combinedNutrients=this.recipeService.filterNutrition(this.nutrition);
 
     });
   }

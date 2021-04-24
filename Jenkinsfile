@@ -13,7 +13,7 @@ pipeline {
                 }
             }
             steps {
-                echo "${params.BRANCH}"
+                echo "${env.BRANCH_NAME}"
                 sh "npm install"
                 sh "npm run build"
             }
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['AppServer']) {
                     sh """scp deploy.sh develop.env ubuntu@172.31.49.124:recipe"""
-                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && chmod 755 deploy.sh && ./deploy.sh ${env.BRANCH} ${env.CONTAINER_REPO}:${env.BUILD_ID}'"""
+                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && chmod 755 deploy.sh && ./deploy.sh ${env.BRANCH_NAME} ${env.CONTAINER_REPO}:${env.BUILD_ID}'"""
                 }
             }
         }

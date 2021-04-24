@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Collection } from '../types/collection';
 import { User } from '../types/user';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
@@ -16,18 +17,20 @@ const httpOptions = {
 
 export class CollectionService {
 
-  constructor(private http: HttpClient) {
-    this.http.get(`${this.url}`).subscribe( s => {
-      this.collectionsSubject.next(s as Collection[]);
-    })
-   }
-
-  private url: string = environment.apiUrl+"/profile/collections"
+  private url: string = environment.apiUrl + "/profile/collections"
   private readonly collectionsSubject = new BehaviorSubject<Collection[]>([]);
   readonly collection$ = this.collectionsSubject.asObservable();
 
+  constructor(private http: HttpClient) {
+    this.http.get(`${this.url}`).subscribe(s => {
+      this.collectionsSubject.next(s as Collection[]);
+    })
+  }
 
-// GETTERS AND SETTERS
+
+
+
+  // GETTERS AND SETTERS
 
   getAllCollections(): Observable<Collection[]> {
     return this.http.get(this.url, httpOptions).pipe(map(response => {
@@ -36,7 +39,7 @@ export class CollectionService {
   }
 
   getCollection(id: number): Observable<Collection> {
-    return this.http.get(this.url+`/${id}`, httpOptions).pipe(map(response => {
+    return this.http.get(this.url + `/${id}`, httpOptions).pipe(map(response => {
       return response as Collection;
     }))
   }
@@ -49,22 +52,59 @@ export class CollectionService {
     this.collectionsSubject.next(collections);
   }
 
-// CRUD FUNCTIONS BELOW
-  addCollection(collection: Collection): void {console.log(collection)
-    this.http.post(this.url, collection, httpOptions).subscribe((response: Collection) => {
-      this.collections = [
-        ...this.collections, response
-      ]
-      console.log("added collection: ",response);
-    })
-  }
+  // CRUD FUNCTIONS BELOW
+  // addCollection(collection: Collection): void {
+  //   console.log(collection)
+  //   this.http.post(this.url, collection, httpOptions).subscribe((response: Collection) => {
+  //     this.collections = [
+  //       ...this.collections, response
+  //     ]
+  //     console.log("added collection: ", response);
+  //   })
+  // }
 
   // TODO Update collection function
 
   deleteCollection(collectionId: number): void {
-    this.http.delete(this.url+`/${collectionId}`, httpOptions).subscribe(response => {
+    this.http.delete(this.url + `/${collectionId}`, httpOptions).subscribe(response => {
       this.collectionsSubject.next(this.collections.filter(collection => collection.id !== collectionId));
     });
   }
 
+  getCollectionsByUser(userId: number) {
+    return this.http.get(this.url + `/user/${userId}`, httpOptions).pipe(map(response => {
+      console.log("Test", response)
+      return response as Collection[];
+
+    }))
+  }
+
+
+  addCollection(collection: Collection): void {
+    console.log(collection);
+    this.http.post(`${this.url}`, collection, httpOptions).subscribe((response: Collection) => {
+      this.collections = [
+        ...this.collections,
+        response
+      ]
+    });
+  }
+
+  editCollection(collection: Collection): void {
+    this.http.put(`${this.url}`, collection, httpOptions).subscribe((response) => {
+      this.refreshCollection();
+    });
+  }
+
+  removeCollection(collection: Collection): void {
+    this.http.put(`${this.url}`, collection, httpOptions).subscribe((response) => {
+      this.refreshCollection();
+    });
+  }
+
+  refreshCollection(): void {
+    this.http.get(`${this.url}`).subscribe(s => {
+      this.collectionsSubject.next(s as Collection[]);
+    });
+  }
 }

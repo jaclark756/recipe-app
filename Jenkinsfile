@@ -4,7 +4,7 @@ pipeline {
         CONTAINER_REPO = 'mcc-code-school-recipe-app'
         BRANCH = """${sh(
                 returnStdout: true,
-                script: 'echo $env.GIT_BRANCH | "sed 's/origin\///"
+                script: 'echo $env.GIT_BRANCH | sed "s/origin\///"
             )}""" 
     }      
     stages {

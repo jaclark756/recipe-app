@@ -13,17 +13,16 @@ pipeline {
                 }
             }
             steps {
-                echo "testing"
-                // sh "npm install"
-                // sh "npm run build"
+                sh "npm install"
+                sh "npm run build"
             }
         }
         stage('Build and Publish Docker Container') {
             agent any
             steps {
                 script {
-                    docker.withRegistry('https://'${env.CONTAINER_REGISTRY}, 'ecr:us-west-2:jenkins-ecr') {
-                        def image = docker.build('${env.CONTAINER_REPO}:${env.BUILD_ID}')
+                    docker.withRegistry("https://${env.CONTAINER_REGISTRY}", "ecr:us-west-2:jenkins-ecr") {
+                        def image = docker.build("${env.CONTAINER_REPO}:${env.BUILD_ID}")
                         image.push()
                     }
                 }

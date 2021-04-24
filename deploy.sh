@@ -19,4 +19,6 @@ else
 fi
 aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 253520709108.dkr.ecr.us-west-2.amazonaws.com
 docker pull ${CONTAINER_REGISTRY}/${CONTAINER_IMAGE}
-docker run -p 8087:8080 --rm --env-file=${ENVIRONMENT}.env --name ${CONTAINER_NAME} --detach ${CONTAINER_REGISTRY}/${CONTAINER_IMAGE}
+
+# TODO dynamically set ports based on app/env
+docker run -p 8087:80 --rm --env-file=${ENVIRONMENT}.env --name ${CONTAINER_NAME} --detach ${CONTAINER_REGISTRY}/${CONTAINER_IMAGE}

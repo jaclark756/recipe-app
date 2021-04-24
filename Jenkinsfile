@@ -13,6 +13,7 @@ pipeline {
                 }
             }
             steps {
+                echo "testing"
                 // sh "npm install"
                 // sh "npm run build"
             }

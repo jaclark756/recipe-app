@@ -13,7 +13,6 @@ pipeline {
                 }
             }
             steps {
-                echo "${env.BRANCH_NAME}"
                 sh "npm install"
                 sh "npm run build"
             }
@@ -22,8 +21,8 @@ pipeline {
             agent any
             steps {
                 script {
-                    docker.withRegistry(${env.CONTAINER_REGISTRY}, 'ecr:us-west-2:jenkins-ecr') {
-                        def image = docker.build("${env.CONTAINER_REPO}:${env.BUILD_ID}")
+                    docker.withRegistry('${env.CONTAINER_REGISTRY}', 'ecr:us-west-2:jenkins-ecr') {
+                        def image = docker.build('${env.CONTAINER_REPO}:${env.BUILD_ID}')
                         image.push()
                     }
                 }

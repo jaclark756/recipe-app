@@ -15,7 +15,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { newArray } from '@angular/compiler/src/util';
 import { MeasurementGroup } from 'src/app/types/measurement-group';
 import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
-
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-input-recipe',
@@ -58,7 +58,8 @@ export class InputRecipeComponent implements OnInit {
     private recipeService: RecipeService,
     private formbuilder: FormBuilder, 
     public userService: UserService,
-    public tokenService: TokenService
+    public tokenService: TokenService,
+    private dr: MatDialogRef<InputRecipeComponent>
   ) {
     this.currentUser = this.tokenService.getUser();
     this.ingredientsFromGroup = this.formbuilder.group({
@@ -189,4 +190,7 @@ export class InputRecipeComponent implements OnInit {
   }
   //// END Category Input Logic ////
 
+  close(): void{
+    this.dr.close();
+  }
 }

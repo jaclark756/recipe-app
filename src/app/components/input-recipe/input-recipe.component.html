@@ -104,7 +104,8 @@
             </mat-form-field>
         </div>
     </form>
-
-    <app-button [label]="'Add Recipe'" (clickEvent)="addRecipe($event)" class="done-button input-recipe-button">
-    </app-button>
+    <div class="button-container">
+        <button mat-stroked-button (click)="close()" class="input-recipe-cancel-button input-recipe-button">Cancel</button>
+        <button mat-raised-button (click)="addRecipe($event)" class="input-recipe-done-button input-recipe-button">Add Recipe</button>
+    </div>
 </div>

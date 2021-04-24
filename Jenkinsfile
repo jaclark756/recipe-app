@@ -29,6 +29,7 @@ pipeline {
             agent any
             steps {
                 sshagent(credentials: ['AppServer']) {
+                    sh """scp README.md ubuntu@172.31.49.124:README.md"""
                     sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'touch jenkins_was.here'"""
                 }
             }

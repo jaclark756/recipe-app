@@ -31,6 +31,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CollectionDialogComponent } from './components/collection-dialog/collection-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -68,6 +69,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatMenuModule,
     MatBadgeModule,
     MatSelectModule,
+    MatCheckboxModule
   ],
   exports: [
     HeaderComponent,

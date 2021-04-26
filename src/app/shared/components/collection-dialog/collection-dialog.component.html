@@ -1,18 +1,61 @@
 <mat-dialog-content class="planning bg-jet">
     <h1 class="c-powder">Add Recipe to:</h1>
+    <mat-divider></mat-divider>
     <div class="flex-container">
-        <mat-form-field appearance="fill">
-            <mat-label>Collection</mat-label>
-            <mat-select multiple>
-                <mat-option (click)="openCreateCollectionDialog()">Create New Collection</mat-option>
-                <mat-option *ngFor="let collection of collection">{{collection?.collectionName}}</mat-option>
-            </mat-select>
-
-        </mat-form-field>
+        <mat-list>
+            <mat-list-item>
+                <mat-checkbox>Breakfast</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Brunch Ideas</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Healthy Smoothies</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Party Appetizers</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Quick Dinner</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Breakfast</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Brunch Ideas</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Healthy Smoothies</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Party Appetizers</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Quick Dinner</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Breakfast</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Brunch Ideas</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Healthy Smoothies</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Party Appetizers</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-checkbox>Quick Dinner</mat-checkbox>
+            </mat-list-item>
+            <mat-list-item *ngFor="let collection of collections">
+                <mat-checkbox>{{collection}}</mat-checkbox>
+                <!-- <mat-checkbox>{{collection?.collectionName}}</mat-checkbox> -->
+            </mat-list-item>
+        </mat-list>
     </div>
-          <div class="button-container">
+    <div class="button-container">
+        <button mat-raised-button (click)="openCreateCollectionDialog()">+ Create Collection</button>
         <button mat-raised-button class="done-button" (click)="saveRecipe()">Add Recipe</button>
     </div>
 </mat-dialog-content>
-
-

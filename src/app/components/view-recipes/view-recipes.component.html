@@ -80,6 +80,23 @@
     </section>
   </div>
   <mat-divider></mat-divider>
+
+
+
+
+  <section class="nutrition-container">
+    <h2>Nutrition</h2>
+    <mat-list>
+      <mat-list-item class="nutrition-list" *ngFor="let nutrient of combinedNutrients">
+        <mat-icon class="c-mint instructions-arrow">arrow_right_alt</mat-icon><span
+          class="instructions-text">{{nutrient?.name}} : {{nutrient?.amount}} : {{nutrient?.unit}} :
+          {{nutrient?.percentOfDailyNeeds | percent }}</span>
+      </mat-list-item>
+    </mat-list>
+  </section>
+  <mat-divider></mat-divider>
+
+
   <div class="flex-container">
     <div class="flex-container">
       <h2>RELATED RECIPES</h2>

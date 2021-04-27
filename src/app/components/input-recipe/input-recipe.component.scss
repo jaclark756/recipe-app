@@ -64,7 +64,7 @@
     font-size: 15px !important;
     padding: 8px !important;
     font-weight: 300 !important;
-    font-family: "Dosis", sans-serif !important
+    font-family: "Dosis", sans-serif !important;
   }
   .input-recipe-done-button {
     background-color: $mint !important;
@@ -84,6 +84,9 @@
   .mat-optgroup-label {
     background-color: $black !important;
     color: $powder !important;
+  }
+  .mat-select-value-text {
+    color: $white;
   }
 }
 .button-container {

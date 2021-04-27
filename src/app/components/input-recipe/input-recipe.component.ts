@@ -2,7 +2,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormGroupDi
 import { RecipeService } from 'src/app/services/recipe.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, Inject } from '@angular/core';
 import { Ingredient } from 'src/app/types/ingredient';
 import { Instruction } from 'src/app/types/instruction';
 import { Category } from 'src/app/types/category';
@@ -13,9 +13,13 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { newArray } from '@angular/compiler/src/util';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef} from '@angular/material/dialog';
+import { Recipe } from 'src/app/types/recipe';
+import { HttpClient } from '@angular/common/http';
 import { MeasurementGroup } from 'src/app/types/measurement-group';
+import { ThisReceiver } from '@angular/compiler';
 import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
-import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-input-recipe',
@@ -37,6 +41,7 @@ export class InputRecipeComponent implements OnInit {
   ingredientQuantity: number;
   ingredientMeasure: string;
   ingredientMeasureOptions = ingredientMeasureOptions;
+
   
   Instructions: Instruction[];
   instructions2: Instruction[] = [];
@@ -45,6 +50,8 @@ export class InputRecipeComponent implements OnInit {
   allCategories: Category[] = [{ 'name': 'Lunch' }, { 'name': 'Dinner' }, { 'name': 'Dessert' }];
   allCategoriesString: string[] = ['Lunch', 'Dinner', 'Dessert']
   filteredCategories: Observable<Category[]>;
+  existingRecipe: Recipe;
+  recipeId: number;
   // TODO add Boolean logic for form validation
   instructionsNotEmpty = false;
   ingredientsNotEmpty = false;
@@ -59,10 +66,16 @@ export class InputRecipeComponent implements OnInit {
     private formbuilder: FormBuilder, 
     public userService: UserService,
     public tokenService: TokenService,
-    private dr: MatDialogRef<InputRecipeComponent>
+    private dr: MatDialogRef<InputRecipeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.currentUser = this.tokenService.getUser();
-    this.ingredientsFromGroup = this.formbuilder.group({
+  }
+
+  ngOnInit(): void {
+    this.existingRecipe = this.data ? this.data.recipe : null;
+    this.ingredients2 = this.existingRecipe ? this.existingRecipe.ingredients : [];
+    this.ingredientsFromGroup = this.formbuilder.group ({
       ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),
       ingredient2MeasureControl: new FormControl('', Validators.required),
@@ -70,23 +83,22 @@ export class InputRecipeComponent implements OnInit {
     this.newRecipe = this.formbuilder.group({
       instruction2Control: new FormControl(''),
       categoryControl: new FormControl(''),
-      recipeName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      imageUri: new FormControl(''),
-      cookTime: new FormControl('', [Validators.required, Validators.min(0)]),
-      prepTime: new FormControl('', [Validators.required, Validators.min(0)])
+      recipeName: new FormControl(this.existingRecipe ? this.existingRecipe.title : '', [Validators.required, Validators.maxLength(100)]),
+      imageUri: new FormControl(this.existingRecipe ? this.existingRecipe.photoUrl : ''),
+      cookTime: new FormControl(this.existingRecipe ? this.existingRecipe.cookTime : '', [Validators.required, Validators.min(0)]),
+      prepTime: new FormControl(this.existingRecipe ? this.existingRecipe.prepTime : '', [Validators.required, Validators.min(0)])
     })
-  }
-
-  ngOnInit(): void {
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};
     });
+    this.instructions2 = this.existingRecipe.instructions;
     this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
       .pipe(
         startWith(''),
         map(value => typeof value === 'string' ? value : value.name),
         map(name => name ? this._filter(name) : this.allCategories.slice())
       );
+    
   }
 
     // ADDRECIPE LOGIC /// 
@@ -107,6 +119,11 @@ export class InputRecipeComponent implements OnInit {
         }
       } console.log("Missing Instructions or ingredients");
   }
+
+    updateRecipe(recipe) {
+      this.recipeId = this.existingRecipe.id;
+      this.recipeService.updateRecipe(recipe);
+    }
 
     //// START Instruction Logic ////
     addInstruction2(event) {
@@ -161,6 +178,7 @@ export class InputRecipeComponent implements OnInit {
     console.log((<FormArray>this.newRecipe.get("instructions")).controls);
     (<FormArray>this.newRecipe.get("instructions")).push(new FormControl('', Validators.required));
   }
+  
   removeInstruction(event) {
     // form array loop has index, need to have button next to form field that passes in the index from loop and uses it to remove form control from the form array
   }

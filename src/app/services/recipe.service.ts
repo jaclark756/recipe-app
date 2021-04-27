@@ -27,6 +27,7 @@ export class RecipeService {
   readonly recipe$ = this.recipeSubject.asObservable();
 
 
+
 // GETTERS AND SETTERS
 
   getAllRecipes(): Observable<Recipe[]> {
@@ -61,12 +62,23 @@ export class RecipeService {
     })
   }
 
-  // TODO Update recipe function
+  // TODO flesh out update function to include response
+  updateRecipe(recipe: Recipe): void {
+    this.http.put(this.url, recipe, httpOptions).subscribe((response: Recipe) => {
+      this.recipes = [
+        ...this.recipes, response
+      ]
+      console.log("updated recipe: ",response);
+    })
+  }
 
   deleteRecipe(recipeId: number): void {
     this.http.delete(this.url+`/${recipeId}`, httpOptions).subscribe(response => {
       this.recipeSubject.next(this.recipes.filter(recipe => recipe.id !== recipeId));
     });
   }
+
+
+
 
 }

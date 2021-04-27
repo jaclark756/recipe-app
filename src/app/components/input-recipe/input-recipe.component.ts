@@ -67,8 +67,8 @@ export class InputRecipeComponent implements OnInit {
     private formbuilder: FormBuilder, 
     public userService: UserService,
     public tokenService: TokenService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private dr: MatDialogRef<InputRecipeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.currentUser = this.tokenService.getUser();
   }

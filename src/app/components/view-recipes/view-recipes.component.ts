@@ -21,7 +21,7 @@ export class ViewRecipesComponent implements OnInit {
   public ingredients: Ingredient[];
   public instructions: Instruction[];
   public nutrition = NUTRIENTS as NutrientEntity[];
-  public combinedNutrients:Nutrient[];
+  public combinedNutrients: Nutrient[];
   sample_recipes = RECIPES;
   ingredientList = [
     'Asparagus',
@@ -55,7 +55,7 @@ export class ViewRecipesComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getRecipe();
@@ -69,11 +69,11 @@ export class ViewRecipesComponent implements OnInit {
         this.instructions = recipe.instructions;
       });
 
-      this.recipeService.getNutritionalInfo(+param.get('id')).subscribe(nutrition=>{
+      this.recipeService.getNutritionalInfo(+param.get('id')).subscribe(nutrition => {
         this.nutrition = nutrition as NutrientEntity[];
       });
 
-      this.combinedNutrients=this.recipeService.filterNutrition(this.nutrition);
+      this.combinedNutrients = this.recipeService.filterNutrition(this.nutrition);
 
     });
   }

@@ -90,7 +90,7 @@
       <mat-list-item class="nutrition-list" *ngFor="let nutrient of combinedNutrients">
         <mat-icon class="c-mint instructions-arrow">arrow_right_alt</mat-icon><span
           class="instructions-text">{{nutrient?.name}} : {{nutrient?.amount}} : {{nutrient?.unit}} :
-          {{nutrient?.percentOfDailyNeeds}}% of daily requirement</span>
+          {{nutrient?.percentOfDailyNeeds | percent }}</span>
       </mat-list-item>
     </mat-list>
   </section>

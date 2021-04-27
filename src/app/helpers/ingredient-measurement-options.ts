@@ -10,7 +10,9 @@ export const ingredientMeasureOptions: MeasurementGroup[] = [
         {value: 'pound (lb)'},
         {value: 'teaspoon (tsp)'},
         {value: 'tablespoon (tbsp)'},
-        {value: 'cup (cup)'}
+        {value: 'cup (cup)'},
+        {value: 'amount'},
+        {value: 'pinch'}
       ]
     },
     {

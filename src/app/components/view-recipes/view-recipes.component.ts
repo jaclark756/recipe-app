@@ -82,8 +82,9 @@ export class ViewRecipesComponent implements OnInit {
         this.recipeService.getNutritionalInfo(+param.get('id')).subscribe(nutrition => {
           this.nutrition = nutrition as NutrientEntity[];
         });
-  
+        
         this.combinedNutrients = this.recipeService.filterNutrition(this.nutrition);
+        // console.log("Combined Nutrients",this.combinedNutrients);
       };
     })
   }
@@ -99,7 +100,7 @@ export class ViewRecipesComponent implements OnInit {
   }
 
   editButtonShow() {
-    console.log(this.tokenService.getUser())
+    // console.log(this.tokenService.getUser())
     if (this.tokenService.getUser().id === this.recipe.userId) {
       return true;
     }

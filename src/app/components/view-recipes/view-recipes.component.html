@@ -59,7 +59,7 @@
       <h3>INGREDIENTS</h3>
       <mat-list *ngFor="let ingredient of ingredients">
         <mat-list-item id="ingredient" name="ingredient" value="Ingredient">
-          <mat-checkbox color='mint'>{{ingredient.content}}</mat-checkbox>
+          <mat-checkbox color='mint'>{{ingredient?.content}}</mat-checkbox>
         </mat-list-item>
       </mat-list>
       <div class="shop-button">
@@ -74,7 +74,7 @@
         <mat-list-item class="instructions-list" *ngFor="let instruction of instructions"
           (click)="strikethroughText($event)">
           <mat-icon class="c-mint instructions-arrow">arrow_right_alt</mat-icon><span
-            class="instructions-text">{{instruction.content}}</span>
+            class="instructions-text">{{instruction?.content}}</span>
         </mat-list-item>
       </mat-list>
     </section>

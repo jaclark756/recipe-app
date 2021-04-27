@@ -75,6 +75,16 @@
     color: $mint !important;
     border: 1px solid $mint !important;
   }
+  .mat-option.mat-active {
+    background-color: $metal !important;
+  }
+  .mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
+    background-color: $metal !important;
+  }
+  .mat-optgroup-label {
+    background-color: $black !important;
+    color: $powder !important;
+  }
 }
 .button-container {
   float: right;
@@ -84,3 +94,4 @@
 .input-recipe-button {
   margin: 0px 5px;
 }
+

@@ -21,7 +21,6 @@ import { MeasurementGroup } from 'src/app/types/measurement-group';
 import { ThisReceiver } from '@angular/compiler';
 import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
 
-
 @Component({
   selector: 'app-input-recipe',
   templateUrl: './input-recipe.component.html',
@@ -209,4 +208,7 @@ export class InputRecipeComponent implements OnInit {
   }
   //// END Category Input Logic ////
 
+  close(): void{
+    this.dr.close();
+  }
 }

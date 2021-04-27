@@ -3,6 +3,7 @@ import { Recipe } from 'src/app/types/recipe';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CollectionService } from 'src/app/services/collections.service'
+import { Collection } from 'src/app/types/collection';
 //import { CreateCollectionComponent } from 'src/app/components/create-collections/create-collections.component'
 
 
@@ -14,10 +15,10 @@ import { CollectionService } from 'src/app/services/collections.service'
 export class CollectionCardComponent implements OnInit {
 
   newCollection: FormGroup;
+  @Input() collection: Collection;
   @Input() recipe: Recipe;
 
   positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
- 
   
   constructor(
     private formbuilder: FormBuilder,

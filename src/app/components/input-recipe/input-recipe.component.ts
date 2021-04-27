@@ -13,9 +13,9 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef} from '@angular/material/dialog';
 import { Recipe } from 'src/app/types/recipe';
 import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
-
 
 @Component({
   selector: 'app-input-recipe',
@@ -62,7 +62,8 @@ export class InputRecipeComponent implements OnInit {
     private formbuilder: FormBuilder, 
     public userService: UserService,
     public tokenService: TokenService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    private dr: MatDialogRef<InputRecipeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.currentUser = this.tokenService.getUser();
   }
@@ -215,4 +216,7 @@ export class InputRecipeComponent implements OnInit {
   }
   //// END Category Input Logic ////
 
+  close(): void{
+    this.dr.close();
+  }
 }

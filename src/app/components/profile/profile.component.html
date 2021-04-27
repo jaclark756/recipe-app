@@ -34,7 +34,7 @@
                             Add New Collection</button>
                 </div>
                 <div class="collection-container">
-                    <app-collection-card *ngFor="let recipe of sample_recipes" [recipe]="recipe"></app-collection-card>
+                    <app-collection-card [recipe] [collection]="collection" *ngFor="let collection of collections"></app-collection-card>
                 </div>
             </div>
         </mat-tab>

@@ -14,6 +14,7 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { newArray } from '@angular/compiler/src/util';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef} from '@angular/material/dialog';
 import { Recipe } from 'src/app/types/recipe';
 import { HttpClient } from '@angular/common/http';
 import { MeasurementGroup } from 'src/app/types/measurement-group';
@@ -66,7 +67,8 @@ export class InputRecipeComponent implements OnInit {
     private formbuilder: FormBuilder, 
     public userService: UserService,
     public tokenService: TokenService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dr: MatDialogRef<InputRecipeComponent>,
   ) {
     this.currentUser = this.tokenService.getUser();
   }

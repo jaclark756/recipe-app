@@ -1,14 +1,17 @@
-import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { RECIPES } from 'src/app/helpers/sample-data';
+import { NUTRIENTS } from 'src/app/helpers/sample-data';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { TokenService } from 'src/app/services/token.service';
 import { Ingredient } from 'src/app/types/ingredient';
 import { Instruction } from 'src/app/types/instruction';
+import { Nutrient } from 'src/app/types/nutrient';
+import { NutrientEntity } from 'src/app/types/NutrientEntity';
 import { Recipe } from 'src/app/types/recipe';
 import { CollectionDialogComponent } from 'src/app/shared/components/collection-dialog/collection-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { InputRecipeComponent } from '../input-recipe/input-recipe.component';
 
 @Component({
   selector: 'app-view-recipes',
@@ -19,6 +22,8 @@ export class ViewRecipesComponent implements OnInit {
   public recipe: Recipe;
   public ingredients: Ingredient[];
   public instructions: Instruction[];
+  public nutrition = NUTRIENTS as NutrientEntity[];
+  public combinedNutrients: Nutrient[];
   sample_recipes = RECIPES;
   ingredientList = [
     'Asparagus',
@@ -52,21 +57,48 @@ export class ViewRecipesComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
-    public dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private tokenService: TokenService
+  ) {  }
 
   ngOnInit(): void {
     this.getRecipe();
   }
 
   getRecipe(): void {
-    this.route.paramMap.subscribe((param) => {
-      this.recipeService.getRecipe(+param.get('id')).subscribe((recipe) => {
-        this.recipe = recipe;
-        this.ingredients = recipe.ingredients;
-        this.instructions = recipe.instructions;
-      });
-    });
+    this.route.paramMap.subscribe(param => {
+      console.log(param.get('id'));
+      if (param.get('id')) {
+        this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
+          this.recipe = recipe;
+          this.ingredients = recipe.ingredients;
+          this.instructions = recipe.instructions;
+        })
+        this.recipeService.getNutritionalInfo(+param.get('id')).subscribe(nutrition => {
+          this.nutrition = nutrition as NutrientEntity[];
+        });
+        
+        this.combinedNutrients = this.recipeService.filterNutrition(this.nutrition);
+        // console.log("Combined Nutrients",this.combinedNutrients);
+      };
+    })
+  }
+
+  editRecipeDialog() {
+    const config = new MatDialogConfig();
+    config.autoFocus = true;
+    config.disableClose = false;
+    config.panelClass = 'dialog-container';
+    config.data = { recipe: this.recipe }
+    const dr = this.dialog.open(InputRecipeComponent, config)
+
+  }
+
+  editButtonShow() {
+    // console.log(this.tokenService.getUser())
+    if (this.tokenService.getUser().id === this.recipe.userId) {
+      return true;
+    }
   }
 
   strikethroughText(event) {

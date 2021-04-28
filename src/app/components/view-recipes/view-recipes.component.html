@@ -6,7 +6,7 @@
       </div>
     </section>
     <section class="information">
-      <h1 class="title">{{recipe?.title}}Recipe Title</h1>
+      <h1 class="title">{{recipe?.title}}</h1>
       <div class="owner-container">
         <mat-icon class="c-powder">account_circle</mat-icon>
         <h3 class="owner">Recipe Owner Display Name</h3>
@@ -28,8 +28,8 @@
         <button mat-fab class="fab-buttons">
           <mat-icon class="fab" (click)="openCollectionDialog()">bookmark</mat-icon>
         </button>
-        <button mat-fab class="fab-buttons">
-          <mat-icon class="fab">edit</mat-icon>
+        <button *ngIf="editButtonShow()" mat-fab class="fab-buttons" (click)="editRecipeDialog()">
+          <mat-icon class="fab" (click)="editRecipeDialog()">edit</mat-icon>
         </button>
       </div>
       <div class="actions" fxShow.sm="true" fxShow.lt-sm="true" fxShow.gt-sm="false">
@@ -42,8 +42,8 @@
         <button mat-mini-fab class="fab-buttons">
           <mat-icon class="mini-fab">bookmark</mat-icon>
         </button>
-        <button mat-mini-fab class="fab-buttons">
-          <mat-icon class="mini-fab">edit</mat-icon>
+        <button mat-mini-fab *ngIf="editButtonShow()" (click)="editRecipeDialog()" class="fab-buttons">
+          <mat-icon (click)="editRecipeDialog()" class="mini-fab">edit</mat-icon>
         </button>
       </div>
     </section>
@@ -56,10 +56,10 @@
   <mat-divider></mat-divider>
   <div class="prepareRecipe">
     <section class="ingContainer">
-      <h2>INGREDIENTS</h2>
-      <mat-list>
-        <mat-list-item *ngFor="let ingredient of ingredientList" name="ingredient" value="Ingredient">
-          <mat-checkbox color='mint'>{{ingredient}}</mat-checkbox>
+      <h3>INGREDIENTS</h3>
+      <mat-list *ngFor="let ingredient of ingredients">
+        <mat-list-item id="ingredient" name="ingredient" value="Ingredient">
+          <mat-checkbox color='mint'>{{ingredient?.content}}</mat-checkbox>
         </mat-list-item>
       </mat-list>
       <div class="shop-button">
@@ -71,15 +71,32 @@
     <section class="instructions-container">
       <h2>INSTRUCTIONS</h2>
       <mat-list>
-        <mat-list-item class="instructions-list" *ngFor="let instruction of instructionList"
+        <mat-list-item class="instructions-list" *ngFor="let instruction of instructions"
           (click)="strikethroughText($event)">
           <mat-icon class="c-mint instructions-arrow">arrow_right_alt</mat-icon><span
-            class="instructions-text">{{instruction}}</span>
+            class="instructions-text">{{instruction?.content}}</span>
         </mat-list-item>
       </mat-list>
     </section>
   </div>
   <mat-divider></mat-divider>
+
+
+
+
+  <section class="nutrition-container">
+    <h2>Nutrition</h2>
+    <mat-list>
+      <mat-list-item class="nutrition-list" *ngFor="let nutrient of combinedNutrients">
+        <mat-icon class="c-mint instructions-arrow">arrow_right_alt</mat-icon><span
+          class="instructions-text">{{nutrient?.name}} : {{nutrient?.amount}} : {{nutrient?.unit}} :
+          {{nutrient?.percentOfDailyNeeds | percent }}</span>
+      </mat-list-item>
+    </mat-list>
+  </section>
+  <mat-divider></mat-divider>
+
+
   <div class="flex-container">
     <div class="flex-container">
       <h2>RELATED RECIPES</h2>

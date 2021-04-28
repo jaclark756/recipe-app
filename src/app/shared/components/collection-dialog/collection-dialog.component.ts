@@ -18,24 +18,7 @@ export class CollectionDialogComponent implements OnInit {
   @Input() collection:Collection;
   activeUser: User;
   public collections: Collection[];
-
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  // collections = [
-  //   'Breakfast',
-  //   'Brunch Ideas',
-  //   'Quick Dinner Ideas',
-  //   'Vegan Recipes',
-  //   'Gluten Free Bread',
-  //   'Healthy Smoothies',
-  //   'Kid Friendly Meals',
-  //   'Fatty Desserts',
-  //   'Crockpot Soup Recipes',
-  //   'Thanksgiving Meals to try',
-  //   'Chicken Recipes',
-  //   '30 day cleanse recipes',
-  //   'Healthy Meal Prep Recipes'
-  // ];
-
 
   constructor(
     public dialog:MatDialog,
@@ -52,7 +35,7 @@ export class CollectionDialogComponent implements OnInit {
 
   saveRecipe() {
 
-   // TODO: add function to save recipe to selected collection(s)
+   // TODO: add function to save recipe to selected collection(s) (will be done on CS2020/372)
    
     let lilSnackMessage = 'Recipe has been saved!' 
     this._snackBar.open(lilSnackMessage, "", {

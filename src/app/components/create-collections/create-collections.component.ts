@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from 'src/app/services/validation.service';
 import { CollectionService } from 'src/app/services/collections.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Collection } from 'src/app/types/collection';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -25,12 +27,16 @@ export class CreateCollectionsComponent implements OnInit {
   readonly collection$ = this.collectionSubject.asObservable();
   activeUser: User;
   newCollectionForm: FormGroup;
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  collectionName: string;
 
   constructor(
     private http: HttpClient,
     public fb: FormBuilder,
     public validationService: ValidationService,
     public collectionService: CollectionService,
+    private dr: MatDialogRef<CreateCollectionsComponent>,
+    private _snackBar: MatSnackBar,
     public userService: UserService,
     public tokenService: TokenService
   ) {
@@ -56,8 +62,7 @@ export class CreateCollectionsComponent implements OnInit {
   set collection(collection: Collection[]) {
     this.collectionSubject.next(collection);
   }
-  addCollection() {
-    console.log(this.activeUser)
+  addCollection(message: string) {
     if (this.newCollectionForm.valid){
       this.collectionService.addCollection({
         id: null,
@@ -65,11 +70,17 @@ export class CreateCollectionsComponent implements OnInit {
         recipeList: null,
         imageUrl: null,
         userId: +this.activeUser.id,
-
       });
-      this.newCollectionForm.reset();
+      let collectionName = this.newCollectionForm.get("collectionName").value;
+    let lilSnackMessage = 'Collection "' + collectionName + '" has been created!'
+    this._snackBar.open(lilSnackMessage, "", {
+      duration: 2000,
+      verticalPosition: this.verticalPosition,
+      panelClass: ["custom-style"]
+    });
+    this.newCollectionForm.reset();
+    this.dr.close()
     }
   }
-
 
 }

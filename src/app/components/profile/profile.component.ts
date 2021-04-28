@@ -32,8 +32,8 @@ export class ProfileComponent implements OnInit {
     this.activeUser = this.tokenService.getUser();
   }
 
-  openDialog(comp){
-    this.dialog.open(comp);
+  openCreateCollectionDialog(){
+    const dialogRef = this.dialog.open(CreateCollectionsComponent);
   }
   ngOnInit(): void {
     this.collectionService.getCollectionsByUser(this.activeUser.id).subscribe(response => {this.collections=response});

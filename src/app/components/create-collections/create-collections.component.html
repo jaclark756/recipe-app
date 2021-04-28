@@ -6,5 +6,5 @@
         *ngIf="newCollectionForm.get('collectionName').invalid && newCollectionForm.get('collectionName').touched">
         </div>
     </mat-form-field>
-<app-button [label]="'Create'" (clickEvent)="addCollection()" [class]="'done-button'"></app-button>
+<app-button [label]="'Create'" (clickEvent)="addCollection(collectionName)" [class]="'done-button'"></app-button>
 </mat-dialog-content>

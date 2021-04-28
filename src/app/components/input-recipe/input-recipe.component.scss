@@ -31,20 +31,45 @@
 }
 .ingredients-container {
   display: flex;
+}
+.ingredient-name-container {
+  width: 46%;
+  padding-right: 10px;
+}
+.ingredient-quantity-measure-containter {
+  width: 45%;
+  display: flex;
   justify-content: space-between;
 }
-.ingredient-name {
-  width: 50%;
-}
+// .ingredient-name {
+//   width: 100%;
+// }
 .ingredient-quantity {
-  width: 15%;
+  width: 33%;
+  padding-right: 10px;
 }
 .ingredient-measure {
-  width: 22%;
+  width: 56%;
+  padding-right: 8px;
 }
 .ingredient-add {
   top: 10px;
   left: 0px;
+}
+.custom-mat-icon {
+  font-size: 26px !important;
+}
+.ingredients-divider-top {
+  border-top: 2px solid $onyx;
+  margin: 10px 0px 20px 0px;
+  border-radius: 4px;
+}
+.ingredients-divider-bottom {
+  border-top: 2px solid $onyx;
+  margin: 10px 0px 5px 0px;
+}
+.custom-mat-chip-list {
+  margin-bottom: 10px;
 }
 .ingredients-entered {
   width: 100%;
@@ -93,5 +118,27 @@
 
 .input-recipe-button {
   margin: 0px 5px;
+}
+
+@media (max-width: 785px) {
+  .ingredients-container {
+    flex-direction: column;
+  }
+  .ingredient-name-container {
+    width: 98%;
+
+  }
+  .ingredient-quantity-measure-containter {
+    width: 98%;
+  }
+  .cook-prep-container {
+    flex-direction: column;
+  }
+  .cook-input {
+    width: 100%;
+  }
+  .prep-input {
+    width: 100%;
+  }
 }
 

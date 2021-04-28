@@ -3,13 +3,8 @@
     <mat-divider></mat-divider>
     <div class="flex-container">
         <mat-list>
-
-            <!-- FOLLOW UP WITH RYAN!! -->
-
-            
-            <mat-list-item *ngFor="let collection of collections">
-                <mat-checkbox>{{collection}}</mat-checkbox>
-                <!-- <mat-checkbox>{{collection?.collectionName}}</mat-checkbox> -->
+            <mat-list-item *ngFor="let collection of collectionService.collection$ | async">
+                <mat-checkbox>{{collection?.collectionName}}</mat-checkbox>
             </mat-list-item>
         </mat-list>
     </div>

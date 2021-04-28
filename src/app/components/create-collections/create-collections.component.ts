@@ -71,7 +71,6 @@ export class CreateCollectionsComponent implements OnInit {
         imageUrl: null,
         userId: +this.activeUser.id,
       });
-      this.newCollectionForm.reset();
       let collectionName = this.newCollectionForm.get("collectionName").value;
     let lilSnackMessage = 'Collection "' + collectionName + '" has been created!'
     this._snackBar.open(lilSnackMessage, "", {
@@ -79,6 +78,7 @@ export class CreateCollectionsComponent implements OnInit {
       verticalPosition: this.verticalPosition,
       panelClass: ["custom-style"]
     });
+    this.newCollectionForm.reset();
     this.dr.close()
     }
   }

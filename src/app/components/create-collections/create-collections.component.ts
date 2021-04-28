@@ -70,7 +70,6 @@ export class CreateCollectionsComponent implements OnInit {
         recipeList: null,
         imageUrl: null,
         userId: +this.activeUser.id,
-
       });
       this.newCollectionForm.reset();
       let collectionName = this.newCollectionForm.get("collectionName").value;
@@ -83,16 +82,5 @@ export class CreateCollectionsComponent implements OnInit {
     this.dr.close()
     }
   }
-
-  // addCollection(message: string) {
-  //   let collectionName = this.newCollectionForm.get("collectionName").value;
-  //   let lilSnackMessage = 'Collection "' + collectionName + '" has been created!'
-  //   this._snackBar.open(lilSnackMessage, "", {
-  //     duration: 2000,
-  //     verticalPosition: this.verticalPosition,
-  //     panelClass: ["custom-style"]
-  //   });
-  //   this.dr.close()
-  // }
 
 }

@@ -194,6 +194,17 @@ export class InputRecipeComponent implements OnInit {
 
   //// START Category Input Logic ////
   add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+    // Add our fruit
+    if ((value || '').trim()) {
+      this.categories.push({name: value.trim()});
+    }
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+    this.newRecipe.controls.categoryControl.setValue(null);
   }
 
   remove(categoryName: Category): void {

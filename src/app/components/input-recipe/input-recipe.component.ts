@@ -87,7 +87,7 @@ export class InputRecipeComponent implements OnInit {
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};
     });
-    this.instructions2 = this.existingRecipe.instructions;
+    this.instructions2 = this.existingRecipe ? this.existingRecipe.instructions : this.instructions2;
     this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
       .pipe(
         startWith(''),

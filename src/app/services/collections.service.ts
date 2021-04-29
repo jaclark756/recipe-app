@@ -77,6 +77,7 @@ export class CollectionService {
 
   getCollectionsByUser(userId: number) {
     return this.http.get(`${this.url}`, httpOptions).pipe(map(response => {
+      this.collections = response as Collection[];
       return response as Collection[];
     }))
   }

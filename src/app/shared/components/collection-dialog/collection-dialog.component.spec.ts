@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateCollectionsComponent } from './create-collections.component';
+import { CollectionDialogComponent } from './collection-dialog.component';
 
-describe('CreateCollectionsComponent', () => {
-  let component: CreateCollectionsComponent;
-  let fixture: ComponentFixture<CreateCollectionsComponent>;
+describe('CollectionDialogComponent', () => {
+  let component: CollectionDialogComponent;
+  let fixture: ComponentFixture<CollectionDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateCollectionsComponent ]
+      declarations: [ CollectionDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateCollectionsComponent);
+    fixture = TestBed.createComponent(CollectionDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

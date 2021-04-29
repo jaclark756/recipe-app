@@ -10,6 +10,7 @@ import { Instruction } from 'src/app/types/instruction';
 import { Nutrient } from 'src/app/types/nutrient';
 import { NutrientEntity } from 'src/app/types/NutrientEntity';
 import { Recipe } from 'src/app/types/recipe';
+import { CollectionDialogComponent } from 'src/app/shared/components/collection-dialog/collection-dialog.component';
 import { InputRecipeComponent } from '../input-recipe/input-recipe.component';
 
 @Component({
@@ -58,9 +59,7 @@ export class ViewRecipesComponent implements OnInit {
     private recipeService: RecipeService,
     private dialog: MatDialog,
     private tokenService: TokenService
-  ) {
-
-  }
+  ) {  }
 
   ngOnInit(): void {
     this.getRecipe();
@@ -105,5 +104,9 @@ export class ViewRecipesComponent implements OnInit {
   strikethroughText(event) {
     event.target.classList.toggle('instructions-Strikethrough');
   }
+
+  openCollectionDialog() {
+    const dialogRef = this.dialog.open(CollectionDialogComponent);
+}
 
 }

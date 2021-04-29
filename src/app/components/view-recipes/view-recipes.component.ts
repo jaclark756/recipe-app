@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { RECIPES } from 'src/app/helpers/sample-data';
@@ -22,8 +22,6 @@ export class ViewRecipesComponent implements OnInit {
   public recipe: Recipe;
   public ingredients: Ingredient[];
   public instructions: Instruction[];
-  public nutrition = NUTRIENTS as NutrientEntity[];
-  public combinedNutrients: Nutrient[];
   sample_recipes = RECIPES;
   ingredientList = [
     'Asparagus',
@@ -74,12 +72,7 @@ export class ViewRecipesComponent implements OnInit {
           this.ingredients = recipe.ingredients;
           this.instructions = recipe.instructions;
         })
-        this.recipeService.getNutritionalInfo(+param.get('id')).subscribe(nutrition => {
-          this.nutrition = nutrition as NutrientEntity[];
-        });
         
-        this.combinedNutrients = this.recipeService.filterNutrition(this.nutrition);
-        // console.log("Combined Nutrients",this.combinedNutrients);
       };
     })
   }

@@ -1,21 +1,21 @@
-<mat-card class="card-container bg-teal">
+<mat-card class="card-container bg-mint">
     <div class="img-container">
         <img mat-card-image src="{{recipe.photoUrl}}" alt="recipe image">
     </div>
-    <mat-card-header class="c-powder">
+    <mat-card-header class="c-onyx">
         <div mat-card-avatar>
-            <img src="/assets/images/account_circle-white-24dp.svg" alt="account" routerLink="/profile">
+            <img src="/assets/images/account_circle-white-24dp.svg" class="filter-onyx" alt="account" routerLink="/profile">
         </div>
         <mat-card-title>{{recipe.title}}</mat-card-title>
         <!-- come back and put loop of recipe categories -->
-        <mat-card-subtitle>Recipe Categories</mat-card-subtitle>
+        <mat-card-subtitle></mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions class="flex-container">
-        <img src="/assets/images/thumb_up_alt-white-24dp.svg" alt="like" class="filter-powder" onClick="likefunction()">
+        <img src="/assets/images/thumb_up_alt-white-24dp.svg" alt="like" class="filter-onyx" onClick="likefunction()">
 
-        <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-powder" onClick="savefunction()">
+        <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-onyx" onClick="savefunction()">
 
-        <img src="/assets/images/comment-white-24dp.svg" alt="save" class="filter-powder"
+        <img src="/assets/images/comment-white-24dp.svg" alt="save" class="filter-onyx"
             routerLink="/recipeinstructions">
     </mat-card-actions>
 </mat-card>

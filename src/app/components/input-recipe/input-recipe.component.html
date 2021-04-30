@@ -1,13 +1,39 @@
 <div class="form-container">
     <form [formGroup]="newRecipe">
-
+        <!-- START Recipe Name Field-->
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="recipeName">Recipe Name</mat-label>
             <input matInput type="text" formControlName="recipeName" required>
             <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
         </mat-form-field>
+        <!-- END Recipe Name Field -->
+        <!-- START Picture Field -->
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label for="imageUri">Picture of Dish</mat-label>
+            <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
+        </mat-form-field>
+        <!-- END Picture Field -->
         <br>
-
+        <!-- START Cook and Prep Time Fields -->
+        <div class="cook-prep-container">
+            <mat-form-field class="form-input cook-input" appearance="fill">
+                <mat-label>Cook Time</mat-label>
+                <input matInput type="number" placeholder="Ex. 30 min" formControlName="cookTime" min="0">
+                <span class="c-powder" matSuffix>minutes</span>
+                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-input prep-input" appearance="fill">
+                <mat-label>Prep Time</mat-label>
+                <input matInput type="number" placeholder="Ex. 15 min" formControlName="prepTime" min="0">
+                <span class="c-powder" matSuffix>minutes</span>
+                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
+            </mat-form-field>
+        </div>
+        <!-- END Cook and Prep Time Fields -->
+        <br>
+        <!-- START Instructions -->
+        <div class="instructions-divider-top"></div>
+        <div class="c-powder group-label">Instructions</div>
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="instruction2Control">Add Instruction</mat-label>
             <input matInput type="text" formControlName="instruction2Control" placeholder="">
@@ -27,7 +53,10 @@
                 </mat-chip>
             </div>
         </mat-chip-list>
+        <!-- END Instructions -->
+        <!-- START Ingredients -->
         <div class="ingredients-divider-top"></div>
+        <div class="c-powder group-label">Ingredients</div>
         <form [formGroup]="ingredientsFromGroup" #formDirective="ngForm">
             <div class="ingredients-container">
                 <div class="ingredient-name-container">
@@ -59,15 +88,17 @@
                 </div>
             </div>
             <mat-chip-list class="custom-mat-chip-list">
-                <mat-chip *ngFor="let ingredient of ingredients2" class="example-box" [removable]="removable"
+                <mat-chip *ngFor="let ingredient of ingredients2" class="example-box ingredient-chip" [removable]="removable"
                     (removed)="removeIngredients(ingredient)">
-                    <span>{{ingredient.content}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.quantity}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.measure}}</span>
+                    <span class="ingredient-chip-text">{{ingredient.content}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.quantity}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.measure}}</span>
                     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                 </mat-chip>
             </mat-chip-list>
         </form>
         <div class="ingredients-divider-bottom"></div>
-        <br>
+        <div class="c-powder group-label">Categories</div>
+        <!-- END Ingredients -->
+        <!-- START Categories -->
         <mat-form-field class="form-input category-input">
             <mat-label>Add Categories</mat-label>
             <mat-chip-list #chipList aria-label="Category selection">
@@ -92,25 +123,8 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-        <mat-form-field class="form-input" appearance="fill">
-            <mat-label for="imageUri">Picture of Dish</mat-label>
-            <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
-        </mat-form-field>
-        <br>
-        <div class="cook-prep-container">
-            <mat-form-field class="form-input cook-input" appearance="fill">
-                <mat-label>Cook Time</mat-label>
-                <input matInput type="number" placeholder="Ex. 30 min" formControlName="cookTime" min="0">
-                <span class="c-powder" matSuffix>minutes</span>
-                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input prep-input" appearance="fill">
-                <mat-label>Prep Time</mat-label>
-                <input matInput type="number" placeholder="Ex. 15 min" formControlName="prepTime" min="0">
-                <span class="c-powder" matSuffix>minutes</span>
-                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
-            </mat-form-field>
-        </div>
+        <!-- END Categories -->
+        
     </form>
     <div class="button-container">
         <button mat-stroked-button (click)="close()" class="input-recipe-cancel-button input-recipe-button">Cancel</button>

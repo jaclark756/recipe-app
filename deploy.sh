@@ -28,5 +28,5 @@ if [[ $(docker container ls -q --filter name=${CONTAINER_NAME}) ]];
 
         # TODO dynamically set ports based on app/env
         docker run -p ${PORT}:80 --rm --name ${CONTAINER_NAME} --detach ${CONTAINER_REGISTRY}/${CONTAINER_IMAGE}
-else;
+else
         echo "project not built on develop or master, not deploying docker"

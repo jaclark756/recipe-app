@@ -17,12 +17,14 @@
         </mat-form-field>
         <mat-chip-list class="example-chip mat-chip-list-stacked" cdkDropList (cdkDropListDropped)="drop($event)">
             <div cdkDrag class="ordered-chips-container" *ngFor="let instruction of instructions2">
-                <mat-icon class="c-white custom-hamburger-icon">menu</mat-icon>
-                <span class="c-white instruction-number">{{instruction.instructionOrder}}</span>
-                <mat-chip class="ordered-chips instruction-chip">
-                    {{instruction.content}}
+                <span class="c-white instruction-number">{{instruction.instructionOrder + 1}}</span>
+                <mat-chip class="ordered-chips instruction-chip"
+                          [removable]="removable"
+                          (removed)="removeInstruction2(instruction)">
+                    <mat-icon class="custom-hamburger-icon">menu</mat-icon>
+                    <span class="instruction-text">{{instruction.content}}</span>
+                    <mat-icon class="insctruction-remove" matChipRemove *ngIf="removable">cancel</mat-icon>
                 </mat-chip>
-                <mat-icon (click)="removeInstruction2(instruction)" class="c-white instruction-close">close</mat-icon>
             </div>
         </mat-chip-list>
         <div class="ingredients-divider-top"></div>

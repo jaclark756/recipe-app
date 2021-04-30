@@ -10,7 +10,19 @@
 }
 .instruction-chip {
     margin: 7px !important;
-    width: 83% !important;
+    width: 93% !important;
+    display: flex !important;
+    max-width: 93% !important;
+}
+.instruction-text {
+    width: 90%;
+}
+.instruction-remove {
+    width: 5%;
+   
+}
+.mat-standard-chip .mat-chip-remove, .mat-standard-chip .mat-chip-trailing-icon {
+    margin: 0 !important;
 }
 .ordered-chips-container {
     width: 100%;
@@ -26,12 +38,12 @@
     width: 15px;
     padding: 0 0 2px 5px;
 }
-.instruction-close {
-  margin-left: 3px;
-  font-size: 24px !important;
-} 
 .custom-hamburger-icon {
   font-size: 24px !important;
+  color: rgba(0, 0, 0, 0.87);
+  opacity: 0.6;
+  width: 5%;
+  margin-right: 8px;
 }
 .ingredients-container {
   display: flex;
@@ -143,6 +155,32 @@
   }
   .prep-input {
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-hamburger-icon {
+    margin-right: 8px;
+    font-size: 18px !important;
+    height: 18px !important;
+    align-self: center;
+  }
+  .instruction-number {
+    width: 5px;
+    padding: 0px 5px 0px 0px;
+  }
+  .instruction-text {
+    width: 84%;
+    margin: 0px 3px;
+  }
+  .instruction-remove {
+    margin-left: 3px;
+  }
+  .instruction-chip {
+    margin-left: 4px !important;
+  }
+  .ordered-chips-container {
+    margin: 0px !important; 
   }
 }
 

@@ -4,17 +4,17 @@ CONTAINER_IMAGE=$3
 
 CONTAINER_NAME="recipe-app-${ENVIRONMENT}"
 
-if [[ ${ENVIRONMENT} == develop ]];
+if [[ ${ENVIRONMENT} == develop ]]
 then
         PORT=8087
-elif [[ ${ENVIRONMENT} == master ]];
+elif [[ ${ENVIRONMENT} == master ]]
 then
         PORT=8081
-else;
+else
         PORT=9999
 fi
 
-if [[ PORT != 9999 ]];
+if [[ PORT != 9999 ]]
 then
 if [[ $(docker container ls -q --filter name=${CONTAINER_NAME}) ]];
         then

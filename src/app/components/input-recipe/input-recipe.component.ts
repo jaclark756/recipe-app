@@ -114,7 +114,7 @@ export class InputRecipeComponent implements OnInit {
           this.recipeService.addRecipe(recipe);
           close();
         }
-      } console.log("Missing Instructions or ingredients");
+      } console.info("Missing Instructions or ingredients");
   }
 
     updateRecipe(event) {

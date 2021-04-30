@@ -21,8 +21,8 @@ pipeline {
             agent any
             steps {
                 script {
-                    docker.withRegistry('${env.CONTAINER_REGISTRY}', 'ecr:us-west-2:jenkins-ecr') {
-                        def image = docker.build('${env.CONTAINER_REPO}:${env.BUILD_ID}')
+                    docker.withRegistry("https://${env.CONTAINER_REGISTRY}", "ecr:us-west-2:jenkins-ecr") {
+                        def image = docker.build("${env.CONTAINER_REPO}:${env.BUILD_ID}")
                         image.push()
                     }
                 }
@@ -32,8 +32,8 @@ pipeline {
             agent any
             steps {
                 sshagent(credentials: ['AppServer']) {
-                    sh """scp deploy.sh ubuntu@172.31.49.124:recipe"""
-                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe && chmod 755 deploy.sh && ./deploy.sh ${env.BRANCH_NAME} ${CONTAINER_REGISTRY} ${env.CONTAINER_REPO}:${env.BUILD_ID}'"""
+                    sh """scp deploy.sh ubuntu@172.31.49.124:recipe/app"""
+                    sh """ssh -t -o StrictHostKeyChecking=no ubuntu@172.31.49.124 'cd recipe/app && chmod 755 deploy.sh && ./deploy.sh ${env.BRANCH_NAME} ${CONTAINER_REGISTRY} ${env.CONTAINER_REPO}:${env.BUILD_ID}'"""
                 }
             }
         }

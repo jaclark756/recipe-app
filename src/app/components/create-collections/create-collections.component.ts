@@ -29,6 +29,7 @@ export class CreateCollectionsComponent implements OnInit {
   newCollectionForm: FormGroup;
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   collectionName: string;
+  imageUrl: string;
 
   constructor(
     private http: HttpClient,
@@ -41,7 +42,8 @@ export class CreateCollectionsComponent implements OnInit {
     public tokenService: TokenService
   ) {
     this.newCollectionForm = fb.group({
-      collectionName: new FormControl('', [Validators.required], this.validationService.userNameValidator.bind(this.validationService))
+      collectionName: new FormControl('', [Validators.required], this.validationService.userNameValidator.bind(this.validationService)),
+      imageUrl: new FormControl('', [Validators.required], this.validationService.userNameValidator.bind(this.validationService))
     })
     this.userService.getCurrentUser().subscribe((user:User) => this.activeUser = user)
   }
@@ -68,10 +70,11 @@ export class CreateCollectionsComponent implements OnInit {
         id: null,
         collectionName: this.newCollectionForm.get("collectionName").value,
         recipeList: null,
-        imageUrl: null,
+        imageUrl:this.newCollectionForm.get("imageUrl").value,
         userId: +this.activeUser.id,
       });
       let collectionName = this.newCollectionForm.get("collectionName").value;
+      let imageUrl = this.newCollectionForm.get("imageUrl").value;
     let lilSnackMessage = 'Collection "' + collectionName + '" has been created!'
     this._snackBar.open(lilSnackMessage, "", {
       duration: 2000,

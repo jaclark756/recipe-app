@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CreateCollectionsComponent } from './create-collections.component';
 
 describe('CreateCollectionsComponent', () => {

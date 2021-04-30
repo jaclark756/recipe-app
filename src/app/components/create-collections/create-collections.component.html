@@ -6,5 +6,10 @@
         *ngIf="newCollectionForm.get('collectionName').invalid && newCollectionForm.get('collectionName').touched">
         </div>
     </mat-form-field>
-<app-button [label]="'Create'" (clickEvent)="addCollection(collectionName)" [class]="'done-button'"></app-button>
+    <br>
+    <mat-form-field class="input-example" appearance="fill">
+        <mat-label class="c-metal">Picture for Collection</mat-label>
+        <input matInput type="text" formControlName="imageUrl" placeholder="pictureoffood.com/image">
+    </mat-form-field>
+<app-button [label]="'Create'" (clickEvent)="addCollection(collectionName)" [class]="'edit-button'"></app-button>
 </mat-dialog-content>

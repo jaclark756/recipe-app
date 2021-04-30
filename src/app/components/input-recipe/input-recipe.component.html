@@ -1,13 +1,11 @@
 <div class="form-container">
     <form [formGroup]="newRecipe">
-
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="recipeName">Recipe Name</mat-label>
             <input matInput type="text" formControlName="recipeName" required>
             <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
         </mat-form-field>
         <br>
-
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="instruction2Control">Add Instruction</mat-label>
             <input matInput type="text" formControlName="instruction2Control" placeholder="">
@@ -47,7 +45,6 @@
                         </mat-optgroup>
                     </mat-select>
                 </mat-form-field>
-
                 <button class="ingredient-add" (click)="addIngredients($event, formDirective)" mat-icon-button matSuffix
                     [attr.aria-label]="'Add Ingredients'">
                     <mat-icon class="c-white">add</mat-icon>
@@ -62,7 +59,6 @@
             </mat-chip-list>
         </form>
         <br>
-
         <mat-form-field class="form-input category-input">
             <mat-label>Add Categories</mat-label>
             <mat-chip-list #chipList aria-label="Category selection">
@@ -107,10 +103,26 @@
                 <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
             </mat-form-field>
         </div>
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label for="notesControl">What did you update?</mat-label>
+            <input matInput type="text" formControlName="notesControl" placeholder="">
+            <button (click)="addNotes($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Notes'">
+                <mat-icon class="c-white">add</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-chip-list class="example-chip mat-chip-list-stacked">
+            <div class="ordered-chips-container" *ngFor="let note of notes">
+                <mat-icon class="c-white">menu</mat-icon>
+                <span class="c-white instruction-number">{{note.timestamp}}</span>
+                <mat-chip class="ordered-chips instruction-chip">
+                    {{note.note}}
+                </mat-chip>
+                <mat-icon (click)="removeNote(note)" class="c-white instruction-close">close</mat-icon>
+            </div>
+            </mat-chip-list>
     </form>
     <div class="button-container">
         <button mat-stroked-button (click)="close()" class="input-recipe-cancel-button input-recipe-button">Cancel</button>
         <button mat-raised-button (click)="existingRecipe ? updateRecipe($event) : addRecipe($event)" class="inpute-recipe-done-button input-recipe-button">{{ existingRecipe ? "Update Recipe" : "Add Recipe" }}</button>
     </div>
-
 </div>

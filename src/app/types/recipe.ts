@@ -1,7 +1,7 @@
 import { Category } from "./category";
 import { Ingredient } from "./ingredient";
 import { Instruction } from "./instruction";
-import { recipeUpdateNote } from "./recipeUpdateNote";
+import { RecipeUpdateNote } from "./recipeUpdateNote";
 
 export interface Recipe {
     id?: number;
@@ -13,5 +13,5 @@ export interface Recipe {
     categories?: Category[];
     cookTime?: number;
     prepTime?: number;
-    notes?: recipeUpdateNote[];
+    notes?: RecipeUpdateNote[];
 }

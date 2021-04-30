@@ -11,13 +11,13 @@
 
 .mobile-nav-buttons {
   display: flex;
-  border: 5px solid $onyx;
   border-radius: 40px;
   justify-content: center;
   width: auto;
   margin: 10px;
   background-color: $onyx;
   position: fixed !important;
+  padding: 2px;
 }
 
 ::ng-deep .mat-icon-button {

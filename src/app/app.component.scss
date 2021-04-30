@@ -1,4 +1,28 @@
 @import "/src/styles/styles.scss";
+.container {
+  max-height: 80vh;
+}
+
+.mobile-nav {
+  display: flex;
+  justify-content: center;
+  position: relative !important;
+   }  
+
+.mobile-nav-buttons {
+  display: flex;
+  border: 5px solid $onyx;
+  border-radius: 40px;
+  justify-content: center;
+  width: auto;
+  margin: 10px;
+  background-color: $onyx;
+  position: fixed !important;
+}
+
+::ng-deep .mat-icon-button {
+  margin: 5px !important;
+}
 
 .flex-container {
     justify-content: flex-end;
@@ -6,6 +30,12 @@
     position: relative;
   }
   
-  button {
+.fab-button {
     margin-right: 10px;
+  }
+
+  @media only screen and (max-width: 720px) {
+  .container {
+    max-height: 90vh;
+  }
   }

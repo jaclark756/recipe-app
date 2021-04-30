@@ -112,8 +112,9 @@ export class InputRecipeComponent implements OnInit {
             "prepTime": this.newRecipe.controls.prepTime.value
           }
           this.recipeService.addRecipe(recipe);
+          close();
         }
-      } console.log("Missing Instructions or ingredients");
+      } console.info("Missing Instructions or ingredients");
   }
 
     updateRecipe(event) {

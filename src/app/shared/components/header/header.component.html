@@ -1,7 +1,16 @@
+<div class="mobile-header" fxShow.sm="true" fxShow.lt-sm="true" fxShow.gt-sm="false">
+  <button mat-icon-button routerLink="home" routerLinkActive="active">
+   <img src="/assets/images/logo.svg" alt="app logo" class="filter-powder">
+  </button>
+  <span class="spacer"></span>
+<button mat-icon-button [matMenuTriggerFor]="settingsMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
+  <mat-icon class="c-powder">settings</mat-icon>
+</button>
+</div>
 <mat-toolbar fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false">
-  <a [routerLink]="['/home']" routerLinkActive="active">
+  <button mat-icon-button routerLink="home" routerLinkActive="active">
     <img src="/assets/images/logo.svg" alt="app logo" class="filter-powder">
-  </a>
+   </button>
   <mat-chip-list aria-label="navbar">
     <mat-chip class="bg-powder header-chip">Following</mat-chip>
     <mat-chip class="bg-powder header-chip">Explore</mat-chip>
@@ -24,7 +33,7 @@
   <button mat-icon-button [matMenuTriggerFor]="settingsMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
     <mat-icon [ngClass]="opened ? 'menu-opened' : ' ' " class="c-powder">keyboard_arrow_down</mat-icon>
   </button>
-  <mat-menu #settingsMenu="matMenu" class="bg-watermelon">
+  <mat-menu #settingsMenu="matMenu" class="bg-onyx">
     <button mat-menu-item class="c-powder" routerLink="/profile">
       <img src="/assets/images/account_circle-white-24dp.svg" class="filter-powder">
       View Profile</button>

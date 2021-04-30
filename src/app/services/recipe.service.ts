@@ -7,6 +7,7 @@ import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
 import { NutrientEntity } from '../types/NutrientEntity';
 import { Nutrient } from '../types/nutrient';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,7 +19,9 @@ const httpOptions = {
 
 export class RecipeService {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    public router: Router) {
     this.http.get(`${this.url}`).subscribe(s => {
       this.recipeSubject.next(s as Recipe[]);
     })
@@ -58,8 +61,7 @@ export class RecipeService {
       this.recipes = [
         ...this.recipes, response
       ]
-      console.log("added recipe: ", response);
-      // TODO Add route to freshly created recipe
+      this.router.navigate(['viewrecipe/'+response.id]); 
     })
   }
 

@@ -1,4 +1,9 @@
 <mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-icon-button [mat-dialog-close]="true" class="close-button">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </mat-dialog-actions>
     <form>
         <mat-form-field class="search" appearance="fill">
             <mat-label>Search</mat-label>
@@ -24,4 +29,4 @@
     <div class="flex-container">
         <app-category-card *ngFor="let cat of categories" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>
     </div>
-</mat-dialog-content>
+   </mat-dialog-content>

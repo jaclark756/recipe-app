@@ -19,6 +19,7 @@ export class SettingsComponent implements OnInit {
   followersChecked: boolean;
   likesChecked: boolean;
   recipeChecked: boolean;
+  prevDisplayName: string;
   editProfile: FormGroup;
 
   SIGNUP_URL: string = "/v2/user"
@@ -37,11 +38,12 @@ export class SettingsComponent implements OnInit {
       this.followersChecked = this.activeUser.newFollowerNotifications;
       this.recipeChecked = this.activeUser.recipeSavedNotifications;
       this.editProfile = this.fb.group({
-        displayname: new FormControl(this.activeUser.displayName ,[Validators.required, Validators.minLength(3), Validators.maxLength(50)])
+        displayname: new FormControl(this.activeUser.displayName ,[Validators.minLength(3), Validators.maxLength(50)])
       })
      }
 
   ngOnInit(): void {
+    this.prevDisplayName = this.editProfile.get("displayname").value;
   }
 
   updateProfile() {
@@ -61,7 +63,7 @@ export class SettingsComponent implements OnInit {
   }
 
   revertChanges() {
-    this.editProfile.get("displayname").setValue("Test Name")
+    this.editProfile.get("displayname").setValue(this.prevDisplayName);
   } 
 
   notifySave() {

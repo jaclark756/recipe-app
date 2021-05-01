@@ -7,19 +7,19 @@
     <form>
         <mat-form-field class="search" appearance="fill">
             <mat-label>Search</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="searchText" name="search">
         </mat-form-field>
-        </form>
-       <mat-label>Recent Searches</mat-label>
-    <mat-chip-list aria-label="recent-searches">
-        <mat-chip color="accent" selected>protein pancakes</mat-chip>
-        <mat-chip color="accent" selected>margaritas</mat-chip>
-        <mat-chip color="accent" selected>bread</mat-chip>
-        <mat-chip color="accent" selected>tacos</mat-chip>
-      </mat-chip-list>
+    </form>
+       <!-- <mat-label>Recent Searches</mat-label>
+        <mat-chip-list aria-label="recent-searches">
+            <mat-chip color="accent" selected>protein pancakes</mat-chip>
+            <mat-chip color="accent" selected>margaritas</mat-chip>
+            <mat-chip color="accent" selected>bread</mat-chip>
+            <mat-chip color="accent" selected>tacos</mat-chip>
+        </mat-chip-list> -->
       <h2>Diets</h2>
       <div class="flex-container">
-        <app-category-card *ngFor="let cat of categories" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>
+        <app-category-card *ngFor="let cat of categories | filter:searchText" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>
     </div>
     <h2>Cuisines</h2>
        <div class="flex-container">

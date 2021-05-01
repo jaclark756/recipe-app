@@ -32,6 +32,8 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { CollectionDialogComponent } from './components/collection-dialog/collection-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -69,7 +71,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatMenuModule,
     MatBadgeModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ],
   exports: [
     HeaderComponent,
@@ -98,7 +102,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatAutocompleteModule,
     DragDropModule,
     MatMenuModule,
-    MatBadgeModule
+    MatBadgeModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ],
   providers: [
     SnackbarService

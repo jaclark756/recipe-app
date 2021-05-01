@@ -128,11 +128,8 @@
             </mat-autocomplete>
         </mat-form-field>
         <!-- END Categories -->
-        <mat-form-field class="form-input" appearance="fill">
-            <mat-label for="imageUri">Picture of Dish</mat-label>
-            <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
-        </mat-form-field>
-        <br>
+        <div class="ingredients-divider-bottom"></div>
+        <div class="c-powder group-label">Update Notes</div>
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="notesControl">What did you update?</mat-label>
             <input matInput type="text" formControlName="notesControl" placeholder="">
@@ -140,16 +137,21 @@
                 <mat-icon class="c-white">add</mat-icon>
             </button>
         </mat-form-field>
-        <mat-chip-list class="example-chip mat-chip-list-stacked">
+        <div class="ordered-notes-container">
+            <mat-list role="list" *ngFor="let note of notes">
+            <mat-list-item class="notes">{{note.timestamp}} -- {{note.note}} </mat-list-item>
+            <mat-icon (click)="removeNote(note)" class="c-white instruction-close">close</mat-icon>
+           </mat-list>
+        </div>
+        <!-- <mat-chip-list class="example-chip mat-chip-list-stacked">
             <div class="ordered-chips-container" *ngFor="let note of notes">
-                <mat-icon class="c-white">menu</mat-icon>
                 <span class="c-white instruction-number">{{note.timestamp}}</span>
                 <mat-chip class="ordered-chips instruction-chip">
                     {{note.note}}
                 </mat-chip>
                 <mat-icon (click)="removeNote(note)" class="c-white instruction-close">close</mat-icon>
             </div>
-            </mat-chip-list>
+            </mat-chip-list> -->
         
         
     </form>

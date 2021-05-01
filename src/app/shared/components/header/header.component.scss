@@ -4,8 +4,12 @@
   background-color: $watermelon;
 }
 
+.mobile-header {
+  display: flex;
+  justify-content: space-around;
+}
+
 img {
-  margin: 5px;
   width: 42px;
   height: 42px;
 }
@@ -58,9 +62,10 @@ img {
   }
 
   img {
-    margin: 5px 10px 5px 5px;
+    margin: 5px;
     width: 30px;
     height: 30px;
+    position: relative;
   }
 
   ::ng-deep .mat-icon {

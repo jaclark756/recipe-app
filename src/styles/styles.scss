@@ -98,6 +98,10 @@ h5 {
     hue-rotate(316deg) brightness(107%) contrast(111%);
 }
 
+.filter-mint{
+  filter: brightness(0) saturate(100%) invert(95%) sepia(6%) saturate(650%) hue-rotate(57deg) brightness(89%) contrast(91%);
+}
+
 .snackbar {
   background-color: $onyx;
   border: 1px solid $powder;

@@ -1,21 +1,15 @@
-<mat-card class="card-container bg-mint">
-    <div class="img-container">
+<mat-card class="card-container bg-metal">
+    <div class="img-container" routerLink="/viewrecipe/{{recipe.id}}">
         <img mat-card-image src="{{recipe.photoUrl}}" alt="recipe image">
     </div>
-    <mat-card-header class="c-onyx">
-        <div mat-card-avatar>
-            <img src="/assets/images/account_circle-white-24dp.svg" class="filter-onyx" alt="account" routerLink="/profile">
-        </div>
+    <mat-card-header class="c-mint" routerLink="/viewrecipe/{{recipe.id}}">
         <mat-card-title>{{recipe.title}}</mat-card-title>
-        <!-- come back and put loop of recipe categories -->
-        <mat-card-subtitle></mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions class="flex-container">
-        <img src="/assets/images/thumb_up_alt-white-24dp.svg" alt="like" class="filter-onyx" onClick="likefunction()">
+        <img src="/assets/images/thumb_up_alt-white-24dp.svg" alt="like" class="filter-mint" onClick="likefunction()">
 
-        <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-onyx" onClick="savefunction()">
+        <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-mint" onClick="savefunction()">
 
-        <img src="/assets/images/comment-white-24dp.svg" alt="save" class="filter-onyx"
-            routerLink="/recipeinstructions">
+        <img src="/assets/images/comment-white-24dp.svg" alt="save" class="filter-mint" routerLink="/viewrecipe/{{recipe.id}}">
     </mat-card-actions>
 </mat-card>

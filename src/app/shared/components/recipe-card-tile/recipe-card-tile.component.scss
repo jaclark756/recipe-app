@@ -2,16 +2,19 @@
 
 .card-container {
   border-radius: 0.25em;
-  // justify-content: center;
   justify-content:space-between;
   margin: 5px;
   width: 200px;
 }
 
+.mat-card-header:hover, .img-container:hover, .mat-card-actions:hover{
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 741px) {
   .card-container{
     width: 160px!important;
-    height: 190px!important;
+    height: 180px!important;
     padding:4px!important;
     justify-content:space-between!important;
   }
@@ -19,18 +22,17 @@
     object-fit: cover!important;
     height: 125px!important;
     margin-bottom: 0px!important;
-    // width:100%
   }
   .mat-card-avatar img{
     width: 28px!important;
     height:28px!important;
     
   }
-  // .mat-card-header{
-    // margin:auto;
-  // }
   .mat-card-header-text {
     margin: auto !important;
+  }
+  .mat-card-actions{
+    margin-left:2px;
   }
 
 }
@@ -38,7 +40,6 @@
 .mat-card-avatar img {
   width: 36px;
   height: 36px;
-  // margin: -5px;
   text-align: left;
 }
 
@@ -62,16 +63,12 @@
 }
 
 .img-container img {
-  // width: auto;
   width:100%!important;
-  max-height: 200px;
-  // position: relative;
-  // text-align: center;
+  height: 200px;
   object-fit: cover;
 }
 
 .flex-container {
   display: flex;
-  // justify-content: space-around;
   opacity:.6;
 }

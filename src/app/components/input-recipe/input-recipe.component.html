@@ -135,21 +135,6 @@
             <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
         </mat-form-field>
         <br>
-        <div class="cook-prep-container">
-            <mat-form-field class="form-input cook-input" appearance="fill">
-                <mat-label>Cook Time</mat-label>
-                <input matInput type="number" placeholder="Ex. 30 min" formControlName="cookTime" min="0">
-                <span class="c-powder" matSuffix>minutes</span>
-                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
-            </mat-form-field>
-            <br>
-            <mat-form-field class="form-input prep-input" appearance="fill">
-                <mat-label>Prep Time</mat-label>
-                <input matInput type="number" placeholder="Ex. 15 min" formControlName="prepTime" min="0">
-                <span class="c-powder" matSuffix>minutes</span>
-                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
-            </mat-form-field>
-        </div>
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="notesControl">What did you update?</mat-label>
             <input matInput type="text" formControlName="notesControl" placeholder="">

@@ -137,6 +137,7 @@ export class InputRecipeComponent implements OnInit {
           "prepTime": this.newRecipe.controls.prepTime.value,
           "notes": this.notes
         }
+        console.log(recipe);
       this.recipeService.updateRecipe(recipe);
     }
   }

@@ -8,7 +8,7 @@
     <mat-card-actions class="flex-container">
         <img src="/assets/images/thumb_up_alt-white-24dp.svg" alt="like" class="filter-mint" onClick="likefunction()">
 
-        <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-mint" onClick="savefunction()">
+        <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-mint" (click)="openCollectionDialog()">
 
         <img src="/assets/images/comment-white-24dp.svg" alt="save" class="filter-mint" routerLink="/viewrecipe/{{recipe.id}}">
     </mat-card-actions>

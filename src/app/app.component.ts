@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { InputRecipeComponent } from './components/input-recipe/input-recipe.component';
+import { SearchDialogComponent } from './shared/components/search-dialog/search-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -21,5 +22,8 @@ export class AppComponent {
     // config.backdropClass = 'backdropBackground';
     const dr = this.dialog.open(InputRecipeComponent, config);
   }
-
+  
+  openSearchDialog() {
+    const dialogRef = this.dialog.open(SearchDialogComponent);
+  }
 }

@@ -29,12 +29,13 @@
         <mat-tab label="Collections">
             <div class="collection-container">
                 <div class="new-collection">
-                    <!-- unsure on openDialog -->
-                    <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true" (click)="openDialog(createCollection)">+
-                            Add New Collection</button>
+                    <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true"
+                        (click)="openCreateCollectionDialog()">+
+                        Add New Collection</button>
                 </div>
                 <div class="collection-container">
-                    <app-collection-card [recipe] [collection]="collection" *ngFor="let collection of collections"></app-collection-card>
+                    <app-collection-card [recipe] [collection]="collection"
+                        *ngFor="let collection of collectionService.collection$ | async"></app-collection-card>
                 </div>
             </div>
         </mat-tab>

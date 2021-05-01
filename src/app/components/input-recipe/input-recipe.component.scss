@@ -5,12 +5,26 @@
   margin: auto;
   background-color: $black;
 }
+.input-recipe-title {
+  margin: 0px 0px 10px 0px;
+}
 .form-input {
   width: 100%;
 }
 .instruction-chip {
-    margin: 7px !important;
-    width: 83% !important;
+    width: 93% !important;
+    display: flex !important;
+    max-width: 93% !important;
+}
+.instruction-text {
+    width: 90%;
+}
+.instruction-remove {
+    width: 5%;
+   
+}
+.mat-standard-chip .mat-chip-remove, .mat-standard-chip .mat-chip-trailing-icon {
+    margin: 0 !important;
 }
 .ordered-chips-container {
     width: 100%;
@@ -26,25 +40,59 @@
     width: 15px;
     padding: 0 0 2px 5px;
 }
-.instruction-close {
-  margin-left: 3px;
+.custom-hamburger-icon {
+  font-size: 24px !important;
+  color: rgba(0, 0, 0, 0.87);
+  opacity: 0.6;
+  width: 5%;
+  margin-right: 8px;
 }
 .ingredients-container {
   display: flex;
+}
+.ingredient-chip {
+  display: flex !important;
+  height: auto !important;
+}
+.ingredient-chip-text {
+  max-width: 93%;
+  overflow-wrap: break-word;
+}
+.ingredient-name-container {
+  width: 46%;
+  padding-right: 10px;
+}
+.ingredient-quantity-measure-containter {
+  width: 45%;
+  display: flex;
   justify-content: space-between;
 }
-.ingredient-name {
-  width: 50%;
-}
 .ingredient-quantity {
-  width: 15%;
+  width: 33%;
+  padding-right: 10px;
 }
 .ingredient-measure {
-  width: 22%;
+  width: 56%;
+  padding-right: 8px;
 }
 .ingredient-add {
   top: 10px;
   left: 0px;
+}
+.custom-mat-icon {
+  font-size: 26px !important;
+}
+.ingredients-divider-top {
+  border-top: 2px solid $onyx;
+  margin: 15px 0px 0px 0px;
+  border-radius: 4px;
+}
+.ingredients-divider-bottom {
+  border-top: 2px solid $onyx;
+  margin: 15px 0px 0px 0px;
+}
+.custom-mat-chip-list {
+  margin-bottom: 10px;
 }
 .ingredients-entered {
   width: 100%;
@@ -96,5 +144,66 @@
 
 .input-recipe-button {
   margin: 0px 5px;
+}
+.group-label {
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+.instructions-divider-top {
+  border-top: 2px solid $onyx;
+  border-radius: 4px;
+  margin: 0px;
+}
+
+@media (max-width: 785px) {
+  .ingredients-container {
+    flex-direction: column;
+  }
+  .ingredient-name-container {
+    width: 98%;
+
+  }
+  .ingredient-quantity-measure-containter {
+    width: 98%;
+  }
+  .cook-prep-container {
+    flex-direction: column;
+  }
+  .cook-input {
+    width: 100%;
+  }
+  .prep-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-hamburger-icon {
+    margin-right: 8px;
+    font-size: 18px !important;
+    height: 18px !important;
+    align-self: center;
+  }
+  .instruction-number {
+    width: 5px;
+    padding: 0px 5px 0px 0px;
+  }
+  .instruction-text {
+    width: 84%;
+    margin: 0px 3px;
+  }
+  .instruction-remove {
+    margin-left: 3px;
+  }
+  .instruction-chip {
+    margin-left: 4px !important;
+  }
+  .ordered-chips-container {
+    margin: 0px !important; 
+  }
+  .mat-chip {
+    max-width: 100% !important;
+  }
 }
 

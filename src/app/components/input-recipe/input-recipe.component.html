@@ -1,13 +1,40 @@
 <div class="form-container">
+    <h2 class="input-recipe-title c-powder">Input a Recipe</h2>
     <form [formGroup]="newRecipe">
-
+        <!-- START Recipe Name Field-->
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="recipeName">Recipe Name</mat-label>
             <input matInput type="text" formControlName="recipeName" required>
             <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
         </mat-form-field>
+        <!-- END Recipe Name Field -->
+        <!-- START Picture Field -->
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label for="imageUri">Picture of Dish</mat-label>
+            <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
+        </mat-form-field>
+        <!-- END Picture Field -->
         <br>
-
+        <!-- START Cook and Prep Time Fields -->
+        <div class="cook-prep-container">
+            <mat-form-field class="form-input cook-input" appearance="fill">
+                <mat-label>Cook Time</mat-label>
+                <input matInput type="number" placeholder="Ex. 30 min" formControlName="cookTime" min="0">
+                <span class="c-powder" matSuffix>minutes</span>
+                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-input prep-input" appearance="fill">
+                <mat-label>Prep Time</mat-label>
+                <input matInput type="number" placeholder="Ex. 15 min" formControlName="prepTime" min="0">
+                <span class="c-powder" matSuffix>minutes</span>
+                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
+            </mat-form-field>
+        </div>
+        <!-- END Cook and Prep Time Fields -->
+        <br>
+        <!-- START Instructions -->
+        <div class="instructions-divider-top"></div>
+        <div class="c-powder group-label">Instructions</div>
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="instruction2Control">Add Instruction</mat-label>
             <input matInput type="text" formControlName="instruction2Control" placeholder="">
@@ -17,52 +44,62 @@
         </mat-form-field>
         <mat-chip-list class="example-chip mat-chip-list-stacked" cdkDropList (cdkDropListDropped)="drop($event)">
             <div cdkDrag class="ordered-chips-container" *ngFor="let instruction of instructions2">
-                <mat-icon class="c-white">menu</mat-icon>
-                <span class="c-white instruction-number">{{instruction.instructionOrder}}</span>
-                <mat-chip class="ordered-chips instruction-chip">
-                    {{instruction.content}}
+                <span class="c-white instruction-number">{{instruction.instructionOrder + 1}}</span>
+                <mat-chip class="ordered-chips instruction-chip"
+                          [removable]="removable"
+                          (removed)="removeInstruction2(instruction)">
+                    <mat-icon class="custom-hamburger-icon">menu</mat-icon>
+                    <span class="instruction-text">{{instruction.content}}</span>
+                    <mat-icon class="insctruction-remove" matChipRemove *ngIf="removable">cancel</mat-icon>
                 </mat-chip>
-                <mat-icon (click)="removeInstruction2(instruction)" class="c-white instruction-close">close</mat-icon>
             </div>
         </mat-chip-list>
-        <br>
+        <!-- END Instructions -->
+        <!-- START Ingredients -->
+        <div class="ingredients-divider-top"></div>
+        <div class="c-powder group-label">Ingredients</div>
         <form [formGroup]="ingredientsFromGroup" #formDirective="ngForm">
             <div class="ingredients-container">
-                <mat-form-field class="form-input ingredient-name" appearance="fill">
-                    <mat-label for="ingredient2ContentControl">Ingredient Name</mat-label>
-                    <input matInput type="text" formControlName="ingredient2ContentControl" placeholder="">
-                </mat-form-field>
-                <mat-form-field class="form-input ingredient-quantity" appearance="fill">
-                    <mat-label for="ingredient2QuantityControl">Quantity</mat-label>
-                    <input matInput type="number" formControlName="ingredient2QuantityControl" placeholder="">
-                </mat-form-field>
-                <mat-form-field class="form-input ingredient-measure" appearance="fill">
-                    <mat-label for="ingredient2MeasureControl">Measurement</mat-label>
-                    <mat-select formControlName="ingredient2MeasureControl">
-                        <mat-option>-- None --</mat-option>
-                        <mat-optgroup *ngFor="let option of ingredientMeasureOptions" [label]="option.type">
-                            <mat-option *ngFor="let measurement of option.measurement" [value]="measurement.value">
-                                {{measurement.value}}
-                            </mat-option>
-                        </mat-optgroup>
-                    </mat-select>
-                </mat-form-field>
-
-                <button class="ingredient-add" (click)="addIngredients($event, formDirective)" mat-icon-button matSuffix
-                    [attr.aria-label]="'Add Ingredients'">
-                    <mat-icon class="c-white">add</mat-icon>
-                </button>
+                <div class="ingredient-name-container">
+                    <mat-form-field class="form-input ingredient-name" appearance="fill">
+                        <mat-label for="ingredient2ContentControl">Ingredient Name</mat-label>
+                        <input matInput type="text" formControlName="ingredient2ContentControl" placeholder="">
+                    </mat-form-field>
+                </div>
+                <div class="ingredient-quantity-measure-containter">
+                    <mat-form-field class="form-input ingredient-quantity" appearance="fill">
+                        <mat-label for="ingredient2QuantityControl">Quantity</mat-label>
+                        <input matInput type="number" formControlName="ingredient2QuantityControl" placeholder="">
+                    </mat-form-field>
+                    <mat-form-field class="form-input ingredient-measure" appearance="fill">
+                        <mat-label for="ingredient2MeasureControl">Measurement</mat-label>
+                        <mat-select formControlName="ingredient2MeasureControl">
+                            <mat-option>-- None --</mat-option>
+                            <mat-optgroup *ngFor="let option of ingredientMeasureOptions" [label]="option.type">
+                                <mat-option *ngFor="let measurement of option.measurement" [value]="measurement.value">
+                                    {{measurement.value}}
+                                </mat-option>
+                            </mat-optgroup>
+                        </mat-select>
+                    </mat-form-field>
+                    <button class="ingredient-add" (click)="addIngredients($event, formDirective)" mat-icon-button matSuffix
+                        [attr.aria-label]="'Add Ingredients'">
+                        <mat-icon class="c-white custom-mat-icon">add</mat-icon>
+                    </button>
+                </div>
             </div>
-            <mat-chip-list class="example-chip">
-                <mat-chip *ngFor="let ingredient of ingredients2" class="example-box" [removable]="removable"
+            <mat-chip-list class="custom-mat-chip-list">
+                <mat-chip *ngFor="let ingredient of ingredients2" class="example-box ingredient-chip" [removable]="removable"
                     (removed)="removeIngredients(ingredient)">
-                    <span>{{ingredient.content}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.quantity}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.measure}}</span>
+                    <span class="ingredient-chip-text">{{ingredient.content}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.quantity}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.measure}}</span>
                     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                 </mat-chip>
             </mat-chip-list>
         </form>
-        <br>
-
+        <div class="ingredients-divider-bottom"></div>
+        <div class="c-powder group-label">Categories</div>
+        <!-- END Ingredients -->
+        <!-- START Categories -->
         <mat-form-field class="form-input category-input">
             <mat-label>Add Categories</mat-label>
             <mat-chip-list #chipList aria-label="Category selection">
@@ -87,30 +124,12 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-        <mat-form-field class="form-input" appearance="fill">
-            <mat-label for="imageUri">Picture of Dish</mat-label>
-            <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
-        </mat-form-field>
-        <br>
-        <div class="cook-prep-container">
-            <mat-form-field class="form-input cook-input" appearance="fill">
-                <mat-label>Cook Time</mat-label>
-                <input matInput type="number" placeholder="Ex. 30 min" formControlName="cookTime" min="0">
-                <span class="c-powder" matSuffix>minutes</span>
-                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
-            </mat-form-field>
-            <br>
-            <mat-form-field class="form-input prep-input" appearance="fill">
-                <mat-label>Prep Time</mat-label>
-                <input matInput type="number" placeholder="Ex. 15 min" formControlName="prepTime" min="0">
-                <span class="c-powder" matSuffix>minutes</span>
-                <mat-error *ngIf="newRecipe.controls.cookTime.invalid">Must be numerical value</mat-error>
-            </mat-form-field>
-        </div>
+        <!-- END Categories -->
+        
     </form>
     <div class="button-container">
         <button mat-stroked-button (click)="close()" class="input-recipe-cancel-button input-recipe-button">Cancel</button>
-        <button mat-raised-button (click)="existingRecipe ? updateRecipe($event) : addRecipe($event)" class="inpute-recipe-done-button input-recipe-button">{{ existingRecipe ? "Update Recipe" : "Add Recipe" }}</button>
+        <button mat-raised-button (click)="existingRecipe ? updateRecipe($event) : addRecipe($event)" class="input-recipe-done-button input-recipe-button">{{ existingRecipe ? "Update Recipe" : "Add Recipe" }}</button>
     </div>
 
 </div>

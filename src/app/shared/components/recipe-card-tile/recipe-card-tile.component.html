@@ -2,13 +2,13 @@
     <div class="img-container" routerLink="/viewrecipe/{{recipe.id}}">
         <img mat-card-image src="{{recipe.photoUrl}}" alt="recipe image">
     </div>
-    <mat-card-header class="c-mint" routerLink="/viewrecipe/{{recipe.id}}">
+    <mat-card-header class="c-powder" routerLink="/viewrecipe/{{recipe.id}}">
         <mat-card-title>{{recipe.title}}</mat-card-title>
     </mat-card-header>
     <mat-card-actions class="flex-container">
         <!-- <img src="/assets/images/thumb_up_alt-white-24dp.svg" alt="like" class="filter-mint" onClick="likefunction()"> -->
 
-        <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-mint" (click)="openCollectionDialog()">
+        <img src="/assets/images/bookmark_add-white-24dp.svg" alt="save" class="filter-powder" (click)="openCollectionDialog()">
 
         <!-- <img src="/assets/images/comment-white-24dp.svg" alt="save" class="filter-mint" routerLink="/viewrecipe/{{recipe.id}}"> -->
     </mat-card-actions>

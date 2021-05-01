@@ -139,7 +139,7 @@
         </mat-form-field>
         <div class="ordered-notes-container">
             <mat-list role="list" *ngFor="let note of notes">
-            <mat-list-item class="notes">{{note.timestamp}} -- {{note.note}} </mat-list-item>
+            <mat-list-item role="listitem" class="notes">{{note.timestamp}} -- {{note.note}} </mat-list-item>
             <mat-icon (click)="removeNote(note)" class="c-white instruction-close">close</mat-icon>
            </mat-list>
         </div>

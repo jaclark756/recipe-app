@@ -18,8 +18,6 @@
         </mat-form-field>
         <!-- END Picture Field -->
         <br>
-<<<<<<< HEAD
-=======
         <!-- START Cook and Prep Time Fields -->
         <div class="cook-prep-container">
             <mat-form-field class="form-input cook-input" appearance="fill">
@@ -40,7 +38,6 @@
         <!-- START Instructions -->
         <div class="instructions-divider-top"></div>
         <div class="c-powder group-label">Instructions</div>
->>>>>>> develop
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="instruction2Control">Add Instruction</mat-label>
             <input matInput type="text" formControlName="instruction2Control" placeholder="">
@@ -130,6 +127,7 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
+        <!-- END Categories -->
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="imageUri">Picture of Dish</mat-label>
             <input matInput type="text" formControlName="imageUri" placeholder="pictureoffood.com/image">
@@ -152,7 +150,7 @@
                 <mat-icon (click)="removeNote(note)" class="c-white instruction-close">close</mat-icon>
             </div>
             </mat-chip-list>
-        <!-- END Categories -->
+        
         
     </form>
     <div class="button-container">

@@ -33,8 +33,7 @@ import { CollectionDialogComponent } from './components/collection-dialog/collec
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -73,7 +72,8 @@ import { FormsModule } from '@angular/forms';
     MatSelectModule,
     MatCheckboxModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,
@@ -104,7 +104,8 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatBadgeModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     SnackbarService

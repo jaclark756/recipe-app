@@ -17,19 +17,15 @@
             <mat-chip color="accent" selected>bread</mat-chip>
             <mat-chip color="accent" selected>tacos</mat-chip>
         </mat-chip-list> -->
-    <h2>Diets</h2>
+    <h2>Search by Categories</h2>
     <div class="flex-container" *ngIf="(filteredCategorie$ | async)?.length > 0">
         <app-category-card *ngFor="let cat of filteredCategorie$ | async" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>
     </div>
     <div>
         <span *ngIf="(filteredCategorie$ | async)?.length == 0">No Results Found</span>
     </div>
-    <h2>Cuisines</h2>
+    <h2>Search By Ingredient</h2>
        <div class="flex-container">
-        <app-category-card *ngFor="let cat of categories" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>
+        <mat-chip *ngFor="let ingredient of filteredIngredient$ | async">{{ ingredient.content }}</mat-chip>
     </div>
-    <h2>Seasonal</h2>
-    <div class="flex-container">
-        <app-category-card *ngFor="let cat of categories" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>
-    </div>
-   </mat-dialog-content>
+</mat-dialog-content>

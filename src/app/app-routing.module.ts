@@ -7,6 +7,7 @@ import { RouterGuard } from './guards/router.guard';
 import { TokenService } from './services/token.service';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HomeComponent } from './components/home/home.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [RouterGuard] },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [RouterGuard] },
   { path: 'recipe/:id', component: ViewRecipesComponent, canActivate: [RouterGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [RouterGuard] },
+  { path: 'error', component: ErrorComponent}
 ];
 
 @NgModule({

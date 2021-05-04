@@ -90,12 +90,7 @@ label {
   flex-wrap: wrap;
   justify-items: right;
   margin-right: 8%;
-}
-
-.nutrition-web {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  max-height: 100px;
 }
 
 ::ng-deep .mat-divider {

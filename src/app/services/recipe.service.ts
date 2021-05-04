@@ -116,8 +116,6 @@ export class RecipeService {
       return acc;
     }, [])
 
-
-    console.log("Final", combinedNutrients)
     return combinedNutrients;
 
   }

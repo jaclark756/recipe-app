@@ -1,9 +1,60 @@
-<section class="nutrition-container">
-    <h2>Nutrition</h2>
-    <mat-list>
-      <mat-list-item class="nutrition-list" *ngFor="let nutrient of combinedNutrients">
-        <span class="instructions-text">{{nutrient?.name}} : {{nutrient?.amount}} : {{nutrient?.unit}} :
-          {{nutrient?.percentOfDailyNeeds | percent }}</span>
-      </mat-list-item>
-    </mat-list>
-</section>
+<!-- Show fullscreen on large monitor -->
+<mat-grid-list cols="3" rowHeight="3:1" fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false">
+    <mat-grid-tile class="nutritional-grid" colspan="3">
+        <h2>Nutrition</h2>
+    </mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Calories</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{calories?.amount ? calories.amount : "0"}}</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Total Fat</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{fat?.amount ? fat.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Sodium</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{sodium?.amount ? sodium.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Total Carbohydrates</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{carbs?.amount ? carbs.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Fiber</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{fiber?.amount ? fiber.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Total Sugar</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{sugar?.amount ? sugar.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Protein</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{protein?.amount ? protein.amount : "0"}} g</mat-grid-tile>
+
+</mat-grid-list>
+
+<!-- Show on small screen like phone -->
+<mat-grid-list cols="2" rowHeight="5:2" fxShow.lt-sm="true" fxShow.gt-sm="false" fxShow.sm="true">
+    <mat-grid-tile class="nutritional-grid" colspan="2">
+        <h2>Nutrition</h2>
+    </mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid">Calories</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{calories?.amount ? calories.amount : "0"}}</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid">Total Fat</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{fat?.amount ? fat.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid">Sodium</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{sodium?.amount ? sodium.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid">Total Carbohydrates</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{carbs?.amount ? carbs.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid">Fiber</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{fiber?.amount ? fiber.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid">Total Sugar</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{sugar?.amount ? sugar.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid">Protein</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{protein?.amount ? protein.amount : "0"}} g</mat-grid-tile>
+
+</mat-grid-list>
+
+
+<!-- 960-1279 -->

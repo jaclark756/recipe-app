@@ -10,7 +10,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormGroupDi
 })
 export class SearchDialogComponent implements OnInit {
   userSearch: FormGroup;
-  filteredCategories: Observable<any[]>;
+  filteredCategorie$: Observable<any[]>;
   categoryNames: any[];
   categories = [
     {
@@ -44,7 +44,7 @@ export class SearchDialogComponent implements OnInit {
     this.userSearch = this.formbuilder.group({
       searchInput: new FormControl('')
     });
-    this.filteredCategories = this.userSearch.controls.searchInput.valueChanges
+    this.filteredCategorie$ = this.userSearch.controls.searchInput.valueChanges
       .pipe(
         startWith(''),
         map(value => typeof value === 'string' ? value : value.name),

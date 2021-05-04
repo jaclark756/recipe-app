@@ -27,6 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CreateCollectionsComponent } from './components/create-collections/create-collections.component';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ErrorComponent } from './components/error/error.component';
 
 
 
@@ -41,7 +42,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     WelcomeComponent,
     HomeComponent,
     SettingsComponent,
-    CreateCollectionsComponent
+    CreateCollectionsComponent,
+    ErrorComponent
   ],
   imports: [
     AppRoutingModule,
@@ -63,15 +65,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatCheckboxModule,
     MatSelectModule,
     MatSnackBarModule,
-
-
-    RouterModule.forRoot([
-      { path: '', component: InputRecipeComponent },
-      { path: 'inputrecipe', component: InputRecipeComponent },
-      { path: 'viewrecipe/:id', component: ViewRecipesComponent },
-    ])
-
-
   ],
 
   providers: [authInterceptorProviders],

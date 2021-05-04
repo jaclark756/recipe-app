@@ -23,7 +23,7 @@
     </button>
 </div>
   </div>
-<div *ngIf="!router.url.includes('/login')" class="flex-container"  style="position:relative!important;padding:15px;" fxShow.sm="false" fxShow.lt-sm="false" fxShow.gt-sm="true">
+<div *ngIf="!router.url.includes('/login') && !router.url.includes('/error')" class="flex-container"  style="position:relative!important;padding:15px;" fxShow.sm="false" fxShow.lt-sm="false" fxShow.gt-sm="true">
     <button (click)="addRecipe()" fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false" mat-fab class="bg-teal fab-button" aria-label="create button" style="position:fixed!important;">
         <img src="assets/images/addwhite.svg" alt="create" class="filter-powder">
     </button>

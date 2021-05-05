@@ -162,8 +162,9 @@
   padding-bottom: 10px;
 }
 
-.note-cancel {
+.note-cancel, .note-cancel:hover {
   font-size: 18px;
+  cursor: pointer;
 }
 
 @media (max-width: 785px) {

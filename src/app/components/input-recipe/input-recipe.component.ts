@@ -238,7 +238,6 @@ export class InputRecipeComponent implements OnInit {
   //// START Notes Input Logic ////
 
   addNotes(event) {
-    console.log(this.notes)
     this.notes.push({note: this.newRecipe.controls.notesControl.value, timestamp: this.currentDateFormatted});
     this.newRecipe.controls.notesControl.reset();
   }

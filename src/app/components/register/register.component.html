@@ -10,7 +10,9 @@
             <input matInput type="text" formControlName="username" required style="width:100%;">
             <div class="mat-error" *ngIf="signUpForm.get('username').invalid && signUpForm.get('username').touched">{{getErrorMessage()}}</div>
         </mat-form-field>
-        <app-button [childIsDisabled]="signUpForm.invalid" [label]="'Sign Up'" (clickEvent)="signUp($event)" [class]="'done-button'"></app-button>
+        <div class="action">
+        <button mat-raised-button [disabled]="signUpForm.invalid" (clickEvent)="signUp($event)" class="bg-onyx">Sign Up</button>
+    </div>
       <p>By continuing, you agree to this site's <a href="#">Terms
             of Service</a>and <a href="#">Privacy Policy</a>.</p>
 </mat-dialog-content>

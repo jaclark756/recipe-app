@@ -89,9 +89,10 @@ export class ViewRecipesComponent implements OnInit {
 
   editButtonShow() {
     // console.log(this.tokenService.getUser())
-    if (this.tokenService.getUser().id === this.recipe.userId) {
-      return true;
-    }
+    // if (this.tokenService.getUser().id === this.recipe.userId) {
+    //   return true;
+    // }
+    return true;
   }
 
   strikethroughText(event) {

@@ -61,7 +61,7 @@ export class RecipeService {
       this.recipes = [
         ...this.recipes, response
       ]
-      this.router.navigate(['viewrecipe/'+response.id]); 
+      this.router.navigate(['recipe/'+response.id]); 
     })
   }
 

@@ -156,8 +156,14 @@
   margin: 0px;
 }
 
-.ordered-notes-container{
-    
+.note-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.note-cancel {
+  font-size: 18px;
 }
 
 @media (max-width: 785px) {

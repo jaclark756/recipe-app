@@ -16,6 +16,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef} from '@angular/material/dialog';
 import { Recipe } from 'src/app/types/recipe';
 import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
+import { RecipeUpdateNote } from 'src/app/types/recipeUpdateNote';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-input-recipe',
@@ -37,8 +39,9 @@ export class InputRecipeComponent implements OnInit {
   ingredientQuantity: number;
   ingredientMeasure: string;
   ingredientMeasureOptions = ingredientMeasureOptions;
-
-  
+  notes: RecipeUpdateNote[] = [];
+  currentDate = new Date();
+  currentDateFormatted: string;
   Instructions: Instruction[];
   instructions2: Instruction[] = [];
   finalInstructions: Instruction[];
@@ -66,6 +69,7 @@ export class InputRecipeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.currentUser = this.tokenService.getUser();
+    this.currentDateFormatted = formatDate(this.currentDate, 'MM-dd-yyyy', 'en-US')
   }
 
   ngOnInit(): void {
@@ -82,7 +86,8 @@ export class InputRecipeComponent implements OnInit {
       recipeName: new FormControl(this.existingRecipe ? this.existingRecipe.title : '', [Validators.required, Validators.maxLength(100)]),
       imageUri: new FormControl(this.existingRecipe ? this.existingRecipe.photoUrl : ''),
       cookTime: new FormControl(this.existingRecipe ? this.existingRecipe.cookTime : '', [Validators.required, Validators.min(0)]),
-      prepTime: new FormControl(this.existingRecipe ? this.existingRecipe.prepTime : '', [Validators.required, Validators.min(0)])
+      prepTime: new FormControl(this.existingRecipe ? this.existingRecipe.prepTime : '', [Validators.required, Validators.min(0)]),
+      notesControl: new FormControl('')
     })
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};
@@ -94,6 +99,7 @@ export class InputRecipeComponent implements OnInit {
         map(value => typeof value === 'string' ? value : value.name),
         map(name => name ? this._filter(name) : this.allCategories.slice())
       );
+    this.notes = this.existingRecipe.notes || [];
     
   }
 
@@ -128,7 +134,8 @@ export class InputRecipeComponent implements OnInit {
           "instructions": this.instructions2,
           "photoUrl": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
           "cookTime": this.newRecipe.controls.cookTime.value,
-          "prepTime": this.newRecipe.controls.prepTime.value
+          "prepTime": this.newRecipe.controls.prepTime.value,
+          "notes": this.notes
         }
       this.recipeService.updateRecipe(recipe);
     }
@@ -227,6 +234,19 @@ export class InputRecipeComponent implements OnInit {
     return this.allCategories.filter(category => category.name.toLowerCase().indexOf(filterValue) === 0);
   }
   //// END Category Input Logic ////
+
+  //// START Notes Input Logic ////
+
+  addNotes(event) {
+    this.notes.push({note: this.newRecipe.controls.notesControl.value, timestamp: this.currentDateFormatted});
+    this.newRecipe.controls.notesControl.reset();
+  }
+
+  removeNote(selectedNote: RecipeUpdateNote) {
+    this.notes = this.notes.filter(note => selectedNote !== note);
+  }
+
+  //// END Notes Input Logic ////
 
   close(): void{
     this.dr.close();

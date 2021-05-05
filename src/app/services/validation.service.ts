@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class ValidationService {
 
   BASE_URL: string = environment.apiUrl
-  USERS_URL: string = "api/usernames"
+  USERS_URL: string = "/api/usernames"
   URL = this.BASE_URL + this.USERS_URL;
 
   constructor(public http: HttpClient) { }

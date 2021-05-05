@@ -124,4 +124,15 @@ export class RecipeService {
 
   }
 
+  findRelatedRecipes(recipe: Recipe){
+    
+    let recipesUrl = this.url + "?category=";
+    recipe.categories.forEach(cat => recipesUrl += cat.id + ",")
+    
+    console.log(recipesUrl.slice(0, -1));
+    return this.http.get(recipesUrl.slice(0, -1), httpOptions).pipe(map(response => {
+      return response as Recipe[];
+    }))
+  }
+
 }

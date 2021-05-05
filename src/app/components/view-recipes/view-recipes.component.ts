@@ -22,6 +22,7 @@ export class ViewRecipesComponent implements OnInit {
   public recipe: Recipe;
   public ingredients: Ingredient[];
   public instructions: Instruction[];
+  public relatedRecipes: any;
   public nutrition = NUTRIENTS as NutrientEntity[];
   public combinedNutrients: Nutrient[];
   sample_recipes = RECIPES;
@@ -71,6 +72,7 @@ export class ViewRecipesComponent implements OnInit {
       if (param.get('id')) {
         this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
           this.recipe = recipe;
+          this.relatedRecipes = this.recipeService.findRelatedRecipes(recipe);
           this.ingredients = recipe.ingredients;
           this.instructions = recipe.instructions;
         })

@@ -3,6 +3,7 @@ pipeline {
     environment {
         CONTAINER_REGISTRY = '253520709108.dkr.ecr.us-west-2.amazonaws.com'
         CONTAINER_REPO = 'mcc-code-school-recipe-app'
+        BRANCH_NAME = 'develop'
     }      
     stages {
         stage('Build App') {
@@ -14,7 +15,7 @@ pipeline {
             }
             steps {
                 sh "npm install"
-                sh "npm run build"
+                sh "npm run build-${env.BRANCH_NAME}"
             }
         }
         stage('Build and Publish Docker Container') {

@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class RegisterComponent implements OnInit {
 
-  BASE_URL: string = "http://localhost:8080/"
+  BASE_URL: string = environment.apiUrl
   USERS_URL: string = "/v2/usernames"
   SIGNUP_URL: string = "/v2/user/update"
   URL = this.BASE_URL + this.USERS_URL;

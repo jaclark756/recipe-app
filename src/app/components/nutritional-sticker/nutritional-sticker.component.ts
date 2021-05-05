@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NUTRIENTS } from 'src/app/helpers/sample-data';
-import { RecipeService } from 'src/app/services/recipe.service';
-import { Nutrient } from 'src/app/types/nutrient';
-import { NutrientEntity } from 'src/app/types/NutrientEntity';
+import { NUTRIENTS } from '../../helpers/sample-data';
+import { RecipeService } from '../../services/recipe.service';
+import { Nutrient } from '../../types/nutrient';
+import { NutrientEntity } from '../../types/NutrientEntity';
 
 @Component({
   selector: 'app-nutritional-sticker',

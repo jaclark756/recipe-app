@@ -28,7 +28,7 @@
         <button mat-fab class="fab-buttons">
           <mat-icon class="fab" (click)="openCollectionDialog()">bookmark</mat-icon>
         </button>
-        <button *ngIf="editButtonShow()" mat-fab class="fab-buttons" (click)="editRecipeDialog()">
+        <button  mat-fab class="fab-buttons" (click)="editRecipeDialog()">
           <mat-icon class="fab" (click)="editRecipeDialog()">edit</mat-icon>
         </button>
       </div>
@@ -42,7 +42,7 @@
         <button mat-mini-fab class="fab-buttons">
           <mat-icon class="mini-fab">bookmark</mat-icon>
         </button>
-        <button mat-mini-fab *ngIf="editButtonShow()" (click)="editRecipeDialog()" class="fab-buttons">
+        <button mat-mini-fab  (click)="editRecipeDialog()" class="fab-buttons">
           <mat-icon (click)="editRecipeDialog()" class="mini-fab">edit</mat-icon>
         </button>
       </div>
@@ -102,7 +102,7 @@
       <h2>RELATED RECIPES</h2>
     </div>
     <div class="flex-container">
-      <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
+      <app-recipe-card-tile *ngFor="let recipe of relatedRecipes | async" [recipe]="recipe">
       </app-recipe-card-tile>
     </div>
   </div>

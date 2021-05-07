@@ -156,6 +156,17 @@
   margin: 0px;
 }
 
+.note-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.note-cancel, .note-cancel:hover {
+  font-size: 18px;
+  cursor: pointer;
+}
+
 @media (max-width: 785px) {
   .ingredients-container {
     flex-direction: column;

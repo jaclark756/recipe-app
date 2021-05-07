@@ -71,6 +71,7 @@ export class ViewRecipesComponent implements OnInit {
       if (param.get('id')) {
         this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
           this.recipe = recipe;
+          this.user = recipe.user;
           this.ingredients = recipe.ingredients;
           this.instructions = recipe.instructions;
         })

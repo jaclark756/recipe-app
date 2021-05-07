@@ -152,6 +152,10 @@ label {
   margin-left: 23%;
 }
 
+.instructions-list:hover{
+  cursor: pointer;
+}
+
 .instructions-list:hover .instructions-arrow,
 .instructions-list:focus .instructions-arrow {
   visibility: visible;

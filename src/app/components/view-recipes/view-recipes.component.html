@@ -1,10 +1,15 @@
 <div class="page">
   <div class="container">
-    <section class="recipeImg">
-      <div class="image">
-        <img src="/assets/images/452078e959acefeb64f8fcfea2336e51.jpg" alt="recipe image">
-      </div>
-    </section>
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Recipe Image">
+            <img class="image" src="/assets/images/452078e959acefeb64f8fcfea2336e51.jpg" alt="recipe image">
+      </mat-tab>
+      <mat-tab label="Nutrition">
+          <div class="nutrition">
+            <app-nutritional-sticker></app-nutritional-sticker>
+          </div>
+      </mat-tab>
+  </mat-tab-group>
     <section class="information">
       <h1 class="title">{{recipe?.title}}</h1>
       <div class="owner-container">
@@ -14,9 +19,6 @@
       <div class="time">
         <h3>Prep Time: {{recipe?.prepTime}}Min</h3>
         <h3>Cook Time: {{recipe?.cookTime}}Min</h3>
-      </div>
-      <div class="nutrition-mobile">
-        <app-nutritional-sticker></app-nutritional-sticker>
       </div>
       <div class="actions" fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false">
         <button mat-fab class="fab-buttons">
@@ -47,10 +49,10 @@
         </button>
       </div>
     </section>
-    <section class="nutrition-column">
+    <!-- <section class="nutrition-column">
         <app-nutritional-sticker></app-nutritional-sticker>
       
-    </section>
+    </section> -->
   </div>
   <mat-divider></mat-divider>
   <div class="prepareRecipe">

@@ -1,3 +1,6 @@
+@import "/src/styles/styles.scss";
+
+
 .nutritional-grid{
     background-color: white;
     border-style: solid;
@@ -8,11 +11,18 @@
     padding-left: 5px !important;
 }
 ::ng-deep .mat-grid-list{
-    min-width: 200px !important;
+    min-width: 150px !important;
+    max-width: 400px !important;
+    margin: auto !important;
+    padding-bottom: 300px !important;
 }
 
-@media only screen and (max-width: 720px) {
-    ::ng-deep .mat-grid-list {
-        width:236px;
-    }
-}
+::ng-deep .mat-tab-label {
+    color: $powder !important;
+  }
+
+// @media only screen and (max-width: 720px) {
+//     ::ng-deep .mat-grid-list {
+//         width:236px;
+//     }
+// }

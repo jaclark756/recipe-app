@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
 import { NutrientEntity } from '../types/NutrientEntity';
@@ -122,6 +122,19 @@ export class RecipeService {
     console.log("Final", combinedNutrients)
     return combinedNutrients;
 
+  }
+
+  findRelatedRecipes(recipe: Recipe){
+    
+    let recipesUrl = this.url + "?category=";
+    recipe.categories.forEach(cat => recipesUrl += cat.id + ",")
+    
+    return this.http.get(recipesUrl.slice(0, -1), httpOptions).pipe(
+      filter((r: Recipe) => r.id === recipe.id)
+      ,map(response => {
+        return response as Recipe[];
+      })
+    )
   }
 
 }

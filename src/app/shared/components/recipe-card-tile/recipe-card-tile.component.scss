@@ -81,8 +81,11 @@
       right: 15%;
       display: flex;
       justify-content: center;
-      font-size: 30px !important;
+      font-size: 25px !important;
       color: $metal;
+      padding: 5px;
+      border-radius: 50%;
+      background-color: $mint;
     }
   }
 }

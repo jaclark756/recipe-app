@@ -1,10 +1,10 @@
 <a routerLink="category/id"><div class="flex-container bg-mint">
    <div class="img-container">
-    <img src="{{recipe.photoUrl}}" alt="recipe image">
+    <img src="{{collection?.imageUrl}}" alt="recipe image">
   </div>
  <div class="collection-title">
-   <!-- come back and fix this to loop through categories -->
-  <!-- <p class="c-jet">{{recipe.category}}<br> </p>-->
+  <p class="c-jet">{{collection?.collectionName}}<br>
+  </p>
   </div>
 </div>
 </a>

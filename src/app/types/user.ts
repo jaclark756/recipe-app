@@ -1,8 +1,9 @@
 export interface User {
-    id?: string;
+    id?: number;
     username?: string;
     displayName?: string;
     photoUrl?: string;
+    enabled: boolean;
     commentNotifications: boolean;
     likeNotifications: boolean;
     recipeSavedNotifications: boolean;

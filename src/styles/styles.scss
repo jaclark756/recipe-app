@@ -68,8 +68,7 @@ h5 {
 .done-button {
   background-color: $mint !important;
   color: $black !important;
-  float: right;
-}
+ }
 
 /*use this button for secondary actions (edit, back, change, etc.)*/
 .edit-button {
@@ -96,6 +95,14 @@ h5 {
 .filter-watermelon {
   filter: brightness(0) saturate(100%) invert(51%) sepia(12%) saturate(2643%)
     hue-rotate(316deg) brightness(107%) contrast(111%);
+}
+
+.filter-mint{
+  filter: brightness(0) saturate(100%) invert(95%) sepia(6%) saturate(650%) hue-rotate(57deg) brightness(89%) contrast(91%);
+}
+
+.filter-metal {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(10%) saturate(2117%) hue-rotate(168deg) brightness(93%) contrast(96%);
 }
 
 .snackbar {
@@ -269,10 +276,6 @@ input::placeholder {
   border: $mint 2px solid;
 }
 
-.mat-chip {
-  font-size: 16px !important;
-  padding: 8px !important;
-}
 
 /* Mat Dialog for Input Recipe */
 .cdk-overlay-dark-backdrop {

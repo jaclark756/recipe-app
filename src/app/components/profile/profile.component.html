@@ -28,7 +28,15 @@
         </mat-tab>
         <mat-tab label="Collections">
             <div class="collection-container">
-                <app-collection-card *ngFor="let recipe of sample_recipes" [recipe]="recipe"></app-collection-card>
+                <div class="new-collection">
+                    <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true"
+                        (click)="openCreateCollectionDialog()">+
+                        Add New Collection</button>
+                </div>
+                <div class="collection-container">
+                    <app-collection-card [recipe] [collection]="collection"
+                        *ngFor="let collection of collectionService.collection$ | async"></app-collection-card>
+                </div>
             </div>
         </mat-tab>
     </mat-tab-group>

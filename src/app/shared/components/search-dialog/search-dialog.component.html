@@ -11,13 +11,6 @@
         </mat-form-field>
     </form>
     <button (click)="close()" routerLink="/search" [queryParams]="{q: userSearch.controls.searchInput.value}">Search</button>
-       <!-- <mat-label>Recent Searches</mat-label>
-        <mat-chip-list aria-label="recent-searches">
-            <mat-chip color="accent" selected>protein pancakes</mat-chip>
-            <mat-chip color="accent" selected>margaritas</mat-chip>
-            <mat-chip color="accent" selected>bread</mat-chip>
-            <mat-chip color="accent" selected>tacos</mat-chip>
-        </mat-chip-list> -->
     <h2>Search by Categories</h2>
     <div class="flex-container" *ngIf="(filteredCategorie$ | async)?.length > 0">
         <app-category-card *ngFor="let cat of filteredCategorie$ | async" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>

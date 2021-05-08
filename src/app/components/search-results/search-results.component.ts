@@ -19,7 +19,6 @@ import { Recipe } from 'src/app/types/recipe';
       private _searchService: SearchService,
       private route: ActivatedRoute,
       ) {
-      console.log("this is loading")
      }
   
     ngOnInit(): void {
@@ -30,16 +29,10 @@ import { Recipe } from 'src/app/types/recipe';
       this.route.queryParamMap.subscribe(param => {
         param.keys.forEach((k) => {
           this.httpParams = this.httpParams.set(k, param.get(k));
-          // console.log("httpParams: ", this.httpParams.toString())
         });
         this._searchService.getSearchedRecipes(this.httpParams).subscribe(response => {
           this.recipes = response;
-          console.log("recipes: ", this.recipes)
         })
-        
-        // pipe(map(response => {
-        //   this.recipes = response;
-        // }));
       })
     }
   }

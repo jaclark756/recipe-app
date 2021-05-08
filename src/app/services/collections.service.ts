@@ -33,10 +33,6 @@ export class CollectionService {
   }
 
 
-
-
-  // GETTERS AND SETTERS
-
   getAllCollections(): Observable<Collection[]> {
     return this.http.get(this.url, httpOptions).pipe(map(response => {
       return response as Collection[];
@@ -57,7 +53,7 @@ export class CollectionService {
     this.collectionsSubject.next(collections);
   }
 
-  // CRUD FUNCTIONS BELOW
+
 
   getCollectionsByUser(userId: number) {
     return this.http.get(`${this.url}`, httpOptions).pipe(map(response => {
@@ -86,25 +82,4 @@ export class CollectionService {
       });
   }
 
-  refreshCollection(): void {
-    this.http.get(`${this.url}`).subscribe(s => {
-      this.collectionsSubject.next(s as Collection[]);
-    });
-  }
-
-  // TODO Update collection function
-
-  // deleteCollection(collectionId: number): void {
-  //   this.http.delete(this.url + `/${collectionId}`, httpOptions).subscribe(response => {
-  //     this.collectionsSubject.next(this.collections.filter(collection => collection.id !== collectionId));
-  //   });
-  // }
-
-
-
-  // removeFromCollection(collection: Collection): void {
-  //   this.http.put(`${this.url}`, collection, httpOptions).subscribe((response) => {
-  //     this.refreshCollection();
-  //   });
-  // }
 }

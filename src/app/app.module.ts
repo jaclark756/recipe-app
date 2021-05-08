@@ -28,8 +28,7 @@ import { CreateCollectionsComponent } from './components/create-collections/crea
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ErrorComponent } from './components/error/error.component';
-import { CollectionComponent } from './components/collection/collection.component';
-
+import { CollectionComponent } from './shared/components/collection/collection.component';
 
 
 @NgModule({

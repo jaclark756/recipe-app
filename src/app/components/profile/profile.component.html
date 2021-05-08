@@ -37,6 +37,9 @@
                     <app-collection-card [recipe] [collection]="collection"
                         *ngFor="let collection of collectionService.collection$ | async"></app-collection-card>
                 </div>
+                <div class="view-collection">
+                    <app-collection></app-collection>
+                </div>
             </div>
         </mat-tab>
     </mat-tab-group>

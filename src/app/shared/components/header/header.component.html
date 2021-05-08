@@ -1,48 +1,51 @@
 <div class="mobile-header" fxShow.sm="true" fxShow.lt-sm="true" fxShow.gt-sm="false">
   <button mat-icon-button routerLink="home" routerLinkActive="active">
-   <img src="/assets/images/logo.svg" alt="app logo" class="filter-powder">
+    <img src="/assets/images/logo.svg" alt="app logo" class="filter-metal">
   </button>
   <span class="spacer"></span>
-<button mat-icon-button [matMenuTriggerFor]="settingsMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
-  <mat-icon class="c-powder">settings</mat-icon>
-</button>
+  <h1>ReciMe</h1>
+  <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="settingsMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
+    <mat-icon class="c-onyx">settings</mat-icon>
+  </button>
 </div>
 <mat-toolbar fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false">
   <button mat-icon-button routerLink="home" routerLinkActive="active">
-    <img src="/assets/images/logo.svg" alt="app logo" class="filter-powder">
-   </button>
-  <mat-chip-list aria-label="navbar">
-    <mat-chip class="bg-powder header-chip">Following</mat-chip>
-    <mat-chip class="bg-powder header-chip">Explore</mat-chip>
-  </mat-chip-list>
+    <img src="/assets/images/logo.svg" alt="app logo" class="filter-metal">
+  </button>
+  <span class="spacer"></span>
+  <h1 class="c-metal">ReciMe</h1>
   <span class="spacer"></span>
   <button mat-icon-button routerLink="search" (click)="openSearchDialog()">
-    <mat-icon class="search c-powder">search</mat-icon>
+    <mat-icon class="search c-metal">search</mat-icon>
   </button>
-  <button mat-icon-button class="c-powder" matBadge="15" matBadgeColor="warn" [matMenuTriggerFor]="notifications">
+  <button mat-icon-button class="c-metal" matBadge="15" matBadgeColor="$default-warn" [matMenuTriggerFor]="notifications">
     <mat-icon class="notification">notifications_active</mat-icon>
   </button>
   <span class="cdk-visually-hidden">
     notification icon with overlaid badge showing the number of notifications </span>
-  <mat-menu #notifications="matMenu" class="bg-watermelon">
+  <mat-menu #notifications="matMenu" class="bg-mint">
     <p>This is where account notifications will live.</p>
   </mat-menu>
-  <button mat-icon-button routerLink="profile">
-    <mat-icon class="account c-powder">account_circle</mat-icon>
+  <button mat-icon-button routerLink="/profile">
+    <mat-icon class="account c-metal">account_circle</mat-icon>
   </button>
   <button mat-icon-button [matMenuTriggerFor]="settingsMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
-    <mat-icon [ngClass]="opened ? 'menu-opened' : ' ' " class="c-powder">keyboard_arrow_down</mat-icon>
+    <mat-icon [ngClass]="opened ? 'menu-opened' : ' ' " class="c-metal">keyboard_arrow_down</mat-icon>
   </button>
-  <mat-menu #settingsMenu="matMenu" class="bg-onyx">
-    <button mat-menu-item class="c-powder" routerLink="/profile">
-      <img src="/assets/images/account_circle-white-24dp.svg" class="filter-powder">
-      View Profile</button>
-    <button mat-menu-item class="c-powder" routerLink="/settings"><img src="/assets/images/settings-white-18dp.svg"
-        class="filter-powder">Account Settings</button>
-    <button mat-menu-item class="c-powder" routerLink="/settings"><img src="/assets/images/help-white-18dp.svg"
-        class="filter-powder">Help &
-      Support</button>
-    <button mat-menu-item class="c-powder" (click)="logout()"><img src="/assets/images/logout-white-18dp.svg"
-        class="filter-powder">Logout</button>
+  <mat-menu #settingsMenu="matMenu" class="bg-mint">
+    <button mat-menu-item class="c-metal" routerLink="/profile">
+      <mat-icon class="c-metal">account_circle</mat-icon>View Profile
+    </button>
+    <button mat-menu-item class="c-metal" routerLink="/settings">
+      <mat-icon class="c-metal">settings</mat-icon>Account Settings
+    </button>
+    <button mat-menu-item class="c-metal" routerLink="/settings">
+      <mat-icon class="c-metal">help</mat-icon>Help &
+      Support
+    </button>
+    <button mat-menu-item class="c-metal" (click)="logout()">
+      <mat-icon class="c-metal">logout</mat-icon>Logout
+    </button>
   </mat-menu>
 </mat-toolbar>

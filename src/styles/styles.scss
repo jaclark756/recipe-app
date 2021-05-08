@@ -101,6 +101,10 @@ h5 {
   filter: brightness(0) saturate(100%) invert(95%) sepia(6%) saturate(650%) hue-rotate(57deg) brightness(89%) contrast(91%);
 }
 
+.filter-metal {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(10%) saturate(2117%) hue-rotate(168deg) brightness(93%) contrast(96%);
+}
+
 .snackbar {
   background-color: $onyx;
   border: 1px solid $powder;

@@ -18,6 +18,9 @@
   width: 50%;
   margin-top: 20px;
 }
+.username {
+  width:100%;
+}
 
 ::ng-deep.mat-dialog-actions {
   margin: 10px;
@@ -25,12 +28,18 @@
   justify-content: center !important;
 }
 
-button {
-  margin: 10px;
-  padding: 10px;
-  text-align: center;
+.action {
+  display: flex;
+  justify-content: center;
 }
 
+::ng-deep .mat-raised-button {
+  color: $mint !important;
+}
+
+:ng-deep .mat-button-wrapper {
+  color: $mint !important;
+}
 ::ng-deep .mat-form-field {
   .mat-input-element {
     color: $black;

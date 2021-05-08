@@ -28,6 +28,7 @@ import { CreateCollectionsComponent } from './components/create-collections/crea
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NutritionalStickerComponent } from './components/nutritional-sticker/nutritional-sticker.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 
@@ -43,7 +44,8 @@ import { NutritionalStickerComponent } from './components/nutritional-sticker/nu
     HomeComponent,
     SettingsComponent,
     CreateCollectionsComponent,
-    NutritionalStickerComponent
+    NutritionalStickerComponent,
+    ErrorComponent
   ],
   imports: [
     AppRoutingModule,
@@ -65,15 +67,6 @@ import { NutritionalStickerComponent } from './components/nutritional-sticker/nu
     MatCheckboxModule,
     MatSelectModule,
     MatSnackBarModule,
-
-
-    RouterModule.forRoot([
-      { path: '', component: InputRecipeComponent },
-      { path: 'inputrecipe', component: InputRecipeComponent },
-      { path: 'viewrecipe/:id', component: ViewRecipesComponent },
-    ])
-
-
   ],
 
   providers: [authInterceptorProviders],

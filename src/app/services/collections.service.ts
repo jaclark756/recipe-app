@@ -79,6 +79,7 @@ export class CollectionService {
 
     saveRecipe2Collection(collectionId: number, recipe: Recipe):  void {
       console.log(recipe)
+      console.log(collectionId)
       this.http.post(`${environment.apiUrl}/profile/collections/${collectionId}`,recipe, httpOptions).subscribe((response: Collection) => {
         this.collections = [
           ...this.collections,

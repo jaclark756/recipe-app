@@ -139,6 +139,7 @@ export class InputRecipeComponent implements OnInit {
         }
       this.recipeService.updateRecipe(recipe);
     }
+    this.dr.close;
   }
 
     //// START Instruction Logic ////

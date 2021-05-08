@@ -44,23 +44,30 @@ export class CollectionDialogComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.populate()
+  }
+
+  populate() {
     this.collectionService.getCollectionsByUser(this.activeUser.id).subscribe(response => {
       this.collections = response
       this.collections.forEach(collection => {
         this.newSaveRecipeForm.push(new FormControl(false))
       })
     });
-
+    this.collectionService.collection$.subscribe(res => {
+      this.collections = res      
+      this.collections.forEach(collection => {
+        this.newSaveRecipeForm.push(new FormControl(false))
+      })}
+    )
   }
 
   saveRecipe(message: string) {
-    console.log(this.newSaveRecipeForm)
     this.newSaveRecipeForm.value.forEach((element,i) => {
       if(element){
         this.collectionService.saveRecipe2Collection(this.collections[i].id,this.recipe)
       }
     });
-
     let lilSnackMessage = 'Recipe has been saved!' 
     this._snackBar.open(lilSnackMessage, "", {
       duration: 2000,
@@ -72,6 +79,7 @@ export class CollectionDialogComponent implements OnInit {
 
     openCreateCollectionDialog(){
       const dialogRef = this.dialog.open(CreateCollectionsComponent);
+      
     }
 
 

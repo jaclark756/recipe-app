@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidationService {
 
-  BASE_URL: string = "http://localhost:8080/"
-  USERS_URL: string = "api/v2/usernames"
+  BASE_URL: string = environment.apiUrl
+  USERS_URL: string = "/api/v2/usernames"
   URL = this.BASE_URL + this.USERS_URL;
 
   constructor(public http: HttpClient) { }

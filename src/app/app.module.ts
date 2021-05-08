@@ -27,6 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CreateCollectionsComponent } from './components/create-collections/create-collections.component';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NutritionalStickerComponent } from './components/nutritional-sticker/nutritional-sticker.component';
 import { ErrorComponent } from './components/error/error.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component'
 
@@ -44,8 +45,9 @@ import { SearchResultsComponent } from './components/search-results/search-resul
     HomeComponent,
     SettingsComponent,
     CreateCollectionsComponent,
-    ErrorComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    NutritionalStickerComponent,
+    ErrorComponent
   ],
   imports: [
     AppRoutingModule,

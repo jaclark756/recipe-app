@@ -64,7 +64,6 @@ export class CollectionService {
 
 
   addCollection(collection: Collection): void {
-    console.log(collection);
     this.http.post(`${this.url}`, collection, httpOptions).subscribe((response: Collection) => {
       this.collections = [
         ...this.collections,

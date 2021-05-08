@@ -1,12 +1,15 @@
 <div class="mobile-header" fxShow.sm="true" fxShow.lt-sm="true" fxShow.gt-sm="false">
   <button mat-icon-button routerLink="home" routerLinkActive="active">
-    <img src="/assets/images/logo.svg" alt="app logo" class="filter-metal">
+    <img src="/assets/images/logo.svg" alt="app logo" class="filter-mint">
   </button>
   <span class="spacer"></span>
-  <h1>ReciMe</h1>
+  <mat-chip-list aria-label="navbar">
+    <mat-chip class="header-chip">Following</mat-chip>
+    <mat-chip class="header-chip">Explore</mat-chip>
+  </mat-chip-list>
   <span class="spacer"></span>
   <button mat-icon-button [matMenuTriggerFor]="settingsMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
-    <mat-icon class="c-onyx">settings</mat-icon>
+    <mat-icon class="c-mint">settings</mat-icon>
   </button>
 </div>
 <mat-toolbar fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false">
@@ -14,7 +17,7 @@
     <img src="/assets/images/logo.svg" alt="app logo" class="filter-metal">
   </button>
   <span class="spacer"></span>
-  <h1 class="c-metal">ReciMe</h1>
+  <h1 class="c-metal">Reci<i>Me</i></h1>
   <span class="spacer"></span>
   <button mat-icon-button routerLink="search" (click)="openSearchDialog()">
     <mat-icon class="search c-metal">search</mat-icon>

@@ -15,7 +15,7 @@
   justify-content: center;
   width: auto;
   margin: 10px;
-  background-color: $onyx;
+  background-color: $mint;
   position: fixed !important;
   padding: 2px;
 }
@@ -27,7 +27,8 @@
 .flex-container {
     justify-content: flex-end;
     display: flex;
-    position: relative;
+    position: relative!important;
+    padding: 15px;
   }
   
 .fab-button {

@@ -28,6 +28,7 @@ import { CreateCollectionsComponent } from './components/create-collections/crea
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ErrorComponent } from './components/error/error.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component'
 
 
 
@@ -43,7 +44,8 @@ import { ErrorComponent } from './components/error/error.component';
     HomeComponent,
     SettingsComponent,
     CreateCollectionsComponent,
-    ErrorComponent
+    ErrorComponent,
+    SearchResultsComponent
   ],
   imports: [
     AppRoutingModule,

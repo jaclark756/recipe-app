@@ -14,6 +14,15 @@
   justify-content: center !important;
 }
 
+::ng-deep .mat-tab-body {
+  padding-top: 20px !important;
+  overflow: hidden !important;
+}
+
+::ng-deep .mat-tab-body-content {
+  overflow: hidden !important;
+}
+
 h2,
 h1,
 h3,
@@ -21,29 +30,17 @@ label {
   color: $powder;
 }
 
-.title {
-  font-size: 48px !important;
-  text-align: center;
-  margin: 0;
-}
-
-// .recipeImg {
-//   display: flex;
-//   flex-direction: column;
-//   flex-wrap: wrap;
-//   justify-items: center;
-//   margin-left: 8%;
-//   width: 200px;
-//   object-fit: contain;
-// }
-
 .image {
   display: flex;
   height: 300px;
   margin: auto;
 }
 
-
+.title {
+  font-size: 40px;
+  text-align: center;
+  margin: 0;
+}
 
 .owner-container {
   margin-top: 10px;
@@ -61,10 +58,6 @@ label {
   line-height: 5px;
   margin-bottom: 20%;
 }
-
-// .nutrition-mobile {
-//   display: none;
-// }
 
 .actions {
   display: flex;
@@ -88,15 +81,6 @@ label {
   color: $onyx;
 }
 
-.nutrition-column {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-items: right;
-  margin-right: 8%;
-  max-height: 100px;
-}
-
 ::ng-deep .mat-divider {
   border-top-color: $mint !important;
   width: 90%;
@@ -109,7 +93,7 @@ label {
   width: 100%;
 }
 
-.ingContainer {
+.ingredients {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -128,7 +112,6 @@ label {
 
 ::ng-deep .mat-list-item {
   color: $powder !important;
-  align-items: flex-start;
 }
 
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
@@ -225,20 +208,7 @@ label {
     margin-bottom: 30px;
   }
 
-  .nutrition-mobile {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-items: right;
-    margin-right: 8%;
-    max-height: 100px;
-  }
-
-  .nutrition-column {
-    display: none;
-  }
-
-   .prepareRecipe {
+  .prepareRecipe {
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
@@ -248,7 +218,7 @@ label {
     text-align: center;
   }
 
-  .ingContainer {
+  .ingredients {
     display: flex;
     justify-content: center;
     margin-left: 8%;

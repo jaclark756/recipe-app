@@ -15,7 +15,7 @@ const HTTP_OPTIONS = {
 export class SearchService {
 
     userSearchValue$: Observable<any>;
-    private url: string = environment.apiUrl + "/v2/recipe"
+    private url: string = environment.apiUrl + "/api/v2/recipe"
 
     constructor(
         private http: HttpClient,

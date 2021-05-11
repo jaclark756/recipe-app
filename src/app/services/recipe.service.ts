@@ -87,7 +87,7 @@ export class RecipeService {
     // return this.http.get(`${this.url}/nutrients/${recipeId}`,httpOptions);
 
     //should be returning an array of NutrientEntities, NutrientEntity[]
-    return this.http.get(`${this.url}/nutrients/1`, httpOptions).pipe(map(res => {
+    return this.http.get(`${this.url}/nutrients/${recipeId}`, httpOptions).pipe(map(res => {
       return res as NutrientEntity[];
     }));
   }

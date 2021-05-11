@@ -29,6 +29,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NutritionalStickerComponent } from './components/nutritional-sticker/nutritional-sticker.component';
 import { ErrorComponent } from './components/error/error.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component'
 
 
 
@@ -44,6 +45,7 @@ import { ErrorComponent } from './components/error/error.component';
     HomeComponent,
     SettingsComponent,
     CreateCollectionsComponent,
+    SearchResultsComponent,
     NutritionalStickerComponent,
     ErrorComponent
   ],

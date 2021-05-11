@@ -254,8 +254,4 @@ export class InputRecipeComponent implements OnInit {
   }
 
   //// END Notes Input Logic ////
-
-  close(): void{
-    this.dr.close();
-  }
 }

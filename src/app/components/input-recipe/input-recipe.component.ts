@@ -55,6 +55,7 @@ export class InputRecipeComponent implements OnInit {
   instructionsNotEmpty = false;
   ingredientsNotEmpty = false;
   // END TODO
+  editInstructions: number = null;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -159,6 +160,12 @@ export class InputRecipeComponent implements OnInit {
       this.instructions2 = this.instructions2.map((item, index) => {
         return {...item, instructionOrder: index};
       });
+    }
+
+    editInstruction(index: number) {
+      console.log("touched");
+      this.editInstructions = index;
+      console.log(this.editInstructions);
     }
   //// END Instruction Logic ////
 

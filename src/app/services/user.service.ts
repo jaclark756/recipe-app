@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../types/user';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class UserService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  USER_API: string = "http://localhost:8080/api/v2/user"
+  USER_API: string = environment.apiUrl + "/api/v2/user"
   
   constructor(private http: HttpClient) { this.getCurrentUser()}
 

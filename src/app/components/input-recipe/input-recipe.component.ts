@@ -56,6 +56,7 @@ export class InputRecipeComponent implements OnInit {
   ingredientsNotEmpty = false;
   // END TODO
   editInstructions: number = null;
+  instructionFormEdit: FormGroup;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -89,6 +90,9 @@ export class InputRecipeComponent implements OnInit {
       cookTime: new FormControl(this.existingRecipe ? this.existingRecipe.cookTime : '', [Validators.required, Validators.min(0)]),
       prepTime: new FormControl(this.existingRecipe ? this.existingRecipe.prepTime : '', [Validators.required, Validators.min(0)]),
       notesControl: new FormControl('')
+    })
+    this.instructionFormEdit = this.formbuilder.group({
+      insEdit: new FormControl('')
     })
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};
@@ -163,9 +167,22 @@ export class InputRecipeComponent implements OnInit {
     }
 
     editInstruction(index: number) {
-      console.log("touched");
+      console.log("touched edit");
       this.editInstructions = index;
+      this.instructionFormEdit.controls.insEdit.setValue(this.instructions2.find(ins => ins.instructionOrder == index).content);
+      console.log(this.instructionFormEdit.controls.insEdit.value);
+      // this.instructions3 = ins;
+    }
+    saveEditInstruction(index: number) {
+      this.editInstructions = null;
+      this.instructions2.find(ins => ins.instructionOrder == index).content = this.instructionFormEdit.controls.insEdit.value;
       console.log(this.editInstructions);
+
+    }
+    makeItWork(event) {
+      console.log(event);
+
+
     }
   //// END Instruction Logic ////
 

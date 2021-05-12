@@ -3,6 +3,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ingredient } from 'src/app/types/ingredient';
+import { SearchService } from 'src/app/services/search.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-search-dialog',
@@ -41,6 +44,9 @@ export class SearchDialogComponent implements OnInit {
 
   constructor(
     private formbuilder: FormBuilder, 
+    private _searchService: SearchService, 
+    private dr: MatDialogRef<SearchDialogComponent>,
+    private router: RouterModule
   ) { 
     this.categoryNames = this.categories.map((category: any) => {
       return {name: category.name}
@@ -76,5 +82,9 @@ export class SearchDialogComponent implements OnInit {
     return this.ingredients.filter(ingredient => ingredient.content.toLowerCase().indexOf((filterValue)) === 0);
   }
 
+
+  close(): void{
+    this.dr.close();
+  }
 
 }

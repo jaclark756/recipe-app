@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { RECIPES } from 'src/app/helpers/sample-data';
@@ -76,12 +76,7 @@ export class ViewRecipesComponent implements OnInit {
           this.ingredients = recipe.ingredients;
           this.instructions = recipe.instructions;
         })
-        this.recipeService.getNutritionalInfo(+param.get('id')).subscribe(nutrition => {
-          this.nutrition = nutrition as NutrientEntity[];
-        });
         
-        this.combinedNutrients = this.recipeService.filterNutrition(this.nutrition);
-        // console.log("Combined Nutrients",this.combinedNutrients);
       };
     })
   }
@@ -97,10 +92,10 @@ export class ViewRecipesComponent implements OnInit {
   }
 
   editButtonShow() {
-    // console.log(this.tokenService.getUser())
-    // if (this.tokenService.getUser().id === this.recipe.userId) {
+  //   if (this.tokenService.getUser().id === this.recipe.userId) {
       return true;
-    }
+  //   }
+  }
   
 
   strikethroughText(event) {

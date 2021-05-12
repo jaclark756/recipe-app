@@ -18,6 +18,7 @@ import { Recipe } from 'src/app/types/recipe';
 import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement-options';
 import { RecipeUpdateNote } from 'src/app/types/recipeUpdateNote';
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-input-recipe',
@@ -67,6 +68,7 @@ export class InputRecipeComponent implements OnInit {
     private formbuilder: FormBuilder, 
     public userService: UserService,
     public tokenService: TokenService,
+    public router: Router,
     private dr: MatDialogRef<InputRecipeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
@@ -123,7 +125,7 @@ export class InputRecipeComponent implements OnInit {
             "prepTime": this.newRecipe.controls.prepTime.value
           }
           this.recipeService.addRecipe(recipe);
-          close();
+          this.dr.close();
         }
       } console.info("Missing Instructions or ingredients");
   }
@@ -143,7 +145,10 @@ export class InputRecipeComponent implements OnInit {
           "notes": this.notes
         }
       this.recipeService.updateRecipe(recipe);
+      this.dr.close();
     }
+    
+    
   }
 
     //// START Instruction Logic ////

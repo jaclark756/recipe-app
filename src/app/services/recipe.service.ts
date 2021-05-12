@@ -27,7 +27,7 @@ export class RecipeService {
     })
   }
 
-  private url: string = environment.apiUrl + "/v2/recipe"
+  private url: string = environment.apiUrl + "/api/v2/recipe"
   private readonly recipeSubject = new BehaviorSubject<Recipe[]>([]);
   readonly recipe$ = this.recipeSubject.asObservable();
 
@@ -87,7 +87,7 @@ export class RecipeService {
     // return this.http.get(`${this.url}/nutrients/${recipeId}`,httpOptions);
 
     //should be returning an array of NutrientEntities, NutrientEntity[]
-    return this.http.get(`${this.url}/nutrients/1`, httpOptions).pipe(map(res => {
+    return this.http.get(`${this.url}/nutrients/${recipeId}`, httpOptions).pipe(map(res => {
       return res as NutrientEntity[];
     }));
   }
@@ -118,8 +118,6 @@ export class RecipeService {
       return acc;
     }, [])
 
-
-    console.log("Final", combinedNutrients)
     return combinedNutrients;
 
   }

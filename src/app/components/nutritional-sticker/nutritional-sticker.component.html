@@ -1,0 +1,28 @@
+<!-- Show fullscreen on large monitor or Width greather than 1279px   LG-->
+<mat-grid-list cols="3" rowHeight="4:1">
+    <mat-grid-tile class="nutritional-grid" colspan="3">
+        <h2>Nutrition</h2>
+    </mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Calories</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{calories?.amount ? calories.amount : "0"}}</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Total Fat</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{fat?.amount ? fat.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Sodium</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{sodium?.amount ? sodium.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Total Carbohydrates</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{carbs?.amount ? carbs.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Fiber</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{fiber?.amount ? fiber.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Total Sugar</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{sugar?.amount ? sugar.amount : "0"}} g</mat-grid-tile>
+
+        <mat-grid-tile class="nutritional-grid" colspan="2">Protein</mat-grid-tile>
+        <mat-grid-tile class="nutritional-grid">{{protein?.amount ? protein.amount : "0"}} g</mat-grid-tile>
+
+</mat-grid-list>

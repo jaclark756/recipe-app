@@ -44,19 +44,18 @@
         </mat-form-field>
         <mat-chip-list class="example-chip mat-chip-list-stacked" cdkDropList (cdkDropListDropped)="drop($event)">
             <div cdkDrag class="ordered-chips-container" 
-            *ngFor="let instruction of instructions2; let i = index" >
-            <!-- [attr.data-index]="i" -->
+            *ngFor="let instruction of instructions2; index as i" [attr.data-index]="i">
                 <span class="c-white instruction-number">{{instruction.instructionOrder + 1}}</span>
                 <ng-container >
-                    <mat-chip (click)="editInstruction(i)" *ngIf="editInstructions = null" class="ordered-chips instruction-chip" [removable]="removable"
+                    <mat-chip (click)="editInstruction(i)" *ngIf="editInstructions == null" class="ordered-chips instruction-chip" [removable]="removable"
                         (removed)="removeInstruction2(instruction)">
                         <mat-icon class="custom-hamburger-icon">menu</mat-icon>
                             <span class="instruction-text">{{instruction.content}}</span>
                         <mat-icon class="insctruction-remove" matChipRemove *ngIf="removable">cancel</mat-icon>
                     </mat-chip>
-                    <ng-container *ngIf="editInstructions = i">
-                        <input>{{instruction.content}}<input>
-                         <!--button that flips boolean  -->
+                    <ng-container *ngIf="editInstructions == i">
+                        <input type="text" value="{{instruction.content}}">
+                        <mat-icon (click)="savedEditInstruction(i)">save_alt</mat-icon>                         <!--button that flips boolean  -->
                     </ng-container>
                 </ng-container>
             </div>

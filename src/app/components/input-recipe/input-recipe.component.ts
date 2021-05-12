@@ -19,8 +19,6 @@ import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement
 import { RecipeUpdateNote } from 'src/app/types/recipeUpdateNote';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
-import { env } from 'node:process';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-input-recipe',

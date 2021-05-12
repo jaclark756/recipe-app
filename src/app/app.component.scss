@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   position: relative !important;
-   }  
+}
 
 .mobile-nav-buttons {
   display: flex;
@@ -22,15 +22,20 @@
 
 ::ng-deep .mat-icon-button {
   margin: 5px !important;
+  padding-right: 5px !important;
 }
 
 .flex-container {
-    justify-content: flex-end;
-    display: flex;
-    position: relative!important;
-    padding: 15px;
-  }
-  
+  justify-content: flex-end;
+  display: flex;
+  position: relative !important;
+  padding: 15px;
+}
+
 .fab-button {
-    margin-right: 10px;
-  }
+  margin-right: 10px;
+}
+
+.create {
+  margin: -7px 5px 10px -10px;
+}

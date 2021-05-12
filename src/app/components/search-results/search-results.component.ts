@@ -28,6 +28,11 @@ import { Recipe } from 'src/app/types/recipe';
     getSearchValue(): void {
       this.route.queryParamMap.subscribe(param => {
         param.keys.forEach((k) => {
+          if (!this.userSearchValue) {
+            this.userSearchValue = param.get(k);
+          } else {
+            this.userSearchValue = this.userSearchValue + " " + param.get(k);
+          }
           this.httpParams = this.httpParams.set(k, param.get(k));
         });
         this._searchService.getSearchedRecipes(this.httpParams).subscribe(response => {

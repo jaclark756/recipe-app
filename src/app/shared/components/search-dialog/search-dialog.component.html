@@ -11,14 +11,14 @@
         </mat-form-field>
     </form>
     <button (click)="close()" routerLink="/search" [queryParams]="{q: userSearch.controls.searchInput.value}">Search</button>
-    <h2>Search by Categories</h2>
+    <h2>Browse by Categories</h2>
     <div class="flex-container" *ngIf="(filteredCategorie$ | async)?.length > 0">
         <app-category-card *ngFor="let cat of filteredCategorie$ | async" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>
     </div>
     <div>
         <span *ngIf="(filteredCategorie$ | async)?.length == 0">No Results Found</span>
     </div>
-    <h2>Search By Ingredient</h2>
+    <h2>Browse By Ingredient</h2>
        <div class="flex-container">
         <mat-chip *ngFor="let ingredient of filteredIngredient$ | async">{{ ingredient.content }}</mat-chip>
     </div>

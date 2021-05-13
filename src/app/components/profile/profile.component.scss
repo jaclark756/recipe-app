@@ -1,9 +1,21 @@
 @import "/src/styles/styles.scss";
 
+// h2 {
+//   border: 5x solid red;
+// }
 
-h2 {
-  display: inline;
+p {
+  color: $powder;
 }
+.img-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-align: center;
+  background: $jet !important;
+}
+
 .flex-container {
   display: flex;
   justify-content: center;
@@ -32,6 +44,15 @@ h2 {
   flex-flow: row wrap;
   width: 100%;
   margin-top: 10px;
+}
+
+.collection-header {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px 0 10px;
 }
 
 .recipe-container {
@@ -65,7 +86,13 @@ img {
   align-items: center;
 }
 
-
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  width: 100%;
+}
 
 button {
   margin: 20px;

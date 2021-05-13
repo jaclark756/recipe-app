@@ -28,21 +28,41 @@
         </mat-tab>
         <mat-tab label="Collections">
             <div class="collection-container">
-                <div class="new-collection">
+                <!-- <div class="new-collection">
                     <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true"
                         (click)="openCreateCollectionDialog()">+
                         Add New Collection</button>
-                </div>
+                </div> -->
                 <div class="collection-container" *ngIf="viewCollectionRecipes">
+
+                    <div class="new-collection">
+                        <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true"
+                            (click)="openCreateCollectionDialog()">+
+                            Add New Collection</button>
+                    </div>
                     <app-collection-card [recipe] [collection]="collection"
                         *ngFor="let collection of collectionService.collection$ | async" (click)="viewCollection()">
                     </app-collection-card>
                 </div>
                 <div class="collection-container" *ngIf="viewCollectionList">
-                    <h2 (click)="collectionList()">Back to Collections</h2>
-                  
-                    <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
-                    </app-recipe-card-tile>
+
+                    <div class="collection-header">
+                        <h2 class="c-powder">{{collections.collectionName}}name<br>
+                        </h2>
+                        <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true">Edit
+                            Collection</button>
+                    </div>
+
+                    <div class="card-container">
+                        <mat-card class="img-container">
+                                <mat-icon class="bookmark" (click)="collectionList()">arrow_back</mat-icon>
+                                <p (click)="collectionList()">Back to Collections</p>
+                                <!-- <img mat-card-image class="recipeImg" routerLink="/viewrecipe/{{recipe.id}}" src="{{recipe.photoUrl}}"
+                                alt="recipe image"> -->
+                        </mat-card>
+                        <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
+                        </app-recipe-card-tile>
+                    </div>
                 </div>
 
             </div>

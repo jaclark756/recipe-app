@@ -58,6 +58,8 @@ export class InputRecipeComponent implements OnInit {
   // END TODO
   editInstructions: number = null;
   instructionFormEdit: FormGroup;
+  editIngredient: number = null;
+  ingredientFormEdit: FormGroup;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -95,6 +97,11 @@ export class InputRecipeComponent implements OnInit {
     })
     this.instructionFormEdit = this.formbuilder.group({
       insEdit: new FormControl('')
+    })
+    this.ingredientFormEdit = this.formbuilder.group({
+      ingContentEdit: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      ingQuantityEdit: new FormControl('', [Validators.required, Validators.max(99.9)]),
+      ingMeasureEdit: new FormControl('', Validators.required),
     })
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};

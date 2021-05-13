@@ -33,13 +33,18 @@
                         (click)="openCreateCollectionDialog()">+
                         Add New Collection</button>
                 </div>
-                <div class="collection-container">
+                <div class="collection-container" *ngIf="viewCollectionRecipes">
                     <app-collection-card [recipe] [collection]="collection"
-                        *ngFor="let collection of collectionService.collection$ | async"></app-collection-card>
+                        *ngFor="let collection of collectionService.collection$ | async" (click)="viewCollection()">
+                    </app-collection-card>
                 </div>
-                <div class="view-collection">
-                    <app-collection></app-collection>
+                <div class="collection-container" *ngIf="viewCollectionList">
+                    <h2 (click)="collectionList()">Back to Collections</h2>
+                  
+                    <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
+                    </app-recipe-card-tile>
                 </div>
+
             </div>
         </mat-tab>
     </mat-tab-group>

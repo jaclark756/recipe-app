@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
   public collections: Collection[];
   sample_recipes = RECIPES;
   activeUser: User;
+  viewCollectionRecipes: boolean = true;
+  viewCollectionList: boolean = false;
 
 
   constructor(
@@ -32,11 +34,23 @@ export class ProfileComponent implements OnInit {
     this.activeUser = this.tokenService.getUser();
   }
 
-  openCreateCollectionDialog(){
-    const dialogRef = this.dialog.open(CreateCollectionsComponent);
-  }
   ngOnInit(): void {
     this.collectionService.getCollectionsByUser(this.activeUser.id).subscribe(response => {this.collections=response});
   }
+
+  openCreateCollectionDialog(){
+    const dialogRef = this.dialog.open(CreateCollectionsComponent);
+  }
+
+  viewCollection(){
+    this.viewCollectionRecipes = !this.viewCollectionRecipes;
+    this.viewCollectionList = !this.viewCollectionList;
+  }
+
+  collectionList(){
+    this.viewCollectionRecipes = !this.viewCollectionRecipes;
+    this.viewCollectionList = !this.viewCollectionList;
+  }
+
 
 }

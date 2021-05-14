@@ -1,24 +1,5 @@
 @import "/src/styles/styles.scss";
 
-// h2 {
-//   border: 5x solid red;
-// }
-
-.back {
-  font-size: 20px !important;
-}
-p {
-  color: $powder;
-}
-.img-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: hidden;
-  text-align: center;
-  background: $jet !important;
-}
-
 .flex-container {
   display: flex;
   justify-content: center;
@@ -29,46 +10,19 @@ p {
 }
 
 .avatar-container,
-.followers-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
 .username-container {
-  text-align: center;
-}
-
-.collection-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  flex-flow: row wrap;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.collection-header {
-  display: flex;
   text-align: center;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 5px;
-  // padding: 0 10px 0 10px;
-}
-
-.recipe-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-flow: row wrap;
-  width: 100%;
 }
 
 img {
   width: 100px;
+}
+
+h3 {
+  opacity: 70%;
 }
 
 .mat-tab-group {
@@ -83,32 +37,6 @@ img {
   width: 100%;
 }
 
-.new-recipe {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 5px;
-  // margin: 0 10px;
-}
-
-.card-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-flow: row wrap;
-  width: 100%;
-}
-
-button {
-  margin: 20px;
-}
-
-::ng-deep .mat-tab-label-content {
-  color: $powder !important;
-}
-
 .mat-tab-label {
   max-width: 50% !important;
   min-width: 0 !important;
@@ -118,13 +46,63 @@ button {
   width: 100% !important;
 }
 
-h3 {
-  opacity: 70%;
+::ng-deep .mat-tab-label-content {
+  color: $powder !important;
+}
+
+.collection-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  width: 100%;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.new-recipe,
+.new-collection {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 25px 0;
 }
 
 ::ng-deep .mat-raised-button {
   padding: 0 8px !important;
-  margin: auto !important;
+  margin: 0 5% !important;
+}
+
+.recipe-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.collection-header {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 5px;
+}
+
+.back,
+.edit {
+  font-size: 20px !important;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  width: 100%;
 }
 
 @media only screen and (max-width: 720px) {

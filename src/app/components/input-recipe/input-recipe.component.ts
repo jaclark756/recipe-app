@@ -172,7 +172,6 @@ export class InputRecipeComponent implements OnInit {
       console.log("touched edit instruction");
       this.editInstructions = index;
       this.newRecipe.controls.instruction2Control.setValue(this.instructions2.find(ins => ins.instructionOrder == index).content);
-      // this.instructionFormEdit.controls.insEdit.setValue(this.instructions2.find(ins => ins.instructionOrder == index).content);
       console.log(this.newRecipe.controls.instruction2Control.value);
     }
     saveEditInstruction(event) {
@@ -208,7 +207,6 @@ export class InputRecipeComponent implements OnInit {
     this.ingredientsFormGroup.controls.content.setValue(ingEdit.content);
     this.ingredientsFormGroup.controls.quantity.setValue(ingEdit.quantity);
     this.ingredientsFormGroup.controls.measure.setValue(ingEdit.measure);
-    // this.ingredientsFormGroup.setValue(this.ingredients2.find(ing => ing.content == ingEdit.content));
     this.ingredients2 = this.ingredients2.filter(ing => ingEdit !== ing);
   }
 

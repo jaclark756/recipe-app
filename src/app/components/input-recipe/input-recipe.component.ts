@@ -147,7 +147,7 @@ export class InputRecipeComponent implements OnInit {
   }
 
     //// START Instruction Logic ////
-    addInstruction2($event) {
+    addInstruction2(event) {
       this.instructions2.push({content: this.newRecipe.controls.instruction2Control.value, instructionOrder: this.instructions2.length});
       this.newRecipe.controls.instruction2Control.reset();
     }

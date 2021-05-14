@@ -32,19 +32,6 @@ export class CollectionService {
     })
   }
 
-
-  getAllCollections(): Observable<Collection[]> {
-    return this.http.get(this.url, httpOptions).pipe(map(response => {
-      return response as Collection[];
-    }))
-  }
-
-  getCollection(id: number): Observable<Collection> {
-    return this.http.get(this.url + `/${id}`, httpOptions).pipe(map(response => {
-      return response as Collection;
-    }))
-  }
-
   get collections(): Collection[] {
     return this.collectionsSubject.getValue();
   }
@@ -53,15 +40,11 @@ export class CollectionService {
     this.collectionsSubject.next(collections);
   }
 
-
-
   getCollectionsByUser(userId: number) {
     return this.http.get(`${this.url}`, httpOptions).pipe(map(response => {
-      this.collections = response as Collection[];
       return response as Collection[];
     }))
   }
-
 
   addCollection(collection: Collection): void {
     console.log(collection);

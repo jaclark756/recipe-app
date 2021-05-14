@@ -8,10 +8,10 @@
             <h2 class="c-powder">{{activeUser?.displayName}}</h2>
             <h3 class="c-powder">@{{activeUser?.username}}</h3>
         </div>
-        <div class="followers-container">
+        <!-- <div class="followers-container">
             <p class="c-white"><a class="c-white" href="#">xx Followers</a>&nbsp;&nbsp;<a class="c-white" href="#">xx
                     Following</a></p>
-        </div>
+        </div> -->
     </div>
 </div>
 <div class="flex-container">
@@ -45,7 +45,7 @@
                             Add New Collection</button>
                     </div>
                     <app-collection-card [recipe] [collection]="collection"
-                        *ngFor="let collection of collectionService.collection$ | async" (click)="viewCollection()">
+                        *ngFor="let collection of collectionService.collection$ | async" (click)="viewCollection(collection)">
                     </app-collection-card>
                 </div>
                 <div class="collection-container" *ngIf="viewCollectionList">
@@ -60,7 +60,7 @@
                             Edit
                         </button>
                     </div>
-                    <h1 class="c-powder">{{collections.collectionName}}Quick Dinner Recipes</h1>
+                    <h1 class="c-powder">{{collection?.collectionName}}</h1>
                     <div class="card-container">
                         <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
                         </app-recipe-card-tile>

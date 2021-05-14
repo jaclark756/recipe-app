@@ -38,7 +38,14 @@
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="instruction2Control">Add Instruction</mat-label>
             <input matInput type="text" formControlName="instruction2Control" placeholder="">
-            <button (click)="addInstruction2($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'">
+            <button (click)="addInstruction2($event)" 
+            mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'"
+            *ngIf="editInstructions == null">
+                <mat-icon class="c-white">add</mat-icon>
+            </button>
+            <button (click)="saveEditInstruction($event)" 
+            mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'"
+            *ngIf="editInstructions !== null">
                 <mat-icon class="c-white">add</mat-icon>
             </button>
         </mat-form-field>
@@ -53,12 +60,15 @@
                             <span class="instruction-text">{{instruction.content}}</span>
                         <mat-icon class="insctruction-remove" matChipRemove *ngIf="removable">cancel</mat-icon>
                     </mat-chip>
-                    <ng-container *ngIf="editInstructions == i" >
+                    <mat-chip *ngIf="editInstructions == i" >
+                        <span class="instruction-text">{{instruction.content}}</span>
+                    </mat-chip>
+                    <!-- <ng-container *ngIf="editInstructions == i" >
                         <form [formGroup]="instructionFormEdit" #formDirective="ngForm">
                             <input class="edit-instruction-field" type="text" formControlName="insEdit"> 
                             <mat-icon (click)="saveEditInstruction(i)">save_alt</mat-icon> 
                         </form>
-                    </ng-container>
+                    </ng-container> -->
                 </ng-container>
             </div>
         </mat-chip-list>
@@ -66,22 +76,22 @@
         <!-- START Ingredients -->
         <div class="ingredients-divider-top"></div>
         <div class="c-powder group-label">Ingredients</div>
-        <form [formGroup]="ingredientsFromGroup" #formDirective="ngForm">
+        <form [formGroup]="ingredientsFormGroup" #formDirective="ngForm">
             <div class="ingredients-container">
                 <div class="ingredient-name-container">
                     <mat-form-field class="form-input ingredient-name" appearance="fill">
-                        <mat-label for="ingredient2ContentControl">Ingredient Name</mat-label>
-                        <input matInput type="text" formControlName="ingredient2ContentControl" placeholder="">
+                        <mat-label for="content">Ingredient Name</mat-label>
+                        <input matInput type="text" formControlName="content" placeholder="">
                     </mat-form-field>
                 </div>
                 <div class="ingredient-quantity-measure-containter">
                     <mat-form-field class="form-input ingredient-quantity" appearance="fill">
-                        <mat-label for="ingredient2QuantityControl">Quantity</mat-label>
-                        <input matInput type="number" formControlName="ingredient2QuantityControl" placeholder="">
+                        <mat-label for="quantity">Quantity</mat-label>
+                        <input matInput type="number" formControlName="quantity" placeholder="">
                     </mat-form-field>
                     <mat-form-field class="form-input ingredient-measure" appearance="fill">
-                        <mat-label for="ingredient2MeasureControl">Measurement</mat-label>
-                        <mat-select formControlName="ingredient2MeasureControl">
+                        <mat-label for="measure">Measurement</mat-label>
+                        <mat-select formControlName="measure">
                             <mat-option>-- None --</mat-option>
                             <mat-optgroup *ngFor="let option of ingredientMeasureOptions" [label]="option.type">
                                 <mat-option *ngFor="let measurement of option.measurement" [value]="measurement.value">
@@ -97,44 +107,14 @@
                 </div>
             </div>
             <mat-chip-list class="custom-mat-chip-list">
-                <ng-container *ngFor="let ingredient of ingredients2; index as j" [attr.data-index]="j" >
-
+                <ng-container *ngFor="let ingredient of ingredients2;">
                     <mat-chip class="example-box ingredient-chip" 
-                        (click)="editIngredient(j, ingredient)" *ngIf="editIngredients == null || editIngredients !== j"
-                        [removable]="removable" (removed)="removeIngredients(ingredient)">
+                        (click)="editIngredient(ingredient)" [removable]="removable" (removed)="removeIngredients(ingredient)">
                         <span
-                            class="ingredient-chip-text">{{ingredient.content}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.quantity}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.measure}}</span>
+                            class="ingredient-chip-text">{{ingredient.content}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.quantity}}&nbsp;&nbsp;|&nbsp;&nbsp;{{ingredient.measure}}
+                        </span>
                         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                     </mat-chip>
-                    <ng-container *ngIf="editIngredients == j">
-                        <form [formGroup]="ingredientFormEdit" #formDirective="ngForm">
-
-                            
-                                    <mat-form-field class="form-input ingredient-name" appearance="fill">
-                                        <mat-label for="content">Ingredient Name</mat-label>
-                                        <input matInput type="text" formControlName="content">
-                                    </mat-form-field>
-
-                                    <mat-form-field class="form-input ingredient-quantity" appearance="fill">
-                                        <mat-label for="quantity">Quantity</mat-label>
-                                        <input matInput type="number" formControlName="quantity">
-                                    </mat-form-field>
-                                    <mat-form-field class="form-input ingredient-measure" appearance="fill">
-                                        <mat-label for="measure">Measurement</mat-label>
-                                        <mat-select formControlName="measure">
-                                            <mat-option>-- None --</mat-option>
-                                            <mat-optgroup *ngFor="let option of ingredientMeasureOptions" [label]="option.type">
-                                                <mat-option *ngFor="let measurement of option.measurement" [value]="measurement.value">
-                                                    {{measurement.value}}
-                                                </mat-option>
-                                            </mat-optgroup>
-                                        </mat-select>
-                                    </mat-form-field>
-                                    <mat-icon (click)="saveEditIngredient(j, Ingredient)">save_alt</mat-icon> 
-
-                        </form>
-                    </ng-container>
-
                 </ng-container>
             </mat-chip-list>
         </form>

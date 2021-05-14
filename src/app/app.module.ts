@@ -27,8 +27,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CreateCollectionsComponent } from './components/create-collections/create-collections.component';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NutritionalStickerComponent } from './components/nutritional-sticker/nutritional-sticker.component';
 import { ErrorComponent } from './components/error/error.component';
-import { CollectionComponent } from './shared/components/collection/collection.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component'
+
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { CollectionComponent } from './shared/components/collection/collection.c
     SettingsComponent,
     CreateCollectionsComponent,
     ErrorComponent,
-    CollectionComponent
+    SearchResultsComponent,
+    NutritionalStickerComponent,
   ],
   imports: [
     AppRoutingModule,

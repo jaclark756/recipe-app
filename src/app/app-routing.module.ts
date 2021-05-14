@@ -8,6 +8,7 @@ import { TokenService } from './services/token.service';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [RouterGuard] },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [RouterGuard] },
   { path: 'recipe/:id', component: ViewRecipesComponent, canActivate: [RouterGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [RouterGuard] },
+  { path: 'search', component: SearchResultsComponent, canActivate: [RouterGuard] },
   { path: 'error', component: ErrorComponent}
 ];
 

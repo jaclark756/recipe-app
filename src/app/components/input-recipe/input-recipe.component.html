@@ -1,6 +1,6 @@
 <div class="form-container">
     <h2 class="input-recipe-title c-powder">Input a Recipe</h2>
-    <form [formGroup]="newRecipe">
+    <form [formGroup]="newRecipe" >
         <!-- START Recipe Name Field-->
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="recipeName">Recipe Name</mat-label>
@@ -37,8 +37,8 @@
         <div class="c-powder group-label">Instructions</div>
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="instruction2Control">Add Instruction</mat-label>
-            <input matInput type="text" formControlName="instruction2Control" placeholder="">
-            <button (click)="addInstruction2($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'">
+            <input (keydown.enter)="addInstruction2($event)" matInput type="text" formControlName="instruction2Control" placeholder="">
+            <button type="button" (click)="addInstruction2($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'">
                 <mat-icon class="c-white">add</mat-icon>
             </button>
         </mat-form-field>
@@ -81,7 +81,7 @@
                             </mat-optgroup>
                         </mat-select>
                     </mat-form-field>
-                    <button class="ingredient-add" (click)="addIngredients($event, formDirective)" mat-icon-button
+                    <button class="ingredient-add" type="button" (click)="addIngredients($event, formDirective)" mat-icon-button
                         matSuffix [attr.aria-label]="'Add Ingredients'">
                         <mat-icon class="c-white custom-mat-icon">add</mat-icon>
                     </button>
@@ -123,8 +123,8 @@
         <div class="c-powder group-label">Update Notes</div>
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="notesControl">What did you update?</mat-label>
-            <input matInput type="text" formControlName="notesControl" placeholder="">
-            <button (click)="addNotes($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Notes'">
+            <input (keydown.enter)="addNotes($event)" matInput type="text" formControlName="notesControl" placeholder="">
+            <button type="button" (click)="addNotes($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Notes'">
                 <mat-icon class="c-white">add</mat-icon>
             </button>
         </mat-form-field>
@@ -139,9 +139,9 @@
         </div>
     </form>
     <div class="button-container">
-        <button mat-stroked-button (click)="close()"
+        <button type="button" mat-stroked-button (click)="close()"
             class="input-recipe-cancel-button input-recipe-button">Cancel</button>
-        <button mat-raised-button (click)="existingRecipe ? updateRecipe($event) : addRecipe($event)"
+        <button type="button" mat-raised-button (click)="existingRecipe ? updateRecipe($event) : addRecipe($event)"
             class="input-recipe-done-button input-recipe-button">{{ existingRecipe ? "Update Recipe" : "Add Recipe"}}</button>
     </div>
 </div>

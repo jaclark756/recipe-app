@@ -26,7 +26,7 @@ export class CollectionService {
   readonly collection$ = this.collectionsSubject.asObservable();
 
   constructor(private http: HttpClient, public tokenService:TokenService) {
-    this.url = environment.apiUrl +"/profile/collections/user/"+this.tokenService.getUser().id;
+    this.url = environment.apiUrl +"/api/profile/collections/user/"+this.tokenService.getUser().id;
     this.http.get(`${this.url}`).subscribe(s => {
       this.collectionsSubject.next(s as Collection[]);
     })
@@ -47,7 +47,6 @@ export class CollectionService {
   }
 
   addCollection(collection: Collection): void {
-    console.log(collection);
     this.http.post(`${this.url}`, collection, httpOptions).subscribe((response: Collection) => {
       this.collections = [
         ...this.collections,
@@ -57,7 +56,7 @@ export class CollectionService {
   }
 
     saveRecipe2Collection(collectionId: number, recipe: Recipe):  void {
-      this.http.post(`${environment.apiUrl}/profile/collections/${collectionId}`,recipe, httpOptions).subscribe((response: Collection) => {
+      this.http.post(`${environment.apiUrl}/api/profile/collections/${collectionId}`,recipe, httpOptions).subscribe((response: Collection) => {
         this.collections = [
           ...this.collections,
           response

@@ -34,6 +34,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TermsComponent } from './components/terms/terms.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CategoryCardComponent,
     SearchDialogComponent,
     CollectionCardComponent,
-    CollectionDialogComponent
+    CollectionDialogComponent,
+    TermsComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     CommonModule,

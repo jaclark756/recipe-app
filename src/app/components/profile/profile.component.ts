@@ -21,8 +21,8 @@ export class ProfileComponent {
   collection: Collection;
   sample_recipes = RECIPES;
   activeUser: User;
-  viewCollectionRecipes: boolean = true;
-  viewCollectionList: boolean = false;
+  collectionRecipes: boolean = false;
+  collectionList: boolean = true;
 
 
   constructor(
@@ -40,16 +40,16 @@ export class ProfileComponent {
     const dialogRef = this.dialog.open(CreateCollectionsComponent);
   }
 
-  viewCollection(collection: Collection){
+  viewCollectionRecipes(collection: Collection){
     this.collection = collection;
-    this.viewCollectionRecipes = !this.viewCollectionRecipes;
-    this.viewCollectionList = !this.viewCollectionList;
+    this.collectionRecipes = !this.collectionRecipes;
+    this.collectionList = !this.collectionList;
   }
 
-  collectionList(){
+  viewCollectionList(){
     this.collection = null;
-    this.viewCollectionRecipes = !this.viewCollectionRecipes;
-    this.viewCollectionList = !this.viewCollectionList;
+    this.collectionRecipes = !this.collectionRecipes;
+    this.collectionList = !this.collectionList;
   }
 
 

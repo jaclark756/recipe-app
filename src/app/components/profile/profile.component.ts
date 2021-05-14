@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RECIPES } from 'src/app/helpers/sample-data';
 import { MatDialog } from '@angular/material/dialog';
 import { Collection } from 'src/app/types/collection';
@@ -15,10 +15,10 @@ import { User } from 'src/app/types/user';
   styleUrls: ['./profile.component.scss']
 })
 
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
   createCollection = CreateCollectionsComponent;
-  public collections: Collection[];
+  collection: Collection;
   sample_recipes = RECIPES;
   activeUser: User;
   viewCollectionRecipes: boolean = true;
@@ -34,20 +34,20 @@ export class ProfileComponent implements OnInit {
     this.activeUser = this.tokenService.getUser();
   }
 
-  ngOnInit(): void {
-    this.collectionService.getCollectionsByUser(this.activeUser.id).subscribe(response => {this.collections=response});
-  }
+
 
   openCreateCollectionDialog(){
     const dialogRef = this.dialog.open(CreateCollectionsComponent);
   }
 
-  viewCollection(){
+  viewCollection(collection: Collection){
+    this.collection = collection;
     this.viewCollectionRecipes = !this.viewCollectionRecipes;
     this.viewCollectionList = !this.viewCollectionList;
   }
 
   collectionList(){
+    this.collection = null;
     this.viewCollectionRecipes = !this.viewCollectionRecipes;
     this.viewCollectionList = !this.viewCollectionList;
   }

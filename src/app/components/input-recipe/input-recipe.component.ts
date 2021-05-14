@@ -60,6 +60,7 @@ export class InputRecipeComponent implements OnInit {
   instructionFormEdit: FormGroup;
   editIngredients: number = null;
   ingredientFormEdit: FormGroup;
+  ingredientToBeEdited: Ingredient;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -99,9 +100,9 @@ export class InputRecipeComponent implements OnInit {
       insEdit: new FormControl('')
     })
     this.ingredientFormEdit = this.formbuilder.group({
-      ingContentEdit: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      ingQuantityEdit: new FormControl('', [Validators.required, Validators.max(99.9)]),
-      ingMeasureEdit: new FormControl('', Validators.required),
+      content: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      quantity: new FormControl('', [Validators.required, Validators.max(99.9)]),
+      measure: new FormControl('', Validators.required),
     })
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};
@@ -180,12 +181,12 @@ export class InputRecipeComponent implements OnInit {
 
     editInstruction(index: number) {
       console.log("touched edit");
-      this.editIngredients = index;
+      this.editInstructions = index;
       this.instructionFormEdit.controls.insEdit.setValue(this.instructions2.find(ins => ins.instructionOrder == index).content);
       console.log(this.instructionFormEdit.controls.insEdit.value);
     }
     saveEditInstruction(index: number) {
-      this.editIngredients = null;
+      this.editInstructions = null;
       this.instructions2.find(ins => ins.instructionOrder == index).content = this.instructionFormEdit.controls.insEdit.value;
       console.log(this.editInstructions);
 
@@ -215,16 +216,35 @@ export class InputRecipeComponent implements OnInit {
 
   editIngredient(index: number, ingEdit: Ingredient) {
     console.log("touched edit");
-    console.log(ingEdit);
-    this.editInstructions = index;
-    // this.instructionFormEdit.controls.insEdit.setValue(this.instructions2.find(ins => ins.instructionOrder == index).content);
-    // console.log(this.instructionFormEdit.controls.insEdit.value);
+    console.log(index);
+    console.log(this.ingredients2.find(ing => ing.content == ingEdit.content));
+
+    // console.log(ingEdit);
+    this.editIngredients = index;
+    this.ingredientToBeEdited = ingEdit;
+    this.ingredientFormEdit.setValue(this.ingredients2.find(ing => ing.content == ingEdit.content));
+    // this.ingredientFormEdit.controls.ingContentEdit.setValue(this.ingredients2.find(ing => ing.content == ingEdit.content).content);
+    // this.ingredientFormEdit.controls.ingQuantityEdit.setValue(this.ingredients2.find(ing => ing.quantity == ingEdit.quantity).quantity);
+    // this.ingredientFormEdit.controls.ingMeasureEdit.setValue(this.ingredients2.find(ing => ing.measure == ingEdit.measure).measure);
+    console.log(this.ingredientFormEdit);
+
+    
 
   }
-  saveEditIngredient(index: number) {
+  saveEditIngredient(index: number, ingSave: Ingredient) {
+    console.log(this.ingredientToBeEdited);
     this.editInstructions = null;
-    this.instructions2.find(ins => ins.instructionOrder == index).content = this.instructionFormEdit.controls.insEdit.value;
-    console.log(this.editInstructions);
+    // this.instructions2.find(ins => ins.instructionOrder == index).content = this.instructionFormEdit.controls.insEdit.value;
+    // this.ingredients2.find(ing => ing.content == this.ingredientToBeEdited.content)
+
+    this.ingredients2.push({
+      content: this.ingredientFormEdit.controls.content.value,
+      quantity: this.ingredientFormEdit.controls.quantity.value,
+      measure: this.ingredientFormEdit.controls.measure.value,
+    });
+    this.ingredients2 = this.ingredients2.filter(ing => this.ingredientToBeEdited !== ing);
+    this.ingredientToBeEdited = null;
+    console.log(this.ingredientToBeEdited);
 
   }
   //// END Ingredient Logic ////

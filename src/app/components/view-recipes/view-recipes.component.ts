@@ -92,9 +92,9 @@ export class ViewRecipesComponent implements OnInit {
   }
 
   editButtonShow() {
-  //   if (this.tokenService.getUser().id === this.recipe.userId) {
+    if (this.tokenService.getUser().id === this.recipe?.user2?.id) {
       return true;
-  //   }
+    }
   }
   
 

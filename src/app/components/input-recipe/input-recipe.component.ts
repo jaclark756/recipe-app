@@ -52,15 +52,11 @@ export class InputRecipeComponent implements OnInit {
   filteredCategories: Observable<Category[]>;
   existingRecipe: Recipe;
   recipeId: number;
+  editInstructions: number = null;
   // TODO add Boolean logic for form validation
   instructionsNotEmpty = false;
   ingredientsNotEmpty = false;
   // END TODO
-  editInstructions: number = null;
-  // instructionFormEdit: FormGroup;
-  // editIngredients: number = null;
-  // ingredientFormEdit: FormGroup;
-  // ingredientToBeEdited: Ingredient;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -86,6 +82,7 @@ export class InputRecipeComponent implements OnInit {
       content: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       quantity: new FormControl('', [Validators.required, Validators.max(99.9)]),
       measure: new FormControl('', Validators.required),
+      id: new FormControl('')
     })
     this.newRecipe = this.formbuilder.group({
       instruction2Control: new FormControl(''),
@@ -96,14 +93,6 @@ export class InputRecipeComponent implements OnInit {
       prepTime: new FormControl(this.existingRecipe ? this.existingRecipe.prepTime : '', [Validators.required, Validators.min(0)]),
       notesControl: new FormControl('')
     })
-    // this.instructionFormEdit = this.formbuilder.group({
-    //   insEdit: new FormControl('')
-    // })
-    // this.ingredientFormEdit = this.formbuilder.group({
-    //   content: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-    //   quantity: new FormControl('', [Validators.required, Validators.max(99.9)]),
-    //   measure: new FormControl('', Validators.required),
-    // })
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};
     });
@@ -190,15 +179,7 @@ export class InputRecipeComponent implements OnInit {
       this.instructions2.find(ins => ins.instructionOrder == this.editInstructions).content = this.newRecipe.controls.instruction2Control.value;
       this.editInstructions = null;
       this.newRecipe.controls.instruction2Control.reset();
-      console.log(this.editInstructions);
-
     }
-    // saveEditInstruction(index: number) {
-    //   this.editInstructions = null;
-    //   this.instructions2.find(ins => ins.instructionOrder == index).content = this.instructionFormEdit.controls.insEdit.value;
-    //   console.log(this.editInstructions);
-
-    // }
   //// END Instruction Logic ////
 
 
@@ -223,8 +204,6 @@ export class InputRecipeComponent implements OnInit {
   }
 
   editIngredient(ingEdit: Ingredient) {
-    console.log("touched edit ingredient")
-    console.log(ingEdit);
     this.ingredientsFormGroup.setValue(this.ingredients2.find(ing => ing.content ==ingEdit.content));
     this.ingredients2 = this.ingredients2.filter(ing => ingEdit !== ing);
   }

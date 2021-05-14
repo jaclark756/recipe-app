@@ -8,6 +8,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { Category } from 'src/app/types/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { IngredientService } from 'src/app/services/ingredient.service';
 
 @Component({
   selector: 'app-search-dialog',
@@ -20,12 +21,7 @@ export class SearchDialogComponent implements OnInit {
   filteredIngredient$: Observable<any[]>;
   categoryNames: any[];
   categories: Category[] = [];
-  ingredients: Ingredient[] = [
-    {content: "flour", quantity: 2, measure: "cups"},
-    {content: "bacon", quantity: 1, measure: "pound"},
-    {content: "cinnamon", quantity: 2, measure: "tsp"},
-    {content: "milk", quantity: 3, measure: "cups"}
-  ]
+  ingredients: Ingredient[] = []
 
   constructor(
     private formbuilder: FormBuilder, 
@@ -33,6 +29,7 @@ export class SearchDialogComponent implements OnInit {
     private dr: MatDialogRef<SearchDialogComponent>,
     private router: RouterModule,
     private _categoryService: CategoryService,
+    private _ingredientService: IngredientService,
   ) { 
     this.categoryNames = this.categories.map((category: any) => {
       return {name: category.name}
@@ -44,7 +41,7 @@ export class SearchDialogComponent implements OnInit {
       searchInput: new FormControl('')
     });
     this.getAllCategories();
-    
+    this.getAllIngredients();
   }
 
   private _filterCategories(value: string): any[] {
@@ -66,12 +63,18 @@ export class SearchDialogComponent implements OnInit {
         map(value => typeof value === 'string' ? value : value.name),
         map(name => name ?  this._filterCategories(name) : this.categories.slice())
       );
-    this.filteredIngredient$ = this.userSearch.controls.searchInput.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.content),
-        map(content => content ?  this._filterIngredients(content) : this.ingredients.slice())
-      );
+    })
+  }
+
+  getAllIngredients(): void {
+    this._ingredientService.getAllIngredients().subscribe(response => {
+      this.ingredients = response;
+      this.filteredIngredient$ = this.userSearch.controls.searchInput.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => typeof value === 'string' ? value : value.content),
+          map(content => content ?  this._filterIngredients(content) : this.ingredients.slice())
+        );
     })
   }
 

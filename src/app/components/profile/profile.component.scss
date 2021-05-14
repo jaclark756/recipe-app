@@ -4,6 +4,9 @@
 //   border: 5x solid red;
 // }
 
+.back {
+  font-size: 20px !important;
+}
 p {
   color: $powder;
 }
@@ -52,7 +55,8 @@ p {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 10px 0 10px;
+  margin: 5px;
+  // padding: 0 10px 0 10px;
 }
 
 .recipe-container {
@@ -113,4 +117,14 @@ button {
 
 h3 {
   opacity: 70%;
+}
+
+
+@media only screen and (max-width: 720px) {
+ h1 {
+   size: smaller;
+   text-align: center;
+ }
+
+
 }

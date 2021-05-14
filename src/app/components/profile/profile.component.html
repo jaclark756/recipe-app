@@ -45,21 +45,15 @@
                     </app-collection-card>
                 </div>
                 <div class="collection-container" *ngIf="viewCollectionList">
-
                     <div class="collection-header">
-                        <h2 class="c-powder">{{collections.collectionName}}name<br>
-                        </h2>
+                        <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true">
+                            <mat-icon class="back" (click)="collectionList()">arrow_back</mat-icon>
+                            Back to Collections</button>
                         <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true">Edit
                             Collection</button>
                     </div>
-
+                    <h1 class="c-powder">{{collections.collectionName}}Quick Dinner Recipes</h1>
                     <div class="card-container">
-                        <mat-card class="img-container">
-                                <mat-icon class="bookmark" (click)="collectionList()">arrow_back</mat-icon>
-                                <p (click)="collectionList()">Back to Collections</p>
-                                <!-- <img mat-card-image class="recipeImg" routerLink="/viewrecipe/{{recipe.id}}" src="{{recipe.photoUrl}}"
-                                alt="recipe image"> -->
-                        </mat-card>
                         <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
                         </app-recipe-card-tile>
                     </div>

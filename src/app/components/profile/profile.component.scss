@@ -1,19 +1,9 @@
 @import "/src/styles/styles.scss";
 
-.flex-container {
-  display: flex;
+.profile-info {
+  display: block;
   justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  flex-flow: row wrap;
   margin-top: 10px;
-}
-
-.avatar-container,
-.username-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   text-align: center;
 }
 
@@ -23,6 +13,15 @@ img {
 
 h3 {
   opacity: 70%;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  margin-top: 10px;
 }
 
 .mat-tab-group {

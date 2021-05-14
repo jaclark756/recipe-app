@@ -48,12 +48,6 @@ export class CollectionDialogComponent implements OnInit {
   }
 
   populate() {
-    this.collectionService.getCollectionsByUser(this.activeUser.id).subscribe(response => {
-      this.collections = response
-      this.collections.forEach(collection => {
-        this.newSaveRecipeForm.push(new FormControl(false))
-      })
-    });
     this.collectionService.collection$.subscribe(res => {
       this.collections = res      
       this.collections.forEach(collection => {

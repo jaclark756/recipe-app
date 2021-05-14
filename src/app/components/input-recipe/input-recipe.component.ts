@@ -204,7 +204,11 @@ export class InputRecipeComponent implements OnInit {
   }
 
   editIngredient(ingEdit: Ingredient) {
-    this.ingredientsFormGroup.setValue(this.ingredients2.find(ing => ing.content ==ingEdit.content));
+    this.ingredientsFormGroup.controls.id.setValue(ingEdit.id);
+    this.ingredientsFormGroup.controls.content.setValue(ingEdit.content);
+    this.ingredientsFormGroup.controls.quantity.setValue(ingEdit.quantity);
+    this.ingredientsFormGroup.controls.measure.setValue(ingEdit.measure);
+    // this.ingredientsFormGroup.setValue(this.ingredients2.find(ing => ing.content == ingEdit.content));
     this.ingredients2 = this.ingredients2.filter(ing => ingEdit !== ing);
   }
 

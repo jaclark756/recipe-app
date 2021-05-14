@@ -37,13 +37,14 @@
         <div class="c-powder group-label">Instructions</div>
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="instruction2Control">Add Instruction</mat-label>
-            <input (keydown.enter)="addInstruction2($event)" matInput type="text" formControlName="instruction2Control" placeholder="">
-            <button (click)="addInstruction2($event)" 
+            <input (keydown.enter)="addInstruction2($event)" *ngIf="editInstructions == null" matInput type="text" formControlName="instruction2Control" placeholder="">
+            <input (keydown.enter)="saveEditInstruction($event)" *ngIf="editInstructions !== null" matInput type="text" formControlName="instruction2Control" placeholder="">
+            <button type="button" (click)="addInstruction2($event)" 
             mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'"
             *ngIf="editInstructions == null">
                 <mat-icon class="c-white">add</mat-icon>
             </button>
-            <button (click)="saveEditInstruction($event)" 
+            <button type="button" (click)="saveEditInstruction($event)" 
             mat-icon-button matSuffix [attr.aria-label]="'Add Instructions'"
             *ngIf="editInstructions !== null">
                 <mat-icon class="c-white">add</mat-icon>
@@ -63,12 +64,6 @@
                     <mat-chip *ngIf="editInstructions == i" >
                         <span class="instruction-text">{{instruction.content}}</span>
                     </mat-chip>
-                    <!-- <ng-container *ngIf="editInstructions == i" >
-                        <form [formGroup]="instructionFormEdit" #formDirective="ngForm">
-                            <input class="edit-instruction-field" type="text" formControlName="insEdit"> 
-                            <mat-icon (click)="saveEditInstruction(i)">save_alt</mat-icon> 
-                        </form>
-                    </ng-container> -->
                 </ng-container>
             </div>
         </mat-chip-list>

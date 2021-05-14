@@ -58,7 +58,7 @@ export class InputRecipeComponent implements OnInit {
   // END TODO
   editInstructions: number = null;
   instructionFormEdit: FormGroup;
-  editIngredient: number = null;
+  editIngredients: number = null;
   ingredientFormEdit: FormGroup;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
@@ -180,20 +180,14 @@ export class InputRecipeComponent implements OnInit {
 
     editInstruction(index: number) {
       console.log("touched edit");
-      this.editInstructions = index;
+      this.editIngredients = index;
       this.instructionFormEdit.controls.insEdit.setValue(this.instructions2.find(ins => ins.instructionOrder == index).content);
       console.log(this.instructionFormEdit.controls.insEdit.value);
-      // this.instructions3 = ins;
     }
     saveEditInstruction(index: number) {
-      this.editInstructions = null;
+      this.editIngredients = null;
       this.instructions2.find(ins => ins.instructionOrder == index).content = this.instructionFormEdit.controls.insEdit.value;
       console.log(this.editInstructions);
-
-    }
-    makeItWork(event) {
-      console.log(event);
-
 
     }
   //// END Instruction Logic ////
@@ -217,6 +211,21 @@ export class InputRecipeComponent implements OnInit {
 
   removeIngredients(selectedIngredient: Ingredient) {
     this.ingredients2 = this.ingredients2.filter(ingredient => selectedIngredient !== ingredient);
+  }
+
+  editIngredient(index: number, ingEdit: Ingredient) {
+    console.log("touched edit");
+    console.log(ingEdit);
+    this.editInstructions = index;
+    // this.instructionFormEdit.controls.insEdit.setValue(this.instructions2.find(ins => ins.instructionOrder == index).content);
+    // console.log(this.instructionFormEdit.controls.insEdit.value);
+
+  }
+  saveEditIngredient(index: number) {
+    this.editInstructions = null;
+    this.instructions2.find(ins => ins.instructionOrder == index).content = this.instructionFormEdit.controls.insEdit.value;
+    console.log(this.editInstructions);
+
   }
   //// END Ingredient Logic ////
 

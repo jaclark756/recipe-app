@@ -1,7 +1,9 @@
 @import "/src/styles/styles.scss";
-
 .page {
-  background-color: $metal;
+  border: 5px solid $mint;
+  // background-color: #8f8f8f;
+  -webkit-box-shadow: 0 0 10px $jet;
+  box-shadow: 0 0 10px $jet;
   width: 80%;
   margin: 3% 10% 3% 10%;
 }
@@ -169,7 +171,7 @@ label {
   }
 
   .page {
-    background-color: $metal;
+    background-color: $black;
     width: 90%;
     margin: auto;
   }

@@ -94,15 +94,15 @@ export class RecipeService {
 
   filterNutrition(ingredients: NutrientEntity[]): Nutrient[] {
     let nutrientFocus = ['calories', 'fat', 'Carbohydrates', 'sodium', 'sugar', 'protein', 'fiber']
-    let combinedNutrients: Nutrient[] = [];
+    let combinedNutrients2: Nutrient[] = [];
     let testNut: Nutrient[] = [];
 
     ingredients.forEach(ing => {
       let temp = ing.nutrients.filter(nutrient => nutrientFocus.includes(nutrient.name.toLowerCase()));
-      combinedNutrients.push(...temp)
+      combinedNutrients2.push(...temp)
     })
 
-    combinedNutrients = combinedNutrients.reduce((acc, item) => {
+    combinedNutrients2 = combinedNutrients2.reduce((acc, item) => {
       if (!acc.find(search => search.name === item.name)) {
         //if NOT found, pushes
         acc.push(item);
@@ -117,8 +117,8 @@ export class RecipeService {
       }
       return acc;
     }, [])
-
-    return combinedNutrients;
+    console.log("Service combinedNutrients",combinedNutrients2)
+    return combinedNutrients2;
 
   }
 

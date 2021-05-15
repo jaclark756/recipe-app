@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+<div class="profile-info">
+    <img src="/assets/images/account_circle-white-24dp.svg" alt="user image" class="filter-powder">
+    <!-- <img src="{{activeUser?.photoUrl ? activeUser?.photoUrl : '/assets/images/account_circle-white-24dp.svg'" alt="user image" class="filter-powder"> -->
+    <h2 class="c-powder">{{activeUser?.displayName}}</h2>
+    <h3 class="c-powder">@{{activeUser?.username}}</h3>
+=======
 <div class="flex-container">
     <div>
         <div class="avatar-container">
@@ -8,35 +15,57 @@
             <h2 class="c-powder">{{activeUser?.displayName}}</h2>
             <h3 class="c-powder">@{{activeUser?.username}}</h3>
         </div>
-        <div class="followers-container">
-            <p class="c-white"><a class="c-white" href="#">xx Followers</a>&nbsp;&nbsp;<a class="c-white" href="#">xx
-                    Following</a></p>
-        </div>
     </div>
+>>>>>>> 43aa08043191de3be3e73b261d16a8934dea64c4
 </div>
 <div class="flex-container">
     <mat-tab-group mat-align-tabs="start" mat-stretch-tabs>
         <mat-tab label="My Recipes">
-            <div class="new-recipe">
-                <a href="#"><button id="new-recipe" class="done-button" mat-raised-button isRoundButton="true">+ Add
-                        New Recipe</button></a>
+            <div class="recipes-container">
+                <div class="new-recipe">
+                    <a href="#">
+                        <button class="done-button" mat-raised-button isRoundButton="true">
+                            + Add New Recipe</button>
+                    </a>
+                </div>
+                <div class="recipe-card-container">
+                    <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
+                    </app-recipe-card-tile>
+                </div>
             </div>
-            <div class="recipe-container">
-                <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
-                </app-recipe-card-tile>
-            </div>
+
         </mat-tab>
         <mat-tab label="Collections">
-            <div class="collection-container">
-                <div class="new-collection">
-                    <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true"
-                        (click)="openCreateCollectionDialog()">+
-                        Add New Collection</button>
-                </div>
-                <div class="collection-container">
+            <div class="collections-container">
+                <div class="collection-list" *ngIf="collectionList">
+                    <div class="new-collection">
+                        <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true"
+                            (click)="openCreateCollectionDialog()">+ Add New Collection</button>
+                    </div>
                     <app-collection-card [recipe] [collection]="collection"
-                        *ngFor="let collection of collectionService.collection$ | async"></app-collection-card>
+                        *ngFor="let collection of collectionService.collection$ | async"
+                        (click)="viewCollectionRecipes(collection)">
+                    </app-collection-card>
                 </div>
+                <div class="collection-recipes" *ngIf="collectionRecipes">
+                    <div class="collection-header">
+                        <button class="done-button back-button " (click)="viewCollectionList()" mat-raised-button
+                            isRoundButton="true">
+                            <mat-icon class="back">arrow_back</mat-icon>
+                            Back to Collections
+                        </button>
+                        <button id="new-collection" class="done-button" mat-raised-button isRoundButton="true">
+                            <mat-icon class="back">edit</mat-icon>
+                            Edit
+                        </button>
+                    </div>
+                    <h1 class="c-powder">{{collection?.collectionName}}</h1>
+                    <div class="recipe-card-container">
+                        <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
+                        </app-recipe-card-tile>
+                    </div>
+                </div>
+
             </div>
         </mat-tab>
     </mat-tab-group>

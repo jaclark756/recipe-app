@@ -1,3 +1,6 @@
+<div class="search-value">
+    <span>Your search of "{{ userSearchValue }}" returned {{ recipes.length + 1 }} results</span> 
+</div>
 <div class="flex-container">
     <app-recipe-card-tile *ngFor="let recipe of recipes" [recipe]="recipe">
     </app-recipe-card-tile>

@@ -3,11 +3,6 @@
     <img src="/assets/images/logo.svg" alt="app logo" class="filter-mint">
   </button>
   <span class="spacer"></span>
-  <mat-chip-list aria-label="navbar">
-    <mat-chip class="header-chip">Following</mat-chip>
-    <mat-chip class="header-chip">Explore</mat-chip>
-  </mat-chip-list>
-  <span class="spacer"></span>
   <button mat-icon-button [matMenuTriggerFor]="settingsMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
     <mat-icon class="c-mint">settings</mat-icon>
   </button>
@@ -22,7 +17,8 @@
   <button mat-icon-button (click)="openSearchDialog()">
     <mat-icon class="search c-metal">search</mat-icon>
   </button>
-  <button mat-icon-button class="c-metal" matBadge="15" matBadgeColor="$default-warn" [matMenuTriggerFor]="notifications">
+  <button mat-icon-button class="c-metal" matBadge="15" matBadgeColor="$default-warn"
+    [matMenuTriggerFor]="notifications">
     <mat-icon class="notification">notifications_active</mat-icon>
   </button>
   <span class="cdk-visually-hidden">

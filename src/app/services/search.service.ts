@@ -5,10 +5,6 @@ import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 
-const HTTP_OPTIONS = {
-    
-  }
-
 @Injectable({
   providedIn: 'root'
 })

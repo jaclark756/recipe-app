@@ -34,7 +34,7 @@ export class InputRecipeComponent implements OnInit {
   newRecipe: FormGroup;
   currentUser: any;
   Ingredients: Ingredient[];
-  ingredientsFromGroup: FormGroup;
+  ingredientsFormGroup: FormGroup;
   ingredients2: Ingredient[] = [];
   ingredientContent: string;
   ingredientQuantity: number;
@@ -52,6 +52,7 @@ export class InputRecipeComponent implements OnInit {
   filteredCategories: Observable<Category[]>;
   existingRecipe: Recipe;
   recipeId: number;
+  editInstructions: number = null;
   // TODO add Boolean logic for form validation
   instructionsNotEmpty = false;
   ingredientsNotEmpty = false;
@@ -59,7 +60,7 @@ export class InputRecipeComponent implements OnInit {
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
-  @ViewChild('ingredientsFromGroup') private formDirective: NgForm;
+  @ViewChild('ingredientsFormGroup') private formDirective: NgForm;
 
   constructor(
     private recipeService: RecipeService,
@@ -77,10 +78,11 @@ export class InputRecipeComponent implements OnInit {
   ngOnInit(): void {
     this.existingRecipe = this.data ? this.data.recipe : null;
     this.ingredients2 = this.existingRecipe ? this.existingRecipe.ingredients : [];
-    this.ingredientsFromGroup = this.formbuilder.group ({
-      ingredient2ContentControl: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      ingredient2QuantityControl: new FormControl('', [Validators.required, Validators.max(99.9)]),
-      ingredient2MeasureControl: new FormControl('', Validators.required),
+    this.ingredientsFormGroup = this.formbuilder.group ({
+      content: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      quantity: new FormControl('', [Validators.required, Validators.max(99.9)]),
+      measure: new FormControl('', Validators.required),
+      id: new FormControl('')
     })
     this.newRecipe = this.formbuilder.group({
       instruction2Control: new FormControl(''),
@@ -147,7 +149,7 @@ export class InputRecipeComponent implements OnInit {
   }
 
     //// START Instruction Logic ////
-    addInstruction2($event) {
+    addInstruction2(event) {
       this.instructions2.push({content: this.newRecipe.controls.instruction2Control.value, instructionOrder: this.instructions2.length});
       this.newRecipe.controls.instruction2Control.reset();
     }
@@ -165,28 +167,49 @@ export class InputRecipeComponent implements OnInit {
         return {...item, instructionOrder: index};
       });
     }
+
+    editInstruction(index: number) {
+      console.log("touched edit instruction");
+      this.editInstructions = index;
+      this.newRecipe.controls.instruction2Control.setValue(this.instructions2.find(ins => ins.instructionOrder == index).content);
+      console.log(this.newRecipe.controls.instruction2Control.value);
+    }
+    saveEditInstruction(event) {
+      this.instructions2.find(ins => ins.instructionOrder == this.editInstructions).content = this.newRecipe.controls.instruction2Control.value;
+      this.editInstructions = null;
+      this.newRecipe.controls.instruction2Control.reset();
+    }
   //// END Instruction Logic ////
 
 
   //// START Ingredient Logic ////
   addIngredients(event, formDirective: FormGroupDirective) {
-    if (this.ingredientsFromGroup.valid) {
+    if (this.ingredientsFormGroup.valid) {
       this.ingredients2.push({
-        content: this.ingredientsFromGroup.controls.ingredient2ContentControl.value,
-        quantity: this.ingredientsFromGroup.controls.ingredient2QuantityControl.value,
-        measure: this.ingredientsFromGroup.controls.ingredient2MeasureControl.value
+        content: this.ingredientsFormGroup.controls.content.value,
+        quantity: this.ingredientsFormGroup.controls.quantity.value,
+        measure: this.ingredientsFormGroup.controls.measure.value
       });
-      this.ingredientsFromGroup.reset();
+      this.ingredientsFormGroup.reset();
     }
     // this.formDirective.resetForm('');
-    this.ingredientsFromGroup.markAsPristine();
-    this.ingredientsFromGroup.markAsUntouched();
-    this.ingredientsFromGroup.updateValueAndValidity();
+    this.ingredientsFormGroup.markAsPristine();
+    this.ingredientsFormGroup.markAsUntouched();
+    this.ingredientsFormGroup.updateValueAndValidity();
   }
 
   removeIngredients(selectedIngredient: Ingredient) {
     this.ingredients2 = this.ingredients2.filter(ingredient => selectedIngredient !== ingredient);
   }
+
+  editIngredient(ingEdit: Ingredient) {
+    this.ingredientsFormGroup.controls.id.setValue(ingEdit.id);
+    this.ingredientsFormGroup.controls.content.setValue(ingEdit.content);
+    this.ingredientsFormGroup.controls.quantity.setValue(ingEdit.quantity);
+    this.ingredientsFormGroup.controls.measure.setValue(ingEdit.measure);
+    this.ingredients2 = this.ingredients2.filter(ing => ingEdit !== ing);
+  }
+
   //// END Ingredient Logic ////
 
 

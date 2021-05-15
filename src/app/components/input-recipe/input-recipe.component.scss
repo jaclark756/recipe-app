@@ -167,6 +167,12 @@
   cursor: pointer;
 }
 
+.instruction-chip-editing {
+  background-color: transparent !important;
+  // color: red !important;
+  // border: $mint 2px solid;
+}
+
 @media (max-width: 785px) {
   .ingredients-container {
     flex-direction: column;
@@ -210,6 +216,7 @@
   .instruction-chip {
     margin-left: 4px !important;
   }
+
   .ordered-chips-container {
     margin: 0px !important; 
   }

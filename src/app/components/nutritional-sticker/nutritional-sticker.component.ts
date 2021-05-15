@@ -30,8 +30,11 @@ export class NutritionalStickerComponent implements OnInit {
       console.log(param.get('id'));
       if (param.get('id')) {
         this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
-          this.combinedNutrients = this.recipeService.filterNutrition(this.nutrition);
-          this.separateNutrients()
+          this.recipeService.getNutritionalInfo(recipe.id).subscribe(res=>{
+            this.nutrition=res
+            this.combinedNutrients = this.recipeService.filterNutrition(this.nutrition);
+            this.separateNutrients()
+          });          
         })
       };
     })    

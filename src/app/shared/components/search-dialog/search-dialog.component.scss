@@ -20,3 +20,51 @@
   justify-content: flex-end;
   margin: 5px;
 }
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  width: 75%;
+}
+
+.search-button-container {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+::ng-deep .search-button {
+  background-color: $mint !important;
+  color: $black !important;
+}
+
+.or {
+  margin: 15px 0px 30px 0px;
+  display: flex;
+}
+
+.or-text {
+  width: 100%;
+  text-align: center;
+}
+
+.category-ingredient-container {
+  display: flex;
+  margin: auto;
+}
+
+.vl {
+  border-left: 2px solid grey;
+  height: auto;
+  margin: 0px 10px;
+}
+
+.category-results{
+  width: 48%;
+}
+
+.ingredient-results{
+  width: 48%;
+}

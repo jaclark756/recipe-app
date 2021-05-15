@@ -22,30 +22,30 @@
       </div>
       <div class="actions" fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false">
         <button mat-fab class="fab-buttons">
-          <mat-icon class="fab">thumb_up_alt</mat-icon>
+          <mat-icon class="c-jet fab">thumb_up_alt</mat-icon>
         </button>
         <button mat-fab class="fab-buttons">
-          <mat-icon class="fab">restaurant_menu</mat-icon>
+          <mat-icon class="c-jet fab">restaurant_menu</mat-icon>
         </button>
         <button mat-fab class="fab-buttons">
-          <mat-icon class="fab" (click)="openCollectionDialog()">bookmark</mat-icon>
+          <mat-icon class="c-jet fab" (click)="openCollectionDialog()">bookmark</mat-icon>
         </button>
         <button *ngIf="editButtonShow()" mat-fab class="fab-buttons" (click)="editRecipeDialog()">
-          <mat-icon class="fab">edit</mat-icon>
+          <mat-icon class="c-jet fab">edit</mat-icon>
         </button>
       </div>
       <div class="actions" fxShow.sm="true" fxShow.lt-sm="true" fxShow.gt-sm="false">
         <button mat-mini-fab class="fab-buttons">
-          <mat-icon class="mini-fab">thumb_up_alt</mat-icon>
+          <mat-icon class="c-jet mini-fab">thumb_up_alt</mat-icon>
         </button>
         <button mat-mini-fab class="fab-buttons">
-          <mat-icon class="mini-fab">restaurant_menu</mat-icon>
+          <mat-icon class="c-jet mini-fab">restaurant_menu</mat-icon>
         </button>
         <button mat-mini-fab class="fab-buttons">
-          <mat-icon class="mini-fab">bookmark</mat-icon>
+          <mat-icon class="c-jet mini-fab">bookmark</mat-icon>
         </button>
         <button *ngIf="editButtonShow()" mat-mini-fab  (click)="editRecipeDialog()" class="fab-buttons">
-          <mat-icon class="mini-fab">edit</mat-icon>
+          <mat-icon (click)="editRecipeDialog()" class="c-jet mini-fab">edit</mat-icon>
         </button>
       </div>
     </section>

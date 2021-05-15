@@ -45,9 +45,9 @@ import { SearchResultsComponent } from './components/search-results/search-resul
     HomeComponent,
     SettingsComponent,
     CreateCollectionsComponent,
+    ErrorComponent,
     SearchResultsComponent,
     NutritionalStickerComponent,
-    ErrorComponent
   ],
   imports: [
     AppRoutingModule,

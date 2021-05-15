@@ -77,7 +77,8 @@
                     Terms & Privacy
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <a href="#" (click)="openTermsDialog();false">Terms of Service</a><br>
+            <a href="#" (click)="openPrivacyDialog();false">Privacy Policy</a>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" id="help">
             <mat-expansion-panel-header>

@@ -18,6 +18,7 @@
   background-color: $mint;
   position: fixed !important;
   padding: 2px;
+  z-index: 9;
 }
 
 ::ng-deep .mat-icon-button {

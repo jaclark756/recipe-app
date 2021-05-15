@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
+import { PrivacyPolicyComponent } from 'src/app/shared/components/privacy-policy/privacy-policy.component';
+import { TermsComponent } from 'src/app/shared/components/terms/terms.component';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { User } from 'src/app/types/user';
 import { environment } from 'src/environments/environment';
@@ -30,7 +33,8 @@ export class SettingsComponent implements OnInit {
     public snackbar: SnackbarService,
     public tokenService: TokenService,
     public userService: UserService,
-    public http: HttpClient
+    public http: HttpClient,
+    public dialog: MatDialog
   ) {
       this.activeUser = this.tokenService.getUser();
       this.commentsChecked = this.activeUser.commentNotifications;
@@ -78,5 +82,13 @@ export class SettingsComponent implements OnInit {
         this.tokenService.saveUser(res);
       }
     );
+  }
+
+  openTermsDialog() {
+    const dialogRef = this.dialog.open(TermsComponent);
+  }
+
+  openPrivacyDialog() {
+    const dialogRef = this.dialog.open(PrivacyPolicyComponent);
   }
 }

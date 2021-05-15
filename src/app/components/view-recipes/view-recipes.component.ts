@@ -23,8 +23,6 @@ export class ViewRecipesComponent implements OnInit {
   public ingredients: Ingredient[];
   public instructions: Instruction[];
   public relatedRecipes: any;
-  public nutrition = NUTRIENTS as NutrientEntity[];
-  public combinedNutrients: Nutrient[];
   sample_recipes = RECIPES;
   ingredientList = [
     'Asparagus',

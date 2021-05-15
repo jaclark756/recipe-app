@@ -24,7 +24,7 @@
         <div class="category-results">
             <h2>Browse by Categories</h2>
             <div class="flex-container" *ngIf="(filteredCategorie$ | async)?.length > 0">
-                <mat-chip *ngFor="let category of filteredCategorie$ | async">{{ category?.name }}</mat-chip>
+                <mat-chip *ngFor="let category of filteredCategorie$ | async" (click)="close()" routerLink="/search" [queryParams]="{category: category?.id}">{{ category?.name }}</mat-chip>
             </div>
             <div>
                 <span *ngIf="(filteredCategorie$ | async)?.length == 0">No Results Found</span>

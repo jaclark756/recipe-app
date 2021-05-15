@@ -25,4 +25,11 @@ const httpOptions = {
         }))
     }
 
+    getCategoryById(categoryId: number): Observable<Category> {
+        let categoryIdUrl = this.url + '/' + categoryId;
+        return this.http.get(categoryIdUrl, httpOptions).pipe(map(response => {
+            return response as Category;
+        }))
+    }
+
   }

@@ -24,10 +24,10 @@
 </div>
   </div>
 <div *ngIf="!router.url.includes('/login') && !router.url.includes('/error')" class="flex-container" fxShow.sm="false" fxShow.lt-sm="false" fxShow.gt-sm="true">
-    <button (click)="addRecipe()" fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false" mat-fab class="bg-teal fab-button" aria-label="create button" style="position:fixed!important;">
-        <img src="assets/images/addwhite.svg" alt="create" class="filter-powder">
+    <button (click)="addRecipe()" fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false" mat-fab class="bg-mint fab-button" aria-label="create button" style="position:fixed!important;">
+        <mat-icon class="c-metal create">add</mat-icon>
     </button>
-    <button (click)="addRecipe()" fxShow.sm="true" fxShow.lt-sm="true" fxShow.gt-sm="false" mat-mini-fab class="bg-teal fab-button" aria-label="create button mobile" style="position:fixed!important;">
-        <img src="assets/images/addwhite.svg" alt="create" class="filter-powder">
+    <button (click)="addRecipe()" fxShow.sm="true" fxShow.lt-sm="true" fxShow.gt-sm="false" mat-mini-fab class="bg-mint fab-button" aria-label="create button mobile" style="position:fixed!important;">
+      <mat-icon class="c-metal create">add</mat-icon>
     </button>
 </div>

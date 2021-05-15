@@ -61,7 +61,7 @@
                             <span class="instruction-text">{{instruction.content}}</span>
                         <mat-icon class="insctruction-remove" matChipRemove *ngIf="removable">cancel</mat-icon>
                     </mat-chip>
-                    <mat-chip *ngIf="editInstructions == i" >
+                    <mat-chip *ngIf="editInstructions == i" class="ordered-chips instruction-chip instruction-chip-editing">
                         <span class="instruction-text">{{instruction.content}}</span>
                     </mat-chip>
                 </ng-container>

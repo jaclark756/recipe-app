@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { Category } from 'src/app/types/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { IngredientService } from 'src/app/services/ingredient.service';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: 'app-search-dialog',

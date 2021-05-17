@@ -1,9 +1,24 @@
 @import "/src/styles/styles.scss";
 
 ::ng-deep.mat-dialog-container {
-  background-color: $powder;
+  background-color: $black;
   width: 100%;
   border-radius: 0.5em;
+  box-shadow: 0px 0px 40px grey;
+}
+
+.custom-chip {
+  background-color: $teal;
+  border: 2px solid $mint;
+  border-radius: 15px;
+  padding: 1px 6px;
+  margin: 3px;
+  color: $powder;
+}
+
+.custom-chip:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 ::ng-deep .mat-form-field {

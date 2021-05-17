@@ -7,6 +7,8 @@ import { RecipeService } from 'src/app/services/recipe.service';
 import { Category } from 'src/app/types/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { Response } from 'selenium-webdriver/http';
+import { Ingredient } from 'src/app/types/ingredient';
+import { IngredientService } from 'src/app/services/ingredient.service';
 
 @Component({
     selector: 'seach-results',
@@ -24,6 +26,7 @@ import { Response } from 'selenium-webdriver/http';
       private _searchService: SearchService,
       private _recipeService: RecipeService,
       private _categoryService: CategoryService,
+      private _ingredientService: IngredientService,
       private route: ActivatedRoute,
       ) {
      }
@@ -51,15 +54,19 @@ import { Response } from 'selenium-webdriver/http';
           }
           this.httpParams = this.httpParams.set(k, param.get(k));
         });
-        if (this.userSearchType === "category") {
-          this._recipeService.findRecipesByCategoryId(this.httpParams).subscribe(response => {
+        if (this.userSearchType === "category" || this.userSearchType === "ingredient") {
+          this._recipeService.findRecipesByCategoryOrIngredientId(this.httpParams).subscribe(response => {
             this.recipes = response;
           });
-          this._categoryService.getCategoryById(this.userSearchValue).subscribe(response => {
-            this.userSearchValue = response.name;
-          })
-        } else if (this.userSearchType === "ingredient") {
-
+          if (this.userSearchType === "category") {
+            this._categoryService.getCategoryById(this.userSearchValue).subscribe(response => {
+              this.userSearchValue = response.name;
+            })
+          } else if (this.userSearchType === "ingredient") {
+            this._ingredientService.getIngredientById(this.userSearchValue).subscribe(response => {
+              this.userSearchValue = response.content;
+            })
+          }
         } else {
           this._searchService.getSearchedRecipes(this.httpParams).subscribe(response => {
             this.recipes = response;

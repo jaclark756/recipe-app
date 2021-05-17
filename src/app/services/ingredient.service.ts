@@ -25,4 +25,11 @@ export class IngredientService {
         }))
     }
 
+    getIngredientById(ingredientId: number): Observable<Ingredient> {
+        let ingredientIdUrl = this.url + '/' + ingredientId;
+        return this.http.get(ingredientIdUrl, httpOptions).pipe(map(response => {
+            return response as Ingredient;
+        }))
+    }
+
 }

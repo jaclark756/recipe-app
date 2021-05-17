@@ -34,7 +34,7 @@
         <div class="ingredient-results">
             <h2>Browse By Ingredient</h2>
             <div class="flex-container">
-                <mat-chip *ngFor="let ingredient of filteredIngredient$ | async">{{ ingredient?.content }}</mat-chip>
+                <mat-chip *ngFor="let ingredient of filteredIngredient$ | async" (click)="close()" routerLink="/search" [queryParams]="{ingredient: ingredient?.id}">{{ ingredient?.content }}</mat-chip>
             </div>
             <div>
                 <span *ngIf="(filteredIngredient$ | async)?.length == 0">No Results Found</span>

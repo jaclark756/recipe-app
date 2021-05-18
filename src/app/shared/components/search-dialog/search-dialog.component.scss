@@ -1,9 +1,30 @@
 @import "/src/styles/styles.scss";
 
 ::ng-deep.mat-dialog-container {
-  background-color: $powder;
-  width: 100%;
+  background-color: $black;
+  width: 200em;
   border-radius: 0.5em;
+  box-shadow: 0px 0px 40px grey;
+}
+
+.custom-chip {
+  background-color: $teal;
+  border: 2px solid $mint;
+  border-radius: 15px;
+  padding: 1px 6px;
+  margin: 3px;
+  color: $powder;
+}
+
+.custom-chip:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.hl {
+  border-top: 2px solid grey;
+  width: 100%;
+  margin: auto;
 }
 
 ::ng-deep .mat-form-field {
@@ -46,7 +67,7 @@
 }
 
 .or-text {
-  width: 100%;
+  width: 20%;
   text-align: center;
 }
 
@@ -67,4 +88,14 @@
 
 .ingredient-results{
   width: 48%;
+}
+
+@media (max-width: 525px) {
+  .search-bar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .search-bar {
+    width: 100%;
+  }
 }

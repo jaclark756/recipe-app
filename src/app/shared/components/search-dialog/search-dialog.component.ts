@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { Category } from 'src/app/types/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { IngredientService } from 'src/app/services/ingredient.service';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: 'app-search-dialog',
@@ -56,7 +57,7 @@ export class SearchDialogComponent implements OnInit {
 
   getAllCategories(): void {
     this._categoryService.getAllCategories().subscribe(response => {
-      this.categories = response;
+      this.categories = response.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
       this.filteredCategorie$ = this.userSearch.controls.searchInput.valueChanges
       .pipe(
         startWith(''),
@@ -68,7 +69,7 @@ export class SearchDialogComponent implements OnInit {
 
   getAllIngredients(): void {
     this._ingredientService.getAllIngredients().subscribe(response => {
-      this.ingredients = response;
+      this.ingredients = response.sort((a,b) => a.content.toLowerCase() > b.content.toLowerCase() ? 1 : -1);
       this.filteredIngredient$ = this.userSearch.controls.searchInput.valueChanges
         .pipe(
           startWith(''),

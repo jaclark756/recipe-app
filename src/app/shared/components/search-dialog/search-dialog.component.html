@@ -1,7 +1,7 @@
 <mat-dialog-content>
     <mat-dialog-actions>
         <button mat-icon-button [mat-dialog-close]="true" class="close-button">
-            <mat-icon>clear</mat-icon>
+            <mat-icon class="c-powder">clear</mat-icon>
         </button>
     </mat-dialog-actions>
     <div class="search-bar-container"> 
@@ -18,13 +18,13 @@
         </div>
     </div>
     <div class="or">
-        <span class="or-text">--- OR ---</span>
+        <div class="hl"></div><span class="or-text c-powder">OR</span><div class="hl"></div>
     </div>
     <div class="category-ingredient-container">
         <div class="category-results">
-            <h2>Browse by Categories</h2>
+            <h2 class="c-powder">Browse by Categories</h2>
             <div class="flex-container" *ngIf="(filteredCategorie$ | async)?.length > 0">
-                <mat-chip *ngFor="let category of filteredCategorie$ | async">{{ category?.name }}</mat-chip>
+                <div class="custom-chip" *ngFor="let category of filteredCategorie$ | async" (click)="close()" routerLink="/search" [queryParams]="{category: category?.id}"><span>{{ category?.name }}</span></div>
             </div>
             <div>
                 <span *ngIf="(filteredCategorie$ | async)?.length == 0">No Results Found</span>
@@ -32,9 +32,9 @@
         </div>
         <div class="vl"></div>
         <div class="ingredient-results">
-            <h2>Browse By Ingredient</h2>
+            <h2 class="c-powder">Browse By Ingredient</h2>
             <div class="flex-container">
-                <mat-chip *ngFor="let ingredient of filteredIngredient$ | async">{{ ingredient?.content }}</mat-chip>
+                <div class="custom-chip" *ngFor="let ingredient of filteredIngredient$ | async" (click)="close()" routerLink="/search" [queryParams]="{ingredient: ingredient?.id}"><span>{{ ingredient?.content }}</span></div>
             </div>
             <div>
                 <span *ngIf="(filteredIngredient$ | async)?.length == 0">No Results Found</span>

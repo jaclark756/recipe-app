@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
@@ -132,6 +132,15 @@ export class RecipeService {
         return response as Recipe[];
       })
     )
+  }
+
+  findRecipesByCategoryOrIngredientId(httpParams: HttpParams): Observable<Recipe[]> {
+    return this.http.get(this.url, 
+                        {params: httpParams, 
+                         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+                        }).pipe(map(response => {
+      return response as Recipe[];
+    }));
   }
 
 }

@@ -11,24 +11,25 @@ export class ValidationService {
   BASE_URL: string = environment.apiUrl
   USERS_URL: string = "/api/v2/usernames"
   URL = this.BASE_URL + this.USERS_URL;
-  usernames: any[]
 
-  constructor(public http: HttpClient) {this.loadUsernames()}
+  constructor(public http: HttpClient) { }
 
-  loadUsernames(){
-    this.http.get(this.URL).subscribe((s: string[]) => {
-      this.usernames = s
-    })
+  checkUsername(){
+    this.http.get(this.URL).subscribe
   }
-
 
   userNameValidator(userControl: AbstractControl) { 
     return new Promise(resolve => {  
-      if (this.usernames.includes(userControl.value)){
-        resolve({taken: true});
-      } else {
-        resolve(null);
-      }
+      setTimeout(() => {  
+
+        this.http.get(this.URL).subscribe((s: string[]) => {
+          if (s.includes(userControl.value)){
+            resolve({taken: true});
+          } else {
+            resolve(null);
+          }
+        })
+      }, 300);  
     });  
   }  
 

@@ -1,6 +1,5 @@
 <div class="profile-info">
-    <img src="/assets/images/account_circle-white-24dp.svg" alt="user image" class="filter-powder">
-    <!-- <img src="{{activeUser?.photoUrl ? activeUser?.photoUrl : '/assets/images/account_circle-white-24dp.svg'" alt="user image" class="filter-powder"> -->
+    <img src="{{activeUser?.photoUrl ? activeUser?.photoUrl : '/assets/images/account_circle-white-24dp.svg'}}" alt="user image" class="{{activeUser?.photoUrl ? 'userAvatar' : 'filter-powder'}}">
     <h2 class="c-powder">{{activeUser?.displayName}}</h2>
     <h3 class="c-powder">@{{activeUser?.username}}</h3>
 </div>

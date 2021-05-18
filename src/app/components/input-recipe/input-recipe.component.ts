@@ -19,6 +19,8 @@ import { ingredientMeasureOptions } from 'src/app/helpers/ingredient-measurement
 import { RecipeUpdateNote } from 'src/app/types/recipeUpdateNote';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
+import { sortAscendingPriority } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-input-recipe',
@@ -47,8 +49,7 @@ export class InputRecipeComponent implements OnInit {
   instructions2: Instruction[] = [];
   finalInstructions: Instruction[];
   categories: Category[] = [];
-  allCategories: Category[] = [{ 'name': 'Lunch' }, { 'name': 'Dinner' }, { 'name': 'Dessert' }];
-  allCategoriesString: string[] = ['Lunch', 'Dinner', 'Dessert']
+  allCategories: Category[] = [];
   filteredCategories: Observable<Category[]>;
   existingRecipe: Recipe;
   recipeId: number;
@@ -67,6 +68,7 @@ export class InputRecipeComponent implements OnInit {
     private formbuilder: FormBuilder, 
     public userService: UserService,
     public tokenService: TokenService,
+    private categoryService: CategoryService,
     public router: Router,
     private dr: MatDialogRef<InputRecipeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -97,12 +99,16 @@ export class InputRecipeComponent implements OnInit {
       return {content: item.content, order: index};
     });
     this.instructions2 = this.existingRecipe ? this.existingRecipe.instructions : this.instructions2;
-    this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
+    this.categoryService.getAllCategories().subscribe(response => {
+      this.allCategories = response.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+      this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
       .pipe(
         startWith(''),
         map(value => typeof value === 'string' ? value : value.name),
         map(name => name ? this._filter(name) : this.allCategories.slice())
       );
+    })
+    
     this.notes = this.existingRecipe.notes || [];
     
   }

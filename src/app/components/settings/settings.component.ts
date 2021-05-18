@@ -84,6 +84,10 @@ export class SettingsComponent implements OnInit {
     );
   }
 
+  changeAvatar(){
+    this.snackbar.openSnackBar("Coming soon!");
+  }
+
   openTermsDialog() {
     const dialogRef = this.dialog.open(TermsComponent);
   }

@@ -1,31 +1,44 @@
 <mat-dialog-content>
     <mat-dialog-actions>
         <button mat-icon-button [mat-dialog-close]="true" class="close-button">
-            <mat-icon>clear</mat-icon>
+            <mat-icon class="c-powder">clear</mat-icon>
         </button>
     </mat-dialog-actions>
-    <form [formGroup]="userSearch">
-        <mat-form-field class="search" appearance="fill">
-            <mat-label>Search</mat-label>
-            <input matInput type="text" formControlName="searchInput">
-        </mat-form-field>
-    </form>
-       <!-- <mat-label>Recent Searches</mat-label>
-        <mat-chip-list aria-label="recent-searches">
-            <mat-chip color="accent" selected>protein pancakes</mat-chip>
-            <mat-chip color="accent" selected>margaritas</mat-chip>
-            <mat-chip color="accent" selected>bread</mat-chip>
-            <mat-chip color="accent" selected>tacos</mat-chip>
-        </mat-chip-list> -->
-    <h2>Search by Categories</h2>
-    <div class="flex-container" *ngIf="(filteredCategorie$ | async)?.length > 0">
-        <app-category-card *ngFor="let cat of filteredCategorie$ | async" [photo]="cat.photoURL" [label]="cat.name"></app-category-card>
+    <div class="search-bar-container"> 
+        <div class="search-bar">
+            <form [formGroup]="userSearch">
+                <mat-form-field class="search" appearance="fill">
+                    <mat-label>Search</mat-label>
+                    <input matInput type="text" formControlName="searchInput">
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="search-button-container">
+            <button mat-raised-button class="search-button" (click)="close()" routerLink="/search" [queryParams]="{q: userSearch.controls.searchInput.value}">Search All Recipes</button>
+        </div>
     </div>
-    <div>
-        <span *ngIf="(filteredCategorie$ | async)?.length == 0">No Results Found</span>
+    <div class="or">
+        <div class="hl"></div><span class="or-text c-powder">OR</span><div class="hl"></div>
     </div>
-    <h2>Search By Ingredient</h2>
-       <div class="flex-container">
-        <mat-chip *ngFor="let ingredient of filteredIngredient$ | async">{{ ingredient.content }}</mat-chip>
+    <div class="category-ingredient-container">
+        <div class="category-results">
+            <h2 class="c-powder">Browse by Categories</h2>
+            <div class="flex-container" *ngIf="(filteredCategorie$ | async)?.length > 0">
+                <div class="custom-chip" *ngFor="let category of filteredCategorie$ | async" (click)="close()" routerLink="/search" [queryParams]="{category: category?.id}"><span>{{ category?.name }}</span></div>
+            </div>
+            <div>
+                <span *ngIf="(filteredCategorie$ | async)?.length == 0">No Results Found</span>
+            </div>
+        </div>
+        <div class="vl"></div>
+        <div class="ingredient-results">
+            <h2 class="c-powder">Browse By Ingredient</h2>
+            <div class="flex-container">
+                <div class="custom-chip" *ngFor="let ingredient of filteredIngredient$ | async" (click)="close()" routerLink="/search" [queryParams]="{ingredient: ingredient?.id}"><span>{{ ingredient?.content }}</span></div>
+            </div>
+            <div>
+                <span *ngIf="(filteredIngredient$ | async)?.length == 0">No Results Found</span>
+            </div>
+        </div>
     </div>
 </mat-dialog-content>

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
 import { NutrientEntity } from '../types/NutrientEntity';
@@ -27,7 +27,7 @@ export class RecipeService {
     })
   }
 
-  private url: string = environment.apiUrl + "/v2/recipe"
+  private url: string = environment.apiUrl + "/api/v2/recipe"
   private readonly recipeSubject = new BehaviorSubject<Recipe[]>([]);
   readonly recipe$ = this.recipeSubject.asObservable();
 
@@ -87,22 +87,22 @@ export class RecipeService {
     // return this.http.get(`${this.url}/nutrients/${recipeId}`,httpOptions);
 
     //should be returning an array of NutrientEntities, NutrientEntity[]
-    return this.http.get(`${this.url}/nutrients/1`, httpOptions).pipe(map(res => {
+    return this.http.get(`${this.url}/nutrients/${recipeId}`, httpOptions).pipe(map(res => {
       return res as NutrientEntity[];
     }));
   }
 
   filterNutrition(ingredients: NutrientEntity[]): Nutrient[] {
     let nutrientFocus = ['calories', 'fat', 'Carbohydrates', 'sodium', 'sugar', 'protein', 'fiber']
-    let combinedNutrients: Nutrient[] = [];
+    let combinedNutrients2: Nutrient[] = [];
     let testNut: Nutrient[] = [];
 
     ingredients.forEach(ing => {
       let temp = ing.nutrients.filter(nutrient => nutrientFocus.includes(nutrient.name.toLowerCase()));
-      combinedNutrients.push(...temp)
+      combinedNutrients2.push(...temp)
     })
 
-    combinedNutrients = combinedNutrients.reduce((acc, item) => {
+    combinedNutrients2 = combinedNutrients2.reduce((acc, item) => {
       if (!acc.find(search => search.name === item.name)) {
         //if NOT found, pushes
         acc.push(item);
@@ -117,11 +117,30 @@ export class RecipeService {
       }
       return acc;
     }, [])
+    return combinedNutrients2;
 
+  }
 
-    console.log("Final", combinedNutrients)
-    return combinedNutrients;
+  findRelatedRecipes(recipe: Recipe){
+    
+    let recipesUrl = this.url + "?category=";
+    recipe.categories.forEach(cat => recipesUrl += cat.id + ",")
+    
+    return this.http.get(recipesUrl.slice(0, -1), httpOptions).pipe(
+      filter((r: Recipe) => r.id === recipe.id)
+      ,map(response => {
+        return response as Recipe[];
+      })
+    )
+  }
 
+  findRecipesByCategoryOrIngredientId(httpParams: HttpParams): Observable<Recipe[]> {
+    return this.http.get(this.url, 
+                        {params: httpParams, 
+                         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+                        }).pipe(map(response => {
+      return response as Recipe[];
+    }));
   }
 
 }

@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   position: relative !important;
-   }  
+}
 
 .mobile-nav-buttons {
   display: flex;
@@ -15,21 +15,28 @@
   justify-content: center;
   width: auto;
   margin: 10px;
-  background-color: $onyx;
+  background-color: $mint;
   position: fixed !important;
   padding: 2px;
+  z-index: 9;
 }
 
 ::ng-deep .mat-icon-button {
-  margin: 5px !important;
+  margin: 5px 5px 5px 5px !important;
+  padding-right: 5px !important;
 }
 
 .flex-container {
-    justify-content: flex-end;
-    display: flex;
-    position: relative;
-  }
-  
+  justify-content: flex-end;
+  display: flex;
+  position: relative !important;
+  padding: 15px;
+}
+
 .fab-button {
-    margin-right: 10px;
-  }
+  margin: 0 10px 5px 0;
+}
+
+.create {
+  margin: -7px 5px 10px -10px;
+}

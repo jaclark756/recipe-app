@@ -1,0 +1,18 @@
+@import "/src/styles/styles.scss";
+
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    margin-top: 10px;
+}
+.search-value {
+  text-align: center;
+  margin: auto;
+  padding-top: 10px;
+  color: $powder;
+  font-size: 26px;
+  font-weight: 400;
+}

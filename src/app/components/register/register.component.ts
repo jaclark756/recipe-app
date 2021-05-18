@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
 import { ValidationService } from 'src/app/services/validation.service';
+import { PrivacyPolicyComponent } from 'src/app/shared/components/privacy-policy/privacy-policy.component';
+import { TermsComponent } from 'src/app/shared/components/terms/terms.component';
 import { environment } from 'src/environments/environment';
 
 
@@ -14,10 +17,7 @@ import { environment } from 'src/environments/environment';
 })
 export class RegisterComponent implements OnInit {
 
-  BASE_URL: string = "http://localhost:8080/"
-  USERS_URL: string = "/v2/usernames"
-  SIGNUP_URL: string = "/v2/user"
-  URL = this.BASE_URL + this.USERS_URL;
+  SIGNUP_URL: string = "/api/v2/user"
   UPDATE_URL = environment.apiUrl + this.SIGNUP_URL;
 
   signUpForm: FormGroup;
@@ -27,7 +27,8 @@ export class RegisterComponent implements OnInit {
     public fb: FormBuilder,
     public validationService: ValidationService,
     private tokenService: TokenService,
-    public router: Router
+    public router: Router,
+    public dialog: MatDialog
   ) {
     this.signUpForm = fb.group({
       username: new FormControl('', [Validators.required, Validators.minLength(4)], this.validationService.userNameValidator.bind(this.validationService))
@@ -61,6 +62,14 @@ export class RegisterComponent implements OnInit {
     }
     return this.signUpForm.get("username").hasError("taken") ? 'Username already taken' : '';
 
+  }
+
+  openTermsDialog() {
+    const dialogRef = this.dialog.open(TermsComponent);
+  }
+
+  openPrivacyDialog() {
+    const dialogRef = this.dialog.open(PrivacyPolicyComponent);
   }
 
 }

@@ -1,6 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PrivacyPolicyComponent } from 'src/app/shared/components/privacy-policy/privacy-policy.component';
+import { TermsComponent } from 'src/app/shared/components/terms/terms.component';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +12,8 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 })
 export class LoginComponent implements OnInit {
 
-  API_BASE: string = "http://localhost:8080/oauth2/authorization/"
-  REDIRECT: string = "?redirect_uri=http://localhost:4200/login";
+  API_BASE: string = environment.apiUrl +"/oauth2/authorization/"
+  REDIRECT: string = "?redirect_uri=" + environment.appUrl + "/login";
   githubURI: string = this.API_BASE + "github" + this.REDIRECT;
   googleURI: string = this.API_BASE + "google" + this.REDIRECT;
   error: string;
@@ -24,10 +27,18 @@ export class LoginComponent implements OnInit {
   }
 
 
-  constructor( @Inject(MAT_DIALOG_DATA) public data: any ) { }
+  constructor( @Inject(MAT_DIALOG_DATA) public data: any,public dialog: MatDialog ) { }
 
   ngOnInit(): void {
     this.error = this.data ? this.data.error : null;
    }
+
+   openTermsDialog() {
+    const dialogRef = this.dialog.open(TermsComponent);
+  }
+
+  openPrivacyDialog() {
+    const dialogRef = this.dialog.open(PrivacyPolicyComponent);
+  }
 
 }

@@ -2,10 +2,11 @@ import { Category } from "./category";
 import { Ingredient } from "./ingredient";
 import { Instruction } from "./instruction";
 import { RecipeUpdateNote } from "./recipeUpdateNote";
+import { User } from "./user";
 
 export interface Recipe {
     id?: number;
-    userId?: string;
+    user2?: User;
     ingredients?: Ingredient[];
     instructions?: Instruction[];
     title?: string;

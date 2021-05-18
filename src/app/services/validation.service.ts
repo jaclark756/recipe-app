@@ -11,7 +11,7 @@ export class ValidationService {
   BASE_URL: string = environment.apiUrl
   USERS_URL: string = "/api/v2/usernames"
   URL = this.BASE_URL + this.USERS_URL;
-  usernames: any[];
+  usernames: string[];
 
   constructor(public http: HttpClient) { this.loadUsernames() }
 

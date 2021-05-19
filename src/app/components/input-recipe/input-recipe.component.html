@@ -1,10 +1,24 @@
 <div class="form-container">
-    <h2 class="input-recipe-title c-powder">Input a Recipe</h2>
+    <h2 class="input-recipe-title c-powder">Input a Recipe URL</h2>
+    <form [formGroup]="apiRecipe">
+        <mat-form-field class="form-input" appearance="fill">
+            <mat-label for="apiRecipe">Recipe URL</mat-label>
+            <input matInput type="text" formControlName="recipeURLControl" > 
+            <button type="button" (click)="getAPIdata($event)"
+            mat-icon-button matSuffix [attr.aria-label]="'enter recipe'">
+                <mat-icon class="c-white">send</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+    <div class="or">
+        <div class="hl"></div><span class="or-text c-powder">OR</span><div class="hl"></div>
+    </div>
+    <h2 class="input-recipe-title c-powder">Input a Recipe Manually</h2>
     <form [formGroup]="newRecipe" >
         <!-- START Recipe Name Field-->
         <mat-form-field class="form-input" appearance="fill">
             <mat-label for="recipeName">Recipe Name</mat-label>
-            <input matInput type="text" formControlName="recipeName" required>
+            <input matInput type="text" formControlName="recipeName" required> 
             <mat-error *ngIf="newRecipe.controls.recipeName.invalid">Must be less than 100 characters</mat-error>
         </mat-form-field>
         <!-- END Recipe Name Field -->

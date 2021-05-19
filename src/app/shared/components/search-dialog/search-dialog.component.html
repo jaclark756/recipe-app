@@ -1,5 +1,5 @@
 <mat-dialog-content>
-    <mat-dialog-actions>
+    <mat-dialog-actions class="custom-mat-dialog-actions">
         <button mat-icon-button [mat-dialog-close]="true" class="close-button">
             <mat-icon class="c-powder">clear</mat-icon>
         </button>
@@ -27,7 +27,7 @@
                 <div class="custom-chip" *ngFor="let category of filteredCategorie$ | async" (click)="close()" routerLink="/search" [queryParams]="{category: category?.id}"><span>{{ category?.name }}</span></div>
             </div>
             <div>
-                <span *ngIf="(filteredCategorie$ | async)?.length == 0">No Results Found</span>
+                <span *ngIf="(filteredCategorie$ | async)?.length == 0" class="c-powder">No Results Found</span>
             </div>
         </div>
         <div class="vl"></div>
@@ -37,7 +37,7 @@
                 <div class="custom-chip" *ngFor="let ingredient of filteredIngredient$ | async" (click)="close()" routerLink="/search" [queryParams]="{ingredient: ingredient?.id}"><span>{{ ingredient?.content }}</span></div>
             </div>
             <div>
-                <span *ngIf="(filteredIngredient$ | async)?.length == 0">No Results Found</span>
+                <span *ngIf="(filteredIngredient$ | async)?.length == 0" class="c-powder">No Results Found</span>
             </div>
         </div>
     </div>

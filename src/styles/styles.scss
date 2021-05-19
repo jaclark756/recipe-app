@@ -124,7 +124,7 @@ h5 {
 //    -> global meaning that this stylesheet is defined in angular.json
 // Only need to use ::ng-deep in component-specific stylesheet to override a global style
 // ::ng-deep
-.mat-form-field {
+::ng-deep .mat-form-field {
   .mat-input-element {
     color: $powder;
     caret-color: $white !important;
@@ -163,7 +163,7 @@ h5 {
   color: $watermelon !important;
 }
 
-.mat-form-field.mat-form-field-invalid {
+::ng-deep .mat-form-field.mat-form-field-invalid {
 
   // Invalid form styling here
   .mat-input-element {
@@ -191,7 +191,7 @@ h5 {
   }
 }
 
-.mat-form-field.mat-focused {
+::ng-deep .mat-form-field.mat-focused {
   .mat-form-field-label {
     color: grey;
   }
@@ -206,15 +206,15 @@ h5 {
   }
 }
 
-.mat-autocomplete-trigger::placeholder {
+::ng-deep .mat-autocomplete-trigger::placeholder {
   color: grey !important;
 }
 
-textarea::placeholder {
+::ng-deep textarea::placeholder {
   color: grey !important;
 }
 
-input::placeholder {
+::ng-deep input::placeholder {
   color: grey !important;
 }
 
@@ -224,23 +224,23 @@ input::placeholder {
   padding: 5px 5px 0px;
 }
 
-.mat-option {
+::ng-deep .mat-option {
   background-color: $onyx;
 }
 
-.mat-option:hover {
+::ng-deep .mat-option:hover {
   background-color: $jet !important;
 }
 
-.mat-option:active {
+::ng-deep .mat-option:active {
   background-color: $jet !important;
 }
 
-.mat-option.mat-selected[_ngcontent-cqo-c120]:not(.mat-option-multiple):not(.mat-option-disabled) {
+::ng-deep .mat-option.mat-selected[_ngcontent-cqo-c120]:not(.mat-option-multiple):not(.mat-option-disabled) {
   background: $jet !important;
 }
 
-.mat-option.mat-selected[_ngcontent-ile-c120]:not(.mat-option-multiple):not(.mat-option-disabled) {
+::ng-deep .mat-option.mat-selected[_ngcontent-ile-c120]:not(.mat-option-multiple):not(.mat-option-disabled) {
   background: $jet !important;
   background-image: initial;
   background-position-x: initial;
@@ -254,11 +254,11 @@ input::placeholder {
   background-color: $jet !important;
 }
 
-.mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover) {
+::ng-deep .mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover) {
   background: $jet !important;
 }
 
-.mat-option>* {
+::ng-deep .mat-option>* {
   color: $powder;
 }
 
@@ -308,13 +308,18 @@ input::placeholder {
   background: rgba(0, 0, 0, 0.87);
 }
 
-.dialog-container .mat-dialog-container {
-  background-color: $black;
+::ng-deep .mat-dialog-container {
+  background-color: $black !important;
   box-shadow: 0px 0px 40px grey;
   max-height: 90vh;
   overflow: auto;
   padding-bottom: 20px;
   width: 80vh;
+}
+
+::ng-deep .mat-dialog-actions .custom-mat-dialog-actions {
+  justify-content: flex-end !important;
+  margin: 5px;
 }
 
 /* Extra small devices (phones, 600px and down) */

@@ -159,6 +159,12 @@ label {
   text-decoration: line-through;
 }
 
+.notes {
+  display: flex;
+  flex-direction: column;
+  margin-left: 9.75%;
+}
+
 .flex-container {
   display: flex;
   justify-content: center;
@@ -251,5 +257,11 @@ label {
     display: flex;
     justify-content: center;
     margin-left: 0;
+  }
+
+  .notes {
+    display: flex;
+    flex-direction: column;
+    margin-left: 9.75%;
   }
 }

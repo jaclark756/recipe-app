@@ -12,6 +12,7 @@ import { NutrientEntity } from 'src/app/types/NutrientEntity';
 import { Recipe } from 'src/app/types/recipe';
 import { CollectionDialogComponent } from 'src/app/shared/components/collection-dialog/collection-dialog.component';
 import { InputRecipeComponent } from '../input-recipe/input-recipe.component';
+import { RecipeUpdateNote } from 'src/app/types/recipeUpdateNote';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class ViewRecipesComponent implements OnInit {
   public recipe: Recipe;
   public ingredients: Ingredient[];
   public instructions: Instruction[];
+  public notes: RecipeUpdateNote[] = [];
   public relatedRecipes: any;
   sample_recipes = RECIPES;
   ingredientList = [
@@ -74,9 +76,9 @@ export class ViewRecipesComponent implements OnInit {
           this.relatedRecipes = this.recipeService.findRelatedRecipes(recipe);
           this.ingredients = recipe.ingredients;
           this.instructions = recipe.instructions;
+          this.notes = recipe.notes;
           this.instructions.sort((a,b) => a.instructionOrder -b.instructionOrder);
         })
-        
       };
     })
   }

@@ -13,6 +13,7 @@ import { Recipe } from 'src/app/types/recipe';
 import { CollectionDialogComponent } from 'src/app/shared/components/collection-dialog/collection-dialog.component';
 import { InputRecipeComponent } from '../input-recipe/input-recipe.component';
 
+
 @Component({
   selector: 'app-view-recipes',
   templateUrl: './view-recipes.component.html',
@@ -73,6 +74,7 @@ export class ViewRecipesComponent implements OnInit {
           this.relatedRecipes = this.recipeService.findRelatedRecipes(recipe);
           this.ingredients = recipe.ingredients;
           this.instructions = recipe.instructions;
+          this.instructions.sort((a,b) => a.instructionOrder -b.instructionOrder);
         })
         
       };

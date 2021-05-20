@@ -292,9 +292,9 @@ export class InputRecipeComponent implements OnInit {
 
   getAPIdata(event) {
     this.http.post(this.API_URL, 
-                          this.apiRecipe.controls.recipeURLControl.value, 
-                          {headers: new HttpHeaders({ 'Content-Type': 'application/json'})}
-                          ).subscribe(map(response => {
+                  {"url": this.apiRecipe.controls.recipeURLControl.value}, 
+                  {headers: new HttpHeaders({ 'Content-Type': 'application/json'})}
+                  ).subscribe(map(response => {
       console.log("api object: ",  response)
       // response as Recipe[];
     }))

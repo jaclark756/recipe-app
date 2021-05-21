@@ -68,9 +68,11 @@ export class RecipeService {
   // TODO flesh out update function to include response
   updateRecipe(recipe: Recipe): void {
     this.http.put(this.url, recipe, httpOptions).subscribe((response: Recipe) => {
-      this.recipes = [
-        ...this.recipes, response
-      ]
+      console.log(this.recipes.find(ur => ur.id === recipe.id));
+      // this.recipes.filter(replacedRecipe => replacedRecipe.id !== recipe.id);
+      let ura = this.recipes.splice(recipe.id, 1, recipe);
+      console.log(ura.find(ura => ura.id === recipe.id))
+      // find, remove, then add new. 
       console.log("updated recipe: ",response);
     })
   }

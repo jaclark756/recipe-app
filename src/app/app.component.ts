@@ -19,7 +19,6 @@ export class AppComponent {
     config.autoFocus = true;
     config.disableClose = false;
     config.panelClass = 'dialog-container';
-    // config.backdropClass = 'backdropBackground';
     const dr = this.dialog.open(InputRecipeComponent, config);
   }
   

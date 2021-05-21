@@ -42,7 +42,6 @@ export class RecipeService {
 
   getRecipe(id: number): Observable<Recipe> {
     return this.http.get(this.url + `/${id}`, httpOptions).pipe(map(response => {
-      console.log("Recipe Response: ", response);
       return response as Recipe;
     }))
   }
@@ -68,18 +67,9 @@ export class RecipeService {
   // TODO flesh out update function to include response
   updateRecipe(recipe: Recipe): void {
     this.http.put(this.url, recipe, httpOptions).subscribe((response: Recipe) => {
-      console.log(response);
       this.recipes = [
         ...this.recipes.filter(replacedRecipe => replacedRecipe.id !== recipe.id), response
       ]
-      this.router.navigate(['recipe/'+response.id]); 
-      // console.log(this.recipes.find(ur => ur.id === recipe.id));
-      
-      // this.recipes.splice(recipe.id, 1, recipe);
-      // let ura = this.recipes.splice(recipe.id, 1, recipe);
-      // console.log(ura.find(ura => ura.id === recipe.id))
-      // find, remove, then add new. 
-      console.log("updated recipe: ",response);
     })
   }
 

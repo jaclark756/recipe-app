@@ -69,7 +69,6 @@ export class ViewRecipesComponent implements OnInit {
 
   getRecipe(): void {
     this.route.paramMap.subscribe(param => {
-      console.log(param.get('id'));
       if (param.get('id')) {
         this.recipeService.getRecipe(+param.get('id')).subscribe(recipe => {
           this.recipe = recipe;

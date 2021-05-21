@@ -139,7 +139,7 @@
         <div class="ingredients-divider-bottom"></div>
         <div class="c-powder group-label">{{existingRecipe ? "Recipe Updates" : "Notes"}}</div>
         <mat-form-field class="form-input" appearance="fill">
-            <mat-label for="notesControl">{{existingRecipe ? "What did you update?" : "Additional Information"</mat-label>
+            <mat-label for="notesControl">{{existingRecipe ? "What did you update?" : "Additional Information"}}</mat-label>
             <input (keydown.enter)="addNotes($event)" matInput type="text" formControlName="notesControl" placeholder="">
             <button type="button" (click)="addNotes($event)" mat-icon-button matSuffix [attr.aria-label]="'Add Notes'">
                 <mat-icon class="c-white">add</mat-icon>

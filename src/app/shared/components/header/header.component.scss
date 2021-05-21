@@ -27,6 +27,10 @@ img {
   font-size: 40px;
 }
 
+.userImage {
+  max-width: 40px !important;
+}
+
 .menu-opened {
   transform: rotateX(180deg);
 }
@@ -40,6 +44,11 @@ img {
   background-color: $metal !important;
   color: $powder !important;
   border: 1px solid $powder;
+}
+
+.menuArrow {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 ::ng-deep .mat-menu {

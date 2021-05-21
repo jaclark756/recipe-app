@@ -40,7 +40,7 @@
 }
 
 .recipeImg {
-  width: 100% !important;
+  width: 1.0 !important;
   height: 200px;
   object-fit: cover;
 }
@@ -71,11 +71,11 @@
 
   .img-container {
     .recipeImg {
-      opacity: 100%;
+      opacity: 1.0;
     }
   
     .bookmark {
-      opacity: 100%;
+      opacity: 1.0;
       visibility: visible;
       position: absolute;
       top: 5%;
@@ -94,11 +94,11 @@
 @media only screen and (min-width: 742px) {
   .img-container:hover {
     .recipeImg {
-      opacity: 70%;
+      opacity: .7;
     }
   
     .bookmark {
-      opacity: 100%;
+      opacity: 1.0;
       visibility: visible;
       position: absolute;
       top: 35%;

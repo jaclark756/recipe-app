@@ -8,10 +8,8 @@
         <mat-tab label="My Recipes">
             <div class="recipes-container">
                 <div class="new-recipe">
-                    <a href="#">
-                        <button class="done-button" mat-raised-button isRoundButton="true">
+                        <button class="done-button" mat-raised-button isRoundButton="true" (click)="addRecipe()">
                             + Add New Recipe</button>
-                    </a>
                 </div>
                 <div class="recipe-card-container">
                     <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">

@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RECIPES } from 'src/app/helpers/sample-data';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { Collection } from 'src/app/types/collection';
 import { CreateCollectionsComponent } from '../create-collections/create-collections.component';
 import { CollectionService } from 'src/app/services/collections.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/types/user';
+import { InputRecipeComponent } from '../input-recipe/input-recipe.component';
+
 
 
 @Component({
@@ -34,7 +36,14 @@ export class ProfileComponent {
     this.activeUser = this.tokenService.getUser();
   }
 
-
+  addRecipe() {
+    const config = new MatDialogConfig();
+    config.autoFocus = true;
+    config.disableClose = false;
+    config.panelClass = 'dialog-container';
+    // config.backdropClass = 'backdropBackground';
+    const dr = this.dialog.open(InputRecipeComponent, config);
+  }
 
   openCreateCollectionDialog(){
     const dialogRef = this.dialog.open(CreateCollectionsComponent);

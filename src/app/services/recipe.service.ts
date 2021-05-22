@@ -141,4 +141,13 @@ export class RecipeService {
     }));
   }
 
+  findRecipesByUser(httpParams: HttpParams): Observable<Recipe[]> {
+    return this.http.get(this.url, 
+                        {params: httpParams, 
+                        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+                        }).pipe(map(response => {
+      return response as Recipe[];
+    }));
+  }
+
 }

@@ -40,7 +40,7 @@
 }
 
 .recipeImg {
-  width: 1.0 !important;
+  width: 1 !important;
   height: 200px;
   object-fit: cover;
 }
@@ -56,13 +56,13 @@
     padding: 4px !important;
     justify-content: space-between !important;
   }
-  
+
   .img-container img {
     object-fit: cover !important;
     height: 125px !important;
     margin-bottom: 0px !important;
   }
-   .mat-card-header-text {
+  .mat-card-header-text {
     margin: auto !important;
   }
   .mat-card-actions {
@@ -71,12 +71,16 @@
 
   .img-container {
     .recipeImg {
-      opacity: 1.0;
+      opacity: 1;
     }
-  
+
     .bookmark {
-      opacity: 1.0;
+      opacity: 1;
       visibility: visible;
+    }
+  }
+
+    .bookmark {
       position: absolute;
       top: 5%;
       right: 15%;
@@ -89,24 +93,50 @@
       background-color: $mint;
     }
   }
-}
 
 @media only screen and (min-width: 742px) {
   .img-container:hover {
     .recipeImg {
-      opacity: .7;
+      opacity: 0.7;
     }
-  
+
     .bookmark {
-      opacity: 1.0;
+      opacity: 1;
       visibility: visible;
-      position: absolute;
-      top: 35%;
-      right: 50%;
-      display: flex;
-      justify-content: center;
-      font-size: 40px !important;
-      color: $powder;
     }
+  }
+
+  .bookmark:focus {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .bookmark {
+    position: absolute;
+    top: 35%;
+    right: 50%;
+    transform: translateX(12px);
+    height: 24px;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    font-size: 40px !important;
+    color: $powder;
+  }
+
+  .icon-focus-overlay {
+    top: 35%;
+    right: 50%;
+    transform: translateX(12px);
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .icon-focus-overlay:focus ~ .bookmark {
+    opacity: 1;
+    visibility: visible;
   }
 }

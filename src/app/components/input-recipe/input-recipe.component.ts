@@ -98,6 +98,7 @@ export class InputRecipeComponent implements OnInit {
 
   setForm(){
     this.ingredients2 = this.existingRecipe ? this.existingRecipe.ingredients : [];
+    this.categories = this.existingRecipe ? this.existingRecipe.categories : [];
     this.apiRecipe = this.formbuilder.group ({
       recipeURLControl: new FormControl('') 
     })

@@ -42,7 +42,6 @@ export class RecipeService {
 
   getRecipe(id: number): Observable<Recipe> {
     return this.http.get(this.url + `/${id}`, httpOptions).pipe(map(response => {
-      console.log("Recipe Response: ", response);
       return response as Recipe;
     }))
   }
@@ -69,9 +68,8 @@ export class RecipeService {
   updateRecipe(recipe: Recipe): void {
     this.http.put(this.url, recipe, httpOptions).subscribe((response: Recipe) => {
       this.recipes = [
-        ...this.recipes, response
+        ...this.recipes.filter(replacedRecipe => replacedRecipe.id !== recipe.id), response
       ]
-      console.log("updated recipe: ",response);
     })
   }
 
@@ -138,6 +136,15 @@ export class RecipeService {
     return this.http.get(this.url, 
                         {params: httpParams, 
                          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+                        }).pipe(map(response => {
+      return response as Recipe[];
+    }));
+  }
+
+  findRecipesByUser(httpParams: HttpParams): Observable<Recipe[]> {
+    return this.http.get(this.url, 
+                        {params: httpParams, 
+                        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
                         }).pipe(map(response => {
       return response as Recipe[];
     }));

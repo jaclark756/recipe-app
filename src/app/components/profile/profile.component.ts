@@ -8,6 +8,9 @@ import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/types/user';
 import { InputRecipeComponent } from '../input-recipe/input-recipe.component';
+import { Recipe } from 'src/app/types/recipe';
+import { RecipeService } from 'src/app/services/recipe.service';
+import { HttpParams } from '@angular/common/http';
 
 
 
@@ -25,15 +28,24 @@ export class ProfileComponent {
   activeUser: User;
   collectionRecipes: boolean = false;
   collectionList: boolean = true;
+  userRecipes: Recipe[];
+  httpParams: HttpParams = new HttpParams();
 
 
   constructor(
     public tokenService: TokenService,
     public userService: UserService,
     public dialog:MatDialog,
-    public collectionService: CollectionService
+    public collectionService: CollectionService,
+    public recipeService: RecipeService
   ) { 
     this.activeUser = this.tokenService.getUser();
+  }
+
+  ngOnInit(): void {
+    this.recipeService.findRecipesByUser(this.httpParams.set("user", this.activeUser.id.toString()))
+    .subscribe(response => {
+      this.userRecipes = response})
   }
 
   addRecipe() {
@@ -43,6 +55,8 @@ export class ProfileComponent {
     config.panelClass = 'dialog-container';
     const dr = this.dialog.open(InputRecipeComponent, config);
   }
+
+
 
   openCreateCollectionDialog(){
     const dialogRef = this.dialog.open(CreateCollectionsComponent);

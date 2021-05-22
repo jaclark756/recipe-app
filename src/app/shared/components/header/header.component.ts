@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
+import { User } from 'src/app/types/user';
 import { SearchDialogComponent } from '../search-dialog/search-dialog.component';
 
 @Component({
@@ -12,9 +13,11 @@ import { SearchDialogComponent } from '../search-dialog/search-dialog.component'
 export class HeaderComponent implements OnInit {
 
   opened=false;
-
+  activeUser: User;
+  
   constructor(public dialog: MatDialog, public tokenService:TokenService, public router: Router) { }
   ngOnInit(): void {
+    this.activeUser = this.tokenService.getUser()
   }
   
   openSearchDialog() {

@@ -2,9 +2,11 @@
     <div class="img-container">
         <img mat-card-image class="recipeImg" routerLink="/recipe/{{recipe.id}}" src="{{recipe.photoUrl}}"
             alt="recipe image">
-        <mat-icon class="bookmark" (click)="openCollectionDialog()">bookmark_add</mat-icon>
+        <span class="icon-focus-overlay" tabindex="0" (keydown.enter)="openCollectionDialog()"></span>
+        <mat-icon class="bookmark" tabindex="0" aria-hidden="false" (click)="openCollectionDialog()" (keydown.enter)="openCollectionDialog()">bookmark_add
+        </mat-icon>
     </div>
     <mat-card-header class="c-powder" routerLink="/recipe/{{recipe.id}}">
         <mat-card-title>{{recipe.title}}</mat-card-title>
-            </mat-card-header>
+    </mat-card-header>
 </mat-card>

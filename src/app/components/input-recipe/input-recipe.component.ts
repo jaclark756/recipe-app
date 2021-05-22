@@ -96,7 +96,6 @@ export class InputRecipeComponent implements OnInit {
       prepTime: new FormControl(this.existingRecipe ? this.existingRecipe.prepTime : '', [Validators.required, Validators.min(0)]),
       notesControl: new FormControl('')
     })
-    console.log(this.existingRecipe.categories);
     this.instructions2 = this.instructions2.map((item, index) => {
       return {content: item.content, order: index};
     });

@@ -81,7 +81,6 @@ export class ViewRecipesComponent implements OnInit {
           this.notes = recipe.notes;
           this.instructions.sort((a,b) => a.instructionOrder -b.instructionOrder);
           this.categories = recipe.categories;
-          console.log(this.categories);
           if(this.notes.length<1)
           {
             this.isNotesNull=true;

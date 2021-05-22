@@ -123,7 +123,7 @@ export class InputRecipeComponent implements OnInit {
             "categories": this.categories,
             "ingredients": this.ingredients2,
             "instructions": this.instructions2,
-            "photoUrl": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Filipino_style_spaghetti.jpg/1920px-Filipino_style_spaghetti.jpg",
+            "photoUrl": this.newRecipe.controls.imageUri.value ? this.newRecipe.controls.imageUri.value : "/assets/images/recipe-placeholder.webp",
             "cookTime": this.newRecipe.controls.cookTime.value,
             "prepTime": this.newRecipe.controls.prepTime.value
           }

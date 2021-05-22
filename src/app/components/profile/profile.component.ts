@@ -63,6 +63,7 @@ export class ProfileComponent {
   }
 
   viewCollectionRecipes(collection: Collection){
+    console.log("collection recipes",collection.recipeList)
     this.collection = collection;
     this.collectionRecipes = !this.collectionRecipes;
     this.collectionList = !this.collectionList;

@@ -44,7 +44,7 @@
                     </div>
                     <h1 class="c-powder">{{collection?.collectionName}}</h1>
                     <div class="recipe-card-container">
-                        <app-recipe-card-tile *ngFor="let recipe of sample_recipes" [recipe]="recipe">
+                        <app-recipe-card-tile *ngFor="let recipe of collection.recipeList" [recipe]="recipe">
                         </app-recipe-card-tile>
                     </div>
                 </div>

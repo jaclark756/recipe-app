@@ -129,7 +129,7 @@
                     [matAutocomplete]="auto" [matChipInputFor]="chipList"
                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
             </mat-chip-list>
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" [displayWith]="displayFn">
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" >
                 <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
                     {{category.name}}
                 </mat-option>

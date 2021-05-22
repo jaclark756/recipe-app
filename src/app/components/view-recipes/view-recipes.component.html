@@ -20,6 +20,14 @@
         <h3>Prep Time: {{recipe?.prepTime}}Min</h3>
         <h3>Cook Time: {{recipe?.cookTime}}Min</h3>
       </div>
+      <!-- TODO Add css for categories -->
+      <!-- <div class="time">
+        <mat-chip-list #chipList aria-label="Category selection">
+            <mat-chip *ngFor="let category of categories" >
+              {{category.name}}
+            </mat-chip>
+        </mat-chip-list>
+      </div> -->
       <div class="actions" fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false">
         <button mat-fab class="fab-buttons">
           <mat-icon class="c-jet fab">thumb_up_alt</mat-icon>

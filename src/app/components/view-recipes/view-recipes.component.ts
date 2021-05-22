@@ -79,9 +79,13 @@ export class ViewRecipesComponent implements OnInit {
           this.notes = recipe.notes;
           this.instructions.sort((a,b) => a.instructionOrder -b.instructionOrder);
           if(this.notes.length<1)
-          {this.isNotesNull=true;}
-          else{this.isNotesNull=false;}
-          console.log(this.isNotesNull);
+          {
+            this.isNotesNull=true;
+          }
+          else
+          {
+            this.isNotesNull=false;
+          }
         })
       };
     })

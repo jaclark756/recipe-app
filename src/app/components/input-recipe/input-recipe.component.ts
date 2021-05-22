@@ -218,12 +218,9 @@ export class InputRecipeComponent implements OnInit {
 
 
   getInstructions(event) {
-    console.log("instructions2 now: ", this.instructions2);
   }
 
   addInstruction(event) {
-    console.log("pressed button");
-    console.log((<FormArray>this.newRecipe.get("instructions")).controls);
     (<FormArray>this.newRecipe.get("instructions")).push(new FormControl('', Validators.required));
   }
   

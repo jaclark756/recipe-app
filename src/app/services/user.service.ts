@@ -24,7 +24,6 @@ export class UserService {
   }
 
   set activeUser(user: User) {
-    console.log(user)
     this.activeUserSubject.next(user);
   }
 

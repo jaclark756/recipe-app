@@ -33,7 +33,6 @@ export class CollectionCardComponent implements OnInit {
   }
 
   addCollection(event) {
-    console.log(this.newCollection);
     if (this.newCollection.valid) {
       let collection = {
         "collectionName": this.newCollection.controls.collectionName.value,

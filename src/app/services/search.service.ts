@@ -23,7 +23,6 @@ export class SearchService {
 
     setUserSearchValue(userSearch) {
         this.userSearchValue$ = userSearch;
-        console.log("Search Service userSearchValue: ", this.userSearchValue$);
     }
 
     getSearchedRecipes(httpParams: HttpParams): Observable<Recipe[]> {

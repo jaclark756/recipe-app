@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { sortAscendingPriority } from '@angular/flex-layout';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-input-recipe',
@@ -56,7 +57,7 @@ export class InputRecipeComponent implements OnInit {
   existingRecipe: Recipe;
   recipeId: number;
   editInstructions: number = null;
-  API_URL: string = 'https://recipe-parser-4wtzpoqwoq-uc.a.run.app/api'
+  IMPORT_URL: string = environment.importUrl
   // TODO add Boolean logic for form validation
   instructionsNotEmpty = false;
   ingredientsNotEmpty = false;
@@ -83,6 +84,19 @@ export class InputRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.existingRecipe = this.data ? this.data.recipe : null;
+    this.categoryService.getAllCategories().subscribe(response => {
+      this.allCategories = response.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+      this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => typeof value === 'string' ? value : value.name),
+        map(name => name ? this._filter(name) : this.allCategories.slice())
+      );
+    })
+    this.setForm()
+  }
+
+  setForm(){
     this.ingredients2 = this.existingRecipe ? this.existingRecipe.ingredients : [];
     this.apiRecipe = this.formbuilder.group ({
       recipeURLControl: new FormControl('') 
@@ -106,18 +120,8 @@ export class InputRecipeComponent implements OnInit {
       return {content: item.content, order: index};
     });
     this.instructions2 = this.existingRecipe ? this.existingRecipe.instructions : this.instructions2;
-    this.categoryService.getAllCategories().subscribe(response => {
-      this.allCategories = response.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
-      this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.allCategories.slice())
-      );
-    })
     
-    this.notes = this.existingRecipe.notes || [];
-    
+    // this.notes = this.existingRecipe.notes || [];
   }
 
     // ADDRECIPE LOGIC /// 
@@ -289,13 +293,24 @@ export class InputRecipeComponent implements OnInit {
 
 
   getAPIdata(event) {
-    this.http.post(this.API_URL, 
+    this.http.post(this.IMPORT_URL, 
                   {"url": this.apiRecipe.controls.recipeURLControl.value}, 
                   {headers: new HttpHeaders({ 'Content-Type': 'application/json'})}
-                  ).subscribe(map(response => {
-      console.log("api object: ",  response)
-      // response as Recipe[];
-    }))
+      ).subscribe((response: any) => {
+        this.existingRecipe = this.recipeService.mapToRecipeObject(response)
+        this.setForm()
+    })
+  }
+
+  parseTime(isoString: string){
+    let time = isoString.split("T").pop()
+    let increment = time.slice(-1)
+    switch (increment){
+      case "M":
+        return +time.split("M")[0]
+      case "H":
+        return ((+time.split("H")[0])/60)
+    }
   }
 
   close(): void{

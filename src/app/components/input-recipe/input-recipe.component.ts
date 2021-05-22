@@ -80,6 +80,7 @@ export class InputRecipeComponent implements OnInit {
   ngOnInit(): void {
     this.existingRecipe = this.data ? this.data.recipe : null;
     this.ingredients2 = this.existingRecipe ? this.existingRecipe.ingredients : [];
+    this.categories = this.existingRecipe ? this.existingRecipe.categories : [];
     this.ingredientsFormGroup = this.formbuilder.group ({
       content: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       quantity: new FormControl('', [Validators.required, Validators.max(99.9)]),
@@ -252,10 +253,6 @@ export class InputRecipeComponent implements OnInit {
     this.categories.push({ name: event.option.viewValue });
     this.categoryInput.nativeElement.value = '';
     this.newRecipe.controls.categoryControl.setValue('');
-  }
-
-  displayFn(category: Category): string {
-    return category && category.name ? category.name : '';
   }
 
   private _filter(value: string): Category[] {

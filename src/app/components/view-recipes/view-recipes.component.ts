@@ -13,6 +13,7 @@ import { Recipe } from 'src/app/types/recipe';
 import { CollectionDialogComponent } from 'src/app/shared/components/collection-dialog/collection-dialog.component';
 import { InputRecipeComponent } from '../input-recipe/input-recipe.component';
 import { RecipeUpdateNote } from 'src/app/types/recipeUpdateNote';
+import { Category } from 'src/app/types/category';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ViewRecipesComponent implements OnInit {
   public ingredients: Ingredient[];
   public instructions: Instruction[];
   public notes: RecipeUpdateNote[] = [];
+  public categories: Category[];
   public isNotesNull: boolean = false;
   public relatedRecipes: any;
   sample_recipes = RECIPES;
@@ -78,6 +80,7 @@ export class ViewRecipesComponent implements OnInit {
           this.instructions = recipe.instructions;
           this.notes = recipe.notes;
           this.instructions.sort((a,b) => a.instructionOrder -b.instructionOrder);
+          this.categories = recipe.categories;
           if(this.notes.length<1)
           {
             this.isNotesNull=true;

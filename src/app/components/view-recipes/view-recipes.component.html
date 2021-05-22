@@ -2,7 +2,7 @@
   <div class="container">
     <mat-tab-group mat-align-tabs="center">
       <mat-tab label="Recipe Image">
-            <img class="image" src="/assets/images/452078e959acefeb64f8fcfea2336e51.jpg" alt="recipe image">
+            <img class="image" src="{{recipe?.photoUrl}}" alt="recipe image">
       </mat-tab>
       <mat-tab label="Nutrition">
           <div class="nutrition">
@@ -13,8 +13,8 @@
     <section class="information">
       <h1 class="title">{{recipe?.title}}</h1>
       <div class="owner-container">
-        <mat-icon class="c-powder">account_circle</mat-icon>
-        <h3 class="owner">Recipe Owner Display Name</h3>
+        <img src="{{recipe?.user2?.photoUrl ? recipe?.user2?.photoUrl : '/assets/images/account_circle-white-24dp.svg'}}" alt="user image" class="userAvatar">
+        <h3 class="owner">{{recipe?.user2?.displayName ? recipe?.user2?.displayName : recipe?.user2?.username}}</h3>
       </div>
       <div class="time">
         <h3>Prep Time: {{recipe?.prepTime}}Min</h3>
@@ -56,7 +56,7 @@
       <h3>INGREDIENTS</h3>
       <mat-list *ngFor="let ingredient of ingredients">
         <mat-list-item id="ingredient" name="ingredient" value="Ingredient">
-          <mat-checkbox color='mint'>{{ingredient?.content}}</mat-checkbox>
+          <mat-checkbox color='mint'>{{ingredient?.content}} | {{ingredient?.quantity}} {{ingredient?.measure}}</mat-checkbox>
         </mat-list-item>
       </mat-list>
       <div class="shop-button">
@@ -72,6 +72,17 @@
           (click)="strikethroughText($event)">
           <mat-icon class="c-mint instructions-arrow">arrow_right_alt</mat-icon><span
             class="instructions-text">{{instruction?.content}}</span>
+        </mat-list-item>
+      </mat-list>
+    </section>
+  </div>
+  <div [hidden]="isNotesNull">
+    <mat-divider></mat-divider>
+    <section class="notes">
+      <h2>RECIPE NOTES</h2>
+      <mat-list>
+        <mat-list-item class="instructions-list" *ngFor="let note of notes">
+          <span class="instructions-text">{{note?.timestamp}} -- {{note?.note}}</span>
         </mat-list-item>
       </mat-list>
     </section>

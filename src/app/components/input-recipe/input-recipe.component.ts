@@ -175,10 +175,8 @@ export class InputRecipeComponent implements OnInit {
     }
 
     editInstruction(index: number) {
-      console.log("touched edit instruction");
       this.editInstructions = index;
       this.newRecipe.controls.instruction2Control.setValue(this.instructions2.find(ins => ins.instructionOrder == index).content);
-      console.log(this.newRecipe.controls.instruction2Control.value);
     }
     saveEditInstruction(event) {
       this.instructions2.find(ins => ins.instructionOrder == this.editInstructions).content = this.newRecipe.controls.instruction2Control.value;

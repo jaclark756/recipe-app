@@ -25,7 +25,7 @@ export class SettingsComponent implements OnInit {
   prevDisplayName: string;
   editProfile: FormGroup;
 
-  SIGNUP_URL: string = "/v2/user"
+  SIGNUP_URL: string = "/api/v2/user"
   UPDATE_URL = environment.apiUrl + this.SIGNUP_URL;
   
   constructor(

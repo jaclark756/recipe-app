@@ -50,6 +50,10 @@ label {
   margin: 5px 0 50px 0;
 }
 
+.userAvatar {
+  width: 30px;
+}  
+
 .owner {
   margin: 5px 0 6px 20px;
 }
@@ -135,6 +139,10 @@ label {
   margin-left: 23%;
 }
 
+.instructions-list:hover{
+  cursor: pointer;
+}
+
 .instructions-list:hover .instructions-arrow,
 .instructions-list:focus .instructions-arrow {
   visibility: visible;
@@ -153,6 +161,12 @@ label {
 
 .instructions-Strikethrough {
   text-decoration: line-through;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  margin-left: 9.75%;
 }
 
 .flex-container {
@@ -247,5 +261,11 @@ label {
     display: flex;
     justify-content: center;
     margin-left: 0;
+  }
+
+  .notes {
+    display: flex;
+    flex-direction: column;
+    margin-left: 9.75%;
   }
 }

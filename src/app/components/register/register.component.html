@@ -11,7 +11,7 @@
             <div class="mat-error" *ngIf="signUpForm.get('username').invalid && signUpForm.get('username').touched">{{getErrorMessage()}}</div>
         </mat-form-field>
         <div class="action">
-        <button mat-raised-button [disabled]="signUpForm.invalid" (click)="signUp($event)" class="bg-onyx">Sign Up</button>
+        <button mat-raised-button [disabled]="signUpForm.invalid" (click)="signUp($event)" class="bg-onyx c-mint">Sign Up</button>
     </div>
     <p>By continuing, you agree to this site's <a href="#" (click)="openTermsDialog();false">Terms
         of Service</a> and <a href="#" (click)="openPrivacyDialog();false">Privacy Policy</a>.</p>

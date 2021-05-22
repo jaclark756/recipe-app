@@ -6,6 +6,10 @@
   overflow: hidden;
 }
 
+::ng-deep .cdk-overlay-pane {
+  justify-content: center !important;
+}
+
 h1 {
   text-align: center;
 }
@@ -21,14 +25,18 @@ h1 {
   margin: 10px;
   min-width: 400px;
   display: flex;
+  min-height: 100px;
   max-height: 200px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .button-container {
+  display: flex;
   margin: 10px;
   align-items: center;
-  justify-content: space-between !important;
+  justify-content: space-around;
+  padding: 0 150px 0 150px;
 }
 
 ::ng-deep .mat-option.mat-active {
@@ -56,4 +64,12 @@ h1 {
 ::ng-deep .mat-checkbox-layout {
   font-size: 20px;
   margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 730px) {
+  .button-container {
+    padding: 0 10px 0 10px;
+  }
+
+
 }

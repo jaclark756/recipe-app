@@ -24,6 +24,7 @@ export class SettingsComponent implements OnInit {
   recipeChecked: boolean;
   prevDisplayName: string;
   editProfile: FormGroup;
+  contactUs: FormGroup;
 
   SIGNUP_URL: string = "/api/v2/user"
   UPDATE_URL = environment.apiUrl + this.SIGNUP_URL;
@@ -64,6 +65,10 @@ export class SettingsComponent implements OnInit {
     else {
       this.snackbar.openSnackBar("ERROR: There are no changes to be saved");
     }
+  }
+
+  sendMessage() {
+    this.snackbar.openSnackBar("Your message has been sent!")
   }
 
   revertChanges() {

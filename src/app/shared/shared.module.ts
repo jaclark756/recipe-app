@@ -108,7 +108,8 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     MatBadgeModule,
     Ng2SearchPipeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TermsComponent
   ],
   providers: [
     SnackbarService

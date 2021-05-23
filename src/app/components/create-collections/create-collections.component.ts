@@ -43,7 +43,7 @@ export class CreateCollectionsComponent implements OnInit {
   ) {
     this.newCollectionForm = fb.group({
       collectionName: new FormControl('', [Validators.required], this.validationService.userNameValidator.bind(this.validationService)),
-      imageUrl: new FormControl('', this.validationService.userNameValidator.bind(this.validationService))
+      imageUrl: new FormControl('')
     })
     this.userService.getCurrentUser().subscribe((user:User) => this.activeUser = user)
   }
@@ -70,7 +70,7 @@ export class CreateCollectionsComponent implements OnInit {
         id: null,
         collectionName: this.newCollectionForm.get("collectionName").value,
         recipeList: null,
-        imageUrl:this.newCollectionForm.get("imageUrl").value,
+        imageUrl: this.newCollectionForm.get("imageUrl").value ? this.newCollectionForm.get("imageUrl").value : "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Toicon-icon-afiado-bookmark.svg/640px-Toicon-icon-afiado-bookmark.svg.png",
         userId: +this.activeUser.id,
       });
       let collectionName = this.newCollectionForm.get("collectionName").value;

@@ -43,7 +43,7 @@ export class CreateCollectionsComponent implements OnInit {
   ) {
     this.newCollectionForm = fb.group({
       collectionName: new FormControl('', [Validators.required], this.validationService.userNameValidator.bind(this.validationService)),
-      imageUrl: new FormControl('', [Validators.required], this.validationService.userNameValidator.bind(this.validationService))
+      imageUrl: new FormControl('', this.validationService.userNameValidator.bind(this.validationService))
     })
     this.userService.getCurrentUser().subscribe((user:User) => this.activeUser = user)
   }

@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
   appUrl: 'http://localhost:4200',
-  importUrl: 'http://recipe-parser.mcc-code-school.com/api'
+  importUrl: 'https://recipe-parser-4wtzpoqwoq-uc.a.run.app/api'
 };
 
 /*

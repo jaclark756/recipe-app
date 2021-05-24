@@ -116,7 +116,7 @@ export class ViewRecipesComponent implements OnInit {
   }
 
   openCollectionDialog() {
-    const dialogRef = this.dialog.open(CollectionDialogComponent);
-}
+    const dialogRef = this.dialog.open(CollectionDialogComponent,{data: {recipe: this.recipe}});
+  }
 
 }

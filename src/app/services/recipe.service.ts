@@ -7,6 +7,9 @@ import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
 import { NutrientEntity } from '../types/NutrientEntity';
 import { Nutrient } from '../types/nutrient';
+import { Ingredient } from '../types/ingredient'
+import { Instruction } from '../types/instruction'
+import { Category } from '../types/category'
 import { Router } from '@angular/router';
 
 const httpOptions = {
@@ -141,6 +144,36 @@ export class RecipeService {
     }));
   }
 
+  mapToRecipeObject(object: any){
+    let recipe = {} as Recipe;
+    recipe.instructions = []
+    recipe.categories = []
+    recipe.ingredients = []
+    recipe.photoUrl = object.photoUrl
+    recipe.title = object.title
+    recipe.cookTime = this.parseTime(object.cookTime)
+    recipe.prepTime = this.parseTime(object.prepTime)
+    object.instructions.forEach((i) => {
+      recipe.instructions.push({content: i.schema.text, instructionOrder: i.order})
+    })
+    object.categories.forEach((c) => {
+      recipe.categories.push({name: c.name})
+    })
+    object.ingredients.forEach((i) => {
+      recipe.ingredients.push({content: i.content, quantity: i.quantity, measure: i.measure})
+    })
+    return recipe
+  }
+
+  parseTime(isoString: string){
+    let time = isoString.split("T").pop()
+    switch (time.slice(-1)){
+      case "M":
+        return +time.split("M")[0]
+      case "H":
+        return ((+time.split("H")[0])/60)
+    }
+  }
   findRecipesByUser(httpParams: HttpParams): Observable<Recipe[]> {
     return this.http.get(this.url, 
                         {params: httpParams, 

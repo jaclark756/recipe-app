@@ -21,6 +21,8 @@ import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { sortAscendingPriority } from '@angular/flex-layout';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-input-recipe',
@@ -34,6 +36,7 @@ export class InputRecipeComponent implements OnInit {
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   newRecipe: FormGroup;
+  apiRecipe: FormGroup;
   currentUser: any;
   Ingredients: Ingredient[];
   ingredientsFormGroup: FormGroup;
@@ -54,10 +57,12 @@ export class InputRecipeComponent implements OnInit {
   existingRecipe: Recipe;
   recipeId: number;
   editInstructions: number = null;
+  IMPORT_URL: string = environment.importUrl
   // TODO add Boolean logic for form validation
   instructionsNotEmpty = false;
   ingredientsNotEmpty = false;
   // END TODO
+  updateMode = false;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -71,16 +76,34 @@ export class InputRecipeComponent implements OnInit {
     private categoryService: CategoryService,
     public router: Router,
     private dr: MatDialogRef<InputRecipeComponent>,
+    private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
+    this.updateMode = this.data ? true : false;
     this.currentUser = this.tokenService.getUser();
     this.currentDateFormatted = formatDate(this.currentDate, 'MM-dd-yyyy', 'en-US')
   }
 
   ngOnInit(): void {
     this.existingRecipe = this.data ? this.data.recipe : null;
+    this.categoryService.getAllCategories().subscribe(response => {
+      this.allCategories = response.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+      this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => typeof value === 'string' ? value : value.name),
+        map(name => name ? this._filter(name) : this.allCategories.slice())
+      );
+    })
+    this.setForm()
+  }
+
+  setForm(){
     this.ingredients2 = this.existingRecipe ? this.existingRecipe.ingredients : [];
     this.categories = this.existingRecipe ? this.existingRecipe.categories : [];
+    this.apiRecipe = this.formbuilder.group ({
+      recipeURLControl: new FormControl('') 
+    })
     this.ingredientsFormGroup = this.formbuilder.group ({
       content: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       quantity: new FormControl('', [Validators.required, Validators.max(99.9)]),
@@ -100,18 +123,8 @@ export class InputRecipeComponent implements OnInit {
       return {content: item.content, order: index};
     });
     this.instructions2 = this.existingRecipe ? this.existingRecipe.instructions : this.instructions2;
-    this.categoryService.getAllCategories().subscribe(response => {
-      this.allCategories = response.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
-      this.filteredCategories = this.newRecipe.controls.categoryControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.allCategories.slice())
-      );
-    })
     
-    this.notes = this.existingRecipe.notes || [];
-    
+    // this.notes = this.existingRecipe.notes || [];
   }
 
     // ADDRECIPE LOGIC /// 
@@ -279,6 +292,28 @@ export class InputRecipeComponent implements OnInit {
   }
 
   //// END Notes Input Logic ////
+
+
+  getAPIdata(event) {
+    this.http.post(this.IMPORT_URL, 
+                  {"url": this.apiRecipe.controls.recipeURLControl.value}, 
+                  {headers: new HttpHeaders({ 'Content-Type': 'application/json'})}
+      ).subscribe((response: any) => {
+        this.existingRecipe = this.recipeService.mapToRecipeObject(response)
+        this.setForm()
+    })
+  }
+
+  parseTime(isoString: string){
+    let time = isoString.split("T").pop()
+    let increment = time.slice(-1)
+    switch (increment){
+      case "M":
+        return +time.split("M")[0]
+      case "H":
+        return ((+time.split("H")[0])/60)
+    }
+  }
 
   close(): void{
     this.dr.close();

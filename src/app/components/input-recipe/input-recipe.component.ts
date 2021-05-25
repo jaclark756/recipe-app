@@ -255,6 +255,12 @@ export class InputRecipeComponent implements OnInit {
     this.newRecipe.controls.categoryControl.setValue('');
   }
 
+  
+  displayFn(category: Category): string {
+    return category && category.name ? category.name : '';
+  }
+
+
   private _filter(value: string): Category[] {
     const filterValue = value.toLowerCase();
     return this.allCategories.filter(category => category.name.toLowerCase().indexOf(filterValue) === 0);

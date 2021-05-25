@@ -172,7 +172,7 @@
     <div class="button-container">
         <button type="button" mat-stroked-button (click)="close()"
             class="input-recipe-cancel-button input-recipe-button">Cancel</button>
-        <button type="button" mat-raised-button (click)="existingRecipe ? updateRecipe($event) : addRecipe($event)"
-            class="input-recipe-done-button input-recipe-button">{{ existingRecipe ? "Update Recipe" : "Add Recipe"}}</button>
+        <button type="button" mat-raised-button (click)="updateMode ? updateRecipe($event) : addRecipe($event)"
+            class="input-recipe-done-button input-recipe-button">{{ updateMode ? "Update Recipe" : "Add Recipe"}}</button>
     </div>
 </div>

@@ -62,6 +62,7 @@ export class InputRecipeComponent implements OnInit {
   instructionsNotEmpty = false;
   ingredientsNotEmpty = false;
   // END TODO
+  updateMode = false;
 
   @ViewChild('categoryInput') categoryInput: ElementRef<HTMLInputElement>
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -78,6 +79,7 @@ export class InputRecipeComponent implements OnInit {
     private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
+    this.updateMode = this.data ? true : false;
     this.currentUser = this.tokenService.getUser();
     this.currentDateFormatted = formatDate(this.currentDate, 'MM-dd-yyyy', 'en-US')
   }

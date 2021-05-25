@@ -11,10 +11,6 @@ img {
   width: 100px;
 }
 
-h3 {
-  opacity: 70%;
-}
-
 .flex-container {
   display: flex;
   justify-content: center;
@@ -74,7 +70,6 @@ h3 {
 
 ::ng-deep .mat-raised-button {
   padding: 0 8px !important;
-  margin: 0 5% !important;
 }
 
 .recipe-card-container {

@@ -9,7 +9,7 @@
             <app-nutritional-sticker></app-nutritional-sticker>
           </div>
       </mat-tab>
-  </mat-tab-group>
+    </mat-tab-group>
     <section class="information">
       <h1 class="title">{{recipe?.title}}</h1>
       <div class="owner-container">
@@ -20,6 +20,21 @@
         <h3>Prep Time: {{recipe?.prepTime}}Min</h3>
         <h3>Cook Time: {{recipe?.cookTime}}Min</h3>
       </div>
+      <!-- categories -->
+      <ng-container *ngIf="categoriesPresent" >
+        <h1 class="category-header">Recipe Categories</h1>
+
+      </ng-container>
+
+      <div class="category-container">
+
+        <mat-chip-list #chipList aria-label="Category selection">
+          <mat-chip *ngFor="let category of categories" [selectable]="selectable">
+              {{category.name}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      
       <div class="actions" fxShow.lt-sm="false" fxShow.gt-sm="true" fxShow.sm="false">
         <button mat-fab class="fab-buttons">
           <mat-icon class="c-jet fab">thumb_up_alt</mat-icon>

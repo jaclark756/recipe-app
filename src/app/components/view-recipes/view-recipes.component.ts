@@ -27,6 +27,7 @@ export class ViewRecipesComponent implements OnInit {
   public instructions: Instruction[];
   public notes: RecipeUpdateNote[] = [];
   public categories: Category[];
+  public categoriesPresent: boolean = false;
   public isNotesNull: boolean = false;
   public relatedRecipes: any;
   sample_recipes = RECIPES;
@@ -89,6 +90,15 @@ export class ViewRecipesComponent implements OnInit {
           {
             this.isNotesNull=false;
           }
+          console.log(this.categories)
+
+          if(recipe.categories.length > 0) {
+            this.categoriesPresent = true;
+          } else {
+            this.categoriesPresent == false;
+          }
+          console.log(this.categoriesPresent);
+
         })
       };
     })
